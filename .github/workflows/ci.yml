@@ -41,9 +41,22 @@ jobs:
       # generated file, a pin bumped without regenerating, and a regeneration nobody
       # committed — three ways for the checked-in client to stop describing the server.
       - name: Generated client matches the pinned tag
+        id: regen
         run: |
           make codegen
+          echo "--- resolved plugin versions ---"
+          cat scripts/plugins/Package.resolved || true
           git diff --exit-code -- Sources/PlatformClient/Generated || {
             echo "::error::Generated/ does not match what $(cat PLATFORM_GO_VERSION) generates. Run 'make codegen'."
             exit 1
           }
+
+      # When the committed tree and the pinned toolchain disagree, the toolchain is right:
+      # it is the pinned one. Publishing its output makes the fix a download-and-commit
+      # rather than a guess, which matters on a machine that cannot build the plugins.
+      - name: Publish what the pinned toolchain generated
+        if: failure() && steps.regen.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-from-pinned-toolchain
+          path: Sources/PlatformClient/Generated
