@@ -129,13 +129,13 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "primandproper.platform.signin.v1.SignInService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Signin_V1_SignInService {
+internal enum Primandproper_Platform_Signin_V1_SignInService: Sendable {
     /// Service descriptor for the "primandproper.platform.signin.v1.SignInService" service.
     internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService")
     /// Namespace for method metadata.
-    internal enum Method {
+    internal enum Method: Sendable {
         /// Namespace for "Register" metadata.
-        internal enum Register {
+        internal enum Register: Sendable {
             /// Request type for "Register".
             internal typealias Input = Primandproper_Platform_Signin_V1_RegisterRequest
             /// Response type for "Register".
@@ -143,11 +143,12 @@ internal enum Primandproper_Platform_Signin_V1_SignInService {
             /// Descriptor for "Register".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
-                method: "Register"
+                method: "Register",
+                type: .unary
             )
         }
         /// Namespace for "AttachPassword" metadata.
-        internal enum AttachPassword {
+        internal enum AttachPassword: Sendable {
             /// Request type for "AttachPassword".
             internal typealias Input = Primandproper_Platform_Signin_V1_AttachPasswordRequest
             /// Response type for "AttachPassword".
@@ -155,11 +156,12 @@ internal enum Primandproper_Platform_Signin_V1_SignInService {
             /// Descriptor for "AttachPassword".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
-                method: "AttachPassword"
+                method: "AttachPassword",
+                type: .unary
             )
         }
         /// Namespace for "VerifyEmailAddress" metadata.
-        internal enum VerifyEmailAddress {
+        internal enum VerifyEmailAddress: Sendable {
             /// Request type for "VerifyEmailAddress".
             internal typealias Input = Primandproper_Platform_Signin_V1_VerifyEmailAddressRequest
             /// Response type for "VerifyEmailAddress".
@@ -167,11 +169,12 @@ internal enum Primandproper_Platform_Signin_V1_SignInService {
             /// Descriptor for "VerifyEmailAddress".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
-                method: "VerifyEmailAddress"
+                method: "VerifyEmailAddress",
+                type: .unary
             )
         }
         /// Namespace for "RequestMagicLink" metadata.
-        internal enum RequestMagicLink {
+        internal enum RequestMagicLink: Sendable {
             /// Request type for "RequestMagicLink".
             internal typealias Input = Primandproper_Platform_Signin_V1_RequestMagicLinkRequest
             /// Response type for "RequestMagicLink".
@@ -179,11 +182,12 @@ internal enum Primandproper_Platform_Signin_V1_SignInService {
             /// Descriptor for "RequestMagicLink".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
-                method: "RequestMagicLink"
+                method: "RequestMagicLink",
+                type: .unary
             )
         }
         /// Namespace for "RedeemMagicLink" metadata.
-        internal enum RedeemMagicLink {
+        internal enum RedeemMagicLink: Sendable {
             /// Request type for "RedeemMagicLink".
             internal typealias Input = Primandproper_Platform_Signin_V1_RedeemMagicLinkRequest
             /// Response type for "RedeemMagicLink".
@@ -191,11 +195,12 @@ internal enum Primandproper_Platform_Signin_V1_SignInService {
             /// Descriptor for "RedeemMagicLink".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
-                method: "RedeemMagicLink"
+                method: "RedeemMagicLink",
+                type: .unary
             )
         }
         /// Namespace for "LoginForToken" metadata.
-        internal enum LoginForToken {
+        internal enum LoginForToken: Sendable {
             /// Request type for "LoginForToken".
             internal typealias Input = Primandproper_Platform_Signin_V1_LoginForTokenRequest
             /// Response type for "LoginForToken".
@@ -203,11 +208,12 @@ internal enum Primandproper_Platform_Signin_V1_SignInService {
             /// Descriptor for "LoginForToken".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
-                method: "LoginForToken"
+                method: "LoginForToken",
+                type: .unary
             )
         }
         /// Namespace for "AdminLoginForToken" metadata.
-        internal enum AdminLoginForToken {
+        internal enum AdminLoginForToken: Sendable {
             /// Request type for "AdminLoginForToken".
             internal typealias Input = Primandproper_Platform_Signin_V1_AdminLoginForTokenRequest
             /// Response type for "AdminLoginForToken".
@@ -215,11 +221,12 @@ internal enum Primandproper_Platform_Signin_V1_SignInService {
             /// Descriptor for "AdminLoginForToken".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
-                method: "AdminLoginForToken"
+                method: "AdminLoginForToken",
+                type: .unary
             )
         }
         /// Namespace for "ExchangeRefreshToken" metadata.
-        internal enum ExchangeRefreshToken {
+        internal enum ExchangeRefreshToken: Sendable {
             /// Request type for "ExchangeRefreshToken".
             internal typealias Input = Primandproper_Platform_Signin_V1_ExchangeRefreshTokenRequest
             /// Response type for "ExchangeRefreshToken".
@@ -227,11 +234,12 @@ internal enum Primandproper_Platform_Signin_V1_SignInService {
             /// Descriptor for "ExchangeRefreshToken".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
-                method: "ExchangeRefreshToken"
+                method: "ExchangeRefreshToken",
+                type: .unary
             )
         }
         /// Namespace for "GetAuthStatus" metadata.
-        internal enum GetAuthStatus {
+        internal enum GetAuthStatus: Sendable {
             /// Request type for "GetAuthStatus".
             internal typealias Input = Primandproper_Platform_Signin_V1_GetAuthStatusRequest
             /// Response type for "GetAuthStatus".
@@ -239,11 +247,12 @@ internal enum Primandproper_Platform_Signin_V1_SignInService {
             /// Descriptor for "GetAuthStatus".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
-                method: "GetAuthStatus"
+                method: "GetAuthStatus",
+                type: .unary
             )
         }
         /// Namespace for "GetSelf" metadata.
-        internal enum GetSelf {
+        internal enum GetSelf: Sendable {
             /// Request type for "GetSelf".
             internal typealias Input = Primandproper_Platform_Signin_V1_GetSelfRequest
             /// Response type for "GetSelf".
@@ -251,11 +260,12 @@ internal enum Primandproper_Platform_Signin_V1_SignInService {
             /// Descriptor for "GetSelf".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
-                method: "GetSelf"
+                method: "GetSelf",
+                type: .unary
             )
         }
         /// Namespace for "UpdatePassword" metadata.
-        internal enum UpdatePassword {
+        internal enum UpdatePassword: Sendable {
             /// Request type for "UpdatePassword".
             internal typealias Input = Primandproper_Platform_Signin_V1_UpdatePasswordRequest
             /// Response type for "UpdatePassword".
@@ -263,11 +273,12 @@ internal enum Primandproper_Platform_Signin_V1_SignInService {
             /// Descriptor for "UpdatePassword".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
-                method: "UpdatePassword"
+                method: "UpdatePassword",
+                type: .unary
             )
         }
         /// Namespace for "RefreshTOTPSecret" metadata.
-        internal enum RefreshTOTPSecret {
+        internal enum RefreshTOTPSecret: Sendable {
             /// Request type for "RefreshTOTPSecret".
             internal typealias Input = Primandproper_Platform_Signin_V1_RefreshTOTPSecretRequest
             /// Response type for "RefreshTOTPSecret".
@@ -275,11 +286,12 @@ internal enum Primandproper_Platform_Signin_V1_SignInService {
             /// Descriptor for "RefreshTOTPSecret".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
-                method: "RefreshTOTPSecret"
+                method: "RefreshTOTPSecret",
+                type: .unary
             )
         }
         /// Namespace for "VerifyTOTPSecret" metadata.
-        internal enum VerifyTOTPSecret {
+        internal enum VerifyTOTPSecret: Sendable {
             /// Request type for "VerifyTOTPSecret".
             internal typealias Input = Primandproper_Platform_Signin_V1_VerifyTOTPSecretRequest
             /// Response type for "VerifyTOTPSecret".
@@ -287,7 +299,8 @@ internal enum Primandproper_Platform_Signin_V1_SignInService {
             /// Descriptor for "VerifyTOTPSecret".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
-                method: "VerifyTOTPSecret"
+                method: "VerifyTOTPSecret",
+                type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.signin.v1.SignInService" service.
@@ -351,9 +364,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_RegisterRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_RegisterResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func register<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RegisterRequest>,
@@ -370,9 +383,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_AttachPasswordRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_AttachPasswordResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func attachPassword<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_AttachPasswordRequest>,
@@ -389,9 +402,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_VerifyEmailAddressRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_VerifyEmailAddressResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func verifyEmailAddress<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_VerifyEmailAddressRequest>,
@@ -418,9 +431,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_RequestMagicLinkRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_RequestMagicLinkResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func requestMagicLink<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RequestMagicLinkRequest>,
@@ -437,9 +450,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_RedeemMagicLinkRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_RedeemMagicLinkResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func redeemMagicLink<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RedeemMagicLinkRequest>,
@@ -461,9 +474,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_LoginForTokenRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_LoginForTokenResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func loginForToken<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_LoginForTokenRequest>,
@@ -480,9 +493,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_AdminLoginForTokenRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_AdminLoginForTokenResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func adminLoginForToken<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_AdminLoginForTokenRequest>,
@@ -499,9 +512,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_ExchangeRefreshTokenRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_ExchangeRefreshTokenResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func exchangeRefreshToken<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_ExchangeRefreshTokenRequest>,
@@ -522,9 +535,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_GetAuthStatusRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_GetAuthStatusResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func getAuthStatus<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_GetAuthStatusRequest>,
@@ -541,9 +554,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_GetSelfRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_GetSelfResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func getSelf<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_GetSelfRequest>,
@@ -564,9 +577,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_UpdatePasswordRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_UpdatePasswordResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func updatePassword<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_UpdatePasswordRequest>,
@@ -583,9 +596,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_RefreshTOTPSecretRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_RefreshTOTPSecretResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func refreshTOTPSecret<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RefreshTOTPSecretRequest>,
@@ -602,9 +615,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_VerifyTOTPSecretRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_VerifyTOTPSecretResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func verifyTOTPSecret<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_VerifyTOTPSecretRequest>,
@@ -658,9 +671,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_RegisterRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_RegisterResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func register<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RegisterRequest>,
@@ -688,9 +701,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_AttachPasswordRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_AttachPasswordResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func attachPassword<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_AttachPasswordRequest>,
@@ -718,9 +731,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_VerifyEmailAddressRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_VerifyEmailAddressResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func verifyEmailAddress<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_VerifyEmailAddressRequest>,
@@ -758,9 +771,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_RequestMagicLinkRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_RequestMagicLinkResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func requestMagicLink<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RequestMagicLinkRequest>,
@@ -788,9 +801,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_RedeemMagicLinkRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_RedeemMagicLinkResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func redeemMagicLink<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RedeemMagicLinkRequest>,
@@ -823,9 +836,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_LoginForTokenRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_LoginForTokenResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func loginForToken<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_LoginForTokenRequest>,
@@ -853,9 +866,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_AdminLoginForTokenRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_AdminLoginForTokenResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func adminLoginForToken<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_AdminLoginForTokenRequest>,
@@ -883,9 +896,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_ExchangeRefreshTokenRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_ExchangeRefreshTokenResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func exchangeRefreshToken<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_ExchangeRefreshTokenRequest>,
@@ -917,9 +930,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_GetAuthStatusRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_GetAuthStatusResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func getAuthStatus<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_GetAuthStatusRequest>,
@@ -947,9 +960,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_GetSelfRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_GetSelfResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func getSelf<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_GetSelfRequest>,
@@ -981,9 +994,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_UpdatePasswordRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_UpdatePasswordResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func updatePassword<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_UpdatePasswordRequest>,
@@ -1011,9 +1024,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_RefreshTOTPSecretRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_RefreshTOTPSecretResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func refreshTOTPSecret<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RefreshTOTPSecretRequest>,
@@ -1041,9 +1054,9 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///   - serializer: A serializer for `Primandproper_Platform_Signin_V1_VerifyTOTPSecretRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Signin_V1_VerifyTOTPSecretResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func verifyTOTPSecret<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_VerifyTOTPSecretRequest>,
@@ -1083,9 +1096,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Signin_V1_RegisterRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func register<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RegisterRequest>,
@@ -1108,9 +1121,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Signin_V1_AttachPasswordRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func attachPassword<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_AttachPasswordRequest>,
@@ -1133,9 +1146,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Signin_V1_VerifyEmailAddressRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func verifyEmailAddress<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_VerifyEmailAddressRequest>,
@@ -1168,9 +1181,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Signin_V1_RequestMagicLinkRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func requestMagicLink<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RequestMagicLinkRequest>,
@@ -1193,9 +1206,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Signin_V1_RedeemMagicLinkRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func redeemMagicLink<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RedeemMagicLinkRequest>,
@@ -1223,9 +1236,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Signin_V1_LoginForTokenRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func loginForToken<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_LoginForTokenRequest>,
@@ -1248,9 +1261,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Signin_V1_AdminLoginForTokenRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func adminLoginForToken<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_AdminLoginForTokenRequest>,
@@ -1273,9 +1286,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Signin_V1_ExchangeRefreshTokenRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func exchangeRefreshToken<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_ExchangeRefreshTokenRequest>,
@@ -1302,9 +1315,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Signin_V1_GetAuthStatusRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getAuthStatus<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_GetAuthStatusRequest>,
@@ -1327,9 +1340,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Signin_V1_GetSelfRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getSelf<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_GetSelfRequest>,
@@ -1356,9 +1369,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Signin_V1_UpdatePasswordRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func updatePassword<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_UpdatePasswordRequest>,
@@ -1381,9 +1394,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Signin_V1_RefreshTOTPSecretRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func refreshTOTPSecret<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RefreshTOTPSecretRequest>,
@@ -1406,9 +1419,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Signin_V1_VerifyTOTPSecretRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func verifyTOTPSecret<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_VerifyTOTPSecretRequest>,
@@ -1445,9 +1458,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func register<Result>(
         _ message: Primandproper_Platform_Signin_V1_RegisterRequest,
@@ -1474,9 +1487,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func attachPassword<Result>(
         _ message: Primandproper_Platform_Signin_V1_AttachPasswordRequest,
@@ -1503,9 +1516,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func verifyEmailAddress<Result>(
         _ message: Primandproper_Platform_Signin_V1_VerifyEmailAddressRequest,
@@ -1542,9 +1555,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func requestMagicLink<Result>(
         _ message: Primandproper_Platform_Signin_V1_RequestMagicLinkRequest,
@@ -1571,9 +1584,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func redeemMagicLink<Result>(
         _ message: Primandproper_Platform_Signin_V1_RedeemMagicLinkRequest,
@@ -1605,9 +1618,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func loginForToken<Result>(
         _ message: Primandproper_Platform_Signin_V1_LoginForTokenRequest,
@@ -1634,9 +1647,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func adminLoginForToken<Result>(
         _ message: Primandproper_Platform_Signin_V1_AdminLoginForTokenRequest,
@@ -1663,9 +1676,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func exchangeRefreshToken<Result>(
         _ message: Primandproper_Platform_Signin_V1_ExchangeRefreshTokenRequest,
@@ -1696,9 +1709,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getAuthStatus<Result>(
         _ message: Primandproper_Platform_Signin_V1_GetAuthStatusRequest,
@@ -1725,9 +1738,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getSelf<Result>(
         _ message: Primandproper_Platform_Signin_V1_GetSelfRequest,
@@ -1758,9 +1771,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func updatePassword<Result>(
         _ message: Primandproper_Platform_Signin_V1_UpdatePasswordRequest,
@@ -1787,9 +1800,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func refreshTOTPSecret<Result>(
         _ message: Primandproper_Platform_Signin_V1_RefreshTOTPSecretRequest,
@@ -1816,9 +1829,9 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func verifyTOTPSecret<Result>(
         _ message: Primandproper_Platform_Signin_V1_VerifyTOTPSecretRequest,

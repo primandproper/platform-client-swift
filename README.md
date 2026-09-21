@@ -26,8 +26,12 @@ real schema, once instead of twice.
 `.pb.swift` and `.grpc.swift` — built from a pinned `platform-go` tag. The output is
 **committed**, so a consumer needs neither `protoc` nor the plugins.
 
-The generated `identity.pb.swift` here is byte-identical to the one DDB's iOS app generates
-today, which is the point: this is a drop-in, not a rewrite.
+This is a drop-in for DDB's iOS app in the sense that matters — same schema, same generator
+family, compatible API surface — but **not byte-identical to what that app has today**, and
+deliberately so. Its files came from `brew install protoc-gen-grpc-swift`, which pins
+nothing; these come from a pinned toolchain. The two differ in generated doc comments and in
+`Sendable` conformances the pinned version emits and brew's does not. Reproducibility was
+worth more than matching a build nobody can reproduce.
 
 ## What is not here yet
 

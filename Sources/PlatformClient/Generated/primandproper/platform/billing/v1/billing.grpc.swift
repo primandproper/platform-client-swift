@@ -103,13 +103,13 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "primandproper.platform.billing.v1.BillingService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Billing_V1_BillingService {
+internal enum Primandproper_Platform_Billing_V1_BillingService: Sendable {
     /// Service descriptor for the "primandproper.platform.billing.v1.BillingService" service.
     internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService")
     /// Namespace for method metadata.
-    internal enum Method {
+    internal enum Method: Sendable {
         /// Namespace for "CreateProduct" metadata.
-        internal enum CreateProduct {
+        internal enum CreateProduct: Sendable {
             /// Request type for "CreateProduct".
             internal typealias Input = Primandproper_Platform_Billing_V1_CreateProductRequest
             /// Response type for "CreateProduct".
@@ -117,11 +117,12 @@ internal enum Primandproper_Platform_Billing_V1_BillingService {
             /// Descriptor for "CreateProduct".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
-                method: "CreateProduct"
+                method: "CreateProduct",
+                type: .unary
             )
         }
         /// Namespace for "GetProduct" metadata.
-        internal enum GetProduct {
+        internal enum GetProduct: Sendable {
             /// Request type for "GetProduct".
             internal typealias Input = Primandproper_Platform_Billing_V1_GetProductRequest
             /// Response type for "GetProduct".
@@ -129,11 +130,12 @@ internal enum Primandproper_Platform_Billing_V1_BillingService {
             /// Descriptor for "GetProduct".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
-                method: "GetProduct"
+                method: "GetProduct",
+                type: .unary
             )
         }
         /// Namespace for "ListProducts" metadata.
-        internal enum ListProducts {
+        internal enum ListProducts: Sendable {
             /// Request type for "ListProducts".
             internal typealias Input = Primandproper_Platform_Billing_V1_ListProductsRequest
             /// Response type for "ListProducts".
@@ -141,11 +143,12 @@ internal enum Primandproper_Platform_Billing_V1_BillingService {
             /// Descriptor for "ListProducts".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
-                method: "ListProducts"
+                method: "ListProducts",
+                type: .unary
             )
         }
         /// Namespace for "UpdateProduct" metadata.
-        internal enum UpdateProduct {
+        internal enum UpdateProduct: Sendable {
             /// Request type for "UpdateProduct".
             internal typealias Input = Primandproper_Platform_Billing_V1_UpdateProductRequest
             /// Response type for "UpdateProduct".
@@ -153,11 +156,12 @@ internal enum Primandproper_Platform_Billing_V1_BillingService {
             /// Descriptor for "UpdateProduct".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
-                method: "UpdateProduct"
+                method: "UpdateProduct",
+                type: .unary
             )
         }
         /// Namespace for "ArchiveProduct" metadata.
-        internal enum ArchiveProduct {
+        internal enum ArchiveProduct: Sendable {
             /// Request type for "ArchiveProduct".
             internal typealias Input = Primandproper_Platform_Billing_V1_ArchiveProductRequest
             /// Response type for "ArchiveProduct".
@@ -165,11 +169,12 @@ internal enum Primandproper_Platform_Billing_V1_BillingService {
             /// Descriptor for "ArchiveProduct".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
-                method: "ArchiveProduct"
+                method: "ArchiveProduct",
+                type: .unary
             )
         }
         /// Namespace for "GetSubscription" metadata.
-        internal enum GetSubscription {
+        internal enum GetSubscription: Sendable {
             /// Request type for "GetSubscription".
             internal typealias Input = Primandproper_Platform_Billing_V1_GetSubscriptionRequest
             /// Response type for "GetSubscription".
@@ -177,11 +182,12 @@ internal enum Primandproper_Platform_Billing_V1_BillingService {
             /// Descriptor for "GetSubscription".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
-                method: "GetSubscription"
+                method: "GetSubscription",
+                type: .unary
             )
         }
         /// Namespace for "ListSubscriptions" metadata.
-        internal enum ListSubscriptions {
+        internal enum ListSubscriptions: Sendable {
             /// Request type for "ListSubscriptions".
             internal typealias Input = Primandproper_Platform_Billing_V1_ListSubscriptionsRequest
             /// Response type for "ListSubscriptions".
@@ -189,11 +195,12 @@ internal enum Primandproper_Platform_Billing_V1_BillingService {
             /// Descriptor for "ListSubscriptions".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
-                method: "ListSubscriptions"
+                method: "ListSubscriptions",
+                type: .unary
             )
         }
         /// Namespace for "ListSubscriptionsForAccount" metadata.
-        internal enum ListSubscriptionsForAccount {
+        internal enum ListSubscriptionsForAccount: Sendable {
             /// Request type for "ListSubscriptionsForAccount".
             internal typealias Input = Primandproper_Platform_Billing_V1_ListSubscriptionsForAccountRequest
             /// Response type for "ListSubscriptionsForAccount".
@@ -201,11 +208,12 @@ internal enum Primandproper_Platform_Billing_V1_BillingService {
             /// Descriptor for "ListSubscriptionsForAccount".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
-                method: "ListSubscriptionsForAccount"
+                method: "ListSubscriptionsForAccount",
+                type: .unary
             )
         }
         /// Namespace for "ListCurrentSubscriptions" metadata.
-        internal enum ListCurrentSubscriptions {
+        internal enum ListCurrentSubscriptions: Sendable {
             /// Request type for "ListCurrentSubscriptions".
             internal typealias Input = Primandproper_Platform_Billing_V1_ListCurrentSubscriptionsRequest
             /// Response type for "ListCurrentSubscriptions".
@@ -213,11 +221,12 @@ internal enum Primandproper_Platform_Billing_V1_BillingService {
             /// Descriptor for "ListCurrentSubscriptions".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
-                method: "ListCurrentSubscriptions"
+                method: "ListCurrentSubscriptions",
+                type: .unary
             )
         }
         /// Namespace for "ArchiveSubscription" metadata.
-        internal enum ArchiveSubscription {
+        internal enum ArchiveSubscription: Sendable {
             /// Request type for "ArchiveSubscription".
             internal typealias Input = Primandproper_Platform_Billing_V1_ArchiveSubscriptionRequest
             /// Response type for "ArchiveSubscription".
@@ -225,11 +234,12 @@ internal enum Primandproper_Platform_Billing_V1_BillingService {
             /// Descriptor for "ArchiveSubscription".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
-                method: "ArchiveSubscription"
+                method: "ArchiveSubscription",
+                type: .unary
             )
         }
         /// Namespace for "GetPurchase" metadata.
-        internal enum GetPurchase {
+        internal enum GetPurchase: Sendable {
             /// Request type for "GetPurchase".
             internal typealias Input = Primandproper_Platform_Billing_V1_GetPurchaseRequest
             /// Response type for "GetPurchase".
@@ -237,11 +247,12 @@ internal enum Primandproper_Platform_Billing_V1_BillingService {
             /// Descriptor for "GetPurchase".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
-                method: "GetPurchase"
+                method: "GetPurchase",
+                type: .unary
             )
         }
         /// Namespace for "ListPurchases" metadata.
-        internal enum ListPurchases {
+        internal enum ListPurchases: Sendable {
             /// Request type for "ListPurchases".
             internal typealias Input = Primandproper_Platform_Billing_V1_ListPurchasesRequest
             /// Response type for "ListPurchases".
@@ -249,11 +260,12 @@ internal enum Primandproper_Platform_Billing_V1_BillingService {
             /// Descriptor for "ListPurchases".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
-                method: "ListPurchases"
+                method: "ListPurchases",
+                type: .unary
             )
         }
         /// Namespace for "ListPurchasesForAccount" metadata.
-        internal enum ListPurchasesForAccount {
+        internal enum ListPurchasesForAccount: Sendable {
             /// Request type for "ListPurchasesForAccount".
             internal typealias Input = Primandproper_Platform_Billing_V1_ListPurchasesForAccountRequest
             /// Response type for "ListPurchasesForAccount".
@@ -261,11 +273,12 @@ internal enum Primandproper_Platform_Billing_V1_BillingService {
             /// Descriptor for "ListPurchasesForAccount".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
-                method: "ListPurchasesForAccount"
+                method: "ListPurchasesForAccount",
+                type: .unary
             )
         }
         /// Namespace for "ArchivePurchase" metadata.
-        internal enum ArchivePurchase {
+        internal enum ArchivePurchase: Sendable {
             /// Request type for "ArchivePurchase".
             internal typealias Input = Primandproper_Platform_Billing_V1_ArchivePurchaseRequest
             /// Response type for "ArchivePurchase".
@@ -273,11 +286,12 @@ internal enum Primandproper_Platform_Billing_V1_BillingService {
             /// Descriptor for "ArchivePurchase".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
-                method: "ArchivePurchase"
+                method: "ArchivePurchase",
+                type: .unary
             )
         }
         /// Namespace for "GetTransaction" metadata.
-        internal enum GetTransaction {
+        internal enum GetTransaction: Sendable {
             /// Request type for "GetTransaction".
             internal typealias Input = Primandproper_Platform_Billing_V1_GetTransactionRequest
             /// Response type for "GetTransaction".
@@ -285,11 +299,12 @@ internal enum Primandproper_Platform_Billing_V1_BillingService {
             /// Descriptor for "GetTransaction".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
-                method: "GetTransaction"
+                method: "GetTransaction",
+                type: .unary
             )
         }
         /// Namespace for "ListTransactions" metadata.
-        internal enum ListTransactions {
+        internal enum ListTransactions: Sendable {
             /// Request type for "ListTransactions".
             internal typealias Input = Primandproper_Platform_Billing_V1_ListTransactionsRequest
             /// Response type for "ListTransactions".
@@ -297,11 +312,12 @@ internal enum Primandproper_Platform_Billing_V1_BillingService {
             /// Descriptor for "ListTransactions".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
-                method: "ListTransactions"
+                method: "ListTransactions",
+                type: .unary
             )
         }
         /// Namespace for "ListTransactionsForAccount" metadata.
-        internal enum ListTransactionsForAccount {
+        internal enum ListTransactionsForAccount: Sendable {
             /// Request type for "ListTransactionsForAccount".
             internal typealias Input = Primandproper_Platform_Billing_V1_ListTransactionsForAccountRequest
             /// Response type for "ListTransactionsForAccount".
@@ -309,11 +325,12 @@ internal enum Primandproper_Platform_Billing_V1_BillingService {
             /// Descriptor for "ListTransactionsForAccount".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
-                method: "ListTransactionsForAccount"
+                method: "ListTransactionsForAccount",
+                type: .unary
             )
         }
         /// Namespace for "ArchiveTransaction" metadata.
-        internal enum ArchiveTransaction {
+        internal enum ArchiveTransaction: Sendable {
             /// Request type for "ArchiveTransaction".
             internal typealias Input = Primandproper_Platform_Billing_V1_ArchiveTransactionRequest
             /// Response type for "ArchiveTransaction".
@@ -321,7 +338,8 @@ internal enum Primandproper_Platform_Billing_V1_BillingService {
             /// Descriptor for "ArchiveTransaction".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
-                method: "ArchiveTransaction"
+                method: "ArchiveTransaction",
+                type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.billing.v1.BillingService" service.
@@ -398,9 +416,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_CreateProductRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_CreateProductResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func createProduct<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_CreateProductRequest>,
@@ -417,9 +435,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_GetProductRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_GetProductResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func getProduct<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_GetProductRequest>,
@@ -436,9 +454,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ListProductsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ListProductsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listProducts<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListProductsRequest>,
@@ -455,9 +473,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_UpdateProductRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_UpdateProductResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func updateProduct<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_UpdateProductRequest>,
@@ -474,9 +492,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ArchiveProductRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ArchiveProductResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func archiveProduct<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ArchiveProductRequest>,
@@ -500,9 +518,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_GetSubscriptionRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_GetSubscriptionResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func getSubscription<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_GetSubscriptionRequest>,
@@ -519,9 +537,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ListSubscriptionsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ListSubscriptionsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listSubscriptions<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListSubscriptionsRequest>,
@@ -538,9 +556,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ListSubscriptionsForAccountRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ListSubscriptionsForAccountResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listSubscriptionsForAccount<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListSubscriptionsForAccountRequest>,
@@ -557,9 +575,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ListCurrentSubscriptionsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ListCurrentSubscriptionsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listCurrentSubscriptions<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListCurrentSubscriptionsRequest>,
@@ -576,9 +594,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ArchiveSubscriptionRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ArchiveSubscriptionResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func archiveSubscription<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ArchiveSubscriptionRequest>,
@@ -599,9 +617,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_GetPurchaseRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_GetPurchaseResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func getPurchase<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_GetPurchaseRequest>,
@@ -618,9 +636,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ListPurchasesRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ListPurchasesResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listPurchases<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListPurchasesRequest>,
@@ -637,9 +655,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ListPurchasesForAccountRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ListPurchasesForAccountResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listPurchasesForAccount<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListPurchasesForAccountRequest>,
@@ -656,9 +674,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ArchivePurchaseRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ArchivePurchaseResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func archivePurchase<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ArchivePurchaseRequest>,
@@ -679,9 +697,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_GetTransactionRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_GetTransactionResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func getTransaction<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_GetTransactionRequest>,
@@ -698,9 +716,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ListTransactionsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ListTransactionsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listTransactions<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListTransactionsRequest>,
@@ -717,9 +735,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ListTransactionsForAccountRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ListTransactionsForAccountResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listTransactionsForAccount<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListTransactionsForAccountRequest>,
@@ -736,9 +754,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ArchiveTransactionRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ArchiveTransactionResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func archiveTransaction<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ArchiveTransactionRequest>,
@@ -800,9 +818,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_CreateProductRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_CreateProductResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func createProduct<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_CreateProductRequest>,
@@ -830,9 +848,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_GetProductRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_GetProductResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func getProduct<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_GetProductRequest>,
@@ -860,9 +878,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ListProductsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ListProductsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listProducts<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListProductsRequest>,
@@ -890,9 +908,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_UpdateProductRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_UpdateProductResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func updateProduct<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_UpdateProductRequest>,
@@ -920,9 +938,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ArchiveProductRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ArchiveProductResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func archiveProduct<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ArchiveProductRequest>,
@@ -957,9 +975,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_GetSubscriptionRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_GetSubscriptionResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func getSubscription<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_GetSubscriptionRequest>,
@@ -987,9 +1005,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ListSubscriptionsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ListSubscriptionsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listSubscriptions<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListSubscriptionsRequest>,
@@ -1017,9 +1035,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ListSubscriptionsForAccountRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ListSubscriptionsForAccountResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listSubscriptionsForAccount<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListSubscriptionsForAccountRequest>,
@@ -1047,9 +1065,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ListCurrentSubscriptionsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ListCurrentSubscriptionsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listCurrentSubscriptions<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListCurrentSubscriptionsRequest>,
@@ -1077,9 +1095,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ArchiveSubscriptionRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ArchiveSubscriptionResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func archiveSubscription<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ArchiveSubscriptionRequest>,
@@ -1111,9 +1129,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_GetPurchaseRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_GetPurchaseResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func getPurchase<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_GetPurchaseRequest>,
@@ -1141,9 +1159,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ListPurchasesRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ListPurchasesResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listPurchases<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListPurchasesRequest>,
@@ -1171,9 +1189,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ListPurchasesForAccountRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ListPurchasesForAccountResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listPurchasesForAccount<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListPurchasesForAccountRequest>,
@@ -1201,9 +1219,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ArchivePurchaseRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ArchivePurchaseResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func archivePurchase<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ArchivePurchaseRequest>,
@@ -1235,9 +1253,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_GetTransactionRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_GetTransactionResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func getTransaction<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_GetTransactionRequest>,
@@ -1265,9 +1283,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ListTransactionsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ListTransactionsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listTransactions<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListTransactionsRequest>,
@@ -1295,9 +1313,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ListTransactionsForAccountRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ListTransactionsForAccountResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listTransactionsForAccount<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListTransactionsForAccountRequest>,
@@ -1325,9 +1343,9 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///   - serializer: A serializer for `Primandproper_Platform_Billing_V1_ArchiveTransactionRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Billing_V1_ArchiveTransactionResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func archiveTransaction<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ArchiveTransactionRequest>,
@@ -1363,9 +1381,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_CreateProductRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func createProduct<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_CreateProductRequest>,
@@ -1388,9 +1406,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_GetProductRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getProduct<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_GetProductRequest>,
@@ -1413,9 +1431,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_ListProductsRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listProducts<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListProductsRequest>,
@@ -1438,9 +1456,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_UpdateProductRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func updateProduct<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_UpdateProductRequest>,
@@ -1463,9 +1481,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_ArchiveProductRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archiveProduct<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ArchiveProductRequest>,
@@ -1495,9 +1513,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_GetSubscriptionRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getSubscription<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_GetSubscriptionRequest>,
@@ -1520,9 +1538,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_ListSubscriptionsRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listSubscriptions<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListSubscriptionsRequest>,
@@ -1545,9 +1563,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_ListSubscriptionsForAccountRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listSubscriptionsForAccount<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListSubscriptionsForAccountRequest>,
@@ -1570,9 +1588,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_ListCurrentSubscriptionsRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listCurrentSubscriptions<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListCurrentSubscriptionsRequest>,
@@ -1595,9 +1613,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_ArchiveSubscriptionRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archiveSubscription<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ArchiveSubscriptionRequest>,
@@ -1624,9 +1642,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_GetPurchaseRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getPurchase<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_GetPurchaseRequest>,
@@ -1649,9 +1667,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_ListPurchasesRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listPurchases<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListPurchasesRequest>,
@@ -1674,9 +1692,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_ListPurchasesForAccountRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listPurchasesForAccount<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListPurchasesForAccountRequest>,
@@ -1699,9 +1717,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_ArchivePurchaseRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archivePurchase<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ArchivePurchaseRequest>,
@@ -1728,9 +1746,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_GetTransactionRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getTransaction<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_GetTransactionRequest>,
@@ -1753,9 +1771,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_ListTransactionsRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listTransactions<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListTransactionsRequest>,
@@ -1778,9 +1796,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_ListTransactionsForAccountRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listTransactionsForAccount<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListTransactionsForAccountRequest>,
@@ -1803,9 +1821,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_ArchiveTransactionRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archiveTransaction<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ArchiveTransactionRequest>,
@@ -1838,9 +1856,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func createProduct<Result>(
         _ message: Primandproper_Platform_Billing_V1_CreateProductRequest,
@@ -1867,9 +1885,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getProduct<Result>(
         _ message: Primandproper_Platform_Billing_V1_GetProductRequest,
@@ -1896,9 +1914,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listProducts<Result>(
         _ message: Primandproper_Platform_Billing_V1_ListProductsRequest,
@@ -1925,9 +1943,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func updateProduct<Result>(
         _ message: Primandproper_Platform_Billing_V1_UpdateProductRequest,
@@ -1954,9 +1972,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archiveProduct<Result>(
         _ message: Primandproper_Platform_Billing_V1_ArchiveProductRequest,
@@ -1990,9 +2008,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getSubscription<Result>(
         _ message: Primandproper_Platform_Billing_V1_GetSubscriptionRequest,
@@ -2019,9 +2037,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listSubscriptions<Result>(
         _ message: Primandproper_Platform_Billing_V1_ListSubscriptionsRequest,
@@ -2048,9 +2066,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listSubscriptionsForAccount<Result>(
         _ message: Primandproper_Platform_Billing_V1_ListSubscriptionsForAccountRequest,
@@ -2077,9 +2095,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listCurrentSubscriptions<Result>(
         _ message: Primandproper_Platform_Billing_V1_ListCurrentSubscriptionsRequest,
@@ -2106,9 +2124,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archiveSubscription<Result>(
         _ message: Primandproper_Platform_Billing_V1_ArchiveSubscriptionRequest,
@@ -2139,9 +2157,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getPurchase<Result>(
         _ message: Primandproper_Platform_Billing_V1_GetPurchaseRequest,
@@ -2168,9 +2186,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listPurchases<Result>(
         _ message: Primandproper_Platform_Billing_V1_ListPurchasesRequest,
@@ -2197,9 +2215,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listPurchasesForAccount<Result>(
         _ message: Primandproper_Platform_Billing_V1_ListPurchasesForAccountRequest,
@@ -2226,9 +2244,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archivePurchase<Result>(
         _ message: Primandproper_Platform_Billing_V1_ArchivePurchaseRequest,
@@ -2259,9 +2277,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getTransaction<Result>(
         _ message: Primandproper_Platform_Billing_V1_GetTransactionRequest,
@@ -2288,9 +2306,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listTransactions<Result>(
         _ message: Primandproper_Platform_Billing_V1_ListTransactionsRequest,
@@ -2317,9 +2335,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listTransactionsForAccount<Result>(
         _ message: Primandproper_Platform_Billing_V1_ListTransactionsForAccountRequest,
@@ -2346,9 +2364,9 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archiveTransaction<Result>(
         _ message: Primandproper_Platform_Billing_V1_ArchiveTransactionRequest,

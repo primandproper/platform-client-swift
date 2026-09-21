@@ -96,13 +96,13 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "primandproper.platform.notifications.v1.NotificationsService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Notifications_V1_NotificationsService {
+internal enum Primandproper_Platform_Notifications_V1_NotificationsService: Sendable {
     /// Service descriptor for the "primandproper.platform.notifications.v1.NotificationsService" service.
     internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.notifications.v1.NotificationsService")
     /// Namespace for method metadata.
-    internal enum Method {
+    internal enum Method: Sendable {
         /// Namespace for "ListNotifications" metadata.
-        internal enum ListNotifications {
+        internal enum ListNotifications: Sendable {
             /// Request type for "ListNotifications".
             internal typealias Input = Primandproper_Platform_Notifications_V1_ListNotificationsRequest
             /// Response type for "ListNotifications".
@@ -110,11 +110,12 @@ internal enum Primandproper_Platform_Notifications_V1_NotificationsService {
             /// Descriptor for "ListNotifications".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.notifications.v1.NotificationsService"),
-                method: "ListNotifications"
+                method: "ListNotifications",
+                type: .unary
             )
         }
         /// Namespace for "ListUnreadNotifications" metadata.
-        internal enum ListUnreadNotifications {
+        internal enum ListUnreadNotifications: Sendable {
             /// Request type for "ListUnreadNotifications".
             internal typealias Input = Primandproper_Platform_Notifications_V1_ListUnreadNotificationsRequest
             /// Response type for "ListUnreadNotifications".
@@ -122,11 +123,12 @@ internal enum Primandproper_Platform_Notifications_V1_NotificationsService {
             /// Descriptor for "ListUnreadNotifications".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.notifications.v1.NotificationsService"),
-                method: "ListUnreadNotifications"
+                method: "ListUnreadNotifications",
+                type: .unary
             )
         }
         /// Namespace for "GetNotification" metadata.
-        internal enum GetNotification {
+        internal enum GetNotification: Sendable {
             /// Request type for "GetNotification".
             internal typealias Input = Primandproper_Platform_Notifications_V1_GetNotificationRequest
             /// Response type for "GetNotification".
@@ -134,11 +136,12 @@ internal enum Primandproper_Platform_Notifications_V1_NotificationsService {
             /// Descriptor for "GetNotification".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.notifications.v1.NotificationsService"),
-                method: "GetNotification"
+                method: "GetNotification",
+                type: .unary
             )
         }
         /// Namespace for "MarkNotificationRead" metadata.
-        internal enum MarkNotificationRead {
+        internal enum MarkNotificationRead: Sendable {
             /// Request type for "MarkNotificationRead".
             internal typealias Input = Primandproper_Platform_Notifications_V1_MarkNotificationReadRequest
             /// Response type for "MarkNotificationRead".
@@ -146,11 +149,12 @@ internal enum Primandproper_Platform_Notifications_V1_NotificationsService {
             /// Descriptor for "MarkNotificationRead".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.notifications.v1.NotificationsService"),
-                method: "MarkNotificationRead"
+                method: "MarkNotificationRead",
+                type: .unary
             )
         }
         /// Namespace for "MarkAllNotificationsRead" metadata.
-        internal enum MarkAllNotificationsRead {
+        internal enum MarkAllNotificationsRead: Sendable {
             /// Request type for "MarkAllNotificationsRead".
             internal typealias Input = Primandproper_Platform_Notifications_V1_MarkAllNotificationsReadRequest
             /// Response type for "MarkAllNotificationsRead".
@@ -158,11 +162,12 @@ internal enum Primandproper_Platform_Notifications_V1_NotificationsService {
             /// Descriptor for "MarkAllNotificationsRead".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.notifications.v1.NotificationsService"),
-                method: "MarkAllNotificationsRead"
+                method: "MarkAllNotificationsRead",
+                type: .unary
             )
         }
         /// Namespace for "ArchiveNotification" metadata.
-        internal enum ArchiveNotification {
+        internal enum ArchiveNotification: Sendable {
             /// Request type for "ArchiveNotification".
             internal typealias Input = Primandproper_Platform_Notifications_V1_ArchiveNotificationRequest
             /// Response type for "ArchiveNotification".
@@ -170,11 +175,12 @@ internal enum Primandproper_Platform_Notifications_V1_NotificationsService {
             /// Descriptor for "ArchiveNotification".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.notifications.v1.NotificationsService"),
-                method: "ArchiveNotification"
+                method: "ArchiveNotification",
+                type: .unary
             )
         }
         /// Namespace for "RegisterDevice" metadata.
-        internal enum RegisterDevice {
+        internal enum RegisterDevice: Sendable {
             /// Request type for "RegisterDevice".
             internal typealias Input = Primandproper_Platform_Notifications_V1_RegisterDeviceRequest
             /// Response type for "RegisterDevice".
@@ -182,11 +188,12 @@ internal enum Primandproper_Platform_Notifications_V1_NotificationsService {
             /// Descriptor for "RegisterDevice".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.notifications.v1.NotificationsService"),
-                method: "RegisterDevice"
+                method: "RegisterDevice",
+                type: .unary
             )
         }
         /// Namespace for "ListDevices" metadata.
-        internal enum ListDevices {
+        internal enum ListDevices: Sendable {
             /// Request type for "ListDevices".
             internal typealias Input = Primandproper_Platform_Notifications_V1_ListDevicesRequest
             /// Response type for "ListDevices".
@@ -194,11 +201,12 @@ internal enum Primandproper_Platform_Notifications_V1_NotificationsService {
             /// Descriptor for "ListDevices".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.notifications.v1.NotificationsService"),
-                method: "ListDevices"
+                method: "ListDevices",
+                type: .unary
             )
         }
         /// Namespace for "RevokeDevice" metadata.
-        internal enum RevokeDevice {
+        internal enum RevokeDevice: Sendable {
             /// Request type for "RevokeDevice".
             internal typealias Input = Primandproper_Platform_Notifications_V1_RevokeDeviceRequest
             /// Response type for "RevokeDevice".
@@ -206,7 +214,8 @@ internal enum Primandproper_Platform_Notifications_V1_NotificationsService {
             /// Descriptor for "RevokeDevice".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.notifications.v1.NotificationsService"),
-                method: "RevokeDevice"
+                method: "RevokeDevice",
+                type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.notifications.v1.NotificationsService" service.
@@ -304,9 +313,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Notifications_V1_ListNotificationsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Notifications_V1_ListNotificationsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listNotifications<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_ListNotificationsRequest>,
@@ -323,9 +332,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Notifications_V1_ListUnreadNotificationsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Notifications_V1_ListUnreadNotificationsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listUnreadNotifications<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_ListUnreadNotificationsRequest>,
@@ -342,9 +351,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Notifications_V1_GetNotificationRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Notifications_V1_GetNotificationResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func getNotification<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_GetNotificationRequest>,
@@ -361,9 +370,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Notifications_V1_MarkNotificationReadRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Notifications_V1_MarkNotificationReadResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func markNotificationRead<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_MarkNotificationReadRequest>,
@@ -380,9 +389,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Notifications_V1_MarkAllNotificationsReadRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Notifications_V1_MarkAllNotificationsReadResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func markAllNotificationsRead<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_MarkAllNotificationsReadRequest>,
@@ -399,9 +408,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Notifications_V1_ArchiveNotificationRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Notifications_V1_ArchiveNotificationResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func archiveNotification<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_ArchiveNotificationRequest>,
@@ -418,9 +427,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Notifications_V1_RegisterDeviceRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Notifications_V1_RegisterDeviceResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func registerDevice<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_RegisterDeviceRequest>,
@@ -437,9 +446,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Notifications_V1_ListDevicesRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Notifications_V1_ListDevicesResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listDevices<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_ListDevicesRequest>,
@@ -456,9 +465,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Notifications_V1_RevokeDeviceRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Notifications_V1_RevokeDeviceResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func revokeDevice<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_RevokeDeviceRequest>,
@@ -550,9 +559,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Notifications_V1_ListNotificationsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Notifications_V1_ListNotificationsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listNotifications<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_ListNotificationsRequest>,
@@ -580,9 +589,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Notifications_V1_ListUnreadNotificationsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Notifications_V1_ListUnreadNotificationsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listUnreadNotifications<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_ListUnreadNotificationsRequest>,
@@ -610,9 +619,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Notifications_V1_GetNotificationRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Notifications_V1_GetNotificationResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func getNotification<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_GetNotificationRequest>,
@@ -640,9 +649,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Notifications_V1_MarkNotificationReadRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Notifications_V1_MarkNotificationReadResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func markNotificationRead<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_MarkNotificationReadRequest>,
@@ -670,9 +679,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Notifications_V1_MarkAllNotificationsReadRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Notifications_V1_MarkAllNotificationsReadResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func markAllNotificationsRead<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_MarkAllNotificationsReadRequest>,
@@ -700,9 +709,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Notifications_V1_ArchiveNotificationRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Notifications_V1_ArchiveNotificationResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func archiveNotification<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_ArchiveNotificationRequest>,
@@ -730,9 +739,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Notifications_V1_RegisterDeviceRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Notifications_V1_RegisterDeviceResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func registerDevice<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_RegisterDeviceRequest>,
@@ -760,9 +769,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Notifications_V1_ListDevicesRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Notifications_V1_ListDevicesResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listDevices<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_ListDevicesRequest>,
@@ -790,9 +799,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Notifications_V1_RevokeDeviceRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Notifications_V1_RevokeDeviceResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func revokeDevice<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_RevokeDeviceRequest>,
@@ -823,9 +832,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService.ClientPro
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Notifications_V1_ListNotificationsRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listNotifications<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_ListNotificationsRequest>,
@@ -848,9 +857,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService.ClientPro
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Notifications_V1_ListUnreadNotificationsRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listUnreadNotifications<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_ListUnreadNotificationsRequest>,
@@ -873,9 +882,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService.ClientPro
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Notifications_V1_GetNotificationRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getNotification<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_GetNotificationRequest>,
@@ -898,9 +907,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService.ClientPro
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Notifications_V1_MarkNotificationReadRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func markNotificationRead<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_MarkNotificationReadRequest>,
@@ -923,9 +932,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService.ClientPro
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Notifications_V1_MarkAllNotificationsReadRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func markAllNotificationsRead<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_MarkAllNotificationsReadRequest>,
@@ -948,9 +957,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService.ClientPro
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Notifications_V1_ArchiveNotificationRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archiveNotification<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_ArchiveNotificationRequest>,
@@ -973,9 +982,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService.ClientPro
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Notifications_V1_RegisterDeviceRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func registerDevice<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_RegisterDeviceRequest>,
@@ -998,9 +1007,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService.ClientPro
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Notifications_V1_ListDevicesRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listDevices<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_ListDevicesRequest>,
@@ -1023,9 +1032,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService.ClientPro
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Notifications_V1_RevokeDeviceRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func revokeDevice<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Notifications_V1_RevokeDeviceRequest>,
@@ -1053,9 +1062,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService.ClientPro
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listNotifications<Result>(
         _ message: Primandproper_Platform_Notifications_V1_ListNotificationsRequest,
@@ -1082,9 +1091,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService.ClientPro
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listUnreadNotifications<Result>(
         _ message: Primandproper_Platform_Notifications_V1_ListUnreadNotificationsRequest,
@@ -1111,9 +1120,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService.ClientPro
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getNotification<Result>(
         _ message: Primandproper_Platform_Notifications_V1_GetNotificationRequest,
@@ -1140,9 +1149,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService.ClientPro
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func markNotificationRead<Result>(
         _ message: Primandproper_Platform_Notifications_V1_MarkNotificationReadRequest,
@@ -1169,9 +1178,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService.ClientPro
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func markAllNotificationsRead<Result>(
         _ message: Primandproper_Platform_Notifications_V1_MarkAllNotificationsReadRequest,
@@ -1198,9 +1207,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService.ClientPro
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archiveNotification<Result>(
         _ message: Primandproper_Platform_Notifications_V1_ArchiveNotificationRequest,
@@ -1227,9 +1236,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService.ClientPro
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func registerDevice<Result>(
         _ message: Primandproper_Platform_Notifications_V1_RegisterDeviceRequest,
@@ -1256,9 +1265,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService.ClientPro
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listDevices<Result>(
         _ message: Primandproper_Platform_Notifications_V1_ListDevicesRequest,
@@ -1285,9 +1294,9 @@ extension Primandproper_Platform_Notifications_V1_NotificationsService.ClientPro
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func revokeDevice<Result>(
         _ message: Primandproper_Platform_Notifications_V1_RevokeDeviceRequest,

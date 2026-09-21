@@ -119,13 +119,13 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "primandproper.platform.comments.v1.CommentsService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Comments_V1_CommentsService {
+internal enum Primandproper_Platform_Comments_V1_CommentsService: Sendable {
     /// Service descriptor for the "primandproper.platform.comments.v1.CommentsService" service.
     internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService")
     /// Namespace for method metadata.
-    internal enum Method {
+    internal enum Method: Sendable {
         /// Namespace for "CreateComment" metadata.
-        internal enum CreateComment {
+        internal enum CreateComment: Sendable {
             /// Request type for "CreateComment".
             internal typealias Input = Primandproper_Platform_Comments_V1_CreateCommentRequest
             /// Response type for "CreateComment".
@@ -133,11 +133,12 @@ internal enum Primandproper_Platform_Comments_V1_CommentsService {
             /// Descriptor for "CreateComment".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService"),
-                method: "CreateComment"
+                method: "CreateComment",
+                type: .unary
             )
         }
         /// Namespace for "GetComment" metadata.
-        internal enum GetComment {
+        internal enum GetComment: Sendable {
             /// Request type for "GetComment".
             internal typealias Input = Primandproper_Platform_Comments_V1_GetCommentRequest
             /// Response type for "GetComment".
@@ -145,11 +146,12 @@ internal enum Primandproper_Platform_Comments_V1_CommentsService {
             /// Descriptor for "GetComment".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService"),
-                method: "GetComment"
+                method: "GetComment",
+                type: .unary
             )
         }
         /// Namespace for "ListRootComments" metadata.
-        internal enum ListRootComments {
+        internal enum ListRootComments: Sendable {
             /// Request type for "ListRootComments".
             internal typealias Input = Primandproper_Platform_Comments_V1_ListRootCommentsRequest
             /// Response type for "ListRootComments".
@@ -157,11 +159,12 @@ internal enum Primandproper_Platform_Comments_V1_CommentsService {
             /// Descriptor for "ListRootComments".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService"),
-                method: "ListRootComments"
+                method: "ListRootComments",
+                type: .unary
             )
         }
         /// Namespace for "ListReplies" metadata.
-        internal enum ListReplies {
+        internal enum ListReplies: Sendable {
             /// Request type for "ListReplies".
             internal typealias Input = Primandproper_Platform_Comments_V1_ListRepliesRequest
             /// Response type for "ListReplies".
@@ -169,11 +172,12 @@ internal enum Primandproper_Platform_Comments_V1_CommentsService {
             /// Descriptor for "ListReplies".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService"),
-                method: "ListReplies"
+                method: "ListReplies",
+                type: .unary
             )
         }
         /// Namespace for "ListCommentsByTargetType" metadata.
-        internal enum ListCommentsByTargetType {
+        internal enum ListCommentsByTargetType: Sendable {
             /// Request type for "ListCommentsByTargetType".
             internal typealias Input = Primandproper_Platform_Comments_V1_ListCommentsByTargetTypeRequest
             /// Response type for "ListCommentsByTargetType".
@@ -181,11 +185,12 @@ internal enum Primandproper_Platform_Comments_V1_CommentsService {
             /// Descriptor for "ListCommentsByTargetType".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService"),
-                method: "ListCommentsByTargetType"
+                method: "ListCommentsByTargetType",
+                type: .unary
             )
         }
         /// Namespace for "ListCommentsByAuthor" metadata.
-        internal enum ListCommentsByAuthor {
+        internal enum ListCommentsByAuthor: Sendable {
             /// Request type for "ListCommentsByAuthor".
             internal typealias Input = Primandproper_Platform_Comments_V1_ListCommentsByAuthorRequest
             /// Response type for "ListCommentsByAuthor".
@@ -193,11 +198,12 @@ internal enum Primandproper_Platform_Comments_V1_CommentsService {
             /// Descriptor for "ListCommentsByAuthor".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService"),
-                method: "ListCommentsByAuthor"
+                method: "ListCommentsByAuthor",
+                type: .unary
             )
         }
         /// Namespace for "UpdateComment" metadata.
-        internal enum UpdateComment {
+        internal enum UpdateComment: Sendable {
             /// Request type for "UpdateComment".
             internal typealias Input = Primandproper_Platform_Comments_V1_UpdateCommentRequest
             /// Response type for "UpdateComment".
@@ -205,11 +211,12 @@ internal enum Primandproper_Platform_Comments_V1_CommentsService {
             /// Descriptor for "UpdateComment".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService"),
-                method: "UpdateComment"
+                method: "UpdateComment",
+                type: .unary
             )
         }
         /// Namespace for "ArchiveComment" metadata.
-        internal enum ArchiveComment {
+        internal enum ArchiveComment: Sendable {
             /// Request type for "ArchiveComment".
             internal typealias Input = Primandproper_Platform_Comments_V1_ArchiveCommentRequest
             /// Response type for "ArchiveComment".
@@ -217,7 +224,8 @@ internal enum Primandproper_Platform_Comments_V1_CommentsService {
             /// Descriptor for "ArchiveComment".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService"),
-                method: "ArchiveComment"
+                method: "ArchiveComment",
+                type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.comments.v1.CommentsService" service.
@@ -282,9 +290,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Comments_V1_CreateCommentRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Comments_V1_CreateCommentResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func createComment<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_CreateCommentRequest>,
@@ -301,9 +309,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Comments_V1_GetCommentRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Comments_V1_GetCommentResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func getComment<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_GetCommentRequest>,
@@ -320,9 +328,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Comments_V1_ListRootCommentsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Comments_V1_ListRootCommentsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listRootComments<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ListRootCommentsRequest>,
@@ -339,9 +347,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Comments_V1_ListRepliesRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Comments_V1_ListRepliesResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listReplies<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ListRepliesRequest>,
@@ -358,9 +366,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Comments_V1_ListCommentsByTargetTypeRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Comments_V1_ListCommentsByTargetTypeResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listCommentsByTargetType<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ListCommentsByTargetTypeRequest>,
@@ -377,9 +385,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Comments_V1_ListCommentsByAuthorRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Comments_V1_ListCommentsByAuthorResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listCommentsByAuthor<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ListCommentsByAuthorRequest>,
@@ -396,9 +404,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Comments_V1_UpdateCommentRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Comments_V1_UpdateCommentResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func updateComment<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_UpdateCommentRequest>,
@@ -415,9 +423,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Comments_V1_ArchiveCommentRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Comments_V1_ArchiveCommentResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func archiveComment<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ArchiveCommentRequest>,
@@ -477,9 +485,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Comments_V1_CreateCommentRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Comments_V1_CreateCommentResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func createComment<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_CreateCommentRequest>,
@@ -507,9 +515,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Comments_V1_GetCommentRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Comments_V1_GetCommentResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func getComment<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_GetCommentRequest>,
@@ -537,9 +545,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Comments_V1_ListRootCommentsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Comments_V1_ListRootCommentsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listRootComments<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ListRootCommentsRequest>,
@@ -567,9 +575,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Comments_V1_ListRepliesRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Comments_V1_ListRepliesResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listReplies<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ListRepliesRequest>,
@@ -597,9 +605,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Comments_V1_ListCommentsByTargetTypeRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Comments_V1_ListCommentsByTargetTypeResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listCommentsByTargetType<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ListCommentsByTargetTypeRequest>,
@@ -627,9 +635,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Comments_V1_ListCommentsByAuthorRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Comments_V1_ListCommentsByAuthorResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listCommentsByAuthor<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ListCommentsByAuthorRequest>,
@@ -657,9 +665,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Comments_V1_UpdateCommentRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Comments_V1_UpdateCommentResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func updateComment<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_UpdateCommentRequest>,
@@ -687,9 +695,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Comments_V1_ArchiveCommentRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Comments_V1_ArchiveCommentResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func archiveComment<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ArchiveCommentRequest>,
@@ -720,9 +728,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Comments_V1_CreateCommentRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func createComment<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_CreateCommentRequest>,
@@ -745,9 +753,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Comments_V1_GetCommentRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getComment<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_GetCommentRequest>,
@@ -770,9 +778,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Comments_V1_ListRootCommentsRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listRootComments<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ListRootCommentsRequest>,
@@ -795,9 +803,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Comments_V1_ListRepliesRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listReplies<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ListRepliesRequest>,
@@ -820,9 +828,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Comments_V1_ListCommentsByTargetTypeRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listCommentsByTargetType<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ListCommentsByTargetTypeRequest>,
@@ -845,9 +853,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Comments_V1_ListCommentsByAuthorRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listCommentsByAuthor<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ListCommentsByAuthorRequest>,
@@ -870,9 +878,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Comments_V1_UpdateCommentRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func updateComment<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_UpdateCommentRequest>,
@@ -895,9 +903,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Comments_V1_ArchiveCommentRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archiveComment<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ArchiveCommentRequest>,
@@ -925,9 +933,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func createComment<Result>(
         _ message: Primandproper_Platform_Comments_V1_CreateCommentRequest,
@@ -954,9 +962,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getComment<Result>(
         _ message: Primandproper_Platform_Comments_V1_GetCommentRequest,
@@ -983,9 +991,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listRootComments<Result>(
         _ message: Primandproper_Platform_Comments_V1_ListRootCommentsRequest,
@@ -1012,9 +1020,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listReplies<Result>(
         _ message: Primandproper_Platform_Comments_V1_ListRepliesRequest,
@@ -1041,9 +1049,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listCommentsByTargetType<Result>(
         _ message: Primandproper_Platform_Comments_V1_ListCommentsByTargetTypeRequest,
@@ -1070,9 +1078,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listCommentsByAuthor<Result>(
         _ message: Primandproper_Platform_Comments_V1_ListCommentsByAuthorRequest,
@@ -1099,9 +1107,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func updateComment<Result>(
         _ message: Primandproper_Platform_Comments_V1_UpdateCommentRequest,
@@ -1128,9 +1136,9 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archiveComment<Result>(
         _ message: Primandproper_Platform_Comments_V1_ArchiveCommentRequest,

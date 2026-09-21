@@ -118,13 +118,13 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "primandproper.platform.waitlists.v1.WaitlistsService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService {
+internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService: Sendable {
     /// Service descriptor for the "primandproper.platform.waitlists.v1.WaitlistsService" service.
     internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService")
     /// Namespace for method metadata.
-    internal enum Method {
+    internal enum Method: Sendable {
         /// Namespace for "CreateList" metadata.
-        internal enum CreateList {
+        internal enum CreateList: Sendable {
             /// Request type for "CreateList".
             internal typealias Input = Primandproper_Platform_Waitlists_V1_CreateListRequest
             /// Response type for "CreateList".
@@ -132,11 +132,12 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService {
             /// Descriptor for "CreateList".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
-                method: "CreateList"
+                method: "CreateList",
+                type: .unary
             )
         }
         /// Namespace for "GetList" metadata.
-        internal enum GetList {
+        internal enum GetList: Sendable {
             /// Request type for "GetList".
             internal typealias Input = Primandproper_Platform_Waitlists_V1_GetListRequest
             /// Response type for "GetList".
@@ -144,11 +145,12 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService {
             /// Descriptor for "GetList".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
-                method: "GetList"
+                method: "GetList",
+                type: .unary
             )
         }
         /// Namespace for "ListLists" metadata.
-        internal enum ListLists {
+        internal enum ListLists: Sendable {
             /// Request type for "ListLists".
             internal typealias Input = Primandproper_Platform_Waitlists_V1_ListListsRequest
             /// Response type for "ListLists".
@@ -156,11 +158,12 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService {
             /// Descriptor for "ListLists".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
-                method: "ListLists"
+                method: "ListLists",
+                type: .unary
             )
         }
         /// Namespace for "ListOpenLists" metadata.
-        internal enum ListOpenLists {
+        internal enum ListOpenLists: Sendable {
             /// Request type for "ListOpenLists".
             internal typealias Input = Primandproper_Platform_Waitlists_V1_ListOpenListsRequest
             /// Response type for "ListOpenLists".
@@ -168,11 +171,12 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService {
             /// Descriptor for "ListOpenLists".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
-                method: "ListOpenLists"
+                method: "ListOpenLists",
+                type: .unary
             )
         }
         /// Namespace for "UpdateList" metadata.
-        internal enum UpdateList {
+        internal enum UpdateList: Sendable {
             /// Request type for "UpdateList".
             internal typealias Input = Primandproper_Platform_Waitlists_V1_UpdateListRequest
             /// Response type for "UpdateList".
@@ -180,11 +184,12 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService {
             /// Descriptor for "UpdateList".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
-                method: "UpdateList"
+                method: "UpdateList",
+                type: .unary
             )
         }
         /// Namespace for "ArchiveList" metadata.
-        internal enum ArchiveList {
+        internal enum ArchiveList: Sendable {
             /// Request type for "ArchiveList".
             internal typealias Input = Primandproper_Platform_Waitlists_V1_ArchiveListRequest
             /// Response type for "ArchiveList".
@@ -192,11 +197,12 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService {
             /// Descriptor for "ArchiveList".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
-                method: "ArchiveList"
+                method: "ArchiveList",
+                type: .unary
             )
         }
         /// Namespace for "Join" metadata.
-        internal enum Join {
+        internal enum Join: Sendable {
             /// Request type for "Join".
             internal typealias Input = Primandproper_Platform_Waitlists_V1_JoinRequest
             /// Response type for "Join".
@@ -204,11 +210,12 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService {
             /// Descriptor for "Join".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
-                method: "Join"
+                method: "Join",
+                type: .unary
             )
         }
         /// Namespace for "GetSignup" metadata.
-        internal enum GetSignup {
+        internal enum GetSignup: Sendable {
             /// Request type for "GetSignup".
             internal typealias Input = Primandproper_Platform_Waitlists_V1_GetSignupRequest
             /// Response type for "GetSignup".
@@ -216,11 +223,12 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService {
             /// Descriptor for "GetSignup".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
-                method: "GetSignup"
+                method: "GetSignup",
+                type: .unary
             )
         }
         /// Namespace for "GetSignupByContact" metadata.
-        internal enum GetSignupByContact {
+        internal enum GetSignupByContact: Sendable {
             /// Request type for "GetSignupByContact".
             internal typealias Input = Primandproper_Platform_Waitlists_V1_GetSignupByContactRequest
             /// Response type for "GetSignupByContact".
@@ -228,11 +236,12 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService {
             /// Descriptor for "GetSignupByContact".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
-                method: "GetSignupByContact"
+                method: "GetSignupByContact",
+                type: .unary
             )
         }
         /// Namespace for "ListSignups" metadata.
-        internal enum ListSignups {
+        internal enum ListSignups: Sendable {
             /// Request type for "ListSignups".
             internal typealias Input = Primandproper_Platform_Waitlists_V1_ListSignupsRequest
             /// Response type for "ListSignups".
@@ -240,11 +249,12 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService {
             /// Descriptor for "ListSignups".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
-                method: "ListSignups"
+                method: "ListSignups",
+                type: .unary
             )
         }
         /// Namespace for "ListSignupsForSubject" metadata.
-        internal enum ListSignupsForSubject {
+        internal enum ListSignupsForSubject: Sendable {
             /// Request type for "ListSignupsForSubject".
             internal typealias Input = Primandproper_Platform_Waitlists_V1_ListSignupsForSubjectRequest
             /// Response type for "ListSignupsForSubject".
@@ -252,11 +262,12 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService {
             /// Descriptor for "ListSignupsForSubject".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
-                method: "ListSignupsForSubject"
+                method: "ListSignupsForSubject",
+                type: .unary
             )
         }
         /// Namespace for "UpdateSignupNotes" metadata.
-        internal enum UpdateSignupNotes {
+        internal enum UpdateSignupNotes: Sendable {
             /// Request type for "UpdateSignupNotes".
             internal typealias Input = Primandproper_Platform_Waitlists_V1_UpdateSignupNotesRequest
             /// Response type for "UpdateSignupNotes".
@@ -264,11 +275,12 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService {
             /// Descriptor for "UpdateSignupNotes".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
-                method: "UpdateSignupNotes"
+                method: "UpdateSignupNotes",
+                type: .unary
             )
         }
         /// Namespace for "Invite" metadata.
-        internal enum Invite {
+        internal enum Invite: Sendable {
             /// Request type for "Invite".
             internal typealias Input = Primandproper_Platform_Waitlists_V1_InviteRequest
             /// Response type for "Invite".
@@ -276,11 +288,12 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService {
             /// Descriptor for "Invite".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
-                method: "Invite"
+                method: "Invite",
+                type: .unary
             )
         }
         /// Namespace for "Convert" metadata.
-        internal enum Convert {
+        internal enum Convert: Sendable {
             /// Request type for "Convert".
             internal typealias Input = Primandproper_Platform_Waitlists_V1_ConvertRequest
             /// Response type for "Convert".
@@ -288,11 +301,12 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService {
             /// Descriptor for "Convert".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
-                method: "Convert"
+                method: "Convert",
+                type: .unary
             )
         }
         /// Namespace for "Withdraw" metadata.
-        internal enum Withdraw {
+        internal enum Withdraw: Sendable {
             /// Request type for "Withdraw".
             internal typealias Input = Primandproper_Platform_Waitlists_V1_WithdrawRequest
             /// Response type for "Withdraw".
@@ -300,11 +314,12 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService {
             /// Descriptor for "Withdraw".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
-                method: "Withdraw"
+                method: "Withdraw",
+                type: .unary
             )
         }
         /// Namespace for "WithdrawSignupsForSubject" metadata.
-        internal enum WithdrawSignupsForSubject {
+        internal enum WithdrawSignupsForSubject: Sendable {
             /// Request type for "WithdrawSignupsForSubject".
             internal typealias Input = Primandproper_Platform_Waitlists_V1_WithdrawSignupsForSubjectRequest
             /// Response type for "WithdrawSignupsForSubject".
@@ -312,11 +327,12 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService {
             /// Descriptor for "WithdrawSignupsForSubject".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
-                method: "WithdrawSignupsForSubject"
+                method: "WithdrawSignupsForSubject",
+                type: .unary
             )
         }
         /// Namespace for "ArchiveSignup" metadata.
-        internal enum ArchiveSignup {
+        internal enum ArchiveSignup: Sendable {
             /// Request type for "ArchiveSignup".
             internal typealias Input = Primandproper_Platform_Waitlists_V1_ArchiveSignupRequest
             /// Response type for "ArchiveSignup".
@@ -324,7 +340,8 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService {
             /// Descriptor for "ArchiveSignup".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
-                method: "ArchiveSignup"
+                method: "ArchiveSignup",
+                type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.waitlists.v1.WaitlistsService" service.
@@ -418,9 +435,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_CreateListRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_CreateListResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func createList<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_CreateListRequest>,
@@ -437,9 +454,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_GetListRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_GetListResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func getList<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_GetListRequest>,
@@ -456,9 +473,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_ListListsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_ListListsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listLists<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ListListsRequest>,
@@ -475,9 +492,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_ListOpenListsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_ListOpenListsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listOpenLists<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ListOpenListsRequest>,
@@ -494,9 +511,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_UpdateListRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_UpdateListResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func updateList<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_UpdateListRequest>,
@@ -513,9 +530,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_ArchiveListRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_ArchiveListResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func archiveList<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ArchiveListRequest>,
@@ -537,9 +554,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_JoinRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_JoinResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func join<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_JoinRequest>,
@@ -556,9 +573,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_GetSignupRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_GetSignupResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func getSignup<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_GetSignupRequest>,
@@ -575,9 +592,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_GetSignupByContactRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_GetSignupByContactResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func getSignupByContact<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_GetSignupByContactRequest>,
@@ -594,9 +611,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_ListSignupsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_ListSignupsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listSignups<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ListSignupsRequest>,
@@ -613,9 +630,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_ListSignupsForSubjectRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_ListSignupsForSubjectResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listSignupsForSubject<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ListSignupsForSubjectRequest>,
@@ -632,9 +649,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_UpdateSignupNotesRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_UpdateSignupNotesResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func updateSignupNotes<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_UpdateSignupNotesRequest>,
@@ -651,9 +668,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_InviteRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_InviteResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func invite<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_InviteRequest>,
@@ -670,9 +687,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_ConvertRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_ConvertResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func convert<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ConvertRequest>,
@@ -689,9 +706,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_WithdrawRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_WithdrawResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func withdraw<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_WithdrawRequest>,
@@ -708,9 +725,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_WithdrawSignupsForSubjectRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_WithdrawSignupsForSubjectResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func withdrawSignupsForSubject<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_WithdrawSignupsForSubjectRequest>,
@@ -727,9 +744,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_ArchiveSignupRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_ArchiveSignupResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func archiveSignup<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ArchiveSignupRequest>,
@@ -809,9 +826,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_CreateListRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_CreateListResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func createList<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_CreateListRequest>,
@@ -839,9 +856,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_GetListRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_GetListResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func getList<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_GetListRequest>,
@@ -869,9 +886,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_ListListsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_ListListsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listLists<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ListListsRequest>,
@@ -899,9 +916,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_ListOpenListsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_ListOpenListsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listOpenLists<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ListOpenListsRequest>,
@@ -929,9 +946,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_UpdateListRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_UpdateListResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func updateList<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_UpdateListRequest>,
@@ -959,9 +976,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_ArchiveListRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_ArchiveListResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func archiveList<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ArchiveListRequest>,
@@ -994,9 +1011,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_JoinRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_JoinResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func join<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_JoinRequest>,
@@ -1024,9 +1041,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_GetSignupRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_GetSignupResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func getSignup<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_GetSignupRequest>,
@@ -1054,9 +1071,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_GetSignupByContactRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_GetSignupByContactResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func getSignupByContact<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_GetSignupByContactRequest>,
@@ -1084,9 +1101,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_ListSignupsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_ListSignupsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listSignups<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ListSignupsRequest>,
@@ -1114,9 +1131,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_ListSignupsForSubjectRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_ListSignupsForSubjectResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listSignupsForSubject<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ListSignupsForSubjectRequest>,
@@ -1144,9 +1161,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_UpdateSignupNotesRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_UpdateSignupNotesResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func updateSignupNotes<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_UpdateSignupNotesRequest>,
@@ -1174,9 +1191,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_InviteRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_InviteResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func invite<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_InviteRequest>,
@@ -1204,9 +1221,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_ConvertRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_ConvertResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func convert<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ConvertRequest>,
@@ -1234,9 +1251,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_WithdrawRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_WithdrawResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func withdraw<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_WithdrawRequest>,
@@ -1264,9 +1281,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_WithdrawSignupsForSubjectRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_WithdrawSignupsForSubjectResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func withdrawSignupsForSubject<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_WithdrawSignupsForSubjectRequest>,
@@ -1294,9 +1311,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_ArchiveSignupRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_ArchiveSignupResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func archiveSignup<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ArchiveSignupRequest>,
@@ -1332,9 +1349,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_CreateListRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func createList<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_CreateListRequest>,
@@ -1357,9 +1374,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_GetListRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getList<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_GetListRequest>,
@@ -1382,9 +1399,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_ListListsRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listLists<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ListListsRequest>,
@@ -1407,9 +1424,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_ListOpenListsRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listOpenLists<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ListOpenListsRequest>,
@@ -1432,9 +1449,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_UpdateListRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func updateList<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_UpdateListRequest>,
@@ -1457,9 +1474,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_ArchiveListRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archiveList<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ArchiveListRequest>,
@@ -1487,9 +1504,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_JoinRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func join<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_JoinRequest>,
@@ -1512,9 +1529,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_GetSignupRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getSignup<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_GetSignupRequest>,
@@ -1537,9 +1554,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_GetSignupByContactRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getSignupByContact<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_GetSignupByContactRequest>,
@@ -1562,9 +1579,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_ListSignupsRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listSignups<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ListSignupsRequest>,
@@ -1587,9 +1604,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_ListSignupsForSubjectRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listSignupsForSubject<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ListSignupsForSubjectRequest>,
@@ -1612,9 +1629,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_UpdateSignupNotesRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func updateSignupNotes<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_UpdateSignupNotesRequest>,
@@ -1637,9 +1654,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_InviteRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func invite<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_InviteRequest>,
@@ -1662,9 +1679,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_ConvertRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func convert<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ConvertRequest>,
@@ -1687,9 +1704,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_WithdrawRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func withdraw<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_WithdrawRequest>,
@@ -1712,9 +1729,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_WithdrawSignupsForSubjectRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func withdrawSignupsForSubject<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_WithdrawSignupsForSubjectRequest>,
@@ -1737,9 +1754,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_ArchiveSignupRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archiveSignup<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ArchiveSignupRequest>,
@@ -1772,9 +1789,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func createList<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_CreateListRequest,
@@ -1801,9 +1818,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getList<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_GetListRequest,
@@ -1830,9 +1847,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listLists<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_ListListsRequest,
@@ -1859,9 +1876,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listOpenLists<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_ListOpenListsRequest,
@@ -1888,9 +1905,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func updateList<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_UpdateListRequest,
@@ -1917,9 +1934,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archiveList<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_ArchiveListRequest,
@@ -1951,9 +1968,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func join<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_JoinRequest,
@@ -1980,9 +1997,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getSignup<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_GetSignupRequest,
@@ -2009,9 +2026,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getSignupByContact<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_GetSignupByContactRequest,
@@ -2038,9 +2055,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listSignups<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_ListSignupsRequest,
@@ -2067,9 +2084,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listSignupsForSubject<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_ListSignupsForSubjectRequest,
@@ -2096,9 +2113,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func updateSignupNotes<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_UpdateSignupNotesRequest,
@@ -2125,9 +2142,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func invite<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_InviteRequest,
@@ -2154,9 +2171,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func convert<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_ConvertRequest,
@@ -2183,9 +2200,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func withdraw<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_WithdrawRequest,
@@ -2212,9 +2229,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func withdrawSignupsForSubject<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_WithdrawSignupsForSubjectRequest,
@@ -2241,9 +2258,9 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archiveSignup<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_ArchiveSignupRequest,

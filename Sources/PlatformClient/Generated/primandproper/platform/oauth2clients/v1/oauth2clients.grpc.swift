@@ -116,13 +116,13 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "primandproper.platform.oauth2clients.v1.OAuth2ClientsService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService {
+internal enum Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService: Sendable {
     /// Service descriptor for the "primandproper.platform.oauth2clients.v1.OAuth2ClientsService" service.
     internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.oauth2clients.v1.OAuth2ClientsService")
     /// Namespace for method metadata.
-    internal enum Method {
+    internal enum Method: Sendable {
         /// Namespace for "CreateOAuth2Client" metadata.
-        internal enum CreateOAuth2Client {
+        internal enum CreateOAuth2Client: Sendable {
             /// Request type for "CreateOAuth2Client".
             internal typealias Input = Primandproper_Platform_Oauth2clients_V1_CreateOAuth2ClientRequest
             /// Response type for "CreateOAuth2Client".
@@ -130,11 +130,12 @@ internal enum Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService {
             /// Descriptor for "CreateOAuth2Client".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.oauth2clients.v1.OAuth2ClientsService"),
-                method: "CreateOAuth2Client"
+                method: "CreateOAuth2Client",
+                type: .unary
             )
         }
         /// Namespace for "GetOAuth2Client" metadata.
-        internal enum GetOAuth2Client {
+        internal enum GetOAuth2Client: Sendable {
             /// Request type for "GetOAuth2Client".
             internal typealias Input = Primandproper_Platform_Oauth2clients_V1_GetOAuth2ClientRequest
             /// Response type for "GetOAuth2Client".
@@ -142,11 +143,12 @@ internal enum Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService {
             /// Descriptor for "GetOAuth2Client".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.oauth2clients.v1.OAuth2ClientsService"),
-                method: "GetOAuth2Client"
+                method: "GetOAuth2Client",
+                type: .unary
             )
         }
         /// Namespace for "ListOAuth2Clients" metadata.
-        internal enum ListOAuth2Clients {
+        internal enum ListOAuth2Clients: Sendable {
             /// Request type for "ListOAuth2Clients".
             internal typealias Input = Primandproper_Platform_Oauth2clients_V1_ListOAuth2ClientsRequest
             /// Response type for "ListOAuth2Clients".
@@ -154,11 +156,12 @@ internal enum Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService {
             /// Descriptor for "ListOAuth2Clients".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.oauth2clients.v1.OAuth2ClientsService"),
-                method: "ListOAuth2Clients"
+                method: "ListOAuth2Clients",
+                type: .unary
             )
         }
         /// Namespace for "ArchiveOAuth2Client" metadata.
-        internal enum ArchiveOAuth2Client {
+        internal enum ArchiveOAuth2Client: Sendable {
             /// Request type for "ArchiveOAuth2Client".
             internal typealias Input = Primandproper_Platform_Oauth2clients_V1_ArchiveOAuth2ClientRequest
             /// Response type for "ArchiveOAuth2Client".
@@ -166,7 +169,8 @@ internal enum Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService {
             /// Descriptor for "ArchiveOAuth2Client".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.oauth2clients.v1.OAuth2ClientsService"),
-                method: "ArchiveOAuth2Client"
+                method: "ArchiveOAuth2Client",
+                type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.oauth2clients.v1.OAuth2ClientsService" service.
@@ -210,9 +214,9 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Oauth2clients_V1_CreateOAuth2ClientRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Oauth2clients_V1_CreateOAuth2ClientResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func createOAuth2Client<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Oauth2clients_V1_CreateOAuth2ClientRequest>,
@@ -229,9 +233,9 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Oauth2clients_V1_GetOAuth2ClientRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Oauth2clients_V1_GetOAuth2ClientResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func getOAuth2Client<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Oauth2clients_V1_GetOAuth2ClientRequest>,
@@ -248,9 +252,9 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Oauth2clients_V1_ListOAuth2ClientsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Oauth2clients_V1_ListOAuth2ClientsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listOAuth2Clients<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Oauth2clients_V1_ListOAuth2ClientsRequest>,
@@ -267,9 +271,9 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Oauth2clients_V1_ArchiveOAuth2ClientRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Oauth2clients_V1_ArchiveOAuth2ClientResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func archiveOAuth2Client<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Oauth2clients_V1_ArchiveOAuth2ClientRequest>,
@@ -312,9 +316,9 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Oauth2clients_V1_CreateOAuth2ClientRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Oauth2clients_V1_CreateOAuth2ClientResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func createOAuth2Client<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Oauth2clients_V1_CreateOAuth2ClientRequest>,
@@ -342,9 +346,9 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Oauth2clients_V1_GetOAuth2ClientRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Oauth2clients_V1_GetOAuth2ClientResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func getOAuth2Client<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Oauth2clients_V1_GetOAuth2ClientRequest>,
@@ -372,9 +376,9 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Oauth2clients_V1_ListOAuth2ClientsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Oauth2clients_V1_ListOAuth2ClientsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listOAuth2Clients<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Oauth2clients_V1_ListOAuth2ClientsRequest>,
@@ -402,9 +406,9 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService {
         ///   - serializer: A serializer for `Primandproper_Platform_Oauth2clients_V1_ArchiveOAuth2ClientRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Oauth2clients_V1_ArchiveOAuth2ClientResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func archiveOAuth2Client<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Oauth2clients_V1_ArchiveOAuth2ClientRequest>,
@@ -435,9 +439,9 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService.ClientPro
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Oauth2clients_V1_CreateOAuth2ClientRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func createOAuth2Client<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Oauth2clients_V1_CreateOAuth2ClientRequest>,
@@ -460,9 +464,9 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService.ClientPro
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Oauth2clients_V1_GetOAuth2ClientRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getOAuth2Client<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Oauth2clients_V1_GetOAuth2ClientRequest>,
@@ -485,9 +489,9 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService.ClientPro
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Oauth2clients_V1_ListOAuth2ClientsRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listOAuth2Clients<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Oauth2clients_V1_ListOAuth2ClientsRequest>,
@@ -510,9 +514,9 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService.ClientPro
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Oauth2clients_V1_ArchiveOAuth2ClientRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archiveOAuth2Client<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Oauth2clients_V1_ArchiveOAuth2ClientRequest>,
@@ -540,9 +544,9 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService.ClientPro
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func createOAuth2Client<Result>(
         _ message: Primandproper_Platform_Oauth2clients_V1_CreateOAuth2ClientRequest,
@@ -569,9 +573,9 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService.ClientPro
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getOAuth2Client<Result>(
         _ message: Primandproper_Platform_Oauth2clients_V1_GetOAuth2ClientRequest,
@@ -598,9 +602,9 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService.ClientPro
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listOAuth2Clients<Result>(
         _ message: Primandproper_Platform_Oauth2clients_V1_ListOAuth2ClientsRequest,
@@ -627,9 +631,9 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService.ClientPro
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archiveOAuth2Client<Result>(
         _ message: Primandproper_Platform_Oauth2clients_V1_ArchiveOAuth2ClientRequest,

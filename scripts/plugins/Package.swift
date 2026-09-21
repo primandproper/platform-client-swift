@@ -18,5 +18,9 @@ let package = Package(
   dependencies: [
     .package(url: "https://github.com/apple/swift-protobuf.git", exact: "1.33.3"),
     .package(url: "https://github.com/grpc/grpc-swift-protobuf.git", exact: "2.1.1"),
+    // Transitive, and pinned anyway: the grpc plugin's output tracks this, so letting it
+    // float would reintroduce exactly the drift the two pins above exist to prevent.
+    // 2.4.3 is what resolving the two above produced.
+    .package(url: "https://github.com/grpc/grpc-swift-2.git", exact: "2.4.3"),
   ]
 )

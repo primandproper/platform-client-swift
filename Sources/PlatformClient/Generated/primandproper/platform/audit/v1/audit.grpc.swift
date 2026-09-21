@@ -74,13 +74,13 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "primandproper.platform.audit.v1.AuditService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Audit_V1_AuditService {
+internal enum Primandproper_Platform_Audit_V1_AuditService: Sendable {
     /// Service descriptor for the "primandproper.platform.audit.v1.AuditService" service.
     internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditService")
     /// Namespace for method metadata.
-    internal enum Method {
+    internal enum Method: Sendable {
         /// Namespace for "GetEntry" metadata.
-        internal enum GetEntry {
+        internal enum GetEntry: Sendable {
             /// Request type for "GetEntry".
             internal typealias Input = Primandproper_Platform_Audit_V1_GetEntryRequest
             /// Response type for "GetEntry".
@@ -88,11 +88,12 @@ internal enum Primandproper_Platform_Audit_V1_AuditService {
             /// Descriptor for "GetEntry".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditService"),
-                method: "GetEntry"
+                method: "GetEntry",
+                type: .unary
             )
         }
         /// Namespace for "ListEntries" metadata.
-        internal enum ListEntries {
+        internal enum ListEntries: Sendable {
             /// Request type for "ListEntries".
             internal typealias Input = Primandproper_Platform_Audit_V1_ListEntriesRequest
             /// Response type for "ListEntries".
@@ -100,11 +101,12 @@ internal enum Primandproper_Platform_Audit_V1_AuditService {
             /// Descriptor for "ListEntries".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditService"),
-                method: "ListEntries"
+                method: "ListEntries",
+                type: .unary
             )
         }
         /// Namespace for "VerifyChain" metadata.
-        internal enum VerifyChain {
+        internal enum VerifyChain: Sendable {
             /// Request type for "VerifyChain".
             internal typealias Input = Primandproper_Platform_Audit_V1_VerifyChainRequest
             /// Response type for "VerifyChain".
@@ -112,7 +114,8 @@ internal enum Primandproper_Platform_Audit_V1_AuditService {
             /// Descriptor for "VerifyChain".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditService"),
-                method: "VerifyChain"
+                method: "VerifyChain",
+                type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.audit.v1.AuditService" service.
@@ -161,9 +164,9 @@ extension Primandproper_Platform_Audit_V1_AuditService {
         ///   - serializer: A serializer for `Primandproper_Platform_Audit_V1_GetEntryRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Audit_V1_GetEntryResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func getEntry<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_GetEntryRequest>,
@@ -184,9 +187,9 @@ extension Primandproper_Platform_Audit_V1_AuditService {
         ///   - serializer: A serializer for `Primandproper_Platform_Audit_V1_ListEntriesRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Audit_V1_ListEntriesResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listEntries<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_ListEntriesRequest>,
@@ -213,9 +216,9 @@ extension Primandproper_Platform_Audit_V1_AuditService {
         ///   - serializer: A serializer for `Primandproper_Platform_Audit_V1_VerifyChainRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Audit_V1_VerifyChainResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func verifyChain<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_VerifyChainRequest>,
@@ -264,9 +267,9 @@ extension Primandproper_Platform_Audit_V1_AuditService {
         ///   - serializer: A serializer for `Primandproper_Platform_Audit_V1_GetEntryRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Audit_V1_GetEntryResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func getEntry<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_GetEntryRequest>,
@@ -298,9 +301,9 @@ extension Primandproper_Platform_Audit_V1_AuditService {
         ///   - serializer: A serializer for `Primandproper_Platform_Audit_V1_ListEntriesRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Audit_V1_ListEntriesResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listEntries<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_ListEntriesRequest>,
@@ -338,9 +341,9 @@ extension Primandproper_Platform_Audit_V1_AuditService {
         ///   - serializer: A serializer for `Primandproper_Platform_Audit_V1_VerifyChainRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Audit_V1_VerifyChainResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func verifyChain<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_VerifyChainRequest>,
@@ -377,9 +380,9 @@ extension Primandproper_Platform_Audit_V1_AuditService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Audit_V1_GetEntryRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getEntry<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_GetEntryRequest>,
@@ -406,9 +409,9 @@ extension Primandproper_Platform_Audit_V1_AuditService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Audit_V1_ListEntriesRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listEntries<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_ListEntriesRequest>,
@@ -441,9 +444,9 @@ extension Primandproper_Platform_Audit_V1_AuditService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Audit_V1_VerifyChainRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func verifyChain<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_VerifyChainRequest>,
@@ -477,9 +480,9 @@ extension Primandproper_Platform_Audit_V1_AuditService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getEntry<Result>(
         _ message: Primandproper_Platform_Audit_V1_GetEntryRequest,
@@ -510,9 +513,9 @@ extension Primandproper_Platform_Audit_V1_AuditService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listEntries<Result>(
         _ message: Primandproper_Platform_Audit_V1_ListEntriesRequest,
@@ -549,9 +552,9 @@ extension Primandproper_Platform_Audit_V1_AuditService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func verifyChain<Result>(
         _ message: Primandproper_Platform_Audit_V1_VerifyChainRequest,

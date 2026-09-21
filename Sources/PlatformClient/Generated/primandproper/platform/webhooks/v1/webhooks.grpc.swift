@@ -111,13 +111,13 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "primandproper.platform.webhooks.v1.WebhooksService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Webhooks_V1_WebhooksService {
+internal enum Primandproper_Platform_Webhooks_V1_WebhooksService: Sendable {
     /// Service descriptor for the "primandproper.platform.webhooks.v1.WebhooksService" service.
     internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.webhooks.v1.WebhooksService")
     /// Namespace for method metadata.
-    internal enum Method {
+    internal enum Method: Sendable {
         /// Namespace for "SaveEndpoint" metadata.
-        internal enum SaveEndpoint {
+        internal enum SaveEndpoint: Sendable {
             /// Request type for "SaveEndpoint".
             internal typealias Input = Primandproper_Platform_Webhooks_V1_SaveEndpointRequest
             /// Response type for "SaveEndpoint".
@@ -125,11 +125,12 @@ internal enum Primandproper_Platform_Webhooks_V1_WebhooksService {
             /// Descriptor for "SaveEndpoint".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.webhooks.v1.WebhooksService"),
-                method: "SaveEndpoint"
+                method: "SaveEndpoint",
+                type: .unary
             )
         }
         /// Namespace for "GetEndpoint" metadata.
-        internal enum GetEndpoint {
+        internal enum GetEndpoint: Sendable {
             /// Request type for "GetEndpoint".
             internal typealias Input = Primandproper_Platform_Webhooks_V1_GetEndpointRequest
             /// Response type for "GetEndpoint".
@@ -137,11 +138,12 @@ internal enum Primandproper_Platform_Webhooks_V1_WebhooksService {
             /// Descriptor for "GetEndpoint".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.webhooks.v1.WebhooksService"),
-                method: "GetEndpoint"
+                method: "GetEndpoint",
+                type: .unary
             )
         }
         /// Namespace for "ListEndpoints" metadata.
-        internal enum ListEndpoints {
+        internal enum ListEndpoints: Sendable {
             /// Request type for "ListEndpoints".
             internal typealias Input = Primandproper_Platform_Webhooks_V1_ListEndpointsRequest
             /// Response type for "ListEndpoints".
@@ -149,11 +151,12 @@ internal enum Primandproper_Platform_Webhooks_V1_WebhooksService {
             /// Descriptor for "ListEndpoints".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.webhooks.v1.WebhooksService"),
-                method: "ListEndpoints"
+                method: "ListEndpoints",
+                type: .unary
             )
         }
         /// Namespace for "ArchiveEndpoint" metadata.
-        internal enum ArchiveEndpoint {
+        internal enum ArchiveEndpoint: Sendable {
             /// Request type for "ArchiveEndpoint".
             internal typealias Input = Primandproper_Platform_Webhooks_V1_ArchiveEndpointRequest
             /// Response type for "ArchiveEndpoint".
@@ -161,11 +164,12 @@ internal enum Primandproper_Platform_Webhooks_V1_WebhooksService {
             /// Descriptor for "ArchiveEndpoint".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.webhooks.v1.WebhooksService"),
-                method: "ArchiveEndpoint"
+                method: "ArchiveEndpoint",
+                type: .unary
             )
         }
         /// Namespace for "RotateSecret" metadata.
-        internal enum RotateSecret {
+        internal enum RotateSecret: Sendable {
             /// Request type for "RotateSecret".
             internal typealias Input = Primandproper_Platform_Webhooks_V1_RotateSecretRequest
             /// Response type for "RotateSecret".
@@ -173,11 +177,12 @@ internal enum Primandproper_Platform_Webhooks_V1_WebhooksService {
             /// Descriptor for "RotateSecret".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.webhooks.v1.WebhooksService"),
-                method: "RotateSecret"
+                method: "RotateSecret",
+                type: .unary
             )
         }
         /// Namespace for "AddSubscription" metadata.
-        internal enum AddSubscription {
+        internal enum AddSubscription: Sendable {
             /// Request type for "AddSubscription".
             internal typealias Input = Primandproper_Platform_Webhooks_V1_AddSubscriptionRequest
             /// Response type for "AddSubscription".
@@ -185,11 +190,12 @@ internal enum Primandproper_Platform_Webhooks_V1_WebhooksService {
             /// Descriptor for "AddSubscription".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.webhooks.v1.WebhooksService"),
-                method: "AddSubscription"
+                method: "AddSubscription",
+                type: .unary
             )
         }
         /// Namespace for "GetSubscription" metadata.
-        internal enum GetSubscription {
+        internal enum GetSubscription: Sendable {
             /// Request type for "GetSubscription".
             internal typealias Input = Primandproper_Platform_Webhooks_V1_GetSubscriptionRequest
             /// Response type for "GetSubscription".
@@ -197,11 +203,12 @@ internal enum Primandproper_Platform_Webhooks_V1_WebhooksService {
             /// Descriptor for "GetSubscription".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.webhooks.v1.WebhooksService"),
-                method: "GetSubscription"
+                method: "GetSubscription",
+                type: .unary
             )
         }
         /// Namespace for "ListSubscriptions" metadata.
-        internal enum ListSubscriptions {
+        internal enum ListSubscriptions: Sendable {
             /// Request type for "ListSubscriptions".
             internal typealias Input = Primandproper_Platform_Webhooks_V1_ListSubscriptionsRequest
             /// Response type for "ListSubscriptions".
@@ -209,11 +216,12 @@ internal enum Primandproper_Platform_Webhooks_V1_WebhooksService {
             /// Descriptor for "ListSubscriptions".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.webhooks.v1.WebhooksService"),
-                method: "ListSubscriptions"
+                method: "ListSubscriptions",
+                type: .unary
             )
         }
         /// Namespace for "ArchiveSubscription" metadata.
-        internal enum ArchiveSubscription {
+        internal enum ArchiveSubscription: Sendable {
             /// Request type for "ArchiveSubscription".
             internal typealias Input = Primandproper_Platform_Webhooks_V1_ArchiveSubscriptionRequest
             /// Response type for "ArchiveSubscription".
@@ -221,11 +229,12 @@ internal enum Primandproper_Platform_Webhooks_V1_WebhooksService {
             /// Descriptor for "ArchiveSubscription".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.webhooks.v1.WebhooksService"),
-                method: "ArchiveSubscription"
+                method: "ArchiveSubscription",
+                type: .unary
             )
         }
         /// Namespace for "ListAttempts" metadata.
-        internal enum ListAttempts {
+        internal enum ListAttempts: Sendable {
             /// Request type for "ListAttempts".
             internal typealias Input = Primandproper_Platform_Webhooks_V1_ListAttemptsRequest
             /// Response type for "ListAttempts".
@@ -233,11 +242,12 @@ internal enum Primandproper_Platform_Webhooks_V1_WebhooksService {
             /// Descriptor for "ListAttempts".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.webhooks.v1.WebhooksService"),
-                method: "ListAttempts"
+                method: "ListAttempts",
+                type: .unary
             )
         }
         /// Namespace for "ListEventTypes" metadata.
-        internal enum ListEventTypes {
+        internal enum ListEventTypes: Sendable {
             /// Request type for "ListEventTypes".
             internal typealias Input = Primandproper_Platform_Webhooks_V1_ListEventTypesRequest
             /// Response type for "ListEventTypes".
@@ -245,7 +255,8 @@ internal enum Primandproper_Platform_Webhooks_V1_WebhooksService {
             /// Descriptor for "ListEventTypes".
             internal static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.webhooks.v1.WebhooksService"),
-                method: "ListEventTypes"
+                method: "ListEventTypes",
+                type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.webhooks.v1.WebhooksService" service.
@@ -327,9 +338,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_SaveEndpointRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_SaveEndpointResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func saveEndpoint<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_SaveEndpointRequest>,
@@ -346,9 +357,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_GetEndpointRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_GetEndpointResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func getEndpoint<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_GetEndpointRequest>,
@@ -365,9 +376,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_ListEndpointsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_ListEndpointsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listEndpoints<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_ListEndpointsRequest>,
@@ -384,9 +395,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_ArchiveEndpointRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_ArchiveEndpointResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func archiveEndpoint<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_ArchiveEndpointRequest>,
@@ -403,9 +414,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_RotateSecretRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_RotateSecretResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func rotateSecret<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_RotateSecretRequest>,
@@ -422,9 +433,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_AddSubscriptionRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_AddSubscriptionResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func addSubscription<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_AddSubscriptionRequest>,
@@ -441,9 +452,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_GetSubscriptionRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_GetSubscriptionResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func getSubscription<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_GetSubscriptionRequest>,
@@ -460,9 +471,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_ListSubscriptionsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_ListSubscriptionsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listSubscriptions<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_ListSubscriptionsRequest>,
@@ -479,9 +490,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_ArchiveSubscriptionRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_ArchiveSubscriptionResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func archiveSubscription<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_ArchiveSubscriptionRequest>,
@@ -498,9 +509,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_ListAttemptsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_ListAttemptsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listAttempts<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_ListAttemptsRequest>,
@@ -517,9 +528,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_ListEventTypesRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_ListEventTypesResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         func listEventTypes<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_ListEventTypesRequest>,
@@ -593,9 +604,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_SaveEndpointRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_SaveEndpointResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func saveEndpoint<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_SaveEndpointRequest>,
@@ -623,9 +634,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_GetEndpointRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_GetEndpointResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func getEndpoint<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_GetEndpointRequest>,
@@ -653,9 +664,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_ListEndpointsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_ListEndpointsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listEndpoints<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_ListEndpointsRequest>,
@@ -683,9 +694,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_ArchiveEndpointRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_ArchiveEndpointResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func archiveEndpoint<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_ArchiveEndpointRequest>,
@@ -713,9 +724,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_RotateSecretRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_RotateSecretResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func rotateSecret<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_RotateSecretRequest>,
@@ -743,9 +754,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_AddSubscriptionRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_AddSubscriptionResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func addSubscription<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_AddSubscriptionRequest>,
@@ -773,9 +784,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_GetSubscriptionRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_GetSubscriptionResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func getSubscription<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_GetSubscriptionRequest>,
@@ -803,9 +814,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_ListSubscriptionsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_ListSubscriptionsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listSubscriptions<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_ListSubscriptionsRequest>,
@@ -833,9 +844,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_ArchiveSubscriptionRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_ArchiveSubscriptionResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func archiveSubscription<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_ArchiveSubscriptionRequest>,
@@ -863,9 +874,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_ListAttemptsRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_ListAttemptsResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listAttempts<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_ListAttemptsRequest>,
@@ -893,9 +904,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService {
         ///   - serializer: A serializer for `Primandproper_Platform_Webhooks_V1_ListEventTypesRequest` messages.
         ///   - deserializer: A deserializer for `Primandproper_Platform_Webhooks_V1_ListEventTypesResponse` messages.
         ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response, the result of which is
-        ///       returned to the caller. Returning from the closure will cancel the RPC if it
-        ///       hasn't already finished.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
         /// - Returns: The result of `handleResponse`.
         internal func listEventTypes<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_ListEventTypesRequest>,
@@ -926,9 +937,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Webhooks_V1_SaveEndpointRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func saveEndpoint<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_SaveEndpointRequest>,
@@ -951,9 +962,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Webhooks_V1_GetEndpointRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getEndpoint<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_GetEndpointRequest>,
@@ -976,9 +987,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Webhooks_V1_ListEndpointsRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listEndpoints<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_ListEndpointsRequest>,
@@ -1001,9 +1012,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Webhooks_V1_ArchiveEndpointRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archiveEndpoint<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_ArchiveEndpointRequest>,
@@ -1026,9 +1037,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Webhooks_V1_RotateSecretRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func rotateSecret<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_RotateSecretRequest>,
@@ -1051,9 +1062,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Webhooks_V1_AddSubscriptionRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func addSubscription<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_AddSubscriptionRequest>,
@@ -1076,9 +1087,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Webhooks_V1_GetSubscriptionRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getSubscription<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_GetSubscriptionRequest>,
@@ -1101,9 +1112,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Webhooks_V1_ListSubscriptionsRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listSubscriptions<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_ListSubscriptionsRequest>,
@@ -1126,9 +1137,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Webhooks_V1_ArchiveSubscriptionRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archiveSubscription<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_ArchiveSubscriptionRequest>,
@@ -1151,9 +1162,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Webhooks_V1_ListAttemptsRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listAttempts<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_ListAttemptsRequest>,
@@ -1176,9 +1187,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Webhooks_V1_ListEventTypesRequest` message.
     ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listEventTypes<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Webhooks_V1_ListEventTypesRequest>,
@@ -1206,9 +1217,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func saveEndpoint<Result>(
         _ message: Primandproper_Platform_Webhooks_V1_SaveEndpointRequest,
@@ -1235,9 +1246,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getEndpoint<Result>(
         _ message: Primandproper_Platform_Webhooks_V1_GetEndpointRequest,
@@ -1264,9 +1275,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listEndpoints<Result>(
         _ message: Primandproper_Platform_Webhooks_V1_ListEndpointsRequest,
@@ -1293,9 +1304,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archiveEndpoint<Result>(
         _ message: Primandproper_Platform_Webhooks_V1_ArchiveEndpointRequest,
@@ -1322,9 +1333,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func rotateSecret<Result>(
         _ message: Primandproper_Platform_Webhooks_V1_RotateSecretRequest,
@@ -1351,9 +1362,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func addSubscription<Result>(
         _ message: Primandproper_Platform_Webhooks_V1_AddSubscriptionRequest,
@@ -1380,9 +1391,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func getSubscription<Result>(
         _ message: Primandproper_Platform_Webhooks_V1_GetSubscriptionRequest,
@@ -1409,9 +1420,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listSubscriptions<Result>(
         _ message: Primandproper_Platform_Webhooks_V1_ListSubscriptionsRequest,
@@ -1438,9 +1449,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func archiveSubscription<Result>(
         _ message: Primandproper_Platform_Webhooks_V1_ArchiveSubscriptionRequest,
@@ -1467,9 +1478,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listAttempts<Result>(
         _ message: Primandproper_Platform_Webhooks_V1_ListAttemptsRequest,
@@ -1496,9 +1507,9 @@ extension Primandproper_Platform_Webhooks_V1_WebhooksService.ClientProtocol {
     ///   - message: request message to send.
     ///   - metadata: Additional metadata to send, defaults to empty.
     ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response, the result of which is
-    ///       returned to the caller. Returning from the closure will cancel the RPC if it
-    ///       hasn't already finished.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
     /// - Returns: The result of `handleResponse`.
     internal func listEventTypes<Result>(
         _ message: Primandproper_Platform_Webhooks_V1_ListEventTypesRequest,
