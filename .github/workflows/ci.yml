@@ -1,0 +1,44 @@
+# The generated client is committed, so the job here is proving it is what the pinned
+# platform-go tag actually produces — not regenerating it on the fly. A drifted commit and a
+# stale pin look identical to a consumer until something fails at runtime.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: check
+    # macOS because the protoc plugins come from the same Homebrew formulas
+    # dinnerdonebetter's Makefile installs, and matching its toolchain is what keeps the
+    # generated output droppable into that app.
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: swift build
+
+      - name: Install codegen toolchain
+        run: brew install protobuf swift-protobuf protoc-gen-grpc-swift
+
+      # Regenerating must reproduce exactly what is committed. This catches a hand-edited
+      # generated file, a pin bumped without regenerating, and a regeneration nobody
+      # committed — three ways for the checked-in client to stop describing the server.
+      - name: Generated client matches the pinned tag
+        run: |
+          make codegen
+          git diff --exit-code -- Sources/PlatformClient/Generated || {
+            echo "::error::Generated/ does not match what $(cat PLATFORM_GO_VERSION) generates. Run 'make codegen'."
+            exit 1
+          }

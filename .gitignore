@@ -60,3 +60,8 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+
+# Fetched .proto sources. Inputs to codegen, not part of the repo: scripts/fetch-protos.sh
+# re-downloads them from the pinned tag. The *output* in Sources/PlatformClient/Generated is
+# committed, so a consumer needs neither protoc nor this step.
+.protos/
