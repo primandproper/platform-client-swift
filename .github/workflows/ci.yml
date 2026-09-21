@@ -19,9 +19,8 @@ permissions:
 jobs:
   check:
     name: check
-    # macOS because the protoc plugins come from the same Homebrew formulas
-    # dinnerdonebetter's Makefile installs, and matching its toolchain is what keeps the
-    # generated output droppable into that app.
+    # macOS for the Swift toolchain, which both the package and the pinned codegen
+    # plugins are built with.
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
@@ -29,8 +28,14 @@ jobs:
       - name: Build
         run: swift build
 
-      - name: Install codegen toolchain
-        run: brew install protobuf swift-protobuf protoc-gen-grpc-swift
+      # protoc is pinned here and the plugins are pinned in scripts/plugins/Package.swift.
+      # `brew install` was what broke this the first time: it installs whatever is current,
+      # and swift-protobuf's output changed after 1.33.3.
+      - name: Install protoc
+        uses: arduino/setup-protoc@v3
+        with:
+          version: "33.1"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       # Regenerating must reproduce exactly what is committed. This catches a hand-edited
       # generated file, a pin bumped without regenerating, and a regeneration nobody

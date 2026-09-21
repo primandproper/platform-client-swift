@@ -51,11 +51,18 @@ make codegen   # fetch the protos, then generate
 make build     # swift build
 ```
 
-Plugins come from the same Homebrew formulas DDB's Makefile installs:
+**The generator is pinned too, not just the schema.** `scripts/plugins/Package.swift` pins
+`swift-protobuf` to 1.33.3 and `grpc-swift-protobuf` to 2.1.1, and `generate.sh` builds them
+rather than using whatever is on the machine.
 
-```bash
-brew install protobuf swift-protobuf protoc-gen-grpc-swift
-```
+That is not defensive tidiness. `brew install swift-protobuf` gives you whatever is current,
+and swift-protobuf's output changed after 1.33.3 — it began emitting `nonisolated extension`
+— so the first CI run here generated different files from identical `.proto` sources and the
+regeneration check failed on the difference. Those two versions are what dinnerdonebetter's
+committed output was generated with, which is what keeps this package a drop-in for that app.
+
+`protoc` itself is pinned to 33.1 for the same reason, and `generate.sh` refuses to run
+against a different version rather than producing a diff nobody can read.
 
 **One pin, one derived version.** `PLATFORM_GO_VERSION` names a `platform-go` tag. The
 `primitives-go` version is *read out of that tag's `go.mod`* rather than pinned separately —

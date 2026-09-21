@@ -65,3 +65,6 @@ fastlane/test_output
 # re-downloads them from the pinned tag. The *output* in Sources/PlatformClient/Generated is
 # committed, so a consumer needs neither protoc nor this step.
 .protos/
+
+# Built codegen plugins (see scripts/plugins/Package.swift)
+scripts/plugins/.build/
