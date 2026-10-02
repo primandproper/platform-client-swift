@@ -1,6 +1,11 @@
-# The generated client is committed, so the job here is proving it is what the pinned
-# platform-go tag actually produces — not regenerating it on the fly. A drifted commit and a
-# stale pin look identical to a consumer until something fails at runtime.
+# The generated client is committed, so the codegen job's work is proving it is what the
+# pinned platform-go tag actually produces — not regenerating it on the fly. A drifted commit
+# and a stale pin look identical to a consumer until something fails at runtime.
+#
+# Each check is its own job so one failing does not hide whether the others pass. Every job
+# is macOS for the Swift toolchain, and every job selects the newest Xcode, as a developer
+# has: it is the one that refuses a package graph an older SwiftPM accepted, which is how the
+# codegen plugins came to be two packages, and swift-format's findings move with it.
 name: CI
 
 on:
@@ -17,17 +22,14 @@ permissions:
   contents: read
 
 jobs:
-  check:
-    name: check
-    # macOS for the Swift toolchain, which both the package and the pinned codegen
-    # plugins are built with.
+  # There is no separate format job: `swift format lint --strict` fails on any difference
+  # `make format` would make, so it would be this job run twice.
+  lint:
+    name: lint
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
 
-      # The newest toolchain, as a developer has: it is the one that refuses a package
-      # graph an older SwiftPM accepted, which is how the codegen plugins came to be two
-      # packages, and swift-format's findings move with it.
       - name: Select Xcode
         uses: maxim-lobanov/setup-xcode@v1
         with:
@@ -36,22 +38,66 @@ jobs:
       - name: Install shellcheck
         run: command -v shellcheck || brew install shellcheck
 
+      - name: Lint
+        run: make lint
+
+  build:
+    name: build
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
       - name: Build
         run: make build
 
-      - name: Lint
-        run: make lint
+  test:
+    name: test
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
 
       - name: Test
         run: make test
 
-      # The Keychain tests need an entitled process, which `swift test` cannot give them; a
-      # stub app on a simulator can.
+  # The Keychain tests need an entitled process, which `swift test` cannot give them; a stub
+  # app on a simulator can.
+  keychain:
+    name: keychain tests
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
       - name: Install xcodegen
         run: command -v xcodegen || brew install xcodegen
 
       - name: Keychain tests
         run: make test-keychain
+
+  codegen:
+    name: generated client matches the pinned tag
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
 
       # protoc is pinned here and the plugins are pinned in scripts/plugins/*/Package.swift.
       # `brew install` was what broke this the first time: it installs whatever is current,
