@@ -1,7 +1,8 @@
 /// ListRequest is the shape every list RPC's request shares: a filter, which carries the cursor.
 ///
 /// Swift has no structural typing, so a generated request conforms by extension. Platform's own
-/// conform below; a product's list request conforms with one empty extension of its own.
+/// conform in generated code, from scripts/generate-list-conformances.sh; a product's list
+/// request conforms with one empty extension of its own.
 public protocol ListRequest: Sendable {
   var filter: Primandproper_Platform_Filtering_V1_QueryFilter { get set }
 }

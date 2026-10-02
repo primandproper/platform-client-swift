@@ -61,4 +61,5 @@ protoc \
   "${protos[@]}"
 
 cp "$ROOT/.protos/SOURCES.txt" "$OUT/SOURCES.txt"
+"$ROOT/scripts/generate-list-conformances.sh"
 echo "generated $(find "$OUT" -name '*.swift' | wc -l | tr -d ' ') files -> Sources/PlatformClient/Generated"
