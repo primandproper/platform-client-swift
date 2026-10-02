@@ -83,91 +83,91 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "primandproper.platform.passkeys.v1.PasskeysService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Passkeys_V1_PasskeysService: Sendable {
+public enum Primandproper_Platform_Passkeys_V1_PasskeysService: Sendable {
     /// Service descriptor for the "primandproper.platform.passkeys.v1.PasskeysService" service.
-    internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.passkeys.v1.PasskeysService")
+    public static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.passkeys.v1.PasskeysService")
     /// Namespace for method metadata.
-    internal enum Method: Sendable {
+    public enum Method: Sendable {
         /// Namespace for "BeginRegistration" metadata.
-        internal enum BeginRegistration: Sendable {
+        public enum BeginRegistration: Sendable {
             /// Request type for "BeginRegistration".
-            internal typealias Input = Primandproper_Platform_Passkeys_V1_BeginRegistrationRequest
+            public typealias Input = Primandproper_Platform_Passkeys_V1_BeginRegistrationRequest
             /// Response type for "BeginRegistration".
-            internal typealias Output = Primandproper_Platform_Passkeys_V1_BeginRegistrationResponse
+            public typealias Output = Primandproper_Platform_Passkeys_V1_BeginRegistrationResponse
             /// Descriptor for "BeginRegistration".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.passkeys.v1.PasskeysService"),
                 method: "BeginRegistration",
                 type: .unary
             )
         }
         /// Namespace for "FinishRegistration" metadata.
-        internal enum FinishRegistration: Sendable {
+        public enum FinishRegistration: Sendable {
             /// Request type for "FinishRegistration".
-            internal typealias Input = Primandproper_Platform_Passkeys_V1_FinishRegistrationRequest
+            public typealias Input = Primandproper_Platform_Passkeys_V1_FinishRegistrationRequest
             /// Response type for "FinishRegistration".
-            internal typealias Output = Primandproper_Platform_Passkeys_V1_FinishRegistrationResponse
+            public typealias Output = Primandproper_Platform_Passkeys_V1_FinishRegistrationResponse
             /// Descriptor for "FinishRegistration".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.passkeys.v1.PasskeysService"),
                 method: "FinishRegistration",
                 type: .unary
             )
         }
         /// Namespace for "BeginLogin" metadata.
-        internal enum BeginLogin: Sendable {
+        public enum BeginLogin: Sendable {
             /// Request type for "BeginLogin".
-            internal typealias Input = Primandproper_Platform_Passkeys_V1_BeginLoginRequest
+            public typealias Input = Primandproper_Platform_Passkeys_V1_BeginLoginRequest
             /// Response type for "BeginLogin".
-            internal typealias Output = Primandproper_Platform_Passkeys_V1_BeginLoginResponse
+            public typealias Output = Primandproper_Platform_Passkeys_V1_BeginLoginResponse
             /// Descriptor for "BeginLogin".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.passkeys.v1.PasskeysService"),
                 method: "BeginLogin",
                 type: .unary
             )
         }
         /// Namespace for "FinishLogin" metadata.
-        internal enum FinishLogin: Sendable {
+        public enum FinishLogin: Sendable {
             /// Request type for "FinishLogin".
-            internal typealias Input = Primandproper_Platform_Passkeys_V1_FinishLoginRequest
+            public typealias Input = Primandproper_Platform_Passkeys_V1_FinishLoginRequest
             /// Response type for "FinishLogin".
-            internal typealias Output = Primandproper_Platform_Passkeys_V1_FinishLoginResponse
+            public typealias Output = Primandproper_Platform_Passkeys_V1_FinishLoginResponse
             /// Descriptor for "FinishLogin".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.passkeys.v1.PasskeysService"),
                 method: "FinishLogin",
                 type: .unary
             )
         }
         /// Namespace for "ListPasskeys" metadata.
-        internal enum ListPasskeys: Sendable {
+        public enum ListPasskeys: Sendable {
             /// Request type for "ListPasskeys".
-            internal typealias Input = Primandproper_Platform_Passkeys_V1_ListPasskeysRequest
+            public typealias Input = Primandproper_Platform_Passkeys_V1_ListPasskeysRequest
             /// Response type for "ListPasskeys".
-            internal typealias Output = Primandproper_Platform_Passkeys_V1_ListPasskeysResponse
+            public typealias Output = Primandproper_Platform_Passkeys_V1_ListPasskeysResponse
             /// Descriptor for "ListPasskeys".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.passkeys.v1.PasskeysService"),
                 method: "ListPasskeys",
                 type: .unary
             )
         }
         /// Namespace for "ArchivePasskey" metadata.
-        internal enum ArchivePasskey: Sendable {
+        public enum ArchivePasskey: Sendable {
             /// Request type for "ArchivePasskey".
-            internal typealias Input = Primandproper_Platform_Passkeys_V1_ArchivePasskeyRequest
+            public typealias Input = Primandproper_Platform_Passkeys_V1_ArchivePasskeyRequest
             /// Response type for "ArchivePasskey".
-            internal typealias Output = Primandproper_Platform_Passkeys_V1_ArchivePasskeyResponse
+            public typealias Output = Primandproper_Platform_Passkeys_V1_ArchivePasskeyResponse
             /// Descriptor for "ArchivePasskey".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.passkeys.v1.PasskeysService"),
                 method: "ArchivePasskey",
                 type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.passkeys.v1.PasskeysService" service.
-        internal static let descriptors: [GRPCCore.MethodDescriptor] = [
+        public static let descriptors: [GRPCCore.MethodDescriptor] = [
             BeginRegistration.descriptor,
             FinishRegistration.descriptor,
             BeginLogin.descriptor,
@@ -181,7 +181,7 @@ internal enum Primandproper_Platform_Passkeys_V1_PasskeysService: Sendable {
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension GRPCCore.ServiceDescriptor {
     /// Service descriptor for the "primandproper.platform.passkeys.v1.PasskeysService" service.
-    internal static let primandproper_platform_passkeys_v1_PasskeysService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.passkeys.v1.PasskeysService")
+    public static let primandproper_platform_passkeys_v1_PasskeysService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.passkeys.v1.PasskeysService")
 }
 
 // MARK: primandproper.platform.passkeys.v1.PasskeysService (client)
@@ -192,7 +192,7 @@ extension Primandproper_Platform_Passkeys_V1_PasskeysService {
     ///
     /// You don't need to implement this protocol directly, use the generated
     /// implementation, ``Client``.
-    internal protocol ClientProtocol: Sendable {
+    public protocol ClientProtocol: Sendable {
         /// Call the "BeginRegistration" method.
         ///
         /// > Source IDL Documentation:
@@ -325,14 +325,14 @@ extension Primandproper_Platform_Passkeys_V1_PasskeysService {
     /// The ``Client`` provides an implementation of ``ClientProtocol`` which wraps
     /// a `GRPCCore.GRPCCClient`. The underlying `GRPCClient` provides the long-lived
     /// means of communication with the remote peer.
-    internal struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
+    public struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
         private let client: GRPCCore.GRPCClient<Transport>
 
         /// Creates a new client wrapping the provided `GRPCCore.GRPCClient`.
         ///
         /// - Parameters:
         ///   - client: A `GRPCCore.GRPCClient` providing a communication channel to the service.
-        internal init(wrapping client: GRPCCore.GRPCClient<Transport>) {
+        public init(wrapping client: GRPCCore.GRPCClient<Transport>) {
             self.client = client
         }
 
@@ -351,7 +351,7 @@ extension Primandproper_Platform_Passkeys_V1_PasskeysService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func beginRegistration<Result>(
+        public func beginRegistration<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Passkeys_V1_BeginRegistrationRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Passkeys_V1_BeginRegistrationRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Passkeys_V1_BeginRegistrationResponse>,
@@ -381,7 +381,7 @@ extension Primandproper_Platform_Passkeys_V1_PasskeysService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func finishRegistration<Result>(
+        public func finishRegistration<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Passkeys_V1_FinishRegistrationRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Passkeys_V1_FinishRegistrationRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Passkeys_V1_FinishRegistrationResponse>,
@@ -415,7 +415,7 @@ extension Primandproper_Platform_Passkeys_V1_PasskeysService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func beginLogin<Result>(
+        public func beginLogin<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Passkeys_V1_BeginLoginRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Passkeys_V1_BeginLoginRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Passkeys_V1_BeginLoginResponse>,
@@ -445,7 +445,7 @@ extension Primandproper_Platform_Passkeys_V1_PasskeysService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func finishLogin<Result>(
+        public func finishLogin<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Passkeys_V1_FinishLoginRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Passkeys_V1_FinishLoginRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Passkeys_V1_FinishLoginResponse>,
@@ -479,7 +479,7 @@ extension Primandproper_Platform_Passkeys_V1_PasskeysService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listPasskeys<Result>(
+        public func listPasskeys<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Passkeys_V1_ListPasskeysRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Passkeys_V1_ListPasskeysRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Passkeys_V1_ListPasskeysResponse>,
@@ -509,7 +509,7 @@ extension Primandproper_Platform_Passkeys_V1_PasskeysService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func archivePasskey<Result>(
+        public func archivePasskey<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Passkeys_V1_ArchivePasskeyRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Passkeys_V1_ArchivePasskeyRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Passkeys_V1_ArchivePasskeyResponse>,
@@ -546,7 +546,7 @@ extension Primandproper_Platform_Passkeys_V1_PasskeysService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func beginRegistration<Result>(
+    public func beginRegistration<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Passkeys_V1_BeginRegistrationRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Passkeys_V1_BeginRegistrationResponse>) async throws -> Result = { response in
@@ -571,7 +571,7 @@ extension Primandproper_Platform_Passkeys_V1_PasskeysService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func finishRegistration<Result>(
+    public func finishRegistration<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Passkeys_V1_FinishRegistrationRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Passkeys_V1_FinishRegistrationResponse>) async throws -> Result = { response in
@@ -600,7 +600,7 @@ extension Primandproper_Platform_Passkeys_V1_PasskeysService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func beginLogin<Result>(
+    public func beginLogin<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Passkeys_V1_BeginLoginRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Passkeys_V1_BeginLoginResponse>) async throws -> Result = { response in
@@ -625,7 +625,7 @@ extension Primandproper_Platform_Passkeys_V1_PasskeysService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func finishLogin<Result>(
+    public func finishLogin<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Passkeys_V1_FinishLoginRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Passkeys_V1_FinishLoginResponse>) async throws -> Result = { response in
@@ -654,7 +654,7 @@ extension Primandproper_Platform_Passkeys_V1_PasskeysService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listPasskeys<Result>(
+    public func listPasskeys<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Passkeys_V1_ListPasskeysRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Passkeys_V1_ListPasskeysResponse>) async throws -> Result = { response in
@@ -679,7 +679,7 @@ extension Primandproper_Platform_Passkeys_V1_PasskeysService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archivePasskey<Result>(
+    public func archivePasskey<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Passkeys_V1_ArchivePasskeyRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Passkeys_V1_ArchivePasskeyResponse>) async throws -> Result = { response in
@@ -713,7 +713,7 @@ extension Primandproper_Platform_Passkeys_V1_PasskeysService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func beginRegistration<Result>(
+    public func beginRegistration<Result>(
         _ message: Primandproper_Platform_Passkeys_V1_BeginRegistrationRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -742,7 +742,7 @@ extension Primandproper_Platform_Passkeys_V1_PasskeysService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func finishRegistration<Result>(
+    public func finishRegistration<Result>(
         _ message: Primandproper_Platform_Passkeys_V1_FinishRegistrationRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -775,7 +775,7 @@ extension Primandproper_Platform_Passkeys_V1_PasskeysService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func beginLogin<Result>(
+    public func beginLogin<Result>(
         _ message: Primandproper_Platform_Passkeys_V1_BeginLoginRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -804,7 +804,7 @@ extension Primandproper_Platform_Passkeys_V1_PasskeysService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func finishLogin<Result>(
+    public func finishLogin<Result>(
         _ message: Primandproper_Platform_Passkeys_V1_FinishLoginRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -837,7 +837,7 @@ extension Primandproper_Platform_Passkeys_V1_PasskeysService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listPasskeys<Result>(
+    public func listPasskeys<Result>(
         _ message: Primandproper_Platform_Passkeys_V1_ListPasskeysRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -866,7 +866,7 @@ extension Primandproper_Platform_Passkeys_V1_PasskeysService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archivePasskey<Result>(
+    public func archivePasskey<Result>(
         _ message: Primandproper_Platform_Passkeys_V1_ArchivePasskeyRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,

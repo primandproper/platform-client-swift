@@ -88,52 +88,52 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "primandproper.platform.audit.v1.AuditService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Audit_V1_AuditService: Sendable {
+public enum Primandproper_Platform_Audit_V1_AuditService: Sendable {
     /// Service descriptor for the "primandproper.platform.audit.v1.AuditService" service.
-    internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditService")
+    public static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditService")
     /// Namespace for method metadata.
-    internal enum Method: Sendable {
+    public enum Method: Sendable {
         /// Namespace for "GetEntry" metadata.
-        internal enum GetEntry: Sendable {
+        public enum GetEntry: Sendable {
             /// Request type for "GetEntry".
-            internal typealias Input = Primandproper_Platform_Audit_V1_GetEntryRequest
+            public typealias Input = Primandproper_Platform_Audit_V1_GetEntryRequest
             /// Response type for "GetEntry".
-            internal typealias Output = Primandproper_Platform_Audit_V1_GetEntryResponse
+            public typealias Output = Primandproper_Platform_Audit_V1_GetEntryResponse
             /// Descriptor for "GetEntry".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditService"),
                 method: "GetEntry",
                 type: .unary
             )
         }
         /// Namespace for "ListEntries" metadata.
-        internal enum ListEntries: Sendable {
+        public enum ListEntries: Sendable {
             /// Request type for "ListEntries".
-            internal typealias Input = Primandproper_Platform_Audit_V1_ListEntriesRequest
+            public typealias Input = Primandproper_Platform_Audit_V1_ListEntriesRequest
             /// Response type for "ListEntries".
-            internal typealias Output = Primandproper_Platform_Audit_V1_ListEntriesResponse
+            public typealias Output = Primandproper_Platform_Audit_V1_ListEntriesResponse
             /// Descriptor for "ListEntries".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditService"),
                 method: "ListEntries",
                 type: .unary
             )
         }
         /// Namespace for "VerifyChain" metadata.
-        internal enum VerifyChain: Sendable {
+        public enum VerifyChain: Sendable {
             /// Request type for "VerifyChain".
-            internal typealias Input = Primandproper_Platform_Audit_V1_VerifyChainRequest
+            public typealias Input = Primandproper_Platform_Audit_V1_VerifyChainRequest
             /// Response type for "VerifyChain".
-            internal typealias Output = Primandproper_Platform_Audit_V1_VerifyChainResponse
+            public typealias Output = Primandproper_Platform_Audit_V1_VerifyChainResponse
             /// Descriptor for "VerifyChain".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditService"),
                 method: "VerifyChain",
                 type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.audit.v1.AuditService" service.
-        internal static let descriptors: [GRPCCore.MethodDescriptor] = [
+        public static let descriptors: [GRPCCore.MethodDescriptor] = [
             GetEntry.descriptor,
             ListEntries.descriptor,
             VerifyChain.descriptor
@@ -144,7 +144,7 @@ internal enum Primandproper_Platform_Audit_V1_AuditService: Sendable {
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension GRPCCore.ServiceDescriptor {
     /// Service descriptor for the "primandproper.platform.audit.v1.AuditService" service.
-    internal static let primandproper_platform_audit_v1_AuditService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditService")
+    public static let primandproper_platform_audit_v1_AuditService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditService")
 }
 
 // MARK: primandproper.platform.audit.v1.AuditService (client)
@@ -165,7 +165,7 @@ extension Primandproper_Platform_Audit_V1_AuditService {
     /// > resolved.
     /// > What is absent is the recording -- see this file's documentation for why a
     /// > write that belongs inside the caller's transaction cannot be an RPC.
-    internal protocol ClientProtocol: Sendable {
+    public protocol ClientProtocol: Sendable {
         /// Call the "GetEntry" method.
         ///
         /// > Source IDL Documentation:
@@ -259,14 +259,14 @@ extension Primandproper_Platform_Audit_V1_AuditService {
     /// > resolved.
     /// > What is absent is the recording -- see this file's documentation for why a
     /// > write that belongs inside the caller's transaction cannot be an RPC.
-    internal struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
+    public struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
         private let client: GRPCCore.GRPCClient<Transport>
 
         /// Creates a new client wrapping the provided `GRPCCore.GRPCClient`.
         ///
         /// - Parameters:
         ///   - client: A `GRPCCore.GRPCClient` providing a communication channel to the service.
-        internal init(wrapping client: GRPCCore.GRPCClient<Transport>) {
+        public init(wrapping client: GRPCCore.GRPCClient<Transport>) {
             self.client = client
         }
 
@@ -287,7 +287,7 @@ extension Primandproper_Platform_Audit_V1_AuditService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getEntry<Result>(
+        public func getEntry<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_GetEntryRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Audit_V1_GetEntryRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Audit_V1_GetEntryResponse>,
@@ -321,7 +321,7 @@ extension Primandproper_Platform_Audit_V1_AuditService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listEntries<Result>(
+        public func listEntries<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_ListEntriesRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Audit_V1_ListEntriesRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Audit_V1_ListEntriesResponse>,
@@ -361,7 +361,7 @@ extension Primandproper_Platform_Audit_V1_AuditService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func verifyChain<Result>(
+        public func verifyChain<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_VerifyChainRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Audit_V1_VerifyChainRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Audit_V1_VerifyChainResponse>,
@@ -400,7 +400,7 @@ extension Primandproper_Platform_Audit_V1_AuditService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getEntry<Result>(
+    public func getEntry<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_GetEntryRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Audit_V1_GetEntryResponse>) async throws -> Result = { response in
@@ -429,7 +429,7 @@ extension Primandproper_Platform_Audit_V1_AuditService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listEntries<Result>(
+    public func listEntries<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_ListEntriesRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Audit_V1_ListEntriesResponse>) async throws -> Result = { response in
@@ -464,7 +464,7 @@ extension Primandproper_Platform_Audit_V1_AuditService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func verifyChain<Result>(
+    public func verifyChain<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_VerifyChainRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Audit_V1_VerifyChainResponse>) async throws -> Result = { response in
@@ -500,7 +500,7 @@ extension Primandproper_Platform_Audit_V1_AuditService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getEntry<Result>(
+    public func getEntry<Result>(
         _ message: Primandproper_Platform_Audit_V1_GetEntryRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -533,7 +533,7 @@ extension Primandproper_Platform_Audit_V1_AuditService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listEntries<Result>(
+    public func listEntries<Result>(
         _ message: Primandproper_Platform_Audit_V1_ListEntriesRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -572,7 +572,7 @@ extension Primandproper_Platform_Audit_V1_AuditService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func verifyChain<Result>(
+    public func verifyChain<Result>(
         _ message: Primandproper_Platform_Audit_V1_VerifyChainRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -596,39 +596,39 @@ extension Primandproper_Platform_Audit_V1_AuditService.ClientProtocol {
 
 /// Namespace containing generated types for the "primandproper.platform.audit.v1.AuditAdministrationService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Audit_V1_AuditAdministrationService: Sendable {
+public enum Primandproper_Platform_Audit_V1_AuditAdministrationService: Sendable {
     /// Service descriptor for the "primandproper.platform.audit.v1.AuditAdministrationService" service.
-    internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditAdministrationService")
+    public static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditAdministrationService")
     /// Namespace for method metadata.
-    internal enum Method: Sendable {
+    public enum Method: Sendable {
         /// Namespace for "GetAnyEntry" metadata.
-        internal enum GetAnyEntry: Sendable {
+        public enum GetAnyEntry: Sendable {
             /// Request type for "GetAnyEntry".
-            internal typealias Input = Primandproper_Platform_Audit_V1_GetAnyEntryRequest
+            public typealias Input = Primandproper_Platform_Audit_V1_GetAnyEntryRequest
             /// Response type for "GetAnyEntry".
-            internal typealias Output = Primandproper_Platform_Audit_V1_GetAnyEntryResponse
+            public typealias Output = Primandproper_Platform_Audit_V1_GetAnyEntryResponse
             /// Descriptor for "GetAnyEntry".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditAdministrationService"),
                 method: "GetAnyEntry",
                 type: .unary
             )
         }
         /// Namespace for "ListAnyEntries" metadata.
-        internal enum ListAnyEntries: Sendable {
+        public enum ListAnyEntries: Sendable {
             /// Request type for "ListAnyEntries".
-            internal typealias Input = Primandproper_Platform_Audit_V1_ListAnyEntriesRequest
+            public typealias Input = Primandproper_Platform_Audit_V1_ListAnyEntriesRequest
             /// Response type for "ListAnyEntries".
-            internal typealias Output = Primandproper_Platform_Audit_V1_ListAnyEntriesResponse
+            public typealias Output = Primandproper_Platform_Audit_V1_ListAnyEntriesResponse
             /// Descriptor for "ListAnyEntries".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditAdministrationService"),
                 method: "ListAnyEntries",
                 type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.audit.v1.AuditAdministrationService" service.
-        internal static let descriptors: [GRPCCore.MethodDescriptor] = [
+        public static let descriptors: [GRPCCore.MethodDescriptor] = [
             GetAnyEntry.descriptor,
             ListAnyEntries.descriptor
         ]
@@ -638,7 +638,7 @@ internal enum Primandproper_Platform_Audit_V1_AuditAdministrationService: Sendab
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension GRPCCore.ServiceDescriptor {
     /// Service descriptor for the "primandproper.platform.audit.v1.AuditAdministrationService" service.
-    internal static let primandproper_platform_audit_v1_AuditAdministrationService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditAdministrationService")
+    public static let primandproper_platform_audit_v1_AuditAdministrationService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditAdministrationService")
 }
 
 // MARK: primandproper.platform.audit.v1.AuditAdministrationService (client)
@@ -661,7 +661,7 @@ extension Primandproper_Platform_Audit_V1_AuditAdministrationService {
     /// > answers only the callers a deployment's policy grants its methods to, and
     /// > records each call in the caller's own chain before it answers -- a server with
     /// > nowhere to record one answers every call here Unimplemented.
-    internal protocol ClientProtocol: Sendable {
+    public protocol ClientProtocol: Sendable {
         /// Call the "GetAnyEntry" method.
         ///
         /// > Source IDL Documentation:
@@ -730,14 +730,14 @@ extension Primandproper_Platform_Audit_V1_AuditAdministrationService {
     /// > answers only the callers a deployment's policy grants its methods to, and
     /// > records each call in the caller's own chain before it answers -- a server with
     /// > nowhere to record one answers every call here Unimplemented.
-    internal struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
+    public struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
         private let client: GRPCCore.GRPCClient<Transport>
 
         /// Creates a new client wrapping the provided `GRPCCore.GRPCClient`.
         ///
         /// - Parameters:
         ///   - client: A `GRPCCore.GRPCClient` providing a communication channel to the service.
-        internal init(wrapping client: GRPCCore.GRPCClient<Transport>) {
+        public init(wrapping client: GRPCCore.GRPCClient<Transport>) {
             self.client = client
         }
 
@@ -759,7 +759,7 @@ extension Primandproper_Platform_Audit_V1_AuditAdministrationService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getAnyEntry<Result>(
+        public func getAnyEntry<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_GetAnyEntryRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Audit_V1_GetAnyEntryRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Audit_V1_GetAnyEntryResponse>,
@@ -794,7 +794,7 @@ extension Primandproper_Platform_Audit_V1_AuditAdministrationService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listAnyEntries<Result>(
+        public func listAnyEntries<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_ListAnyEntriesRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Audit_V1_ListAnyEntriesRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Audit_V1_ListAnyEntriesResponse>,
@@ -834,7 +834,7 @@ extension Primandproper_Platform_Audit_V1_AuditAdministrationService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getAnyEntry<Result>(
+    public func getAnyEntry<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_GetAnyEntryRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Audit_V1_GetAnyEntryResponse>) async throws -> Result = { response in
@@ -864,7 +864,7 @@ extension Primandproper_Platform_Audit_V1_AuditAdministrationService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listAnyEntries<Result>(
+    public func listAnyEntries<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_ListAnyEntriesRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Audit_V1_ListAnyEntriesResponse>) async throws -> Result = { response in
@@ -901,7 +901,7 @@ extension Primandproper_Platform_Audit_V1_AuditAdministrationService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getAnyEntry<Result>(
+    public func getAnyEntry<Result>(
         _ message: Primandproper_Platform_Audit_V1_GetAnyEntryRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -935,7 +935,7 @@ extension Primandproper_Platform_Audit_V1_AuditAdministrationService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listAnyEntries<Result>(
+    public func listAnyEntries<Result>(
         _ message: Primandproper_Platform_Audit_V1_ListAnyEntriesRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,

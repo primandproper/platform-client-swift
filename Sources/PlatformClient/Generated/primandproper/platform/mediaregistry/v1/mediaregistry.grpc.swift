@@ -79,104 +79,104 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "primandproper.platform.mediaregistry.v1.MediaRegistryService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Mediaregistry_V1_MediaRegistryService: Sendable {
+public enum Primandproper_Platform_Mediaregistry_V1_MediaRegistryService: Sendable {
     /// Service descriptor for the "primandproper.platform.mediaregistry.v1.MediaRegistryService" service.
-    internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.mediaregistry.v1.MediaRegistryService")
+    public static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.mediaregistry.v1.MediaRegistryService")
     /// Namespace for method metadata.
-    internal enum Method: Sendable {
+    public enum Method: Sendable {
         /// Namespace for "UploadObject" metadata.
-        internal enum UploadObject: Sendable {
+        public enum UploadObject: Sendable {
             /// Request type for "UploadObject".
-            internal typealias Input = Primandproper_Platform_Mediaregistry_V1_UploadObjectRequest
+            public typealias Input = Primandproper_Platform_Mediaregistry_V1_UploadObjectRequest
             /// Response type for "UploadObject".
-            internal typealias Output = Primandproper_Platform_Mediaregistry_V1_UploadObjectResponse
+            public typealias Output = Primandproper_Platform_Mediaregistry_V1_UploadObjectResponse
             /// Descriptor for "UploadObject".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.mediaregistry.v1.MediaRegistryService"),
                 method: "UploadObject",
                 type: .clientStreaming
             )
         }
         /// Namespace for "RecordObject" metadata.
-        internal enum RecordObject: Sendable {
+        public enum RecordObject: Sendable {
             /// Request type for "RecordObject".
-            internal typealias Input = Primandproper_Platform_Mediaregistry_V1_RecordObjectRequest
+            public typealias Input = Primandproper_Platform_Mediaregistry_V1_RecordObjectRequest
             /// Response type for "RecordObject".
-            internal typealias Output = Primandproper_Platform_Mediaregistry_V1_RecordObjectResponse
+            public typealias Output = Primandproper_Platform_Mediaregistry_V1_RecordObjectResponse
             /// Descriptor for "RecordObject".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.mediaregistry.v1.MediaRegistryService"),
                 method: "RecordObject",
                 type: .unary
             )
         }
         /// Namespace for "GetObject" metadata.
-        internal enum GetObject: Sendable {
+        public enum GetObject: Sendable {
             /// Request type for "GetObject".
-            internal typealias Input = Primandproper_Platform_Mediaregistry_V1_GetObjectRequest
+            public typealias Input = Primandproper_Platform_Mediaregistry_V1_GetObjectRequest
             /// Response type for "GetObject".
-            internal typealias Output = Primandproper_Platform_Mediaregistry_V1_GetObjectResponse
+            public typealias Output = Primandproper_Platform_Mediaregistry_V1_GetObjectResponse
             /// Descriptor for "GetObject".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.mediaregistry.v1.MediaRegistryService"),
                 method: "GetObject",
                 type: .unary
             )
         }
         /// Namespace for "ListObjectsByIDs" metadata.
-        internal enum ListObjectsByIDs: Sendable {
+        public enum ListObjectsByIDs: Sendable {
             /// Request type for "ListObjectsByIDs".
-            internal typealias Input = Primandproper_Platform_Mediaregistry_V1_ListObjectsByIDsRequest
+            public typealias Input = Primandproper_Platform_Mediaregistry_V1_ListObjectsByIDsRequest
             /// Response type for "ListObjectsByIDs".
-            internal typealias Output = Primandproper_Platform_Mediaregistry_V1_ListObjectsByIDsResponse
+            public typealias Output = Primandproper_Platform_Mediaregistry_V1_ListObjectsByIDsResponse
             /// Descriptor for "ListObjectsByIDs".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.mediaregistry.v1.MediaRegistryService"),
                 method: "ListObjectsByIDs",
                 type: .unary
             )
         }
         /// Namespace for "ListMyObjects" metadata.
-        internal enum ListMyObjects: Sendable {
+        public enum ListMyObjects: Sendable {
             /// Request type for "ListMyObjects".
-            internal typealias Input = Primandproper_Platform_Mediaregistry_V1_ListMyObjectsRequest
+            public typealias Input = Primandproper_Platform_Mediaregistry_V1_ListMyObjectsRequest
             /// Response type for "ListMyObjects".
-            internal typealias Output = Primandproper_Platform_Mediaregistry_V1_ListMyObjectsResponse
+            public typealias Output = Primandproper_Platform_Mediaregistry_V1_ListMyObjectsResponse
             /// Descriptor for "ListMyObjects".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.mediaregistry.v1.MediaRegistryService"),
                 method: "ListMyObjects",
                 type: .unary
             )
         }
         /// Namespace for "ListObjectsBySubject" metadata.
-        internal enum ListObjectsBySubject: Sendable {
+        public enum ListObjectsBySubject: Sendable {
             /// Request type for "ListObjectsBySubject".
-            internal typealias Input = Primandproper_Platform_Mediaregistry_V1_ListObjectsBySubjectRequest
+            public typealias Input = Primandproper_Platform_Mediaregistry_V1_ListObjectsBySubjectRequest
             /// Response type for "ListObjectsBySubject".
-            internal typealias Output = Primandproper_Platform_Mediaregistry_V1_ListObjectsBySubjectResponse
+            public typealias Output = Primandproper_Platform_Mediaregistry_V1_ListObjectsBySubjectResponse
             /// Descriptor for "ListObjectsBySubject".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.mediaregistry.v1.MediaRegistryService"),
                 method: "ListObjectsBySubject",
                 type: .unary
             )
         }
         /// Namespace for "ArchiveObject" metadata.
-        internal enum ArchiveObject: Sendable {
+        public enum ArchiveObject: Sendable {
             /// Request type for "ArchiveObject".
-            internal typealias Input = Primandproper_Platform_Mediaregistry_V1_ArchiveObjectRequest
+            public typealias Input = Primandproper_Platform_Mediaregistry_V1_ArchiveObjectRequest
             /// Response type for "ArchiveObject".
-            internal typealias Output = Primandproper_Platform_Mediaregistry_V1_ArchiveObjectResponse
+            public typealias Output = Primandproper_Platform_Mediaregistry_V1_ArchiveObjectResponse
             /// Descriptor for "ArchiveObject".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.mediaregistry.v1.MediaRegistryService"),
                 method: "ArchiveObject",
                 type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.mediaregistry.v1.MediaRegistryService" service.
-        internal static let descriptors: [GRPCCore.MethodDescriptor] = [
+        public static let descriptors: [GRPCCore.MethodDescriptor] = [
             UploadObject.descriptor,
             RecordObject.descriptor,
             GetObject.descriptor,
@@ -191,7 +191,7 @@ internal enum Primandproper_Platform_Mediaregistry_V1_MediaRegistryService: Send
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension GRPCCore.ServiceDescriptor {
     /// Service descriptor for the "primandproper.platform.mediaregistry.v1.MediaRegistryService" service.
-    internal static let primandproper_platform_mediaregistry_v1_MediaRegistryService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.mediaregistry.v1.MediaRegistryService")
+    public static let primandproper_platform_mediaregistry_v1_MediaRegistryService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.mediaregistry.v1.MediaRegistryService")
 }
 
 // MARK: primandproper.platform.mediaregistry.v1.MediaRegistryService (client)
@@ -211,7 +211,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService {
     /// > Every method requires a grant -- see mediaregistry/grpc's Permissions -- and
     /// > platform grants none of them to anybody. The tenant is not among any method's
     /// > arguments.
-    internal protocol ClientProtocol: Sendable {
+    public protocol ClientProtocol: Sendable {
         /// Call the "UploadObject" method.
         ///
         /// > Source IDL Documentation:
@@ -365,14 +365,14 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService {
     /// > Every method requires a grant -- see mediaregistry/grpc's Permissions -- and
     /// > platform grants none of them to anybody. The tenant is not among any method's
     /// > arguments.
-    internal struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
+    public struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
         private let client: GRPCCore.GRPCClient<Transport>
 
         /// Creates a new client wrapping the provided `GRPCCore.GRPCClient`.
         ///
         /// - Parameters:
         ///   - client: A `GRPCCore.GRPCClient` providing a communication channel to the service.
-        internal init(wrapping client: GRPCCore.GRPCClient<Transport>) {
+        public init(wrapping client: GRPCCore.GRPCClient<Transport>) {
             self.client = client
         }
 
@@ -392,7 +392,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func uploadObject<Result>(
+        public func uploadObject<Result>(
             request: GRPCCore.StreamingClientRequest<Primandproper_Platform_Mediaregistry_V1_UploadObjectRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Mediaregistry_V1_UploadObjectRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Mediaregistry_V1_UploadObjectResponse>,
@@ -422,7 +422,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func recordObject<Result>(
+        public func recordObject<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Mediaregistry_V1_RecordObjectRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Mediaregistry_V1_RecordObjectRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Mediaregistry_V1_RecordObjectResponse>,
@@ -452,7 +452,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getObject<Result>(
+        public func getObject<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Mediaregistry_V1_GetObjectRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Mediaregistry_V1_GetObjectRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Mediaregistry_V1_GetObjectResponse>,
@@ -482,7 +482,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listObjectsByIDs<Result>(
+        public func listObjectsByIDs<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Mediaregistry_V1_ListObjectsByIDsRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Mediaregistry_V1_ListObjectsByIDsRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Mediaregistry_V1_ListObjectsByIDsResponse>,
@@ -512,7 +512,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listMyObjects<Result>(
+        public func listMyObjects<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Mediaregistry_V1_ListMyObjectsRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Mediaregistry_V1_ListMyObjectsRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Mediaregistry_V1_ListMyObjectsResponse>,
@@ -542,7 +542,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listObjectsBySubject<Result>(
+        public func listObjectsBySubject<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Mediaregistry_V1_ListObjectsBySubjectRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Mediaregistry_V1_ListObjectsBySubjectRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Mediaregistry_V1_ListObjectsBySubjectResponse>,
@@ -572,7 +572,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func archiveObject<Result>(
+        public func archiveObject<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Mediaregistry_V1_ArchiveObjectRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Mediaregistry_V1_ArchiveObjectRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Mediaregistry_V1_ArchiveObjectResponse>,
@@ -610,7 +610,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func uploadObject<Result>(
+    public func uploadObject<Result>(
         request: GRPCCore.StreamingClientRequest<Primandproper_Platform_Mediaregistry_V1_UploadObjectRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Mediaregistry_V1_UploadObjectResponse>) async throws -> Result = { response in
@@ -635,7 +635,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func recordObject<Result>(
+    public func recordObject<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Mediaregistry_V1_RecordObjectRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Mediaregistry_V1_RecordObjectResponse>) async throws -> Result = { response in
@@ -660,7 +660,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getObject<Result>(
+    public func getObject<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Mediaregistry_V1_GetObjectRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Mediaregistry_V1_GetObjectResponse>) async throws -> Result = { response in
@@ -685,7 +685,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listObjectsByIDs<Result>(
+    public func listObjectsByIDs<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Mediaregistry_V1_ListObjectsByIDsRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Mediaregistry_V1_ListObjectsByIDsResponse>) async throws -> Result = { response in
@@ -710,7 +710,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listMyObjects<Result>(
+    public func listMyObjects<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Mediaregistry_V1_ListMyObjectsRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Mediaregistry_V1_ListMyObjectsResponse>) async throws -> Result = { response in
@@ -735,7 +735,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listObjectsBySubject<Result>(
+    public func listObjectsBySubject<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Mediaregistry_V1_ListObjectsBySubjectRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Mediaregistry_V1_ListObjectsBySubjectResponse>) async throws -> Result = { response in
@@ -760,7 +760,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveObject<Result>(
+    public func archiveObject<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Mediaregistry_V1_ArchiveObjectRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Mediaregistry_V1_ArchiveObjectResponse>) async throws -> Result = { response in
@@ -796,7 +796,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func uploadObject<Result>(
+    public func uploadObject<Result>(
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
         requestProducer producer: @Sendable @escaping (GRPCCore.RPCWriter<Primandproper_Platform_Mediaregistry_V1_UploadObjectRequest>) async throws -> Void,
@@ -825,7 +825,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func recordObject<Result>(
+    public func recordObject<Result>(
         _ message: Primandproper_Platform_Mediaregistry_V1_RecordObjectRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -854,7 +854,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getObject<Result>(
+    public func getObject<Result>(
         _ message: Primandproper_Platform_Mediaregistry_V1_GetObjectRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -883,7 +883,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listObjectsByIDs<Result>(
+    public func listObjectsByIDs<Result>(
         _ message: Primandproper_Platform_Mediaregistry_V1_ListObjectsByIDsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -912,7 +912,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listMyObjects<Result>(
+    public func listMyObjects<Result>(
         _ message: Primandproper_Platform_Mediaregistry_V1_ListMyObjectsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -941,7 +941,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listObjectsBySubject<Result>(
+    public func listObjectsBySubject<Result>(
         _ message: Primandproper_Platform_Mediaregistry_V1_ListObjectsBySubjectRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -970,7 +970,7 @@ extension Primandproper_Platform_Mediaregistry_V1_MediaRegistryService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveObject<Result>(
+    public func archiveObject<Result>(
         _ message: Primandproper_Platform_Mediaregistry_V1_ArchiveObjectRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,

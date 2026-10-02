@@ -90,52 +90,52 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "primandproper.platform.passwordreset.v1.PasswordResetService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Passwordreset_V1_PasswordResetService: Sendable {
+public enum Primandproper_Platform_Passwordreset_V1_PasswordResetService: Sendable {
     /// Service descriptor for the "primandproper.platform.passwordreset.v1.PasswordResetService" service.
-    internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.passwordreset.v1.PasswordResetService")
+    public static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.passwordreset.v1.PasswordResetService")
     /// Namespace for method metadata.
-    internal enum Method: Sendable {
+    public enum Method: Sendable {
         /// Namespace for "RequestPasswordReset" metadata.
-        internal enum RequestPasswordReset: Sendable {
+        public enum RequestPasswordReset: Sendable {
             /// Request type for "RequestPasswordReset".
-            internal typealias Input = Primandproper_Platform_Passwordreset_V1_RequestPasswordResetRequest
+            public typealias Input = Primandproper_Platform_Passwordreset_V1_RequestPasswordResetRequest
             /// Response type for "RequestPasswordReset".
-            internal typealias Output = Primandproper_Platform_Passwordreset_V1_RequestPasswordResetResponse
+            public typealias Output = Primandproper_Platform_Passwordreset_V1_RequestPasswordResetResponse
             /// Descriptor for "RequestPasswordReset".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.passwordreset.v1.PasswordResetService"),
                 method: "RequestPasswordReset",
                 type: .unary
             )
         }
         /// Namespace for "VerifyPasswordResetToken" metadata.
-        internal enum VerifyPasswordResetToken: Sendable {
+        public enum VerifyPasswordResetToken: Sendable {
             /// Request type for "VerifyPasswordResetToken".
-            internal typealias Input = Primandproper_Platform_Passwordreset_V1_VerifyPasswordResetTokenRequest
+            public typealias Input = Primandproper_Platform_Passwordreset_V1_VerifyPasswordResetTokenRequest
             /// Response type for "VerifyPasswordResetToken".
-            internal typealias Output = Primandproper_Platform_Passwordreset_V1_VerifyPasswordResetTokenResponse
+            public typealias Output = Primandproper_Platform_Passwordreset_V1_VerifyPasswordResetTokenResponse
             /// Descriptor for "VerifyPasswordResetToken".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.passwordreset.v1.PasswordResetService"),
                 method: "VerifyPasswordResetToken",
                 type: .unary
             )
         }
         /// Namespace for "CompletePasswordReset" metadata.
-        internal enum CompletePasswordReset: Sendable {
+        public enum CompletePasswordReset: Sendable {
             /// Request type for "CompletePasswordReset".
-            internal typealias Input = Primandproper_Platform_Passwordreset_V1_CompletePasswordResetRequest
+            public typealias Input = Primandproper_Platform_Passwordreset_V1_CompletePasswordResetRequest
             /// Response type for "CompletePasswordReset".
-            internal typealias Output = Primandproper_Platform_Passwordreset_V1_CompletePasswordResetResponse
+            public typealias Output = Primandproper_Platform_Passwordreset_V1_CompletePasswordResetResponse
             /// Descriptor for "CompletePasswordReset".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.passwordreset.v1.PasswordResetService"),
                 method: "CompletePasswordReset",
                 type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.passwordreset.v1.PasswordResetService" service.
-        internal static let descriptors: [GRPCCore.MethodDescriptor] = [
+        public static let descriptors: [GRPCCore.MethodDescriptor] = [
             RequestPasswordReset.descriptor,
             VerifyPasswordResetToken.descriptor,
             CompletePasswordReset.descriptor
@@ -146,7 +146,7 @@ internal enum Primandproper_Platform_Passwordreset_V1_PasswordResetService: Send
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension GRPCCore.ServiceDescriptor {
     /// Service descriptor for the "primandproper.platform.passwordreset.v1.PasswordResetService" service.
-    internal static let primandproper_platform_passwordreset_v1_PasswordResetService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.passwordreset.v1.PasswordResetService")
+    public static let primandproper_platform_passwordreset_v1_PasswordResetService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.passwordreset.v1.PasswordResetService")
 }
 
 // MARK: primandproper.platform.passwordreset.v1.PasswordResetService (client)
@@ -171,7 +171,7 @@ extension Primandproper_Platform_Passwordreset_V1_PasswordResetService {
     /// > What a consumer owes in front of it is a rate limit, and it is not optional:
     /// > RequestPasswordReset sends mail on request, and it is the one RPC here that
     /// > does anything on behalf of somebody who has proven nothing at all.
-    internal protocol ClientProtocol: Sendable {
+    public protocol ClientProtocol: Sendable {
         /// Call the "RequestPasswordReset" method.
         ///
         /// - Parameters:
@@ -249,14 +249,14 @@ extension Primandproper_Platform_Passwordreset_V1_PasswordResetService {
     /// > What a consumer owes in front of it is a rate limit, and it is not optional:
     /// > RequestPasswordReset sends mail on request, and it is the one RPC here that
     /// > does anything on behalf of somebody who has proven nothing at all.
-    internal struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
+    public struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
         private let client: GRPCCore.GRPCClient<Transport>
 
         /// Creates a new client wrapping the provided `GRPCCore.GRPCClient`.
         ///
         /// - Parameters:
         ///   - client: A `GRPCCore.GRPCClient` providing a communication channel to the service.
-        internal init(wrapping client: GRPCCore.GRPCClient<Transport>) {
+        public init(wrapping client: GRPCCore.GRPCClient<Transport>) {
             self.client = client
         }
 
@@ -271,7 +271,7 @@ extension Primandproper_Platform_Passwordreset_V1_PasswordResetService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func requestPasswordReset<Result>(
+        public func requestPasswordReset<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Passwordreset_V1_RequestPasswordResetRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Passwordreset_V1_RequestPasswordResetRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Passwordreset_V1_RequestPasswordResetResponse>,
@@ -301,7 +301,7 @@ extension Primandproper_Platform_Passwordreset_V1_PasswordResetService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func verifyPasswordResetToken<Result>(
+        public func verifyPasswordResetToken<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Passwordreset_V1_VerifyPasswordResetTokenRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Passwordreset_V1_VerifyPasswordResetTokenRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Passwordreset_V1_VerifyPasswordResetTokenResponse>,
@@ -331,7 +331,7 @@ extension Primandproper_Platform_Passwordreset_V1_PasswordResetService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func completePasswordReset<Result>(
+        public func completePasswordReset<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Passwordreset_V1_CompletePasswordResetRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Passwordreset_V1_CompletePasswordResetRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Passwordreset_V1_CompletePasswordResetResponse>,
@@ -364,7 +364,7 @@ extension Primandproper_Platform_Passwordreset_V1_PasswordResetService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func requestPasswordReset<Result>(
+    public func requestPasswordReset<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Passwordreset_V1_RequestPasswordResetRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Passwordreset_V1_RequestPasswordResetResponse>) async throws -> Result = { response in
@@ -389,7 +389,7 @@ extension Primandproper_Platform_Passwordreset_V1_PasswordResetService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func verifyPasswordResetToken<Result>(
+    public func verifyPasswordResetToken<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Passwordreset_V1_VerifyPasswordResetTokenRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Passwordreset_V1_VerifyPasswordResetTokenResponse>) async throws -> Result = { response in
@@ -414,7 +414,7 @@ extension Primandproper_Platform_Passwordreset_V1_PasswordResetService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func completePasswordReset<Result>(
+    public func completePasswordReset<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Passwordreset_V1_CompletePasswordResetRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Passwordreset_V1_CompletePasswordResetResponse>) async throws -> Result = { response in
@@ -444,7 +444,7 @@ extension Primandproper_Platform_Passwordreset_V1_PasswordResetService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func requestPasswordReset<Result>(
+    public func requestPasswordReset<Result>(
         _ message: Primandproper_Platform_Passwordreset_V1_RequestPasswordResetRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -473,7 +473,7 @@ extension Primandproper_Platform_Passwordreset_V1_PasswordResetService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func verifyPasswordResetToken<Result>(
+    public func verifyPasswordResetToken<Result>(
         _ message: Primandproper_Platform_Passwordreset_V1_VerifyPasswordResetTokenRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -502,7 +502,7 @@ extension Primandproper_Platform_Passwordreset_V1_PasswordResetService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func completePasswordReset<Result>(
+    public func completePasswordReset<Result>(
         _ message: Primandproper_Platform_Passwordreset_V1_CompletePasswordResetRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,

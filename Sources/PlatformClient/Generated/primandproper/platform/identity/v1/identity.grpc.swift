@@ -106,403 +106,403 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "primandproper.platform.identity.v1.IdentityService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Identity_V1_IdentityService: Sendable {
+public enum Primandproper_Platform_Identity_V1_IdentityService: Sendable {
     /// Service descriptor for the "primandproper.platform.identity.v1.IdentityService" service.
-    internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService")
+    public static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService")
     /// Namespace for method metadata.
-    internal enum Method: Sendable {
+    public enum Method: Sendable {
         /// Namespace for "UpdateProfile" metadata.
-        internal enum UpdateProfile: Sendable {
+        public enum UpdateProfile: Sendable {
             /// Request type for "UpdateProfile".
-            internal typealias Input = Primandproper_Platform_Identity_V1_UpdateProfileRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_UpdateProfileRequest
             /// Response type for "UpdateProfile".
-            internal typealias Output = Primandproper_Platform_Identity_V1_UpdateProfileResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_UpdateProfileResponse
             /// Descriptor for "UpdateProfile".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "UpdateProfile",
                 type: .unary
             )
         }
         /// Namespace for "UpdateAccount" metadata.
-        internal enum UpdateAccount: Sendable {
+        public enum UpdateAccount: Sendable {
             /// Request type for "UpdateAccount".
-            internal typealias Input = Primandproper_Platform_Identity_V1_UpdateAccountRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_UpdateAccountRequest
             /// Response type for "UpdateAccount".
-            internal typealias Output = Primandproper_Platform_Identity_V1_UpdateAccountResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_UpdateAccountResponse
             /// Descriptor for "UpdateAccount".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "UpdateAccount",
                 type: .unary
             )
         }
         /// Namespace for "RecordAgreement" metadata.
-        internal enum RecordAgreement: Sendable {
+        public enum RecordAgreement: Sendable {
             /// Request type for "RecordAgreement".
-            internal typealias Input = Primandproper_Platform_Identity_V1_RecordAgreementRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_RecordAgreementRequest
             /// Response type for "RecordAgreement".
-            internal typealias Output = Primandproper_Platform_Identity_V1_RecordAgreementResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_RecordAgreementResponse
             /// Descriptor for "RecordAgreement".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "RecordAgreement",
                 type: .unary
             )
         }
         /// Namespace for "Invite" metadata.
-        internal enum Invite: Sendable {
+        public enum Invite: Sendable {
             /// Request type for "Invite".
-            internal typealias Input = Primandproper_Platform_Identity_V1_InviteRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_InviteRequest
             /// Response type for "Invite".
-            internal typealias Output = Primandproper_Platform_Identity_V1_InviteResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_InviteResponse
             /// Descriptor for "Invite".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "Invite",
                 type: .unary
             )
         }
         /// Namespace for "AcceptInvitation" metadata.
-        internal enum AcceptInvitation: Sendable {
+        public enum AcceptInvitation: Sendable {
             /// Request type for "AcceptInvitation".
-            internal typealias Input = Primandproper_Platform_Identity_V1_AcceptInvitationRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_AcceptInvitationRequest
             /// Response type for "AcceptInvitation".
-            internal typealias Output = Primandproper_Platform_Identity_V1_AcceptInvitationResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_AcceptInvitationResponse
             /// Descriptor for "AcceptInvitation".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "AcceptInvitation",
                 type: .unary
             )
         }
         /// Namespace for "RejectInvitation" metadata.
-        internal enum RejectInvitation: Sendable {
+        public enum RejectInvitation: Sendable {
             /// Request type for "RejectInvitation".
-            internal typealias Input = Primandproper_Platform_Identity_V1_RejectInvitationRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_RejectInvitationRequest
             /// Response type for "RejectInvitation".
-            internal typealias Output = Primandproper_Platform_Identity_V1_RejectInvitationResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_RejectInvitationResponse
             /// Descriptor for "RejectInvitation".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "RejectInvitation",
                 type: .unary
             )
         }
         /// Namespace for "CancelInvitation" metadata.
-        internal enum CancelInvitation: Sendable {
+        public enum CancelInvitation: Sendable {
             /// Request type for "CancelInvitation".
-            internal typealias Input = Primandproper_Platform_Identity_V1_CancelInvitationRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_CancelInvitationRequest
             /// Response type for "CancelInvitation".
-            internal typealias Output = Primandproper_Platform_Identity_V1_CancelInvitationResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_CancelInvitationResponse
             /// Descriptor for "CancelInvitation".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "CancelInvitation",
                 type: .unary
             )
         }
         /// Namespace for "CreateAccount" metadata.
-        internal enum CreateAccount: Sendable {
+        public enum CreateAccount: Sendable {
             /// Request type for "CreateAccount".
-            internal typealias Input = Primandproper_Platform_Identity_V1_CreateAccountRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_CreateAccountRequest
             /// Response type for "CreateAccount".
-            internal typealias Output = Primandproper_Platform_Identity_V1_CreateAccountResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_CreateAccountResponse
             /// Descriptor for "CreateAccount".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "CreateAccount",
                 type: .unary
             )
         }
         /// Namespace for "TransferAccountOwnership" metadata.
-        internal enum TransferAccountOwnership: Sendable {
+        public enum TransferAccountOwnership: Sendable {
             /// Request type for "TransferAccountOwnership".
-            internal typealias Input = Primandproper_Platform_Identity_V1_TransferAccountOwnershipRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_TransferAccountOwnershipRequest
             /// Response type for "TransferAccountOwnership".
-            internal typealias Output = Primandproper_Platform_Identity_V1_TransferAccountOwnershipResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_TransferAccountOwnershipResponse
             /// Descriptor for "TransferAccountOwnership".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "TransferAccountOwnership",
                 type: .unary
             )
         }
         /// Namespace for "SetDefaultAccount" metadata.
-        internal enum SetDefaultAccount: Sendable {
+        public enum SetDefaultAccount: Sendable {
             /// Request type for "SetDefaultAccount".
-            internal typealias Input = Primandproper_Platform_Identity_V1_SetDefaultAccountRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_SetDefaultAccountRequest
             /// Response type for "SetDefaultAccount".
-            internal typealias Output = Primandproper_Platform_Identity_V1_SetDefaultAccountResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_SetDefaultAccountResponse
             /// Descriptor for "SetDefaultAccount".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "SetDefaultAccount",
                 type: .unary
             )
         }
         /// Namespace for "SetMembershipRoles" metadata.
-        internal enum SetMembershipRoles: Sendable {
+        public enum SetMembershipRoles: Sendable {
             /// Request type for "SetMembershipRoles".
-            internal typealias Input = Primandproper_Platform_Identity_V1_SetMembershipRolesRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_SetMembershipRolesRequest
             /// Response type for "SetMembershipRoles".
-            internal typealias Output = Primandproper_Platform_Identity_V1_SetMembershipRolesResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_SetMembershipRolesResponse
             /// Descriptor for "SetMembershipRoles".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "SetMembershipRoles",
                 type: .unary
             )
         }
         /// Namespace for "RemoveMembership" metadata.
-        internal enum RemoveMembership: Sendable {
+        public enum RemoveMembership: Sendable {
             /// Request type for "RemoveMembership".
-            internal typealias Input = Primandproper_Platform_Identity_V1_RemoveMembershipRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_RemoveMembershipRequest
             /// Response type for "RemoveMembership".
-            internal typealias Output = Primandproper_Platform_Identity_V1_RemoveMembershipResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_RemoveMembershipResponse
             /// Descriptor for "RemoveMembership".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "RemoveMembership",
                 type: .unary
             )
         }
         /// Namespace for "ArchiveUser" metadata.
-        internal enum ArchiveUser: Sendable {
+        public enum ArchiveUser: Sendable {
             /// Request type for "ArchiveUser".
-            internal typealias Input = Primandproper_Platform_Identity_V1_ArchiveUserRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_ArchiveUserRequest
             /// Response type for "ArchiveUser".
-            internal typealias Output = Primandproper_Platform_Identity_V1_ArchiveUserResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_ArchiveUserResponse
             /// Descriptor for "ArchiveUser".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "ArchiveUser",
                 type: .unary
             )
         }
         /// Namespace for "ArchiveAccount" metadata.
-        internal enum ArchiveAccount: Sendable {
+        public enum ArchiveAccount: Sendable {
             /// Request type for "ArchiveAccount".
-            internal typealias Input = Primandproper_Platform_Identity_V1_ArchiveAccountRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_ArchiveAccountRequest
             /// Response type for "ArchiveAccount".
-            internal typealias Output = Primandproper_Platform_Identity_V1_ArchiveAccountResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_ArchiveAccountResponse
             /// Descriptor for "ArchiveAccount".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "ArchiveAccount",
                 type: .unary
             )
         }
         /// Namespace for "UpdateUserAccountStatus" metadata.
-        internal enum UpdateUserAccountStatus: Sendable {
+        public enum UpdateUserAccountStatus: Sendable {
             /// Request type for "UpdateUserAccountStatus".
-            internal typealias Input = Primandproper_Platform_Identity_V1_UpdateUserAccountStatusRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_UpdateUserAccountStatusRequest
             /// Response type for "UpdateUserAccountStatus".
-            internal typealias Output = Primandproper_Platform_Identity_V1_UpdateUserAccountStatusResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_UpdateUserAccountStatusResponse
             /// Descriptor for "UpdateUserAccountStatus".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "UpdateUserAccountStatus",
                 type: .unary
             )
         }
         /// Namespace for "SetUserServiceRoles" metadata.
-        internal enum SetUserServiceRoles: Sendable {
+        public enum SetUserServiceRoles: Sendable {
             /// Request type for "SetUserServiceRoles".
-            internal typealias Input = Primandproper_Platform_Identity_V1_SetUserServiceRolesRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_SetUserServiceRolesRequest
             /// Response type for "SetUserServiceRoles".
-            internal typealias Output = Primandproper_Platform_Identity_V1_SetUserServiceRolesResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_SetUserServiceRolesResponse
             /// Descriptor for "SetUserServiceRoles".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "SetUserServiceRoles",
                 type: .unary
             )
         }
         /// Namespace for "SetUserRequiresPasswordChange" metadata.
-        internal enum SetUserRequiresPasswordChange: Sendable {
+        public enum SetUserRequiresPasswordChange: Sendable {
             /// Request type for "SetUserRequiresPasswordChange".
-            internal typealias Input = Primandproper_Platform_Identity_V1_SetUserRequiresPasswordChangeRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_SetUserRequiresPasswordChangeRequest
             /// Response type for "SetUserRequiresPasswordChange".
-            internal typealias Output = Primandproper_Platform_Identity_V1_SetUserRequiresPasswordChangeResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_SetUserRequiresPasswordChangeResponse
             /// Descriptor for "SetUserRequiresPasswordChange".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "SetUserRequiresPasswordChange",
                 type: .unary
             )
         }
         /// Namespace for "GetPrincipal" metadata.
-        internal enum GetPrincipal: Sendable {
+        public enum GetPrincipal: Sendable {
             /// Request type for "GetPrincipal".
-            internal typealias Input = Primandproper_Platform_Identity_V1_GetPrincipalRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_GetPrincipalRequest
             /// Response type for "GetPrincipal".
-            internal typealias Output = Primandproper_Platform_Identity_V1_GetPrincipalResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_GetPrincipalResponse
             /// Descriptor for "GetPrincipal".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "GetPrincipal",
                 type: .unary
             )
         }
         /// Namespace for "GetUser" metadata.
-        internal enum GetUser: Sendable {
+        public enum GetUser: Sendable {
             /// Request type for "GetUser".
-            internal typealias Input = Primandproper_Platform_Identity_V1_GetUserRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_GetUserRequest
             /// Response type for "GetUser".
-            internal typealias Output = Primandproper_Platform_Identity_V1_GetUserResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_GetUserResponse
             /// Descriptor for "GetUser".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "GetUser",
                 type: .unary
             )
         }
         /// Namespace for "ListUsers" metadata.
-        internal enum ListUsers: Sendable {
+        public enum ListUsers: Sendable {
             /// Request type for "ListUsers".
-            internal typealias Input = Primandproper_Platform_Identity_V1_ListUsersRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_ListUsersRequest
             /// Response type for "ListUsers".
-            internal typealias Output = Primandproper_Platform_Identity_V1_ListUsersResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_ListUsersResponse
             /// Descriptor for "ListUsers".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "ListUsers",
                 type: .unary
             )
         }
         /// Namespace for "SearchUsersByUsername" metadata.
-        internal enum SearchUsersByUsername: Sendable {
+        public enum SearchUsersByUsername: Sendable {
             /// Request type for "SearchUsersByUsername".
-            internal typealias Input = Primandproper_Platform_Identity_V1_SearchUsersByUsernameRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_SearchUsersByUsernameRequest
             /// Response type for "SearchUsersByUsername".
-            internal typealias Output = Primandproper_Platform_Identity_V1_SearchUsersByUsernameResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_SearchUsersByUsernameResponse
             /// Descriptor for "SearchUsersByUsername".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "SearchUsersByUsername",
                 type: .unary
             )
         }
         /// Namespace for "GetAccount" metadata.
-        internal enum GetAccount: Sendable {
+        public enum GetAccount: Sendable {
             /// Request type for "GetAccount".
-            internal typealias Input = Primandproper_Platform_Identity_V1_GetAccountRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_GetAccountRequest
             /// Response type for "GetAccount".
-            internal typealias Output = Primandproper_Platform_Identity_V1_GetAccountResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_GetAccountResponse
             /// Descriptor for "GetAccount".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "GetAccount",
                 type: .unary
             )
         }
         /// Namespace for "ListAccounts" metadata.
-        internal enum ListAccounts: Sendable {
+        public enum ListAccounts: Sendable {
             /// Request type for "ListAccounts".
-            internal typealias Input = Primandproper_Platform_Identity_V1_ListAccountsRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_ListAccountsRequest
             /// Response type for "ListAccounts".
-            internal typealias Output = Primandproper_Platform_Identity_V1_ListAccountsResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_ListAccountsResponse
             /// Descriptor for "ListAccounts".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "ListAccounts",
                 type: .unary
             )
         }
         /// Namespace for "ListAccountsForUser" metadata.
-        internal enum ListAccountsForUser: Sendable {
+        public enum ListAccountsForUser: Sendable {
             /// Request type for "ListAccountsForUser".
-            internal typealias Input = Primandproper_Platform_Identity_V1_ListAccountsForUserRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_ListAccountsForUserRequest
             /// Response type for "ListAccountsForUser".
-            internal typealias Output = Primandproper_Platform_Identity_V1_ListAccountsForUserResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_ListAccountsForUserResponse
             /// Descriptor for "ListAccountsForUser".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "ListAccountsForUser",
                 type: .unary
             )
         }
         /// Namespace for "GetMembership" metadata.
-        internal enum GetMembership: Sendable {
+        public enum GetMembership: Sendable {
             /// Request type for "GetMembership".
-            internal typealias Input = Primandproper_Platform_Identity_V1_GetMembershipRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_GetMembershipRequest
             /// Response type for "GetMembership".
-            internal typealias Output = Primandproper_Platform_Identity_V1_GetMembershipResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_GetMembershipResponse
             /// Descriptor for "GetMembership".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "GetMembership",
                 type: .unary
             )
         }
         /// Namespace for "ListMembershipsForUser" metadata.
-        internal enum ListMembershipsForUser: Sendable {
+        public enum ListMembershipsForUser: Sendable {
             /// Request type for "ListMembershipsForUser".
-            internal typealias Input = Primandproper_Platform_Identity_V1_ListMembershipsForUserRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_ListMembershipsForUserRequest
             /// Response type for "ListMembershipsForUser".
-            internal typealias Output = Primandproper_Platform_Identity_V1_ListMembershipsForUserResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_ListMembershipsForUserResponse
             /// Descriptor for "ListMembershipsForUser".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "ListMembershipsForUser",
                 type: .unary
             )
         }
         /// Namespace for "ListAccountMembers" metadata.
-        internal enum ListAccountMembers: Sendable {
+        public enum ListAccountMembers: Sendable {
             /// Request type for "ListAccountMembers".
-            internal typealias Input = Primandproper_Platform_Identity_V1_ListAccountMembersRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_ListAccountMembersRequest
             /// Response type for "ListAccountMembers".
-            internal typealias Output = Primandproper_Platform_Identity_V1_ListAccountMembersResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_ListAccountMembersResponse
             /// Descriptor for "ListAccountMembers".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "ListAccountMembers",
                 type: .unary
             )
         }
         /// Namespace for "GetInvitation" metadata.
-        internal enum GetInvitation: Sendable {
+        public enum GetInvitation: Sendable {
             /// Request type for "GetInvitation".
-            internal typealias Input = Primandproper_Platform_Identity_V1_GetInvitationRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_GetInvitationRequest
             /// Response type for "GetInvitation".
-            internal typealias Output = Primandproper_Platform_Identity_V1_GetInvitationResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_GetInvitationResponse
             /// Descriptor for "GetInvitation".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "GetInvitation",
                 type: .unary
             )
         }
         /// Namespace for "ListInvitationsFromUser" metadata.
-        internal enum ListInvitationsFromUser: Sendable {
+        public enum ListInvitationsFromUser: Sendable {
             /// Request type for "ListInvitationsFromUser".
-            internal typealias Input = Primandproper_Platform_Identity_V1_ListInvitationsFromUserRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_ListInvitationsFromUserRequest
             /// Response type for "ListInvitationsFromUser".
-            internal typealias Output = Primandproper_Platform_Identity_V1_ListInvitationsFromUserResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_ListInvitationsFromUserResponse
             /// Descriptor for "ListInvitationsFromUser".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "ListInvitationsFromUser",
                 type: .unary
             )
         }
         /// Namespace for "ListInvitationsForEmailAddress" metadata.
-        internal enum ListInvitationsForEmailAddress: Sendable {
+        public enum ListInvitationsForEmailAddress: Sendable {
             /// Request type for "ListInvitationsForEmailAddress".
-            internal typealias Input = Primandproper_Platform_Identity_V1_ListInvitationsForEmailAddressRequest
+            public typealias Input = Primandproper_Platform_Identity_V1_ListInvitationsForEmailAddressRequest
             /// Response type for "ListInvitationsForEmailAddress".
-            internal typealias Output = Primandproper_Platform_Identity_V1_ListInvitationsForEmailAddressResponse
+            public typealias Output = Primandproper_Platform_Identity_V1_ListInvitationsForEmailAddressResponse
             /// Descriptor for "ListInvitationsForEmailAddress".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
                 method: "ListInvitationsForEmailAddress",
                 type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.identity.v1.IdentityService" service.
-        internal static let descriptors: [GRPCCore.MethodDescriptor] = [
+        public static let descriptors: [GRPCCore.MethodDescriptor] = [
             UpdateProfile.descriptor,
             UpdateAccount.descriptor,
             RecordAgreement.descriptor,
@@ -540,7 +540,7 @@ internal enum Primandproper_Platform_Identity_V1_IdentityService: Sendable {
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension GRPCCore.ServiceDescriptor {
     /// Service descriptor for the "primandproper.platform.identity.v1.IdentityService" service.
-    internal static let primandproper_platform_identity_v1_IdentityService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService")
+    public static let primandproper_platform_identity_v1_IdentityService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService")
 }
 
 // MARK: primandproper.platform.identity.v1.IdentityService (client)
@@ -566,7 +566,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
     /// > are a default fragment the server package ships and the consumer composes
     /// > into its own policy, and who is calling is resolved from the context by the
     /// > consumer's authentication interceptor.
-    internal protocol ClientProtocol: Sendable {
+    public protocol ClientProtocol: Sendable {
         /// Call the "UpdateProfile" method.
         ///
         /// > Source IDL Documentation:
@@ -1166,14 +1166,14 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
     /// > are a default fragment the server package ships and the consumer composes
     /// > into its own policy, and who is calling is resolved from the context by the
     /// > consumer's authentication interceptor.
-    internal struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
+    public struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
         private let client: GRPCCore.GRPCClient<Transport>
 
         /// Creates a new client wrapping the provided `GRPCCore.GRPCClient`.
         ///
         /// - Parameters:
         ///   - client: A `GRPCCore.GRPCClient` providing a communication channel to the service.
-        internal init(wrapping client: GRPCCore.GRPCClient<Transport>) {
+        public init(wrapping client: GRPCCore.GRPCClient<Transport>) {
             self.client = client
         }
 
@@ -1192,7 +1192,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func updateProfile<Result>(
+        public func updateProfile<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_UpdateProfileRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_UpdateProfileRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_UpdateProfileResponse>,
@@ -1222,7 +1222,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func updateAccount<Result>(
+        public func updateAccount<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_UpdateAccountRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_UpdateAccountRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_UpdateAccountResponse>,
@@ -1252,7 +1252,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func recordAgreement<Result>(
+        public func recordAgreement<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_RecordAgreementRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_RecordAgreementRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_RecordAgreementResponse>,
@@ -1282,7 +1282,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func invite<Result>(
+        public func invite<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_InviteRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_InviteRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_InviteResponse>,
@@ -1312,7 +1312,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func acceptInvitation<Result>(
+        public func acceptInvitation<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_AcceptInvitationRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_AcceptInvitationRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_AcceptInvitationResponse>,
@@ -1342,7 +1342,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func rejectInvitation<Result>(
+        public func rejectInvitation<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_RejectInvitationRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_RejectInvitationRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_RejectInvitationResponse>,
@@ -1372,7 +1372,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func cancelInvitation<Result>(
+        public func cancelInvitation<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_CancelInvitationRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_CancelInvitationRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_CancelInvitationResponse>,
@@ -1402,7 +1402,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func createAccount<Result>(
+        public func createAccount<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_CreateAccountRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_CreateAccountRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_CreateAccountResponse>,
@@ -1432,7 +1432,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func transferAccountOwnership<Result>(
+        public func transferAccountOwnership<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_TransferAccountOwnershipRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_TransferAccountOwnershipRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_TransferAccountOwnershipResponse>,
@@ -1462,7 +1462,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func setDefaultAccount<Result>(
+        public func setDefaultAccount<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_SetDefaultAccountRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_SetDefaultAccountRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_SetDefaultAccountResponse>,
@@ -1492,7 +1492,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func setMembershipRoles<Result>(
+        public func setMembershipRoles<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_SetMembershipRolesRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_SetMembershipRolesRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_SetMembershipRolesResponse>,
@@ -1522,7 +1522,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func removeMembership<Result>(
+        public func removeMembership<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_RemoveMembershipRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_RemoveMembershipRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_RemoveMembershipResponse>,
@@ -1552,7 +1552,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func archiveUser<Result>(
+        public func archiveUser<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_ArchiveUserRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_ArchiveUserRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_ArchiveUserResponse>,
@@ -1582,7 +1582,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func archiveAccount<Result>(
+        public func archiveAccount<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_ArchiveAccountRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_ArchiveAccountRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_ArchiveAccountResponse>,
@@ -1612,7 +1612,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func updateUserAccountStatus<Result>(
+        public func updateUserAccountStatus<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_UpdateUserAccountStatusRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_UpdateUserAccountStatusRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_UpdateUserAccountStatusResponse>,
@@ -1642,7 +1642,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func setUserServiceRoles<Result>(
+        public func setUserServiceRoles<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_SetUserServiceRolesRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_SetUserServiceRolesRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_SetUserServiceRolesResponse>,
@@ -1672,7 +1672,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func setUserRequiresPasswordChange<Result>(
+        public func setUserRequiresPasswordChange<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_SetUserRequiresPasswordChangeRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_SetUserRequiresPasswordChangeRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_SetUserRequiresPasswordChangeResponse>,
@@ -1706,7 +1706,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getPrincipal<Result>(
+        public func getPrincipal<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_GetPrincipalRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_GetPrincipalRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_GetPrincipalResponse>,
@@ -1736,7 +1736,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getUser<Result>(
+        public func getUser<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_GetUserRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_GetUserRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_GetUserResponse>,
@@ -1766,7 +1766,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listUsers<Result>(
+        public func listUsers<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_ListUsersRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_ListUsersRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_ListUsersResponse>,
@@ -1796,7 +1796,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func searchUsersByUsername<Result>(
+        public func searchUsersByUsername<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_SearchUsersByUsernameRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_SearchUsersByUsernameRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_SearchUsersByUsernameResponse>,
@@ -1826,7 +1826,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getAccount<Result>(
+        public func getAccount<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_GetAccountRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_GetAccountRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_GetAccountResponse>,
@@ -1856,7 +1856,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listAccounts<Result>(
+        public func listAccounts<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_ListAccountsRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_ListAccountsRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_ListAccountsResponse>,
@@ -1886,7 +1886,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listAccountsForUser<Result>(
+        public func listAccountsForUser<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_ListAccountsForUserRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_ListAccountsForUserRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_ListAccountsForUserResponse>,
@@ -1916,7 +1916,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getMembership<Result>(
+        public func getMembership<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_GetMembershipRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_GetMembershipRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_GetMembershipResponse>,
@@ -1946,7 +1946,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listMembershipsForUser<Result>(
+        public func listMembershipsForUser<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_ListMembershipsForUserRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_ListMembershipsForUserRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_ListMembershipsForUserResponse>,
@@ -1976,7 +1976,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listAccountMembers<Result>(
+        public func listAccountMembers<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_ListAccountMembersRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_ListAccountMembersRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_ListAccountMembersResponse>,
@@ -2006,7 +2006,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getInvitation<Result>(
+        public func getInvitation<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_GetInvitationRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_GetInvitationRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_GetInvitationResponse>,
@@ -2036,7 +2036,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listInvitationsFromUser<Result>(
+        public func listInvitationsFromUser<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_ListInvitationsFromUserRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_ListInvitationsFromUserRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_ListInvitationsFromUserResponse>,
@@ -2066,7 +2066,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listInvitationsForEmailAddress<Result>(
+        public func listInvitationsForEmailAddress<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_ListInvitationsForEmailAddressRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_ListInvitationsForEmailAddressRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_ListInvitationsForEmailAddressResponse>,
@@ -2103,7 +2103,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateProfile<Result>(
+    public func updateProfile<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_UpdateProfileRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_UpdateProfileResponse>) async throws -> Result = { response in
@@ -2128,7 +2128,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateAccount<Result>(
+    public func updateAccount<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_UpdateAccountRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_UpdateAccountResponse>) async throws -> Result = { response in
@@ -2153,7 +2153,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func recordAgreement<Result>(
+    public func recordAgreement<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_RecordAgreementRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_RecordAgreementResponse>) async throws -> Result = { response in
@@ -2178,7 +2178,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func invite<Result>(
+    public func invite<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_InviteRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_InviteResponse>) async throws -> Result = { response in
@@ -2203,7 +2203,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func acceptInvitation<Result>(
+    public func acceptInvitation<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_AcceptInvitationRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_AcceptInvitationResponse>) async throws -> Result = { response in
@@ -2228,7 +2228,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func rejectInvitation<Result>(
+    public func rejectInvitation<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_RejectInvitationRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_RejectInvitationResponse>) async throws -> Result = { response in
@@ -2253,7 +2253,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func cancelInvitation<Result>(
+    public func cancelInvitation<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_CancelInvitationRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_CancelInvitationResponse>) async throws -> Result = { response in
@@ -2278,7 +2278,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func createAccount<Result>(
+    public func createAccount<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_CreateAccountRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_CreateAccountResponse>) async throws -> Result = { response in
@@ -2303,7 +2303,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func transferAccountOwnership<Result>(
+    public func transferAccountOwnership<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_TransferAccountOwnershipRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_TransferAccountOwnershipResponse>) async throws -> Result = { response in
@@ -2328,7 +2328,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func setDefaultAccount<Result>(
+    public func setDefaultAccount<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_SetDefaultAccountRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_SetDefaultAccountResponse>) async throws -> Result = { response in
@@ -2353,7 +2353,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func setMembershipRoles<Result>(
+    public func setMembershipRoles<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_SetMembershipRolesRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_SetMembershipRolesResponse>) async throws -> Result = { response in
@@ -2378,7 +2378,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func removeMembership<Result>(
+    public func removeMembership<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_RemoveMembershipRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_RemoveMembershipResponse>) async throws -> Result = { response in
@@ -2403,7 +2403,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveUser<Result>(
+    public func archiveUser<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_ArchiveUserRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_ArchiveUserResponse>) async throws -> Result = { response in
@@ -2428,7 +2428,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveAccount<Result>(
+    public func archiveAccount<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_ArchiveAccountRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_ArchiveAccountResponse>) async throws -> Result = { response in
@@ -2453,7 +2453,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateUserAccountStatus<Result>(
+    public func updateUserAccountStatus<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_UpdateUserAccountStatusRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_UpdateUserAccountStatusResponse>) async throws -> Result = { response in
@@ -2478,7 +2478,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func setUserServiceRoles<Result>(
+    public func setUserServiceRoles<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_SetUserServiceRolesRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_SetUserServiceRolesResponse>) async throws -> Result = { response in
@@ -2503,7 +2503,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func setUserRequiresPasswordChange<Result>(
+    public func setUserRequiresPasswordChange<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_SetUserRequiresPasswordChangeRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_SetUserRequiresPasswordChangeResponse>) async throws -> Result = { response in
@@ -2532,7 +2532,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getPrincipal<Result>(
+    public func getPrincipal<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_GetPrincipalRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_GetPrincipalResponse>) async throws -> Result = { response in
@@ -2557,7 +2557,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getUser<Result>(
+    public func getUser<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_GetUserRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_GetUserResponse>) async throws -> Result = { response in
@@ -2582,7 +2582,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listUsers<Result>(
+    public func listUsers<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_ListUsersRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_ListUsersResponse>) async throws -> Result = { response in
@@ -2607,7 +2607,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func searchUsersByUsername<Result>(
+    public func searchUsersByUsername<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_SearchUsersByUsernameRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_SearchUsersByUsernameResponse>) async throws -> Result = { response in
@@ -2632,7 +2632,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getAccount<Result>(
+    public func getAccount<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_GetAccountRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_GetAccountResponse>) async throws -> Result = { response in
@@ -2657,7 +2657,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listAccounts<Result>(
+    public func listAccounts<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_ListAccountsRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_ListAccountsResponse>) async throws -> Result = { response in
@@ -2682,7 +2682,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listAccountsForUser<Result>(
+    public func listAccountsForUser<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_ListAccountsForUserRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_ListAccountsForUserResponse>) async throws -> Result = { response in
@@ -2707,7 +2707,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getMembership<Result>(
+    public func getMembership<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_GetMembershipRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_GetMembershipResponse>) async throws -> Result = { response in
@@ -2732,7 +2732,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listMembershipsForUser<Result>(
+    public func listMembershipsForUser<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_ListMembershipsForUserRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_ListMembershipsForUserResponse>) async throws -> Result = { response in
@@ -2757,7 +2757,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listAccountMembers<Result>(
+    public func listAccountMembers<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_ListAccountMembersRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_ListAccountMembersResponse>) async throws -> Result = { response in
@@ -2782,7 +2782,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getInvitation<Result>(
+    public func getInvitation<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_GetInvitationRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_GetInvitationResponse>) async throws -> Result = { response in
@@ -2807,7 +2807,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listInvitationsFromUser<Result>(
+    public func listInvitationsFromUser<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_ListInvitationsFromUserRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_ListInvitationsFromUserResponse>) async throws -> Result = { response in
@@ -2832,7 +2832,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listInvitationsForEmailAddress<Result>(
+    public func listInvitationsForEmailAddress<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_ListInvitationsForEmailAddressRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_ListInvitationsForEmailAddressResponse>) async throws -> Result = { response in
@@ -2866,7 +2866,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateProfile<Result>(
+    public func updateProfile<Result>(
         _ message: Primandproper_Platform_Identity_V1_UpdateProfileRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2895,7 +2895,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateAccount<Result>(
+    public func updateAccount<Result>(
         _ message: Primandproper_Platform_Identity_V1_UpdateAccountRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2924,7 +2924,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func recordAgreement<Result>(
+    public func recordAgreement<Result>(
         _ message: Primandproper_Platform_Identity_V1_RecordAgreementRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2953,7 +2953,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func invite<Result>(
+    public func invite<Result>(
         _ message: Primandproper_Platform_Identity_V1_InviteRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2982,7 +2982,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func acceptInvitation<Result>(
+    public func acceptInvitation<Result>(
         _ message: Primandproper_Platform_Identity_V1_AcceptInvitationRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3011,7 +3011,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func rejectInvitation<Result>(
+    public func rejectInvitation<Result>(
         _ message: Primandproper_Platform_Identity_V1_RejectInvitationRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3040,7 +3040,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func cancelInvitation<Result>(
+    public func cancelInvitation<Result>(
         _ message: Primandproper_Platform_Identity_V1_CancelInvitationRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3069,7 +3069,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func createAccount<Result>(
+    public func createAccount<Result>(
         _ message: Primandproper_Platform_Identity_V1_CreateAccountRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3098,7 +3098,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func transferAccountOwnership<Result>(
+    public func transferAccountOwnership<Result>(
         _ message: Primandproper_Platform_Identity_V1_TransferAccountOwnershipRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3127,7 +3127,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func setDefaultAccount<Result>(
+    public func setDefaultAccount<Result>(
         _ message: Primandproper_Platform_Identity_V1_SetDefaultAccountRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3156,7 +3156,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func setMembershipRoles<Result>(
+    public func setMembershipRoles<Result>(
         _ message: Primandproper_Platform_Identity_V1_SetMembershipRolesRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3185,7 +3185,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func removeMembership<Result>(
+    public func removeMembership<Result>(
         _ message: Primandproper_Platform_Identity_V1_RemoveMembershipRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3214,7 +3214,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveUser<Result>(
+    public func archiveUser<Result>(
         _ message: Primandproper_Platform_Identity_V1_ArchiveUserRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3243,7 +3243,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveAccount<Result>(
+    public func archiveAccount<Result>(
         _ message: Primandproper_Platform_Identity_V1_ArchiveAccountRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3272,7 +3272,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateUserAccountStatus<Result>(
+    public func updateUserAccountStatus<Result>(
         _ message: Primandproper_Platform_Identity_V1_UpdateUserAccountStatusRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3301,7 +3301,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func setUserServiceRoles<Result>(
+    public func setUserServiceRoles<Result>(
         _ message: Primandproper_Platform_Identity_V1_SetUserServiceRolesRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3330,7 +3330,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func setUserRequiresPasswordChange<Result>(
+    public func setUserRequiresPasswordChange<Result>(
         _ message: Primandproper_Platform_Identity_V1_SetUserRequiresPasswordChangeRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3363,7 +3363,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getPrincipal<Result>(
+    public func getPrincipal<Result>(
         _ message: Primandproper_Platform_Identity_V1_GetPrincipalRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3392,7 +3392,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getUser<Result>(
+    public func getUser<Result>(
         _ message: Primandproper_Platform_Identity_V1_GetUserRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3421,7 +3421,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listUsers<Result>(
+    public func listUsers<Result>(
         _ message: Primandproper_Platform_Identity_V1_ListUsersRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3450,7 +3450,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func searchUsersByUsername<Result>(
+    public func searchUsersByUsername<Result>(
         _ message: Primandproper_Platform_Identity_V1_SearchUsersByUsernameRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3479,7 +3479,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getAccount<Result>(
+    public func getAccount<Result>(
         _ message: Primandproper_Platform_Identity_V1_GetAccountRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3508,7 +3508,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listAccounts<Result>(
+    public func listAccounts<Result>(
         _ message: Primandproper_Platform_Identity_V1_ListAccountsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3537,7 +3537,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listAccountsForUser<Result>(
+    public func listAccountsForUser<Result>(
         _ message: Primandproper_Platform_Identity_V1_ListAccountsForUserRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3566,7 +3566,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getMembership<Result>(
+    public func getMembership<Result>(
         _ message: Primandproper_Platform_Identity_V1_GetMembershipRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3595,7 +3595,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listMembershipsForUser<Result>(
+    public func listMembershipsForUser<Result>(
         _ message: Primandproper_Platform_Identity_V1_ListMembershipsForUserRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3624,7 +3624,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listAccountMembers<Result>(
+    public func listAccountMembers<Result>(
         _ message: Primandproper_Platform_Identity_V1_ListAccountMembersRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3653,7 +3653,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getInvitation<Result>(
+    public func getInvitation<Result>(
         _ message: Primandproper_Platform_Identity_V1_GetInvitationRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3682,7 +3682,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listInvitationsFromUser<Result>(
+    public func listInvitationsFromUser<Result>(
         _ message: Primandproper_Platform_Identity_V1_ListInvitationsFromUserRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3711,7 +3711,7 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listInvitationsForEmailAddress<Result>(
+    public func listInvitationsForEmailAddress<Result>(
         _ message: Primandproper_Platform_Identity_V1_ListInvitationsForEmailAddressRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,

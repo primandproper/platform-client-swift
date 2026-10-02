@@ -155,182 +155,182 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "primandproper.platform.settings.v1.SettingsService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Settings_V1_SettingsService: Sendable {
+public enum Primandproper_Platform_Settings_V1_SettingsService: Sendable {
     /// Service descriptor for the "primandproper.platform.settings.v1.SettingsService" service.
-    internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.settings.v1.SettingsService")
+    public static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.settings.v1.SettingsService")
     /// Namespace for method metadata.
-    internal enum Method: Sendable {
+    public enum Method: Sendable {
         /// Namespace for "CreateDefinition" metadata.
-        internal enum CreateDefinition: Sendable {
+        public enum CreateDefinition: Sendable {
             /// Request type for "CreateDefinition".
-            internal typealias Input = Primandproper_Platform_Settings_V1_CreateDefinitionRequest
+            public typealias Input = Primandproper_Platform_Settings_V1_CreateDefinitionRequest
             /// Response type for "CreateDefinition".
-            internal typealias Output = Primandproper_Platform_Settings_V1_CreateDefinitionResponse
+            public typealias Output = Primandproper_Platform_Settings_V1_CreateDefinitionResponse
             /// Descriptor for "CreateDefinition".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.settings.v1.SettingsService"),
                 method: "CreateDefinition",
                 type: .unary
             )
         }
         /// Namespace for "GetDefinition" metadata.
-        internal enum GetDefinition: Sendable {
+        public enum GetDefinition: Sendable {
             /// Request type for "GetDefinition".
-            internal typealias Input = Primandproper_Platform_Settings_V1_GetDefinitionRequest
+            public typealias Input = Primandproper_Platform_Settings_V1_GetDefinitionRequest
             /// Response type for "GetDefinition".
-            internal typealias Output = Primandproper_Platform_Settings_V1_GetDefinitionResponse
+            public typealias Output = Primandproper_Platform_Settings_V1_GetDefinitionResponse
             /// Descriptor for "GetDefinition".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.settings.v1.SettingsService"),
                 method: "GetDefinition",
                 type: .unary
             )
         }
         /// Namespace for "GetDefinitionByName" metadata.
-        internal enum GetDefinitionByName: Sendable {
+        public enum GetDefinitionByName: Sendable {
             /// Request type for "GetDefinitionByName".
-            internal typealias Input = Primandproper_Platform_Settings_V1_GetDefinitionByNameRequest
+            public typealias Input = Primandproper_Platform_Settings_V1_GetDefinitionByNameRequest
             /// Response type for "GetDefinitionByName".
-            internal typealias Output = Primandproper_Platform_Settings_V1_GetDefinitionByNameResponse
+            public typealias Output = Primandproper_Platform_Settings_V1_GetDefinitionByNameResponse
             /// Descriptor for "GetDefinitionByName".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.settings.v1.SettingsService"),
                 method: "GetDefinitionByName",
                 type: .unary
             )
         }
         /// Namespace for "ListDefinitions" metadata.
-        internal enum ListDefinitions: Sendable {
+        public enum ListDefinitions: Sendable {
             /// Request type for "ListDefinitions".
-            internal typealias Input = Primandproper_Platform_Settings_V1_ListDefinitionsRequest
+            public typealias Input = Primandproper_Platform_Settings_V1_ListDefinitionsRequest
             /// Response type for "ListDefinitions".
-            internal typealias Output = Primandproper_Platform_Settings_V1_ListDefinitionsResponse
+            public typealias Output = Primandproper_Platform_Settings_V1_ListDefinitionsResponse
             /// Descriptor for "ListDefinitions".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.settings.v1.SettingsService"),
                 method: "ListDefinitions",
                 type: .unary
             )
         }
         /// Namespace for "UpdateDefinition" metadata.
-        internal enum UpdateDefinition: Sendable {
+        public enum UpdateDefinition: Sendable {
             /// Request type for "UpdateDefinition".
-            internal typealias Input = Primandproper_Platform_Settings_V1_UpdateDefinitionRequest
+            public typealias Input = Primandproper_Platform_Settings_V1_UpdateDefinitionRequest
             /// Response type for "UpdateDefinition".
-            internal typealias Output = Primandproper_Platform_Settings_V1_UpdateDefinitionResponse
+            public typealias Output = Primandproper_Platform_Settings_V1_UpdateDefinitionResponse
             /// Descriptor for "UpdateDefinition".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.settings.v1.SettingsService"),
                 method: "UpdateDefinition",
                 type: .unary
             )
         }
         /// Namespace for "ArchiveDefinition" metadata.
-        internal enum ArchiveDefinition: Sendable {
+        public enum ArchiveDefinition: Sendable {
             /// Request type for "ArchiveDefinition".
-            internal typealias Input = Primandproper_Platform_Settings_V1_ArchiveDefinitionRequest
+            public typealias Input = Primandproper_Platform_Settings_V1_ArchiveDefinitionRequest
             /// Response type for "ArchiveDefinition".
-            internal typealias Output = Primandproper_Platform_Settings_V1_ArchiveDefinitionResponse
+            public typealias Output = Primandproper_Platform_Settings_V1_ArchiveDefinitionResponse
             /// Descriptor for "ArchiveDefinition".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.settings.v1.SettingsService"),
                 method: "ArchiveDefinition",
                 type: .unary
             )
         }
         /// Namespace for "ListValuesForDefinition" metadata.
-        internal enum ListValuesForDefinition: Sendable {
+        public enum ListValuesForDefinition: Sendable {
             /// Request type for "ListValuesForDefinition".
-            internal typealias Input = Primandproper_Platform_Settings_V1_ListValuesForDefinitionRequest
+            public typealias Input = Primandproper_Platform_Settings_V1_ListValuesForDefinitionRequest
             /// Response type for "ListValuesForDefinition".
-            internal typealias Output = Primandproper_Platform_Settings_V1_ListValuesForDefinitionResponse
+            public typealias Output = Primandproper_Platform_Settings_V1_ListValuesForDefinitionResponse
             /// Descriptor for "ListValuesForDefinition".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.settings.v1.SettingsService"),
                 method: "ListValuesForDefinition",
                 type: .unary
             )
         }
         /// Namespace for "SetValue" metadata.
-        internal enum SetValue: Sendable {
+        public enum SetValue: Sendable {
             /// Request type for "SetValue".
-            internal typealias Input = Primandproper_Platform_Settings_V1_SetValueRequest
+            public typealias Input = Primandproper_Platform_Settings_V1_SetValueRequest
             /// Response type for "SetValue".
-            internal typealias Output = Primandproper_Platform_Settings_V1_SetValueResponse
+            public typealias Output = Primandproper_Platform_Settings_V1_SetValueResponse
             /// Descriptor for "SetValue".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.settings.v1.SettingsService"),
                 method: "SetValue",
                 type: .unary
             )
         }
         /// Namespace for "GetValue" metadata.
-        internal enum GetValue: Sendable {
+        public enum GetValue: Sendable {
             /// Request type for "GetValue".
-            internal typealias Input = Primandproper_Platform_Settings_V1_GetValueRequest
+            public typealias Input = Primandproper_Platform_Settings_V1_GetValueRequest
             /// Response type for "GetValue".
-            internal typealias Output = Primandproper_Platform_Settings_V1_GetValueResponse
+            public typealias Output = Primandproper_Platform_Settings_V1_GetValueResponse
             /// Descriptor for "GetValue".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.settings.v1.SettingsService"),
                 method: "GetValue",
                 type: .unary
             )
         }
         /// Namespace for "ClearValue" metadata.
-        internal enum ClearValue: Sendable {
+        public enum ClearValue: Sendable {
             /// Request type for "ClearValue".
-            internal typealias Input = Primandproper_Platform_Settings_V1_ClearValueRequest
+            public typealias Input = Primandproper_Platform_Settings_V1_ClearValueRequest
             /// Response type for "ClearValue".
-            internal typealias Output = Primandproper_Platform_Settings_V1_ClearValueResponse
+            public typealias Output = Primandproper_Platform_Settings_V1_ClearValueResponse
             /// Descriptor for "ClearValue".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.settings.v1.SettingsService"),
                 method: "ClearValue",
                 type: .unary
             )
         }
         /// Namespace for "ListValuesForSubject" metadata.
-        internal enum ListValuesForSubject: Sendable {
+        public enum ListValuesForSubject: Sendable {
             /// Request type for "ListValuesForSubject".
-            internal typealias Input = Primandproper_Platform_Settings_V1_ListValuesForSubjectRequest
+            public typealias Input = Primandproper_Platform_Settings_V1_ListValuesForSubjectRequest
             /// Response type for "ListValuesForSubject".
-            internal typealias Output = Primandproper_Platform_Settings_V1_ListValuesForSubjectResponse
+            public typealias Output = Primandproper_Platform_Settings_V1_ListValuesForSubjectResponse
             /// Descriptor for "ListValuesForSubject".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.settings.v1.SettingsService"),
                 method: "ListValuesForSubject",
                 type: .unary
             )
         }
         /// Namespace for "Resolve" metadata.
-        internal enum Resolve: Sendable {
+        public enum Resolve: Sendable {
             /// Request type for "Resolve".
-            internal typealias Input = Primandproper_Platform_Settings_V1_ResolveRequest
+            public typealias Input = Primandproper_Platform_Settings_V1_ResolveRequest
             /// Response type for "Resolve".
-            internal typealias Output = Primandproper_Platform_Settings_V1_ResolveResponse
+            public typealias Output = Primandproper_Platform_Settings_V1_ResolveResponse
             /// Descriptor for "Resolve".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.settings.v1.SettingsService"),
                 method: "Resolve",
                 type: .unary
             )
         }
         /// Namespace for "ResolveAll" metadata.
-        internal enum ResolveAll: Sendable {
+        public enum ResolveAll: Sendable {
             /// Request type for "ResolveAll".
-            internal typealias Input = Primandproper_Platform_Settings_V1_ResolveAllRequest
+            public typealias Input = Primandproper_Platform_Settings_V1_ResolveAllRequest
             /// Response type for "ResolveAll".
-            internal typealias Output = Primandproper_Platform_Settings_V1_ResolveAllResponse
+            public typealias Output = Primandproper_Platform_Settings_V1_ResolveAllResponse
             /// Descriptor for "ResolveAll".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.settings.v1.SettingsService"),
                 method: "ResolveAll",
                 type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.settings.v1.SettingsService" service.
-        internal static let descriptors: [GRPCCore.MethodDescriptor] = [
+        public static let descriptors: [GRPCCore.MethodDescriptor] = [
             CreateDefinition.descriptor,
             GetDefinition.descriptor,
             GetDefinitionByName.descriptor,
@@ -351,7 +351,7 @@ internal enum Primandproper_Platform_Settings_V1_SettingsService: Sendable {
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension GRPCCore.ServiceDescriptor {
     /// Service descriptor for the "primandproper.platform.settings.v1.SettingsService" service.
-    internal static let primandproper_platform_settings_v1_SettingsService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.settings.v1.SettingsService")
+    public static let primandproper_platform_settings_v1_SettingsService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.settings.v1.SettingsService")
 }
 
 // MARK: primandproper.platform.settings.v1.SettingsService (client)
@@ -387,7 +387,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService {
     /// > methods take a subject from the request -- which a grant on the method cannot
     /// > check, so settings/grpc asks a SubjectAuthorizer before any of them reads or
     /// > writes a row.
-    internal protocol ClientProtocol: Sendable {
+    public protocol ClientProtocol: Sendable {
         /// Call the "CreateDefinition" method.
         ///
         /// - Parameters:
@@ -666,14 +666,14 @@ extension Primandproper_Platform_Settings_V1_SettingsService {
     /// > methods take a subject from the request -- which a grant on the method cannot
     /// > check, so settings/grpc asks a SubjectAuthorizer before any of them reads or
     /// > writes a row.
-    internal struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
+    public struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
         private let client: GRPCCore.GRPCClient<Transport>
 
         /// Creates a new client wrapping the provided `GRPCCore.GRPCClient`.
         ///
         /// - Parameters:
         ///   - client: A `GRPCCore.GRPCClient` providing a communication channel to the service.
-        internal init(wrapping client: GRPCCore.GRPCClient<Transport>) {
+        public init(wrapping client: GRPCCore.GRPCClient<Transport>) {
             self.client = client
         }
 
@@ -688,7 +688,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func createDefinition<Result>(
+        public func createDefinition<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_CreateDefinitionRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Settings_V1_CreateDefinitionRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Settings_V1_CreateDefinitionResponse>,
@@ -718,7 +718,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getDefinition<Result>(
+        public func getDefinition<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_GetDefinitionRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Settings_V1_GetDefinitionRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Settings_V1_GetDefinitionResponse>,
@@ -748,7 +748,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getDefinitionByName<Result>(
+        public func getDefinitionByName<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_GetDefinitionByNameRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Settings_V1_GetDefinitionByNameRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Settings_V1_GetDefinitionByNameResponse>,
@@ -778,7 +778,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listDefinitions<Result>(
+        public func listDefinitions<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_ListDefinitionsRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Settings_V1_ListDefinitionsRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Settings_V1_ListDefinitionsResponse>,
@@ -808,7 +808,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func updateDefinition<Result>(
+        public func updateDefinition<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_UpdateDefinitionRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Settings_V1_UpdateDefinitionRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Settings_V1_UpdateDefinitionResponse>,
@@ -838,7 +838,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func archiveDefinition<Result>(
+        public func archiveDefinition<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_ArchiveDefinitionRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Settings_V1_ArchiveDefinitionRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Settings_V1_ArchiveDefinitionResponse>,
@@ -868,7 +868,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listValuesForDefinition<Result>(
+        public func listValuesForDefinition<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_ListValuesForDefinitionRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Settings_V1_ListValuesForDefinitionRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Settings_V1_ListValuesForDefinitionResponse>,
@@ -898,7 +898,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func setValue<Result>(
+        public func setValue<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_SetValueRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Settings_V1_SetValueRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Settings_V1_SetValueResponse>,
@@ -928,7 +928,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getValue<Result>(
+        public func getValue<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_GetValueRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Settings_V1_GetValueRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Settings_V1_GetValueResponse>,
@@ -958,7 +958,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func clearValue<Result>(
+        public func clearValue<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_ClearValueRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Settings_V1_ClearValueRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Settings_V1_ClearValueResponse>,
@@ -988,7 +988,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listValuesForSubject<Result>(
+        public func listValuesForSubject<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_ListValuesForSubjectRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Settings_V1_ListValuesForSubjectRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Settings_V1_ListValuesForSubjectResponse>,
@@ -1018,7 +1018,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func resolve<Result>(
+        public func resolve<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_ResolveRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Settings_V1_ResolveRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Settings_V1_ResolveResponse>,
@@ -1048,7 +1048,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func resolveAll<Result>(
+        public func resolveAll<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_ResolveAllRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Settings_V1_ResolveAllRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Settings_V1_ResolveAllResponse>,
@@ -1081,7 +1081,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func createDefinition<Result>(
+    public func createDefinition<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_CreateDefinitionRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Settings_V1_CreateDefinitionResponse>) async throws -> Result = { response in
@@ -1106,7 +1106,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getDefinition<Result>(
+    public func getDefinition<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_GetDefinitionRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Settings_V1_GetDefinitionResponse>) async throws -> Result = { response in
@@ -1131,7 +1131,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getDefinitionByName<Result>(
+    public func getDefinitionByName<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_GetDefinitionByNameRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Settings_V1_GetDefinitionByNameResponse>) async throws -> Result = { response in
@@ -1156,7 +1156,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listDefinitions<Result>(
+    public func listDefinitions<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_ListDefinitionsRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Settings_V1_ListDefinitionsResponse>) async throws -> Result = { response in
@@ -1181,7 +1181,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateDefinition<Result>(
+    public func updateDefinition<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_UpdateDefinitionRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Settings_V1_UpdateDefinitionResponse>) async throws -> Result = { response in
@@ -1206,7 +1206,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveDefinition<Result>(
+    public func archiveDefinition<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_ArchiveDefinitionRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Settings_V1_ArchiveDefinitionResponse>) async throws -> Result = { response in
@@ -1231,7 +1231,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listValuesForDefinition<Result>(
+    public func listValuesForDefinition<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_ListValuesForDefinitionRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Settings_V1_ListValuesForDefinitionResponse>) async throws -> Result = { response in
@@ -1256,7 +1256,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func setValue<Result>(
+    public func setValue<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_SetValueRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Settings_V1_SetValueResponse>) async throws -> Result = { response in
@@ -1281,7 +1281,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getValue<Result>(
+    public func getValue<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_GetValueRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Settings_V1_GetValueResponse>) async throws -> Result = { response in
@@ -1306,7 +1306,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func clearValue<Result>(
+    public func clearValue<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_ClearValueRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Settings_V1_ClearValueResponse>) async throws -> Result = { response in
@@ -1331,7 +1331,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listValuesForSubject<Result>(
+    public func listValuesForSubject<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_ListValuesForSubjectRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Settings_V1_ListValuesForSubjectResponse>) async throws -> Result = { response in
@@ -1356,7 +1356,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func resolve<Result>(
+    public func resolve<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_ResolveRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Settings_V1_ResolveResponse>) async throws -> Result = { response in
@@ -1381,7 +1381,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func resolveAll<Result>(
+    public func resolveAll<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Settings_V1_ResolveAllRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Settings_V1_ResolveAllResponse>) async throws -> Result = { response in
@@ -1411,7 +1411,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func createDefinition<Result>(
+    public func createDefinition<Result>(
         _ message: Primandproper_Platform_Settings_V1_CreateDefinitionRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1440,7 +1440,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getDefinition<Result>(
+    public func getDefinition<Result>(
         _ message: Primandproper_Platform_Settings_V1_GetDefinitionRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1469,7 +1469,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getDefinitionByName<Result>(
+    public func getDefinitionByName<Result>(
         _ message: Primandproper_Platform_Settings_V1_GetDefinitionByNameRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1498,7 +1498,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listDefinitions<Result>(
+    public func listDefinitions<Result>(
         _ message: Primandproper_Platform_Settings_V1_ListDefinitionsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1527,7 +1527,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateDefinition<Result>(
+    public func updateDefinition<Result>(
         _ message: Primandproper_Platform_Settings_V1_UpdateDefinitionRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1556,7 +1556,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveDefinition<Result>(
+    public func archiveDefinition<Result>(
         _ message: Primandproper_Platform_Settings_V1_ArchiveDefinitionRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1585,7 +1585,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listValuesForDefinition<Result>(
+    public func listValuesForDefinition<Result>(
         _ message: Primandproper_Platform_Settings_V1_ListValuesForDefinitionRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1614,7 +1614,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func setValue<Result>(
+    public func setValue<Result>(
         _ message: Primandproper_Platform_Settings_V1_SetValueRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1643,7 +1643,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getValue<Result>(
+    public func getValue<Result>(
         _ message: Primandproper_Platform_Settings_V1_GetValueRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1672,7 +1672,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func clearValue<Result>(
+    public func clearValue<Result>(
         _ message: Primandproper_Platform_Settings_V1_ClearValueRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1701,7 +1701,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listValuesForSubject<Result>(
+    public func listValuesForSubject<Result>(
         _ message: Primandproper_Platform_Settings_V1_ListValuesForSubjectRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1730,7 +1730,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func resolve<Result>(
+    public func resolve<Result>(
         _ message: Primandproper_Platform_Settings_V1_ResolveRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1759,7 +1759,7 @@ extension Primandproper_Platform_Settings_V1_SettingsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func resolveAll<Result>(
+    public func resolveAll<Result>(
         _ message: Primandproper_Platform_Settings_V1_ResolveAllRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,

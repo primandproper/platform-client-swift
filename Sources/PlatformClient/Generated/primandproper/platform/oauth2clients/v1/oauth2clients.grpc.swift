@@ -113,65 +113,65 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "primandproper.platform.oauth2clients.v1.OAuth2ClientsService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService: Sendable {
+public enum Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService: Sendable {
     /// Service descriptor for the "primandproper.platform.oauth2clients.v1.OAuth2ClientsService" service.
-    internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.oauth2clients.v1.OAuth2ClientsService")
+    public static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.oauth2clients.v1.OAuth2ClientsService")
     /// Namespace for method metadata.
-    internal enum Method: Sendable {
+    public enum Method: Sendable {
         /// Namespace for "CreateOAuth2Client" metadata.
-        internal enum CreateOAuth2Client: Sendable {
+        public enum CreateOAuth2Client: Sendable {
             /// Request type for "CreateOAuth2Client".
-            internal typealias Input = Primandproper_Platform_Oauth2clients_V1_CreateOAuth2ClientRequest
+            public typealias Input = Primandproper_Platform_Oauth2clients_V1_CreateOAuth2ClientRequest
             /// Response type for "CreateOAuth2Client".
-            internal typealias Output = Primandproper_Platform_Oauth2clients_V1_CreateOAuth2ClientResponse
+            public typealias Output = Primandproper_Platform_Oauth2clients_V1_CreateOAuth2ClientResponse
             /// Descriptor for "CreateOAuth2Client".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.oauth2clients.v1.OAuth2ClientsService"),
                 method: "CreateOAuth2Client",
                 type: .unary
             )
         }
         /// Namespace for "GetOAuth2Client" metadata.
-        internal enum GetOAuth2Client: Sendable {
+        public enum GetOAuth2Client: Sendable {
             /// Request type for "GetOAuth2Client".
-            internal typealias Input = Primandproper_Platform_Oauth2clients_V1_GetOAuth2ClientRequest
+            public typealias Input = Primandproper_Platform_Oauth2clients_V1_GetOAuth2ClientRequest
             /// Response type for "GetOAuth2Client".
-            internal typealias Output = Primandproper_Platform_Oauth2clients_V1_GetOAuth2ClientResponse
+            public typealias Output = Primandproper_Platform_Oauth2clients_V1_GetOAuth2ClientResponse
             /// Descriptor for "GetOAuth2Client".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.oauth2clients.v1.OAuth2ClientsService"),
                 method: "GetOAuth2Client",
                 type: .unary
             )
         }
         /// Namespace for "ListOAuth2Clients" metadata.
-        internal enum ListOAuth2Clients: Sendable {
+        public enum ListOAuth2Clients: Sendable {
             /// Request type for "ListOAuth2Clients".
-            internal typealias Input = Primandproper_Platform_Oauth2clients_V1_ListOAuth2ClientsRequest
+            public typealias Input = Primandproper_Platform_Oauth2clients_V1_ListOAuth2ClientsRequest
             /// Response type for "ListOAuth2Clients".
-            internal typealias Output = Primandproper_Platform_Oauth2clients_V1_ListOAuth2ClientsResponse
+            public typealias Output = Primandproper_Platform_Oauth2clients_V1_ListOAuth2ClientsResponse
             /// Descriptor for "ListOAuth2Clients".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.oauth2clients.v1.OAuth2ClientsService"),
                 method: "ListOAuth2Clients",
                 type: .unary
             )
         }
         /// Namespace for "ArchiveOAuth2Client" metadata.
-        internal enum ArchiveOAuth2Client: Sendable {
+        public enum ArchiveOAuth2Client: Sendable {
             /// Request type for "ArchiveOAuth2Client".
-            internal typealias Input = Primandproper_Platform_Oauth2clients_V1_ArchiveOAuth2ClientRequest
+            public typealias Input = Primandproper_Platform_Oauth2clients_V1_ArchiveOAuth2ClientRequest
             /// Response type for "ArchiveOAuth2Client".
-            internal typealias Output = Primandproper_Platform_Oauth2clients_V1_ArchiveOAuth2ClientResponse
+            public typealias Output = Primandproper_Platform_Oauth2clients_V1_ArchiveOAuth2ClientResponse
             /// Descriptor for "ArchiveOAuth2Client".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.oauth2clients.v1.OAuth2ClientsService"),
                 method: "ArchiveOAuth2Client",
                 type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.oauth2clients.v1.OAuth2ClientsService" service.
-        internal static let descriptors: [GRPCCore.MethodDescriptor] = [
+        public static let descriptors: [GRPCCore.MethodDescriptor] = [
             CreateOAuth2Client.descriptor,
             GetOAuth2Client.descriptor,
             ListOAuth2Clients.descriptor,
@@ -183,7 +183,7 @@ internal enum Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService: Send
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension GRPCCore.ServiceDescriptor {
     /// Service descriptor for the "primandproper.platform.oauth2clients.v1.OAuth2ClientsService" service.
-    internal static let primandproper_platform_oauth2Clients_v1_OAuth2ClientsService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.oauth2clients.v1.OAuth2ClientsService")
+    public static let primandproper_platform_oauth2Clients_v1_OAuth2ClientsService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.oauth2clients.v1.OAuth2ClientsService")
 }
 
 // MARK: primandproper.platform.oauth2clients.v1.OAuth2ClientsService (client)
@@ -203,7 +203,7 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService {
     /// > of them requires a grant. The registry comes off the caller's principal; the
     /// > registration belongs to no person. See the file comment for why there are four
     /// > of them and what a self-service half would have to look like.
-    internal protocol ClientProtocol: Sendable {
+    public protocol ClientProtocol: Sendable {
         /// Call the "CreateOAuth2Client" method.
         ///
         /// - Parameters:
@@ -295,14 +295,14 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService {
     /// > of them requires a grant. The registry comes off the caller's principal; the
     /// > registration belongs to no person. See the file comment for why there are four
     /// > of them and what a self-service half would have to look like.
-    internal struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
+    public struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
         private let client: GRPCCore.GRPCClient<Transport>
 
         /// Creates a new client wrapping the provided `GRPCCore.GRPCClient`.
         ///
         /// - Parameters:
         ///   - client: A `GRPCCore.GRPCClient` providing a communication channel to the service.
-        internal init(wrapping client: GRPCCore.GRPCClient<Transport>) {
+        public init(wrapping client: GRPCCore.GRPCClient<Transport>) {
             self.client = client
         }
 
@@ -317,7 +317,7 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func createOAuth2Client<Result>(
+        public func createOAuth2Client<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Oauth2clients_V1_CreateOAuth2ClientRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Oauth2clients_V1_CreateOAuth2ClientRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Oauth2clients_V1_CreateOAuth2ClientResponse>,
@@ -347,7 +347,7 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getOAuth2Client<Result>(
+        public func getOAuth2Client<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Oauth2clients_V1_GetOAuth2ClientRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Oauth2clients_V1_GetOAuth2ClientRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Oauth2clients_V1_GetOAuth2ClientResponse>,
@@ -377,7 +377,7 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listOAuth2Clients<Result>(
+        public func listOAuth2Clients<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Oauth2clients_V1_ListOAuth2ClientsRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Oauth2clients_V1_ListOAuth2ClientsRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Oauth2clients_V1_ListOAuth2ClientsResponse>,
@@ -407,7 +407,7 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func archiveOAuth2Client<Result>(
+        public func archiveOAuth2Client<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Oauth2clients_V1_ArchiveOAuth2ClientRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Oauth2clients_V1_ArchiveOAuth2ClientRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Oauth2clients_V1_ArchiveOAuth2ClientResponse>,
@@ -440,7 +440,7 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func createOAuth2Client<Result>(
+    public func createOAuth2Client<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Oauth2clients_V1_CreateOAuth2ClientRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Oauth2clients_V1_CreateOAuth2ClientResponse>) async throws -> Result = { response in
@@ -465,7 +465,7 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getOAuth2Client<Result>(
+    public func getOAuth2Client<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Oauth2clients_V1_GetOAuth2ClientRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Oauth2clients_V1_GetOAuth2ClientResponse>) async throws -> Result = { response in
@@ -490,7 +490,7 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listOAuth2Clients<Result>(
+    public func listOAuth2Clients<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Oauth2clients_V1_ListOAuth2ClientsRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Oauth2clients_V1_ListOAuth2ClientsResponse>) async throws -> Result = { response in
@@ -515,7 +515,7 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveOAuth2Client<Result>(
+    public func archiveOAuth2Client<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Oauth2clients_V1_ArchiveOAuth2ClientRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Oauth2clients_V1_ArchiveOAuth2ClientResponse>) async throws -> Result = { response in
@@ -545,7 +545,7 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func createOAuth2Client<Result>(
+    public func createOAuth2Client<Result>(
         _ message: Primandproper_Platform_Oauth2clients_V1_CreateOAuth2ClientRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -574,7 +574,7 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getOAuth2Client<Result>(
+    public func getOAuth2Client<Result>(
         _ message: Primandproper_Platform_Oauth2clients_V1_GetOAuth2ClientRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -603,7 +603,7 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listOAuth2Clients<Result>(
+    public func listOAuth2Clients<Result>(
         _ message: Primandproper_Platform_Oauth2clients_V1_ListOAuth2ClientsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -632,7 +632,7 @@ extension Primandproper_Platform_Oauth2clients_V1_OAuth2ClientsService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveOAuth2Client<Result>(
+    public func archiveOAuth2Client<Result>(
         _ message: Primandproper_Platform_Oauth2clients_V1_ArchiveOAuth2ClientRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,

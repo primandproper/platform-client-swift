@@ -119,117 +119,117 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "primandproper.platform.comments.v1.CommentsService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Comments_V1_CommentsService: Sendable {
+public enum Primandproper_Platform_Comments_V1_CommentsService: Sendable {
     /// Service descriptor for the "primandproper.platform.comments.v1.CommentsService" service.
-    internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService")
+    public static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService")
     /// Namespace for method metadata.
-    internal enum Method: Sendable {
+    public enum Method: Sendable {
         /// Namespace for "CreateComment" metadata.
-        internal enum CreateComment: Sendable {
+        public enum CreateComment: Sendable {
             /// Request type for "CreateComment".
-            internal typealias Input = Primandproper_Platform_Comments_V1_CreateCommentRequest
+            public typealias Input = Primandproper_Platform_Comments_V1_CreateCommentRequest
             /// Response type for "CreateComment".
-            internal typealias Output = Primandproper_Platform_Comments_V1_CreateCommentResponse
+            public typealias Output = Primandproper_Platform_Comments_V1_CreateCommentResponse
             /// Descriptor for "CreateComment".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService"),
                 method: "CreateComment",
                 type: .unary
             )
         }
         /// Namespace for "GetComment" metadata.
-        internal enum GetComment: Sendable {
+        public enum GetComment: Sendable {
             /// Request type for "GetComment".
-            internal typealias Input = Primandproper_Platform_Comments_V1_GetCommentRequest
+            public typealias Input = Primandproper_Platform_Comments_V1_GetCommentRequest
             /// Response type for "GetComment".
-            internal typealias Output = Primandproper_Platform_Comments_V1_GetCommentResponse
+            public typealias Output = Primandproper_Platform_Comments_V1_GetCommentResponse
             /// Descriptor for "GetComment".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService"),
                 method: "GetComment",
                 type: .unary
             )
         }
         /// Namespace for "ListRootComments" metadata.
-        internal enum ListRootComments: Sendable {
+        public enum ListRootComments: Sendable {
             /// Request type for "ListRootComments".
-            internal typealias Input = Primandproper_Platform_Comments_V1_ListRootCommentsRequest
+            public typealias Input = Primandproper_Platform_Comments_V1_ListRootCommentsRequest
             /// Response type for "ListRootComments".
-            internal typealias Output = Primandproper_Platform_Comments_V1_ListRootCommentsResponse
+            public typealias Output = Primandproper_Platform_Comments_V1_ListRootCommentsResponse
             /// Descriptor for "ListRootComments".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService"),
                 method: "ListRootComments",
                 type: .unary
             )
         }
         /// Namespace for "ListReplies" metadata.
-        internal enum ListReplies: Sendable {
+        public enum ListReplies: Sendable {
             /// Request type for "ListReplies".
-            internal typealias Input = Primandproper_Platform_Comments_V1_ListRepliesRequest
+            public typealias Input = Primandproper_Platform_Comments_V1_ListRepliesRequest
             /// Response type for "ListReplies".
-            internal typealias Output = Primandproper_Platform_Comments_V1_ListRepliesResponse
+            public typealias Output = Primandproper_Platform_Comments_V1_ListRepliesResponse
             /// Descriptor for "ListReplies".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService"),
                 method: "ListReplies",
                 type: .unary
             )
         }
         /// Namespace for "ListCommentsByTargetType" metadata.
-        internal enum ListCommentsByTargetType: Sendable {
+        public enum ListCommentsByTargetType: Sendable {
             /// Request type for "ListCommentsByTargetType".
-            internal typealias Input = Primandproper_Platform_Comments_V1_ListCommentsByTargetTypeRequest
+            public typealias Input = Primandproper_Platform_Comments_V1_ListCommentsByTargetTypeRequest
             /// Response type for "ListCommentsByTargetType".
-            internal typealias Output = Primandproper_Platform_Comments_V1_ListCommentsByTargetTypeResponse
+            public typealias Output = Primandproper_Platform_Comments_V1_ListCommentsByTargetTypeResponse
             /// Descriptor for "ListCommentsByTargetType".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService"),
                 method: "ListCommentsByTargetType",
                 type: .unary
             )
         }
         /// Namespace for "ListCommentsByAuthor" metadata.
-        internal enum ListCommentsByAuthor: Sendable {
+        public enum ListCommentsByAuthor: Sendable {
             /// Request type for "ListCommentsByAuthor".
-            internal typealias Input = Primandproper_Platform_Comments_V1_ListCommentsByAuthorRequest
+            public typealias Input = Primandproper_Platform_Comments_V1_ListCommentsByAuthorRequest
             /// Response type for "ListCommentsByAuthor".
-            internal typealias Output = Primandproper_Platform_Comments_V1_ListCommentsByAuthorResponse
+            public typealias Output = Primandproper_Platform_Comments_V1_ListCommentsByAuthorResponse
             /// Descriptor for "ListCommentsByAuthor".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService"),
                 method: "ListCommentsByAuthor",
                 type: .unary
             )
         }
         /// Namespace for "UpdateComment" metadata.
-        internal enum UpdateComment: Sendable {
+        public enum UpdateComment: Sendable {
             /// Request type for "UpdateComment".
-            internal typealias Input = Primandproper_Platform_Comments_V1_UpdateCommentRequest
+            public typealias Input = Primandproper_Platform_Comments_V1_UpdateCommentRequest
             /// Response type for "UpdateComment".
-            internal typealias Output = Primandproper_Platform_Comments_V1_UpdateCommentResponse
+            public typealias Output = Primandproper_Platform_Comments_V1_UpdateCommentResponse
             /// Descriptor for "UpdateComment".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService"),
                 method: "UpdateComment",
                 type: .unary
             )
         }
         /// Namespace for "ArchiveComment" metadata.
-        internal enum ArchiveComment: Sendable {
+        public enum ArchiveComment: Sendable {
             /// Request type for "ArchiveComment".
-            internal typealias Input = Primandproper_Platform_Comments_V1_ArchiveCommentRequest
+            public typealias Input = Primandproper_Platform_Comments_V1_ArchiveCommentRequest
             /// Response type for "ArchiveComment".
-            internal typealias Output = Primandproper_Platform_Comments_V1_ArchiveCommentResponse
+            public typealias Output = Primandproper_Platform_Comments_V1_ArchiveCommentResponse
             /// Descriptor for "ArchiveComment".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService"),
                 method: "ArchiveComment",
                 type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.comments.v1.CommentsService" service.
-        internal static let descriptors: [GRPCCore.MethodDescriptor] = [
+        public static let descriptors: [GRPCCore.MethodDescriptor] = [
             CreateComment.descriptor,
             GetComment.descriptor,
             ListRootComments.descriptor,
@@ -245,7 +245,7 @@ internal enum Primandproper_Platform_Comments_V1_CommentsService: Sendable {
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension GRPCCore.ServiceDescriptor {
     /// Service descriptor for the "primandproper.platform.comments.v1.CommentsService" service.
-    internal static let primandproper_platform_comments_v1_CommentsService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService")
+    public static let primandproper_platform_comments_v1_CommentsService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.comments.v1.CommentsService")
 }
 
 // MARK: primandproper.platform.comments.v1.CommentsService (client)
@@ -282,7 +282,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
     /// > amount of retrying fixes it after the fact.
     /// > 
     /// > A moderator removing one comment is not that case and has ArchiveComment.
-    internal protocol ClientProtocol: Sendable {
+    public protocol ClientProtocol: Sendable {
         /// Call the "CreateComment" method.
         ///
         /// - Parameters:
@@ -467,14 +467,14 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
     /// > amount of retrying fixes it after the fact.
     /// > 
     /// > A moderator removing one comment is not that case and has ArchiveComment.
-    internal struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
+    public struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
         private let client: GRPCCore.GRPCClient<Transport>
 
         /// Creates a new client wrapping the provided `GRPCCore.GRPCClient`.
         ///
         /// - Parameters:
         ///   - client: A `GRPCCore.GRPCClient` providing a communication channel to the service.
-        internal init(wrapping client: GRPCCore.GRPCClient<Transport>) {
+        public init(wrapping client: GRPCCore.GRPCClient<Transport>) {
             self.client = client
         }
 
@@ -489,7 +489,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func createComment<Result>(
+        public func createComment<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_CreateCommentRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Comments_V1_CreateCommentRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Comments_V1_CreateCommentResponse>,
@@ -519,7 +519,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getComment<Result>(
+        public func getComment<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_GetCommentRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Comments_V1_GetCommentRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Comments_V1_GetCommentResponse>,
@@ -549,7 +549,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listRootComments<Result>(
+        public func listRootComments<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ListRootCommentsRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Comments_V1_ListRootCommentsRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Comments_V1_ListRootCommentsResponse>,
@@ -579,7 +579,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listReplies<Result>(
+        public func listReplies<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ListRepliesRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Comments_V1_ListRepliesRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Comments_V1_ListRepliesResponse>,
@@ -609,7 +609,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listCommentsByTargetType<Result>(
+        public func listCommentsByTargetType<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ListCommentsByTargetTypeRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Comments_V1_ListCommentsByTargetTypeRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Comments_V1_ListCommentsByTargetTypeResponse>,
@@ -639,7 +639,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listCommentsByAuthor<Result>(
+        public func listCommentsByAuthor<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ListCommentsByAuthorRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Comments_V1_ListCommentsByAuthorRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Comments_V1_ListCommentsByAuthorResponse>,
@@ -669,7 +669,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func updateComment<Result>(
+        public func updateComment<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_UpdateCommentRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Comments_V1_UpdateCommentRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Comments_V1_UpdateCommentResponse>,
@@ -699,7 +699,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func archiveComment<Result>(
+        public func archiveComment<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ArchiveCommentRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Comments_V1_ArchiveCommentRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Comments_V1_ArchiveCommentResponse>,
@@ -732,7 +732,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func createComment<Result>(
+    public func createComment<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_CreateCommentRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Comments_V1_CreateCommentResponse>) async throws -> Result = { response in
@@ -757,7 +757,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getComment<Result>(
+    public func getComment<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_GetCommentRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Comments_V1_GetCommentResponse>) async throws -> Result = { response in
@@ -782,7 +782,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listRootComments<Result>(
+    public func listRootComments<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ListRootCommentsRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Comments_V1_ListRootCommentsResponse>) async throws -> Result = { response in
@@ -807,7 +807,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listReplies<Result>(
+    public func listReplies<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ListRepliesRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Comments_V1_ListRepliesResponse>) async throws -> Result = { response in
@@ -832,7 +832,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listCommentsByTargetType<Result>(
+    public func listCommentsByTargetType<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ListCommentsByTargetTypeRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Comments_V1_ListCommentsByTargetTypeResponse>) async throws -> Result = { response in
@@ -857,7 +857,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listCommentsByAuthor<Result>(
+    public func listCommentsByAuthor<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ListCommentsByAuthorRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Comments_V1_ListCommentsByAuthorResponse>) async throws -> Result = { response in
@@ -882,7 +882,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateComment<Result>(
+    public func updateComment<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_UpdateCommentRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Comments_V1_UpdateCommentResponse>) async throws -> Result = { response in
@@ -907,7 +907,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveComment<Result>(
+    public func archiveComment<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Comments_V1_ArchiveCommentRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Comments_V1_ArchiveCommentResponse>) async throws -> Result = { response in
@@ -937,7 +937,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func createComment<Result>(
+    public func createComment<Result>(
         _ message: Primandproper_Platform_Comments_V1_CreateCommentRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -966,7 +966,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getComment<Result>(
+    public func getComment<Result>(
         _ message: Primandproper_Platform_Comments_V1_GetCommentRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -995,7 +995,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listRootComments<Result>(
+    public func listRootComments<Result>(
         _ message: Primandproper_Platform_Comments_V1_ListRootCommentsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1024,7 +1024,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listReplies<Result>(
+    public func listReplies<Result>(
         _ message: Primandproper_Platform_Comments_V1_ListRepliesRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1053,7 +1053,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listCommentsByTargetType<Result>(
+    public func listCommentsByTargetType<Result>(
         _ message: Primandproper_Platform_Comments_V1_ListCommentsByTargetTypeRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1082,7 +1082,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listCommentsByAuthor<Result>(
+    public func listCommentsByAuthor<Result>(
         _ message: Primandproper_Platform_Comments_V1_ListCommentsByAuthorRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1111,7 +1111,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateComment<Result>(
+    public func updateComment<Result>(
         _ message: Primandproper_Platform_Comments_V1_UpdateCommentRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1140,7 +1140,7 @@ extension Primandproper_Platform_Comments_V1_CommentsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveComment<Result>(
+    public func archiveComment<Result>(
         _ message: Primandproper_Platform_Comments_V1_ArchiveCommentRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,

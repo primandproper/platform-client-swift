@@ -1,7 +1,6 @@
 import GRPCCore
+import PlatformClient
 import Testing
-
-@testable import PlatformClient
 
 @Suite struct GeneratedTests {
   @Test func servicesNameTheirWireIdentity() {

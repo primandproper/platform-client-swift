@@ -56,7 +56,7 @@ protoc \
   --swift_out="$OUT" \
   --swift_opt=Visibility=Public \
   --grpc-swift-2_out="$OUT" \
-  --grpc-swift-2_opt=Client=true,Server=false \
+  --grpc-swift-2_opt=Client=true,Server=false,Visibility=Public \
   --proto_path "$INCLUDE" \
   "${protos[@]}"
 

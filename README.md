@@ -85,7 +85,9 @@ one include root. **No Go toolchain**: this is a Swift repository and it stays o
 why it fetches a tag rather than resolving the module cache the way DDB's Makefile does.
 
 Flags match DDB's (`grpc-swift-2`, `Client=true,Server=false`, `Visibility=Public`), because
-output that does not match is output that cannot be dropped in.
+output that does not match is output that cannot be dropped in, with one difference: here
+`Visibility=Public` goes to the grpc plugin as well. DDB compiles its stubs into the app's
+own module, where `internal` clients are reachable; from a package they are not.
 
 ### Upgrading
 

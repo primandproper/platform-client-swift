@@ -125,169 +125,169 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "primandproper.platform.issuereports.v1.IssueReportsService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Issuereports_V1_IssueReportsService: Sendable {
+public enum Primandproper_Platform_Issuereports_V1_IssueReportsService: Sendable {
     /// Service descriptor for the "primandproper.platform.issuereports.v1.IssueReportsService" service.
-    internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.issuereports.v1.IssueReportsService")
+    public static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.issuereports.v1.IssueReportsService")
     /// Namespace for method metadata.
-    internal enum Method: Sendable {
+    public enum Method: Sendable {
         /// Namespace for "CreateReport" metadata.
-        internal enum CreateReport: Sendable {
+        public enum CreateReport: Sendable {
             /// Request type for "CreateReport".
-            internal typealias Input = Primandproper_Platform_Issuereports_V1_CreateReportRequest
+            public typealias Input = Primandproper_Platform_Issuereports_V1_CreateReportRequest
             /// Response type for "CreateReport".
-            internal typealias Output = Primandproper_Platform_Issuereports_V1_CreateReportResponse
+            public typealias Output = Primandproper_Platform_Issuereports_V1_CreateReportResponse
             /// Descriptor for "CreateReport".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.issuereports.v1.IssueReportsService"),
                 method: "CreateReport",
                 type: .unary
             )
         }
         /// Namespace for "GetReport" metadata.
-        internal enum GetReport: Sendable {
+        public enum GetReport: Sendable {
             /// Request type for "GetReport".
-            internal typealias Input = Primandproper_Platform_Issuereports_V1_GetReportRequest
+            public typealias Input = Primandproper_Platform_Issuereports_V1_GetReportRequest
             /// Response type for "GetReport".
-            internal typealias Output = Primandproper_Platform_Issuereports_V1_GetReportResponse
+            public typealias Output = Primandproper_Platform_Issuereports_V1_GetReportResponse
             /// Descriptor for "GetReport".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.issuereports.v1.IssueReportsService"),
                 method: "GetReport",
                 type: .unary
             )
         }
         /// Namespace for "ListReports" metadata.
-        internal enum ListReports: Sendable {
+        public enum ListReports: Sendable {
             /// Request type for "ListReports".
-            internal typealias Input = Primandproper_Platform_Issuereports_V1_ListReportsRequest
+            public typealias Input = Primandproper_Platform_Issuereports_V1_ListReportsRequest
             /// Response type for "ListReports".
-            internal typealias Output = Primandproper_Platform_Issuereports_V1_ListReportsResponse
+            public typealias Output = Primandproper_Platform_Issuereports_V1_ListReportsResponse
             /// Descriptor for "ListReports".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.issuereports.v1.IssueReportsService"),
                 method: "ListReports",
                 type: .unary
             )
         }
         /// Namespace for "ListReportsByStatus" metadata.
-        internal enum ListReportsByStatus: Sendable {
+        public enum ListReportsByStatus: Sendable {
             /// Request type for "ListReportsByStatus".
-            internal typealias Input = Primandproper_Platform_Issuereports_V1_ListReportsByStatusRequest
+            public typealias Input = Primandproper_Platform_Issuereports_V1_ListReportsByStatusRequest
             /// Response type for "ListReportsByStatus".
-            internal typealias Output = Primandproper_Platform_Issuereports_V1_ListReportsByStatusResponse
+            public typealias Output = Primandproper_Platform_Issuereports_V1_ListReportsByStatusResponse
             /// Descriptor for "ListReportsByStatus".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.issuereports.v1.IssueReportsService"),
                 method: "ListReportsByStatus",
                 type: .unary
             )
         }
         /// Namespace for "ListReportsByReporter" metadata.
-        internal enum ListReportsByReporter: Sendable {
+        public enum ListReportsByReporter: Sendable {
             /// Request type for "ListReportsByReporter".
-            internal typealias Input = Primandproper_Platform_Issuereports_V1_ListReportsByReporterRequest
+            public typealias Input = Primandproper_Platform_Issuereports_V1_ListReportsByReporterRequest
             /// Response type for "ListReportsByReporter".
-            internal typealias Output = Primandproper_Platform_Issuereports_V1_ListReportsByReporterResponse
+            public typealias Output = Primandproper_Platform_Issuereports_V1_ListReportsByReporterResponse
             /// Descriptor for "ListReportsByReporter".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.issuereports.v1.IssueReportsService"),
                 method: "ListReportsByReporter",
                 type: .unary
             )
         }
         /// Namespace for "ListReportsBySubjectType" metadata.
-        internal enum ListReportsBySubjectType: Sendable {
+        public enum ListReportsBySubjectType: Sendable {
             /// Request type for "ListReportsBySubjectType".
-            internal typealias Input = Primandproper_Platform_Issuereports_V1_ListReportsBySubjectTypeRequest
+            public typealias Input = Primandproper_Platform_Issuereports_V1_ListReportsBySubjectTypeRequest
             /// Response type for "ListReportsBySubjectType".
-            internal typealias Output = Primandproper_Platform_Issuereports_V1_ListReportsBySubjectTypeResponse
+            public typealias Output = Primandproper_Platform_Issuereports_V1_ListReportsBySubjectTypeResponse
             /// Descriptor for "ListReportsBySubjectType".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.issuereports.v1.IssueReportsService"),
                 method: "ListReportsBySubjectType",
                 type: .unary
             )
         }
         /// Namespace for "ListReportsForSubject" metadata.
-        internal enum ListReportsForSubject: Sendable {
+        public enum ListReportsForSubject: Sendable {
             /// Request type for "ListReportsForSubject".
-            internal typealias Input = Primandproper_Platform_Issuereports_V1_ListReportsForSubjectRequest
+            public typealias Input = Primandproper_Platform_Issuereports_V1_ListReportsForSubjectRequest
             /// Response type for "ListReportsForSubject".
-            internal typealias Output = Primandproper_Platform_Issuereports_V1_ListReportsForSubjectResponse
+            public typealias Output = Primandproper_Platform_Issuereports_V1_ListReportsForSubjectResponse
             /// Descriptor for "ListReportsForSubject".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.issuereports.v1.IssueReportsService"),
                 method: "ListReportsForSubject",
                 type: .unary
             )
         }
         /// Namespace for "ListReportsAcrossScopes" metadata.
-        internal enum ListReportsAcrossScopes: Sendable {
+        public enum ListReportsAcrossScopes: Sendable {
             /// Request type for "ListReportsAcrossScopes".
-            internal typealias Input = Primandproper_Platform_Issuereports_V1_ListReportsAcrossScopesRequest
+            public typealias Input = Primandproper_Platform_Issuereports_V1_ListReportsAcrossScopesRequest
             /// Response type for "ListReportsAcrossScopes".
-            internal typealias Output = Primandproper_Platform_Issuereports_V1_ListReportsAcrossScopesResponse
+            public typealias Output = Primandproper_Platform_Issuereports_V1_ListReportsAcrossScopesResponse
             /// Descriptor for "ListReportsAcrossScopes".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.issuereports.v1.IssueReportsService"),
                 method: "ListReportsAcrossScopes",
                 type: .unary
             )
         }
         /// Namespace for "ListReportsByStatusAcrossScopes" metadata.
-        internal enum ListReportsByStatusAcrossScopes: Sendable {
+        public enum ListReportsByStatusAcrossScopes: Sendable {
             /// Request type for "ListReportsByStatusAcrossScopes".
-            internal typealias Input = Primandproper_Platform_Issuereports_V1_ListReportsByStatusAcrossScopesRequest
+            public typealias Input = Primandproper_Platform_Issuereports_V1_ListReportsByStatusAcrossScopesRequest
             /// Response type for "ListReportsByStatusAcrossScopes".
-            internal typealias Output = Primandproper_Platform_Issuereports_V1_ListReportsByStatusAcrossScopesResponse
+            public typealias Output = Primandproper_Platform_Issuereports_V1_ListReportsByStatusAcrossScopesResponse
             /// Descriptor for "ListReportsByStatusAcrossScopes".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.issuereports.v1.IssueReportsService"),
                 method: "ListReportsByStatusAcrossScopes",
                 type: .unary
             )
         }
         /// Namespace for "UpdateReport" metadata.
-        internal enum UpdateReport: Sendable {
+        public enum UpdateReport: Sendable {
             /// Request type for "UpdateReport".
-            internal typealias Input = Primandproper_Platform_Issuereports_V1_UpdateReportRequest
+            public typealias Input = Primandproper_Platform_Issuereports_V1_UpdateReportRequest
             /// Response type for "UpdateReport".
-            internal typealias Output = Primandproper_Platform_Issuereports_V1_UpdateReportResponse
+            public typealias Output = Primandproper_Platform_Issuereports_V1_UpdateReportResponse
             /// Descriptor for "UpdateReport".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.issuereports.v1.IssueReportsService"),
                 method: "UpdateReport",
                 type: .unary
             )
         }
         /// Namespace for "TransitionReport" metadata.
-        internal enum TransitionReport: Sendable {
+        public enum TransitionReport: Sendable {
             /// Request type for "TransitionReport".
-            internal typealias Input = Primandproper_Platform_Issuereports_V1_TransitionReportRequest
+            public typealias Input = Primandproper_Platform_Issuereports_V1_TransitionReportRequest
             /// Response type for "TransitionReport".
-            internal typealias Output = Primandproper_Platform_Issuereports_V1_TransitionReportResponse
+            public typealias Output = Primandproper_Platform_Issuereports_V1_TransitionReportResponse
             /// Descriptor for "TransitionReport".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.issuereports.v1.IssueReportsService"),
                 method: "TransitionReport",
                 type: .unary
             )
         }
         /// Namespace for "ArchiveReport" metadata.
-        internal enum ArchiveReport: Sendable {
+        public enum ArchiveReport: Sendable {
             /// Request type for "ArchiveReport".
-            internal typealias Input = Primandproper_Platform_Issuereports_V1_ArchiveReportRequest
+            public typealias Input = Primandproper_Platform_Issuereports_V1_ArchiveReportRequest
             /// Response type for "ArchiveReport".
-            internal typealias Output = Primandproper_Platform_Issuereports_V1_ArchiveReportResponse
+            public typealias Output = Primandproper_Platform_Issuereports_V1_ArchiveReportResponse
             /// Descriptor for "ArchiveReport".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.issuereports.v1.IssueReportsService"),
                 method: "ArchiveReport",
                 type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.issuereports.v1.IssueReportsService" service.
-        internal static let descriptors: [GRPCCore.MethodDescriptor] = [
+        public static let descriptors: [GRPCCore.MethodDescriptor] = [
             CreateReport.descriptor,
             GetReport.descriptor,
             ListReports.descriptor,
@@ -307,7 +307,7 @@ internal enum Primandproper_Platform_Issuereports_V1_IssueReportsService: Sendab
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension GRPCCore.ServiceDescriptor {
     /// Service descriptor for the "primandproper.platform.issuereports.v1.IssueReportsService" service.
-    internal static let primandproper_platform_issuereports_v1_IssueReportsService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.issuereports.v1.IssueReportsService")
+    public static let primandproper_platform_issuereports_v1_IssueReportsService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.issuereports.v1.IssueReportsService")
 }
 
 // MARK: primandproper.platform.issuereports.v1.IssueReportsService (client)
@@ -339,7 +339,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService {
     /// > ListReportsByStatusAcrossScopes read every tenant's reports, behind
     /// > issues.reports.read_any, which issuereports/grpc declares and grants to
     /// > nobody. A deployment gives it to its operators or to no one.
-    internal protocol ClientProtocol: Sendable {
+    public protocol ClientProtocol: Sendable {
         /// Call the "CreateReport" method.
         ///
         /// - Parameters:
@@ -595,14 +595,14 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService {
     /// > ListReportsByStatusAcrossScopes read every tenant's reports, behind
     /// > issues.reports.read_any, which issuereports/grpc declares and grants to
     /// > nobody. A deployment gives it to its operators or to no one.
-    internal struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
+    public struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
         private let client: GRPCCore.GRPCClient<Transport>
 
         /// Creates a new client wrapping the provided `GRPCCore.GRPCClient`.
         ///
         /// - Parameters:
         ///   - client: A `GRPCCore.GRPCClient` providing a communication channel to the service.
-        internal init(wrapping client: GRPCCore.GRPCClient<Transport>) {
+        public init(wrapping client: GRPCCore.GRPCClient<Transport>) {
             self.client = client
         }
 
@@ -617,7 +617,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func createReport<Result>(
+        public func createReport<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_CreateReportRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Issuereports_V1_CreateReportRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Issuereports_V1_CreateReportResponse>,
@@ -647,7 +647,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getReport<Result>(
+        public func getReport<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_GetReportRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Issuereports_V1_GetReportRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Issuereports_V1_GetReportResponse>,
@@ -677,7 +677,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listReports<Result>(
+        public func listReports<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_ListReportsRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Issuereports_V1_ListReportsRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Issuereports_V1_ListReportsResponse>,
@@ -707,7 +707,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listReportsByStatus<Result>(
+        public func listReportsByStatus<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_ListReportsByStatusRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Issuereports_V1_ListReportsByStatusRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Issuereports_V1_ListReportsByStatusResponse>,
@@ -737,7 +737,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listReportsByReporter<Result>(
+        public func listReportsByReporter<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_ListReportsByReporterRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Issuereports_V1_ListReportsByReporterRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Issuereports_V1_ListReportsByReporterResponse>,
@@ -767,7 +767,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listReportsBySubjectType<Result>(
+        public func listReportsBySubjectType<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_ListReportsBySubjectTypeRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Issuereports_V1_ListReportsBySubjectTypeRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Issuereports_V1_ListReportsBySubjectTypeResponse>,
@@ -797,7 +797,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listReportsForSubject<Result>(
+        public func listReportsForSubject<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_ListReportsForSubjectRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Issuereports_V1_ListReportsForSubjectRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Issuereports_V1_ListReportsForSubjectResponse>,
@@ -827,7 +827,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listReportsAcrossScopes<Result>(
+        public func listReportsAcrossScopes<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_ListReportsAcrossScopesRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Issuereports_V1_ListReportsAcrossScopesRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Issuereports_V1_ListReportsAcrossScopesResponse>,
@@ -857,7 +857,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listReportsByStatusAcrossScopes<Result>(
+        public func listReportsByStatusAcrossScopes<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_ListReportsByStatusAcrossScopesRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Issuereports_V1_ListReportsByStatusAcrossScopesRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Issuereports_V1_ListReportsByStatusAcrossScopesResponse>,
@@ -887,7 +887,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func updateReport<Result>(
+        public func updateReport<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_UpdateReportRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Issuereports_V1_UpdateReportRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Issuereports_V1_UpdateReportResponse>,
@@ -917,7 +917,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func transitionReport<Result>(
+        public func transitionReport<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_TransitionReportRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Issuereports_V1_TransitionReportRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Issuereports_V1_TransitionReportResponse>,
@@ -947,7 +947,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func archiveReport<Result>(
+        public func archiveReport<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_ArchiveReportRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Issuereports_V1_ArchiveReportRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Issuereports_V1_ArchiveReportResponse>,
@@ -980,7 +980,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func createReport<Result>(
+    public func createReport<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_CreateReportRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Issuereports_V1_CreateReportResponse>) async throws -> Result = { response in
@@ -1005,7 +1005,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getReport<Result>(
+    public func getReport<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_GetReportRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Issuereports_V1_GetReportResponse>) async throws -> Result = { response in
@@ -1030,7 +1030,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listReports<Result>(
+    public func listReports<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_ListReportsRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Issuereports_V1_ListReportsResponse>) async throws -> Result = { response in
@@ -1055,7 +1055,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listReportsByStatus<Result>(
+    public func listReportsByStatus<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_ListReportsByStatusRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Issuereports_V1_ListReportsByStatusResponse>) async throws -> Result = { response in
@@ -1080,7 +1080,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listReportsByReporter<Result>(
+    public func listReportsByReporter<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_ListReportsByReporterRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Issuereports_V1_ListReportsByReporterResponse>) async throws -> Result = { response in
@@ -1105,7 +1105,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listReportsBySubjectType<Result>(
+    public func listReportsBySubjectType<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_ListReportsBySubjectTypeRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Issuereports_V1_ListReportsBySubjectTypeResponse>) async throws -> Result = { response in
@@ -1130,7 +1130,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listReportsForSubject<Result>(
+    public func listReportsForSubject<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_ListReportsForSubjectRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Issuereports_V1_ListReportsForSubjectResponse>) async throws -> Result = { response in
@@ -1155,7 +1155,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listReportsAcrossScopes<Result>(
+    public func listReportsAcrossScopes<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_ListReportsAcrossScopesRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Issuereports_V1_ListReportsAcrossScopesResponse>) async throws -> Result = { response in
@@ -1180,7 +1180,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listReportsByStatusAcrossScopes<Result>(
+    public func listReportsByStatusAcrossScopes<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_ListReportsByStatusAcrossScopesRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Issuereports_V1_ListReportsByStatusAcrossScopesResponse>) async throws -> Result = { response in
@@ -1205,7 +1205,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateReport<Result>(
+    public func updateReport<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_UpdateReportRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Issuereports_V1_UpdateReportResponse>) async throws -> Result = { response in
@@ -1230,7 +1230,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func transitionReport<Result>(
+    public func transitionReport<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_TransitionReportRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Issuereports_V1_TransitionReportResponse>) async throws -> Result = { response in
@@ -1255,7 +1255,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveReport<Result>(
+    public func archiveReport<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Issuereports_V1_ArchiveReportRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Issuereports_V1_ArchiveReportResponse>) async throws -> Result = { response in
@@ -1285,7 +1285,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func createReport<Result>(
+    public func createReport<Result>(
         _ message: Primandproper_Platform_Issuereports_V1_CreateReportRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1314,7 +1314,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getReport<Result>(
+    public func getReport<Result>(
         _ message: Primandproper_Platform_Issuereports_V1_GetReportRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1343,7 +1343,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listReports<Result>(
+    public func listReports<Result>(
         _ message: Primandproper_Platform_Issuereports_V1_ListReportsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1372,7 +1372,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listReportsByStatus<Result>(
+    public func listReportsByStatus<Result>(
         _ message: Primandproper_Platform_Issuereports_V1_ListReportsByStatusRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1401,7 +1401,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listReportsByReporter<Result>(
+    public func listReportsByReporter<Result>(
         _ message: Primandproper_Platform_Issuereports_V1_ListReportsByReporterRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1430,7 +1430,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listReportsBySubjectType<Result>(
+    public func listReportsBySubjectType<Result>(
         _ message: Primandproper_Platform_Issuereports_V1_ListReportsBySubjectTypeRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1459,7 +1459,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listReportsForSubject<Result>(
+    public func listReportsForSubject<Result>(
         _ message: Primandproper_Platform_Issuereports_V1_ListReportsForSubjectRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1488,7 +1488,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listReportsAcrossScopes<Result>(
+    public func listReportsAcrossScopes<Result>(
         _ message: Primandproper_Platform_Issuereports_V1_ListReportsAcrossScopesRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1517,7 +1517,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listReportsByStatusAcrossScopes<Result>(
+    public func listReportsByStatusAcrossScopes<Result>(
         _ message: Primandproper_Platform_Issuereports_V1_ListReportsByStatusAcrossScopesRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1546,7 +1546,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateReport<Result>(
+    public func updateReport<Result>(
         _ message: Primandproper_Platform_Issuereports_V1_UpdateReportRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1575,7 +1575,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func transitionReport<Result>(
+    public func transitionReport<Result>(
         _ message: Primandproper_Platform_Issuereports_V1_TransitionReportRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1604,7 +1604,7 @@ extension Primandproper_Platform_Issuereports_V1_IssueReportsService.ClientProto
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveReport<Result>(
+    public func archiveReport<Result>(
         _ message: Primandproper_Platform_Issuereports_V1_ArchiveReportRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,

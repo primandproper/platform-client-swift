@@ -144,325 +144,325 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "primandproper.platform.signin.v1.SignInService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Signin_V1_SignInService: Sendable {
+public enum Primandproper_Platform_Signin_V1_SignInService: Sendable {
     /// Service descriptor for the "primandproper.platform.signin.v1.SignInService" service.
-    internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService")
+    public static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService")
     /// Namespace for method metadata.
-    internal enum Method: Sendable {
+    public enum Method: Sendable {
         /// Namespace for "Register" metadata.
-        internal enum Register: Sendable {
+        public enum Register: Sendable {
             /// Request type for "Register".
-            internal typealias Input = Primandproper_Platform_Signin_V1_RegisterRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_RegisterRequest
             /// Response type for "Register".
-            internal typealias Output = Primandproper_Platform_Signin_V1_RegisterResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_RegisterResponse
             /// Descriptor for "Register".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "Register",
                 type: .unary
             )
         }
         /// Namespace for "AttachPassword" metadata.
-        internal enum AttachPassword: Sendable {
+        public enum AttachPassword: Sendable {
             /// Request type for "AttachPassword".
-            internal typealias Input = Primandproper_Platform_Signin_V1_AttachPasswordRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_AttachPasswordRequest
             /// Response type for "AttachPassword".
-            internal typealias Output = Primandproper_Platform_Signin_V1_AttachPasswordResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_AttachPasswordResponse
             /// Descriptor for "AttachPassword".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "AttachPassword",
                 type: .unary
             )
         }
         /// Namespace for "VerifyEmailAddress" metadata.
-        internal enum VerifyEmailAddress: Sendable {
+        public enum VerifyEmailAddress: Sendable {
             /// Request type for "VerifyEmailAddress".
-            internal typealias Input = Primandproper_Platform_Signin_V1_VerifyEmailAddressRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_VerifyEmailAddressRequest
             /// Response type for "VerifyEmailAddress".
-            internal typealias Output = Primandproper_Platform_Signin_V1_VerifyEmailAddressResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_VerifyEmailAddressResponse
             /// Descriptor for "VerifyEmailAddress".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "VerifyEmailAddress",
                 type: .unary
             )
         }
         /// Namespace for "RequestVerificationEmail" metadata.
-        internal enum RequestVerificationEmail: Sendable {
+        public enum RequestVerificationEmail: Sendable {
             /// Request type for "RequestVerificationEmail".
-            internal typealias Input = Primandproper_Platform_Signin_V1_RequestVerificationEmailRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_RequestVerificationEmailRequest
             /// Response type for "RequestVerificationEmail".
-            internal typealias Output = Primandproper_Platform_Signin_V1_RequestVerificationEmailResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_RequestVerificationEmailResponse
             /// Descriptor for "RequestVerificationEmail".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "RequestVerificationEmail",
                 type: .unary
             )
         }
         /// Namespace for "RequestVerificationEmailByAddress" metadata.
-        internal enum RequestVerificationEmailByAddress: Sendable {
+        public enum RequestVerificationEmailByAddress: Sendable {
             /// Request type for "RequestVerificationEmailByAddress".
-            internal typealias Input = Primandproper_Platform_Signin_V1_RequestVerificationEmailByAddressRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_RequestVerificationEmailByAddressRequest
             /// Response type for "RequestVerificationEmailByAddress".
-            internal typealias Output = Primandproper_Platform_Signin_V1_RequestVerificationEmailByAddressResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_RequestVerificationEmailByAddressResponse
             /// Descriptor for "RequestVerificationEmailByAddress".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "RequestVerificationEmailByAddress",
                 type: .unary
             )
         }
         /// Namespace for "RequestMagicLink" metadata.
-        internal enum RequestMagicLink: Sendable {
+        public enum RequestMagicLink: Sendable {
             /// Request type for "RequestMagicLink".
-            internal typealias Input = Primandproper_Platform_Signin_V1_RequestMagicLinkRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_RequestMagicLinkRequest
             /// Response type for "RequestMagicLink".
-            internal typealias Output = Primandproper_Platform_Signin_V1_RequestMagicLinkResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_RequestMagicLinkResponse
             /// Descriptor for "RequestMagicLink".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "RequestMagicLink",
                 type: .unary
             )
         }
         /// Namespace for "RedeemMagicLink" metadata.
-        internal enum RedeemMagicLink: Sendable {
+        public enum RedeemMagicLink: Sendable {
             /// Request type for "RedeemMagicLink".
-            internal typealias Input = Primandproper_Platform_Signin_V1_RedeemMagicLinkRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_RedeemMagicLinkRequest
             /// Response type for "RedeemMagicLink".
-            internal typealias Output = Primandproper_Platform_Signin_V1_RedeemMagicLinkResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_RedeemMagicLinkResponse
             /// Descriptor for "RedeemMagicLink".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "RedeemMagicLink",
                 type: .unary
             )
         }
         /// Namespace for "RequestHandleReminder" metadata.
-        internal enum RequestHandleReminder: Sendable {
+        public enum RequestHandleReminder: Sendable {
             /// Request type for "RequestHandleReminder".
-            internal typealias Input = Primandproper_Platform_Signin_V1_RequestHandleReminderRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_RequestHandleReminderRequest
             /// Response type for "RequestHandleReminder".
-            internal typealias Output = Primandproper_Platform_Signin_V1_RequestHandleReminderResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_RequestHandleReminderResponse
             /// Descriptor for "RequestHandleReminder".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "RequestHandleReminder",
                 type: .unary
             )
         }
         /// Namespace for "LoginForToken" metadata.
-        internal enum LoginForToken: Sendable {
+        public enum LoginForToken: Sendable {
             /// Request type for "LoginForToken".
-            internal typealias Input = Primandproper_Platform_Signin_V1_LoginForTokenRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_LoginForTokenRequest
             /// Response type for "LoginForToken".
-            internal typealias Output = Primandproper_Platform_Signin_V1_LoginForTokenResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_LoginForTokenResponse
             /// Descriptor for "LoginForToken".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "LoginForToken",
                 type: .unary
             )
         }
         /// Namespace for "AdminLoginForToken" metadata.
-        internal enum AdminLoginForToken: Sendable {
+        public enum AdminLoginForToken: Sendable {
             /// Request type for "AdminLoginForToken".
-            internal typealias Input = Primandproper_Platform_Signin_V1_AdminLoginForTokenRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_AdminLoginForTokenRequest
             /// Response type for "AdminLoginForToken".
-            internal typealias Output = Primandproper_Platform_Signin_V1_AdminLoginForTokenResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_AdminLoginForTokenResponse
             /// Descriptor for "AdminLoginForToken".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "AdminLoginForToken",
                 type: .unary
             )
         }
         /// Namespace for "ExchangeRefreshToken" metadata.
-        internal enum ExchangeRefreshToken: Sendable {
+        public enum ExchangeRefreshToken: Sendable {
             /// Request type for "ExchangeRefreshToken".
-            internal typealias Input = Primandproper_Platform_Signin_V1_ExchangeRefreshTokenRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_ExchangeRefreshTokenRequest
             /// Response type for "ExchangeRefreshToken".
-            internal typealias Output = Primandproper_Platform_Signin_V1_ExchangeRefreshTokenResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_ExchangeRefreshTokenResponse
             /// Descriptor for "ExchangeRefreshToken".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "ExchangeRefreshToken",
                 type: .unary
             )
         }
         /// Namespace for "SwitchAccount" metadata.
-        internal enum SwitchAccount: Sendable {
+        public enum SwitchAccount: Sendable {
             /// Request type for "SwitchAccount".
-            internal typealias Input = Primandproper_Platform_Signin_V1_SwitchAccountRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_SwitchAccountRequest
             /// Response type for "SwitchAccount".
-            internal typealias Output = Primandproper_Platform_Signin_V1_SwitchAccountResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_SwitchAccountResponse
             /// Descriptor for "SwitchAccount".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "SwitchAccount",
                 type: .unary
             )
         }
         /// Namespace for "SignOut" metadata.
-        internal enum SignOut: Sendable {
+        public enum SignOut: Sendable {
             /// Request type for "SignOut".
-            internal typealias Input = Primandproper_Platform_Signin_V1_SignOutRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_SignOutRequest
             /// Response type for "SignOut".
-            internal typealias Output = Primandproper_Platform_Signin_V1_SignOutResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_SignOutResponse
             /// Descriptor for "SignOut".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "SignOut",
                 type: .unary
             )
         }
         /// Namespace for "SignOutEverywhere" metadata.
-        internal enum SignOutEverywhere: Sendable {
+        public enum SignOutEverywhere: Sendable {
             /// Request type for "SignOutEverywhere".
-            internal typealias Input = Primandproper_Platform_Signin_V1_SignOutEverywhereRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_SignOutEverywhereRequest
             /// Response type for "SignOutEverywhere".
-            internal typealias Output = Primandproper_Platform_Signin_V1_SignOutEverywhereResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_SignOutEverywhereResponse
             /// Descriptor for "SignOutEverywhere".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "SignOutEverywhere",
                 type: .unary
             )
         }
         /// Namespace for "ListSignIns" metadata.
-        internal enum ListSignIns: Sendable {
+        public enum ListSignIns: Sendable {
             /// Request type for "ListSignIns".
-            internal typealias Input = Primandproper_Platform_Signin_V1_ListSignInsRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_ListSignInsRequest
             /// Response type for "ListSignIns".
-            internal typealias Output = Primandproper_Platform_Signin_V1_ListSignInsResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_ListSignInsResponse
             /// Descriptor for "ListSignIns".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "ListSignIns",
                 type: .unary
             )
         }
         /// Namespace for "EndSignIn" metadata.
-        internal enum EndSignIn: Sendable {
+        public enum EndSignIn: Sendable {
             /// Request type for "EndSignIn".
-            internal typealias Input = Primandproper_Platform_Signin_V1_EndSignInRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_EndSignInRequest
             /// Response type for "EndSignIn".
-            internal typealias Output = Primandproper_Platform_Signin_V1_EndSignInResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_EndSignInResponse
             /// Descriptor for "EndSignIn".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "EndSignIn",
                 type: .unary
             )
         }
         /// Namespace for "EndOtherSignIns" metadata.
-        internal enum EndOtherSignIns: Sendable {
+        public enum EndOtherSignIns: Sendable {
             /// Request type for "EndOtherSignIns".
-            internal typealias Input = Primandproper_Platform_Signin_V1_EndOtherSignInsRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_EndOtherSignInsRequest
             /// Response type for "EndOtherSignIns".
-            internal typealias Output = Primandproper_Platform_Signin_V1_EndOtherSignInsResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_EndOtherSignInsResponse
             /// Descriptor for "EndOtherSignIns".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "EndOtherSignIns",
                 type: .unary
             )
         }
         /// Namespace for "GetAuthStatus" metadata.
-        internal enum GetAuthStatus: Sendable {
+        public enum GetAuthStatus: Sendable {
             /// Request type for "GetAuthStatus".
-            internal typealias Input = Primandproper_Platform_Signin_V1_GetAuthStatusRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_GetAuthStatusRequest
             /// Response type for "GetAuthStatus".
-            internal typealias Output = Primandproper_Platform_Signin_V1_GetAuthStatusResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_GetAuthStatusResponse
             /// Descriptor for "GetAuthStatus".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "GetAuthStatus",
                 type: .unary
             )
         }
         /// Namespace for "GetSelf" metadata.
-        internal enum GetSelf: Sendable {
+        public enum GetSelf: Sendable {
             /// Request type for "GetSelf".
-            internal typealias Input = Primandproper_Platform_Signin_V1_GetSelfRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_GetSelfRequest
             /// Response type for "GetSelf".
-            internal typealias Output = Primandproper_Platform_Signin_V1_GetSelfResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_GetSelfResponse
             /// Descriptor for "GetSelf".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "GetSelf",
                 type: .unary
             )
         }
         /// Namespace for "UpdatePassword" metadata.
-        internal enum UpdatePassword: Sendable {
+        public enum UpdatePassword: Sendable {
             /// Request type for "UpdatePassword".
-            internal typealias Input = Primandproper_Platform_Signin_V1_UpdatePasswordRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_UpdatePasswordRequest
             /// Response type for "UpdatePassword".
-            internal typealias Output = Primandproper_Platform_Signin_V1_UpdatePasswordResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_UpdatePasswordResponse
             /// Descriptor for "UpdatePassword".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "UpdatePassword",
                 type: .unary
             )
         }
         /// Namespace for "RefreshTOTPSecret" metadata.
-        internal enum RefreshTOTPSecret: Sendable {
+        public enum RefreshTOTPSecret: Sendable {
             /// Request type for "RefreshTOTPSecret".
-            internal typealias Input = Primandproper_Platform_Signin_V1_RefreshTOTPSecretRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_RefreshTOTPSecretRequest
             /// Response type for "RefreshTOTPSecret".
-            internal typealias Output = Primandproper_Platform_Signin_V1_RefreshTOTPSecretResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_RefreshTOTPSecretResponse
             /// Descriptor for "RefreshTOTPSecret".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "RefreshTOTPSecret",
                 type: .unary
             )
         }
         /// Namespace for "VerifyTOTPSecret" metadata.
-        internal enum VerifyTOTPSecret: Sendable {
+        public enum VerifyTOTPSecret: Sendable {
             /// Request type for "VerifyTOTPSecret".
-            internal typealias Input = Primandproper_Platform_Signin_V1_VerifyTOTPSecretRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_VerifyTOTPSecretRequest
             /// Response type for "VerifyTOTPSecret".
-            internal typealias Output = Primandproper_Platform_Signin_V1_VerifyTOTPSecretResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_VerifyTOTPSecretResponse
             /// Descriptor for "VerifyTOTPSecret".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "VerifyTOTPSecret",
                 type: .unary
             )
         }
         /// Namespace for "UpdateEmailAddress" metadata.
-        internal enum UpdateEmailAddress: Sendable {
+        public enum UpdateEmailAddress: Sendable {
             /// Request type for "UpdateEmailAddress".
-            internal typealias Input = Primandproper_Platform_Signin_V1_UpdateEmailAddressRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_UpdateEmailAddressRequest
             /// Response type for "UpdateEmailAddress".
-            internal typealias Output = Primandproper_Platform_Signin_V1_UpdateEmailAddressResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_UpdateEmailAddressResponse
             /// Descriptor for "UpdateEmailAddress".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "UpdateEmailAddress",
                 type: .unary
             )
         }
         /// Namespace for "UpdateUsername" metadata.
-        internal enum UpdateUsername: Sendable {
+        public enum UpdateUsername: Sendable {
             /// Request type for "UpdateUsername".
-            internal typealias Input = Primandproper_Platform_Signin_V1_UpdateUsernameRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_UpdateUsernameRequest
             /// Response type for "UpdateUsername".
-            internal typealias Output = Primandproper_Platform_Signin_V1_UpdateUsernameResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_UpdateUsernameResponse
             /// Descriptor for "UpdateUsername".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService"),
                 method: "UpdateUsername",
                 type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.signin.v1.SignInService" service.
-        internal static let descriptors: [GRPCCore.MethodDescriptor] = [
+        public static let descriptors: [GRPCCore.MethodDescriptor] = [
             Register.descriptor,
             AttachPassword.descriptor,
             VerifyEmailAddress.descriptor,
@@ -494,7 +494,7 @@ internal enum Primandproper_Platform_Signin_V1_SignInService: Sendable {
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension GRPCCore.ServiceDescriptor {
     /// Service descriptor for the "primandproper.platform.signin.v1.SignInService" service.
-    internal static let primandproper_platform_signin_v1_SignInService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService")
+    public static let primandproper_platform_signin_v1_SignInService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInService")
 }
 
 // MARK: primandproper.platform.signin.v1.SignInService (client)
@@ -519,7 +519,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
     /// > What an operator does to somebody else's logins is
     /// > SignInAdministrationService, which is permissioned, and which is a service of
     /// > its own so that this statement stays true of this one.
-    internal protocol ClientProtocol: Sendable {
+    public protocol ClientProtocol: Sendable {
         /// Call the "Register" method.
         ///
         /// > Source IDL Documentation:
@@ -1069,14 +1069,14 @@ extension Primandproper_Platform_Signin_V1_SignInService {
     /// > What an operator does to somebody else's logins is
     /// > SignInAdministrationService, which is permissioned, and which is a service of
     /// > its own so that this statement stays true of this one.
-    internal struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
+    public struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
         private let client: GRPCCore.GRPCClient<Transport>
 
         /// Creates a new client wrapping the provided `GRPCCore.GRPCClient`.
         ///
         /// - Parameters:
         ///   - client: A `GRPCCore.GRPCClient` providing a communication channel to the service.
-        internal init(wrapping client: GRPCCore.GRPCClient<Transport>) {
+        public init(wrapping client: GRPCCore.GRPCClient<Transport>) {
             self.client = client
         }
 
@@ -1109,7 +1109,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func register<Result>(
+        public func register<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RegisterRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_RegisterRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_RegisterResponse>,
@@ -1139,7 +1139,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func attachPassword<Result>(
+        public func attachPassword<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_AttachPasswordRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_AttachPasswordRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_AttachPasswordResponse>,
@@ -1169,7 +1169,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func verifyEmailAddress<Result>(
+        public func verifyEmailAddress<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_VerifyEmailAddressRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_VerifyEmailAddressRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_VerifyEmailAddressResponse>,
@@ -1206,7 +1206,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func requestVerificationEmail<Result>(
+        public func requestVerificationEmail<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RequestVerificationEmailRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_RequestVerificationEmailRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_RequestVerificationEmailResponse>,
@@ -1236,7 +1236,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func requestVerificationEmailByAddress<Result>(
+        public func requestVerificationEmailByAddress<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RequestVerificationEmailByAddressRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_RequestVerificationEmailByAddressRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_RequestVerificationEmailByAddressResponse>,
@@ -1276,7 +1276,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func requestMagicLink<Result>(
+        public func requestMagicLink<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RequestMagicLinkRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_RequestMagicLinkRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_RequestMagicLinkResponse>,
@@ -1306,7 +1306,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func redeemMagicLink<Result>(
+        public func redeemMagicLink<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RedeemMagicLinkRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_RedeemMagicLinkRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_RedeemMagicLinkResponse>,
@@ -1343,7 +1343,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func requestHandleReminder<Result>(
+        public func requestHandleReminder<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RequestHandleReminderRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_RequestHandleReminderRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_RequestHandleReminderResponse>,
@@ -1379,7 +1379,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func loginForToken<Result>(
+        public func loginForToken<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_LoginForTokenRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_LoginForTokenRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_LoginForTokenResponse>,
@@ -1409,7 +1409,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func adminLoginForToken<Result>(
+        public func adminLoginForToken<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_AdminLoginForTokenRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_AdminLoginForTokenRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_AdminLoginForTokenResponse>,
@@ -1439,7 +1439,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func exchangeRefreshToken<Result>(
+        public func exchangeRefreshToken<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_ExchangeRefreshTokenRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_ExchangeRefreshTokenRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_ExchangeRefreshTokenResponse>,
@@ -1469,7 +1469,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func switchAccount<Result>(
+        public func switchAccount<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_SwitchAccountRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_SwitchAccountRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_SwitchAccountResponse>,
@@ -1507,7 +1507,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func signOut<Result>(
+        public func signOut<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_SignOutRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_SignOutRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_SignOutResponse>,
@@ -1537,7 +1537,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func signOutEverywhere<Result>(
+        public func signOutEverywhere<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_SignOutEverywhereRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_SignOutEverywhereRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_SignOutEverywhereResponse>,
@@ -1574,7 +1574,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listSignIns<Result>(
+        public func listSignIns<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_ListSignInsRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_ListSignInsRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_ListSignInsResponse>,
@@ -1604,7 +1604,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func endSignIn<Result>(
+        public func endSignIn<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_EndSignInRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_EndSignInRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_EndSignInResponse>,
@@ -1634,7 +1634,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func endOtherSignIns<Result>(
+        public func endOtherSignIns<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_EndOtherSignInsRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_EndOtherSignInsRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_EndOtherSignInsResponse>,
@@ -1668,7 +1668,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getAuthStatus<Result>(
+        public func getAuthStatus<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_GetAuthStatusRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_GetAuthStatusRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_GetAuthStatusResponse>,
@@ -1698,7 +1698,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getSelf<Result>(
+        public func getSelf<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_GetSelfRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_GetSelfRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_GetSelfResponse>,
@@ -1734,7 +1734,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func updatePassword<Result>(
+        public func updatePassword<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_UpdatePasswordRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_UpdatePasswordRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_UpdatePasswordResponse>,
@@ -1764,7 +1764,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func refreshTOTPSecret<Result>(
+        public func refreshTOTPSecret<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RefreshTOTPSecretRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_RefreshTOTPSecretRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_RefreshTOTPSecretResponse>,
@@ -1794,7 +1794,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func verifyTOTPSecret<Result>(
+        public func verifyTOTPSecret<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_VerifyTOTPSecretRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_VerifyTOTPSecretRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_VerifyTOTPSecretResponse>,
@@ -1824,7 +1824,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func updateEmailAddress<Result>(
+        public func updateEmailAddress<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_UpdateEmailAddressRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_UpdateEmailAddressRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_UpdateEmailAddressResponse>,
@@ -1854,7 +1854,7 @@ extension Primandproper_Platform_Signin_V1_SignInService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func updateUsername<Result>(
+        public func updateUsername<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_UpdateUsernameRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_UpdateUsernameRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_UpdateUsernameResponse>,
@@ -1905,7 +1905,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func register<Result>(
+    public func register<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RegisterRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_RegisterResponse>) async throws -> Result = { response in
@@ -1930,7 +1930,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func attachPassword<Result>(
+    public func attachPassword<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_AttachPasswordRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_AttachPasswordResponse>) async throws -> Result = { response in
@@ -1955,7 +1955,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func verifyEmailAddress<Result>(
+    public func verifyEmailAddress<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_VerifyEmailAddressRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_VerifyEmailAddressResponse>) async throws -> Result = { response in
@@ -1987,7 +1987,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func requestVerificationEmail<Result>(
+    public func requestVerificationEmail<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RequestVerificationEmailRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_RequestVerificationEmailResponse>) async throws -> Result = { response in
@@ -2012,7 +2012,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func requestVerificationEmailByAddress<Result>(
+    public func requestVerificationEmailByAddress<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RequestVerificationEmailByAddressRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_RequestVerificationEmailByAddressResponse>) async throws -> Result = { response in
@@ -2047,7 +2047,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func requestMagicLink<Result>(
+    public func requestMagicLink<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RequestMagicLinkRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_RequestMagicLinkResponse>) async throws -> Result = { response in
@@ -2072,7 +2072,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func redeemMagicLink<Result>(
+    public func redeemMagicLink<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RedeemMagicLinkRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_RedeemMagicLinkResponse>) async throws -> Result = { response in
@@ -2104,7 +2104,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func requestHandleReminder<Result>(
+    public func requestHandleReminder<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RequestHandleReminderRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_RequestHandleReminderResponse>) async throws -> Result = { response in
@@ -2135,7 +2135,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func loginForToken<Result>(
+    public func loginForToken<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_LoginForTokenRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_LoginForTokenResponse>) async throws -> Result = { response in
@@ -2160,7 +2160,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func adminLoginForToken<Result>(
+    public func adminLoginForToken<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_AdminLoginForTokenRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_AdminLoginForTokenResponse>) async throws -> Result = { response in
@@ -2185,7 +2185,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func exchangeRefreshToken<Result>(
+    public func exchangeRefreshToken<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_ExchangeRefreshTokenRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_ExchangeRefreshTokenResponse>) async throws -> Result = { response in
@@ -2210,7 +2210,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func switchAccount<Result>(
+    public func switchAccount<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_SwitchAccountRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_SwitchAccountResponse>) async throws -> Result = { response in
@@ -2243,7 +2243,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func signOut<Result>(
+    public func signOut<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_SignOutRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_SignOutResponse>) async throws -> Result = { response in
@@ -2268,7 +2268,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func signOutEverywhere<Result>(
+    public func signOutEverywhere<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_SignOutEverywhereRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_SignOutEverywhereResponse>) async throws -> Result = { response in
@@ -2300,7 +2300,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listSignIns<Result>(
+    public func listSignIns<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_ListSignInsRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_ListSignInsResponse>) async throws -> Result = { response in
@@ -2325,7 +2325,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func endSignIn<Result>(
+    public func endSignIn<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_EndSignInRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_EndSignInResponse>) async throws -> Result = { response in
@@ -2350,7 +2350,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func endOtherSignIns<Result>(
+    public func endOtherSignIns<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_EndOtherSignInsRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_EndOtherSignInsResponse>) async throws -> Result = { response in
@@ -2379,7 +2379,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getAuthStatus<Result>(
+    public func getAuthStatus<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_GetAuthStatusRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_GetAuthStatusResponse>) async throws -> Result = { response in
@@ -2404,7 +2404,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getSelf<Result>(
+    public func getSelf<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_GetSelfRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_GetSelfResponse>) async throws -> Result = { response in
@@ -2435,7 +2435,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updatePassword<Result>(
+    public func updatePassword<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_UpdatePasswordRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_UpdatePasswordResponse>) async throws -> Result = { response in
@@ -2460,7 +2460,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func refreshTOTPSecret<Result>(
+    public func refreshTOTPSecret<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_RefreshTOTPSecretRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_RefreshTOTPSecretResponse>) async throws -> Result = { response in
@@ -2485,7 +2485,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func verifyTOTPSecret<Result>(
+    public func verifyTOTPSecret<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_VerifyTOTPSecretRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_VerifyTOTPSecretResponse>) async throws -> Result = { response in
@@ -2510,7 +2510,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateEmailAddress<Result>(
+    public func updateEmailAddress<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_UpdateEmailAddressRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_UpdateEmailAddressResponse>) async throws -> Result = { response in
@@ -2535,7 +2535,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateUsername<Result>(
+    public func updateUsername<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_UpdateUsernameRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_UpdateUsernameResponse>) async throws -> Result = { response in
@@ -2583,7 +2583,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func register<Result>(
+    public func register<Result>(
         _ message: Primandproper_Platform_Signin_V1_RegisterRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2612,7 +2612,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func attachPassword<Result>(
+    public func attachPassword<Result>(
         _ message: Primandproper_Platform_Signin_V1_AttachPasswordRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2641,7 +2641,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func verifyEmailAddress<Result>(
+    public func verifyEmailAddress<Result>(
         _ message: Primandproper_Platform_Signin_V1_VerifyEmailAddressRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2677,7 +2677,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func requestVerificationEmail<Result>(
+    public func requestVerificationEmail<Result>(
         _ message: Primandproper_Platform_Signin_V1_RequestVerificationEmailRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2706,7 +2706,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func requestVerificationEmailByAddress<Result>(
+    public func requestVerificationEmailByAddress<Result>(
         _ message: Primandproper_Platform_Signin_V1_RequestVerificationEmailByAddressRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2745,7 +2745,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func requestMagicLink<Result>(
+    public func requestMagicLink<Result>(
         _ message: Primandproper_Platform_Signin_V1_RequestMagicLinkRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2774,7 +2774,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func redeemMagicLink<Result>(
+    public func redeemMagicLink<Result>(
         _ message: Primandproper_Platform_Signin_V1_RedeemMagicLinkRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2810,7 +2810,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func requestHandleReminder<Result>(
+    public func requestHandleReminder<Result>(
         _ message: Primandproper_Platform_Signin_V1_RequestHandleReminderRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2845,7 +2845,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func loginForToken<Result>(
+    public func loginForToken<Result>(
         _ message: Primandproper_Platform_Signin_V1_LoginForTokenRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2874,7 +2874,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func adminLoginForToken<Result>(
+    public func adminLoginForToken<Result>(
         _ message: Primandproper_Platform_Signin_V1_AdminLoginForTokenRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2903,7 +2903,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func exchangeRefreshToken<Result>(
+    public func exchangeRefreshToken<Result>(
         _ message: Primandproper_Platform_Signin_V1_ExchangeRefreshTokenRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2932,7 +2932,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func switchAccount<Result>(
+    public func switchAccount<Result>(
         _ message: Primandproper_Platform_Signin_V1_SwitchAccountRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2969,7 +2969,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func signOut<Result>(
+    public func signOut<Result>(
         _ message: Primandproper_Platform_Signin_V1_SignOutRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2998,7 +2998,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func signOutEverywhere<Result>(
+    public func signOutEverywhere<Result>(
         _ message: Primandproper_Platform_Signin_V1_SignOutEverywhereRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3034,7 +3034,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listSignIns<Result>(
+    public func listSignIns<Result>(
         _ message: Primandproper_Platform_Signin_V1_ListSignInsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3063,7 +3063,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func endSignIn<Result>(
+    public func endSignIn<Result>(
         _ message: Primandproper_Platform_Signin_V1_EndSignInRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3092,7 +3092,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func endOtherSignIns<Result>(
+    public func endOtherSignIns<Result>(
         _ message: Primandproper_Platform_Signin_V1_EndOtherSignInsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3125,7 +3125,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getAuthStatus<Result>(
+    public func getAuthStatus<Result>(
         _ message: Primandproper_Platform_Signin_V1_GetAuthStatusRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3154,7 +3154,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getSelf<Result>(
+    public func getSelf<Result>(
         _ message: Primandproper_Platform_Signin_V1_GetSelfRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3189,7 +3189,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updatePassword<Result>(
+    public func updatePassword<Result>(
         _ message: Primandproper_Platform_Signin_V1_UpdatePasswordRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3218,7 +3218,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func refreshTOTPSecret<Result>(
+    public func refreshTOTPSecret<Result>(
         _ message: Primandproper_Platform_Signin_V1_RefreshTOTPSecretRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3247,7 +3247,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func verifyTOTPSecret<Result>(
+    public func verifyTOTPSecret<Result>(
         _ message: Primandproper_Platform_Signin_V1_VerifyTOTPSecretRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3276,7 +3276,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateEmailAddress<Result>(
+    public func updateEmailAddress<Result>(
         _ message: Primandproper_Platform_Signin_V1_UpdateEmailAddressRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3305,7 +3305,7 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateUsername<Result>(
+    public func updateUsername<Result>(
         _ message: Primandproper_Platform_Signin_V1_UpdateUsernameRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3329,52 +3329,52 @@ extension Primandproper_Platform_Signin_V1_SignInService.ClientProtocol {
 
 /// Namespace containing generated types for the "primandproper.platform.signin.v1.SignInAdministrationService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Signin_V1_SignInAdministrationService: Sendable {
+public enum Primandproper_Platform_Signin_V1_SignInAdministrationService: Sendable {
     /// Service descriptor for the "primandproper.platform.signin.v1.SignInAdministrationService" service.
-    internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInAdministrationService")
+    public static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInAdministrationService")
     /// Namespace for method metadata.
-    internal enum Method: Sendable {
+    public enum Method: Sendable {
         /// Namespace for "ListSignInsForUser" metadata.
-        internal enum ListSignInsForUser: Sendable {
+        public enum ListSignInsForUser: Sendable {
             /// Request type for "ListSignInsForUser".
-            internal typealias Input = Primandproper_Platform_Signin_V1_ListSignInsForUserRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_ListSignInsForUserRequest
             /// Response type for "ListSignInsForUser".
-            internal typealias Output = Primandproper_Platform_Signin_V1_ListSignInsForUserResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_ListSignInsForUserResponse
             /// Descriptor for "ListSignInsForUser".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInAdministrationService"),
                 method: "ListSignInsForUser",
                 type: .unary
             )
         }
         /// Namespace for "EndSignInForUser" metadata.
-        internal enum EndSignInForUser: Sendable {
+        public enum EndSignInForUser: Sendable {
             /// Request type for "EndSignInForUser".
-            internal typealias Input = Primandproper_Platform_Signin_V1_EndSignInForUserRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_EndSignInForUserRequest
             /// Response type for "EndSignInForUser".
-            internal typealias Output = Primandproper_Platform_Signin_V1_EndSignInForUserResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_EndSignInForUserResponse
             /// Descriptor for "EndSignInForUser".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInAdministrationService"),
                 method: "EndSignInForUser",
                 type: .unary
             )
         }
         /// Namespace for "EndAllSignInsForUser" metadata.
-        internal enum EndAllSignInsForUser: Sendable {
+        public enum EndAllSignInsForUser: Sendable {
             /// Request type for "EndAllSignInsForUser".
-            internal typealias Input = Primandproper_Platform_Signin_V1_EndAllSignInsForUserRequest
+            public typealias Input = Primandproper_Platform_Signin_V1_EndAllSignInsForUserRequest
             /// Response type for "EndAllSignInsForUser".
-            internal typealias Output = Primandproper_Platform_Signin_V1_EndAllSignInsForUserResponse
+            public typealias Output = Primandproper_Platform_Signin_V1_EndAllSignInsForUserResponse
             /// Descriptor for "EndAllSignInsForUser".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInAdministrationService"),
                 method: "EndAllSignInsForUser",
                 type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.signin.v1.SignInAdministrationService" service.
-        internal static let descriptors: [GRPCCore.MethodDescriptor] = [
+        public static let descriptors: [GRPCCore.MethodDescriptor] = [
             ListSignInsForUser.descriptor,
             EndSignInForUser.descriptor,
             EndAllSignInsForUser.descriptor
@@ -3385,7 +3385,7 @@ internal enum Primandproper_Platform_Signin_V1_SignInAdministrationService: Send
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension GRPCCore.ServiceDescriptor {
     /// Service descriptor for the "primandproper.platform.signin.v1.SignInAdministrationService" service.
-    internal static let primandproper_platform_signin_v1_SignInAdministrationService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInAdministrationService")
+    public static let primandproper_platform_signin_v1_SignInAdministrationService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.signin.v1.SignInAdministrationService")
 }
 
 // MARK: primandproper.platform.signin.v1.SignInAdministrationService (client)
@@ -3413,7 +3413,7 @@ extension Primandproper_Platform_Signin_V1_SignInAdministrationService {
     /// > operator signed me out" from "I signed out". Like every end, it stops the
     /// > login's access tokens being replaced rather than stopping the one already
     /// > issued, unless the deployment checks each token's login on every request.
-    internal protocol ClientProtocol: Sendable {
+    public protocol ClientProtocol: Sendable {
         /// Call the "ListSignInsForUser" method.
         ///
         /// - Parameters:
@@ -3494,14 +3494,14 @@ extension Primandproper_Platform_Signin_V1_SignInAdministrationService {
     /// > operator signed me out" from "I signed out". Like every end, it stops the
     /// > login's access tokens being replaced rather than stopping the one already
     /// > issued, unless the deployment checks each token's login on every request.
-    internal struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
+    public struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
         private let client: GRPCCore.GRPCClient<Transport>
 
         /// Creates a new client wrapping the provided `GRPCCore.GRPCClient`.
         ///
         /// - Parameters:
         ///   - client: A `GRPCCore.GRPCClient` providing a communication channel to the service.
-        internal init(wrapping client: GRPCCore.GRPCClient<Transport>) {
+        public init(wrapping client: GRPCCore.GRPCClient<Transport>) {
             self.client = client
         }
 
@@ -3516,7 +3516,7 @@ extension Primandproper_Platform_Signin_V1_SignInAdministrationService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listSignInsForUser<Result>(
+        public func listSignInsForUser<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_ListSignInsForUserRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_ListSignInsForUserRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_ListSignInsForUserResponse>,
@@ -3546,7 +3546,7 @@ extension Primandproper_Platform_Signin_V1_SignInAdministrationService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func endSignInForUser<Result>(
+        public func endSignInForUser<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_EndSignInForUserRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_EndSignInForUserRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_EndSignInForUserResponse>,
@@ -3576,7 +3576,7 @@ extension Primandproper_Platform_Signin_V1_SignInAdministrationService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func endAllSignInsForUser<Result>(
+        public func endAllSignInsForUser<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_EndAllSignInsForUserRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Signin_V1_EndAllSignInsForUserRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Signin_V1_EndAllSignInsForUserResponse>,
@@ -3609,7 +3609,7 @@ extension Primandproper_Platform_Signin_V1_SignInAdministrationService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listSignInsForUser<Result>(
+    public func listSignInsForUser<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_ListSignInsForUserRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_ListSignInsForUserResponse>) async throws -> Result = { response in
@@ -3634,7 +3634,7 @@ extension Primandproper_Platform_Signin_V1_SignInAdministrationService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func endSignInForUser<Result>(
+    public func endSignInForUser<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_EndSignInForUserRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_EndSignInForUserResponse>) async throws -> Result = { response in
@@ -3659,7 +3659,7 @@ extension Primandproper_Platform_Signin_V1_SignInAdministrationService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func endAllSignInsForUser<Result>(
+    public func endAllSignInsForUser<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Signin_V1_EndAllSignInsForUserRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Signin_V1_EndAllSignInsForUserResponse>) async throws -> Result = { response in
@@ -3689,7 +3689,7 @@ extension Primandproper_Platform_Signin_V1_SignInAdministrationService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listSignInsForUser<Result>(
+    public func listSignInsForUser<Result>(
         _ message: Primandproper_Platform_Signin_V1_ListSignInsForUserRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3718,7 +3718,7 @@ extension Primandproper_Platform_Signin_V1_SignInAdministrationService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func endSignInForUser<Result>(
+    public func endSignInForUser<Result>(
         _ message: Primandproper_Platform_Signin_V1_EndSignInForUserRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -3747,7 +3747,7 @@ extension Primandproper_Platform_Signin_V1_SignInAdministrationService.ClientPro
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func endAllSignInsForUser<Result>(
+    public func endAllSignInsForUser<Result>(
         _ message: Primandproper_Platform_Signin_V1_EndAllSignInsForUserRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
