@@ -19,7 +19,9 @@ extension Session {
     do {
       held = try await self.held()
     } catch {
-      logger.error("the session could not be loaded to sign it out: \(error)")
+      logger.error(
+        "the session could not be loaded to sign it out: \(String(describing: error), privacy: .public)"
+      )
       held = nil
     }
 
@@ -34,14 +36,17 @@ extension Session {
         // Unknown, spent, revoked and expired all answer success on the server; anything else
         // is a failure to deliver it, and the session here is cleared regardless.
         logger.notice(
-          "SignOut was not delivered; clearing the session anyway: \(toPlatformError(error))")
+          "SignOut was not delivered; clearing the session anyway: \(String(describing: toPlatformError(error)), privacy: .public)"
+        )
       }
     }
 
     do {
       try await clear()
     } catch {
-      logger.error("the session could not be cleared from the store: \(error)")
+      logger.error(
+        "the session could not be cleared from the store: \(String(describing: error), privacy: .public)"
+      )
     }
   }
 
