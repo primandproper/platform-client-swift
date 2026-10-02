@@ -87,7 +87,10 @@ public actor Session {
   private let exchangeDeadline: Duration
   private let exchangeCall: Exchange
   private let switchCall: Switch
-  private let logger = Logger(
+  /// signInClient makes the sign-in service's calls that are not the Session's own: the doors
+  /// and the sign-outs.
+  let signInClient: any Primandproper_Platform_Signin_V1_SignInService.ClientProtocol
+  let logger = Logger(
     subsystem: "com.github.primandproper.platform-client", category: "session")
 
   private var current: IssuedToken?
@@ -127,6 +130,7 @@ public actor Session {
     self.authorizer = authorizer
     self.idempotentRefresh = idempotentRefresh
     self.exchangeDeadline = exchangeDeadline
+    self.signInClient = SignInService.Client(wrapping: client)
     self.exchangeCall = { refreshToken, metadata, options in
       var request = Primandproper_Platform_Signin_V1_ExchangeRefreshTokenRequest()
       request.refreshToken = refreshToken
