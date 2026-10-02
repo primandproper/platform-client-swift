@@ -92,6 +92,27 @@ private func rpcError(_ status: GoogleRPCStatus) -> RPCError { RPCError(status) 
     #expect(error.localizedDescription == "suspended until May")
   }
 
+  @Test func keepsTheRPCErrorItWasReadFrom() throws {
+    struct SocketHangUp: Error {}
+    let original = RPCError(
+      code: .unavailable, message: "connection reset",
+      metadata: ["x-request-id": "abc123"], cause: SocketHangUp())
+
+    let kept = try #require(PlatformError(original).rpcError)
+
+    #expect(kept.code == .unavailable)
+    #expect(kept.message == "connection reset")
+    #expect(kept.metadata[stringValues: "x-request-id"].map { $0 } == ["abc123"])
+    #expect(kept.cause is SocketHangUp)
+  }
+
+  @Test func hasNoRPCErrorWhenBuiltFromItsParts() {
+    let error = PlatformError(
+      code: .unauthenticated, serverMessage: "x", reason: .signIn(.invalidCredentials))
+
+    #expect(error.rpcError == nil)
+  }
+
   @Test func arrivesWithItsReasonOverTheWire() async throws {
     typealias SignIn = Primandproper_Platform_Signin_V1_SignInService
     let server = FakeServer().handle(SignIn.Method.GetAuthStatus.descriptor) {

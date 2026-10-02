@@ -69,6 +69,23 @@ jobs:
       - name: Test
         run: make test
 
+  # Every other job resolves the newest version each requirement admits, so none of them
+  # would notice a floor in Package.swift that has fallen below what the code calls. This one
+  # resolves each dependency to exactly its floor.
+  floors:
+    name: test at the declared dependency floors
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: Test at the floors
+        run: make test-floors
+
   # The Keychain tests need an entitled process, which `swift test` cannot give them; a stub
   # app on a simulator can.
   keychain:
