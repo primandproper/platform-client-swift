@@ -24,6 +24,11 @@ test:
 .PHONY: check
 check: build test
 
+# Every dependency at exactly its declared floor rather than the newest match.
+.PHONY: test-floors
+test-floors:
+	./scripts/test-floors.sh
+
 # The Keychain tests, on an iOS Simulator under a host app: `swift test` cannot reach the
 # data protection keychain.
 .PHONY: test-keychain
