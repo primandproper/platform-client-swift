@@ -13,9 +13,15 @@ let package = Package(
     .library(name: "PlatformClientTesting", targets: ["PlatformClientTesting"]),
   ],
   dependencies: [
-    // Versions match what dinnerdonebetter's iOS app already links, because this package
-    // has to drop into that app beside them rather than drag it onto a second grpc-swift.
-    .package(url: "https://github.com/grpc/grpc-swift-2.git", from: "2.1.0"),
+    // The floors are what the committed generated code calls, so the generators pinned in
+    // scripts/plugins/*/Package.swift dictate them: a plugin bump that emits a newer API moves
+    // the matching floor in the same change. `make test-floors` builds and tests at exactly
+    // these, which nothing else does, because SwiftPM always resolves the newest match.
+    //
+    // grpc-swift-2 needs 2.3.0 for MethodDescriptor(service:method:type:), which every
+    // generated descriptor calls, and 2.4.1 for a client timeout to surface as
+    // .deadlineExceeded rather than .unknown, which Session's exchange deadline relies on.
+    .package(url: "https://github.com/grpc/grpc-swift-2.git", from: "2.4.1"),
     .package(url: "https://github.com/grpc/grpc-swift-protobuf.git", from: "2.1.1"),
     .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.33.0"),
   ],
