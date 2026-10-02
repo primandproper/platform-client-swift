@@ -27,13 +27,10 @@
 //
 // # Why there are four RPCs
 //
-// Because four is what a consumer asked for. This service was drawn from
-// dinnerdonebetter's proto/oauth, which declares create, get, list and archive
-// and nothing else; the file was diffed against it rather than remembered, and
-// six further methods that had shipped here -- an update, and a self-service
-// mirror of all five operations -- turned out to answer no caller in that
-// repository or any other. They were removed before anything consumed this
-// package.
+// Because create, get, list and archive are the operations a registry of
+// clients is called for. Six further methods had shipped here -- an update,
+// and a self-service mirror of all five operations -- and they answered no
+// caller. They were removed before anything consumed this package.
 //
 // The self-service half is the one worth recording, because it was not merely
 // unused. Its five methods were reachable behind no permission at all, on the
@@ -71,8 +68,8 @@
 // Reserving the name rather than only saying so is audit.proto's pattern:
 // `reserved "scope";` is a schema protoc refuses to accept a scope field into,
 // in this repository and in a consumer's fork of the file alike, whereas a
-// comment is a request to the next author. It is reserved on all four request
-// messages, on [OAuth2ClientCreationInput], which one of them is built from,
+// comment is a request to the next author. It is reserved on every request
+// message, on [OAuth2ClientCreationInput], which one of them is built from,
 // and on [OAuth2Client] and [IssuedOAuth2Client], which the responses are built
 // from.
 //

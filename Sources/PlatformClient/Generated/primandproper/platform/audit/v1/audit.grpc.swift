@@ -43,6 +43,20 @@
 // client something it supplied, and its absence is what makes a converter
 // unable to read one back out of a request.
 //
+// AuditAdministrationService is the one place a request names a tenant, and it
+// is a service of its own for exactly the reason above. There the capability
+// is the method: a caller reaches GetAnyEntry or ListAnyEntries only by holding
+// the permission audit/grpc's Permissions puts on them, which nothing grants
+// by default, and every call is recorded in the caller's own chain before it is
+// answered. A field on AuditService's messages would hand the same reach to
+// everybody who may read their own log; a method of its own hands it to the
+// operators a deployment named, and a policy that leaves them out is refused
+// by the enforcer's fail-closed rule rather than widened. Its messages still
+// reserve "scope" -- the tenant it names is owner_id, which is what a
+// tenancy.Scope stores -- and its entries carry the owner they belong to,
+// because an answer spanning tenants is the one answer that cannot leave it
+// implied.
+//
 // # There is no recording RPC
 //
 // audit.Recorder is absent from this service on purpose, and the reason is on
@@ -147,7 +161,8 @@ extension Primandproper_Platform_Audit_V1_AuditService {
     /// > AuditService is the audit log on the wire: read one, page them, verify the
     /// > chain.
     /// > 
-    /// > Three RPCs, all reads, all against the one scope the connection resolved.
+    /// > Every RPC is a read, and every one is against the one scope the connection
+    /// > resolved.
     /// > What is absent is the recording -- see this file's documentation for why a
     /// > write that belongs inside the caller's transaction cannot be an RPC.
     internal protocol ClientProtocol: Sendable {
@@ -240,7 +255,8 @@ extension Primandproper_Platform_Audit_V1_AuditService {
     /// > AuditService is the audit log on the wire: read one, page them, verify the
     /// > chain.
     /// > 
-    /// > Three RPCs, all reads, all against the one scope the connection resolved.
+    /// > Every RPC is a read, and every one is against the one scope the connection
+    /// > resolved.
     /// > What is absent is the recording -- see this file's documentation for why a
     /// > write that belongs inside the caller's transaction cannot be an RPC.
     internal struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
@@ -569,6 +585,369 @@ extension Primandproper_Platform_Audit_V1_AuditService.ClientProtocol {
             metadata: metadata
         )
         return try await self.verifyChain(
+            request: request,
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+}
+
+// MARK: - primandproper.platform.audit.v1.AuditAdministrationService
+
+/// Namespace containing generated types for the "primandproper.platform.audit.v1.AuditAdministrationService" service.
+@available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
+internal enum Primandproper_Platform_Audit_V1_AuditAdministrationService: Sendable {
+    /// Service descriptor for the "primandproper.platform.audit.v1.AuditAdministrationService" service.
+    internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditAdministrationService")
+    /// Namespace for method metadata.
+    internal enum Method: Sendable {
+        /// Namespace for "GetAnyEntry" metadata.
+        internal enum GetAnyEntry: Sendable {
+            /// Request type for "GetAnyEntry".
+            internal typealias Input = Primandproper_Platform_Audit_V1_GetAnyEntryRequest
+            /// Response type for "GetAnyEntry".
+            internal typealias Output = Primandproper_Platform_Audit_V1_GetAnyEntryResponse
+            /// Descriptor for "GetAnyEntry".
+            internal static let descriptor = GRPCCore.MethodDescriptor(
+                service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditAdministrationService"),
+                method: "GetAnyEntry",
+                type: .unary
+            )
+        }
+        /// Namespace for "ListAnyEntries" metadata.
+        internal enum ListAnyEntries: Sendable {
+            /// Request type for "ListAnyEntries".
+            internal typealias Input = Primandproper_Platform_Audit_V1_ListAnyEntriesRequest
+            /// Response type for "ListAnyEntries".
+            internal typealias Output = Primandproper_Platform_Audit_V1_ListAnyEntriesResponse
+            /// Descriptor for "ListAnyEntries".
+            internal static let descriptor = GRPCCore.MethodDescriptor(
+                service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditAdministrationService"),
+                method: "ListAnyEntries",
+                type: .unary
+            )
+        }
+        /// Descriptors for all methods in the "primandproper.platform.audit.v1.AuditAdministrationService" service.
+        internal static let descriptors: [GRPCCore.MethodDescriptor] = [
+            GetAnyEntry.descriptor,
+            ListAnyEntries.descriptor
+        ]
+    }
+}
+
+@available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
+extension GRPCCore.ServiceDescriptor {
+    /// Service descriptor for the "primandproper.platform.audit.v1.AuditAdministrationService" service.
+    internal static let primandproper_platform_audit_v1_AuditAdministrationService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.audit.v1.AuditAdministrationService")
+}
+
+// MARK: primandproper.platform.audit.v1.AuditAdministrationService (client)
+
+@available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
+extension Primandproper_Platform_Audit_V1_AuditAdministrationService {
+    /// Generated client protocol for the "primandproper.platform.audit.v1.AuditAdministrationService" service.
+    ///
+    /// You don't need to implement this protocol directly, use the generated
+    /// implementation, ``Client``.
+    ///
+    /// > Source IDL Documentation:
+    /// >
+    /// > AuditAdministrationService is an operator's read of the audit log: an entry
+    /// > in any tenant's chain, and a page of every tenant's, or of one they name.
+    /// > 
+    /// > It is a service of its own rather than a widening of AuditService, so that
+    /// > reading one's own log never becomes reading everybody's. AuditService answers
+    /// > every caller from the chain the connection resolved, whoever they are; this
+    /// > answers only the callers a deployment's policy grants its methods to, and
+    /// > records each call in the caller's own chain before it answers -- a server with
+    /// > nowhere to record one answers every call here Unimplemented.
+    internal protocol ClientProtocol: Sendable {
+        /// Call the "GetAnyEntry" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > GetAnyEntry reads one entry by id from whichever tenant's chain holds it.
+        /// > 
+        /// > An id no chain holds is NotFound and is not recorded: the read found
+        /// > nothing to disclose.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Primandproper_Platform_Audit_V1_GetAnyEntryRequest` message.
+        ///   - serializer: A serializer for `Primandproper_Platform_Audit_V1_GetAnyEntryRequest` messages.
+        ///   - deserializer: A deserializer for `Primandproper_Platform_Audit_V1_GetAnyEntryResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
+        /// - Returns: The result of `handleResponse`.
+        func getAnyEntry<Result>(
+            request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_GetAnyEntryRequest>,
+            serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Audit_V1_GetAnyEntryRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Audit_V1_GetAnyEntryResponse>,
+            options: GRPCCore.CallOptions,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Audit_V1_GetAnyEntryResponse>) async throws -> Result
+        ) async throws -> Result where Result: Sendable
+
+        /// Call the "ListAnyEntries" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > ListAnyEntries pages every tenant's entries, or one tenant's where
+        /// > owner_id names it, narrowed by the query.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Primandproper_Platform_Audit_V1_ListAnyEntriesRequest` message.
+        ///   - serializer: A serializer for `Primandproper_Platform_Audit_V1_ListAnyEntriesRequest` messages.
+        ///   - deserializer: A deserializer for `Primandproper_Platform_Audit_V1_ListAnyEntriesResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
+        /// - Returns: The result of `handleResponse`.
+        func listAnyEntries<Result>(
+            request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_ListAnyEntriesRequest>,
+            serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Audit_V1_ListAnyEntriesRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Audit_V1_ListAnyEntriesResponse>,
+            options: GRPCCore.CallOptions,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Audit_V1_ListAnyEntriesResponse>) async throws -> Result
+        ) async throws -> Result where Result: Sendable
+    }
+
+    /// Generated client for the "primandproper.platform.audit.v1.AuditAdministrationService" service.
+    ///
+    /// The ``Client`` provides an implementation of ``ClientProtocol`` which wraps
+    /// a `GRPCCore.GRPCCClient`. The underlying `GRPCClient` provides the long-lived
+    /// means of communication with the remote peer.
+    ///
+    /// > Source IDL Documentation:
+    /// >
+    /// > AuditAdministrationService is an operator's read of the audit log: an entry
+    /// > in any tenant's chain, and a page of every tenant's, or of one they name.
+    /// > 
+    /// > It is a service of its own rather than a widening of AuditService, so that
+    /// > reading one's own log never becomes reading everybody's. AuditService answers
+    /// > every caller from the chain the connection resolved, whoever they are; this
+    /// > answers only the callers a deployment's policy grants its methods to, and
+    /// > records each call in the caller's own chain before it answers -- a server with
+    /// > nowhere to record one answers every call here Unimplemented.
+    internal struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
+        private let client: GRPCCore.GRPCClient<Transport>
+
+        /// Creates a new client wrapping the provided `GRPCCore.GRPCClient`.
+        ///
+        /// - Parameters:
+        ///   - client: A `GRPCCore.GRPCClient` providing a communication channel to the service.
+        internal init(wrapping client: GRPCCore.GRPCClient<Transport>) {
+            self.client = client
+        }
+
+        /// Call the "GetAnyEntry" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > GetAnyEntry reads one entry by id from whichever tenant's chain holds it.
+        /// > 
+        /// > An id no chain holds is NotFound and is not recorded: the read found
+        /// > nothing to disclose.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Primandproper_Platform_Audit_V1_GetAnyEntryRequest` message.
+        ///   - serializer: A serializer for `Primandproper_Platform_Audit_V1_GetAnyEntryRequest` messages.
+        ///   - deserializer: A deserializer for `Primandproper_Platform_Audit_V1_GetAnyEntryResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
+        /// - Returns: The result of `handleResponse`.
+        internal func getAnyEntry<Result>(
+            request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_GetAnyEntryRequest>,
+            serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Audit_V1_GetAnyEntryRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Audit_V1_GetAnyEntryResponse>,
+            options: GRPCCore.CallOptions = .defaults,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Audit_V1_GetAnyEntryResponse>) async throws -> Result = { response in
+                try response.message
+            }
+        ) async throws -> Result where Result: Sendable {
+            try await self.client.unary(
+                request: request,
+                descriptor: Primandproper_Platform_Audit_V1_AuditAdministrationService.Method.GetAnyEntry.descriptor,
+                serializer: serializer,
+                deserializer: deserializer,
+                options: options,
+                onResponse: handleResponse
+            )
+        }
+
+        /// Call the "ListAnyEntries" method.
+        ///
+        /// > Source IDL Documentation:
+        /// >
+        /// > ListAnyEntries pages every tenant's entries, or one tenant's where
+        /// > owner_id names it, narrowed by the query.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Primandproper_Platform_Audit_V1_ListAnyEntriesRequest` message.
+        ///   - serializer: A serializer for `Primandproper_Platform_Audit_V1_ListAnyEntriesRequest` messages.
+        ///   - deserializer: A deserializer for `Primandproper_Platform_Audit_V1_ListAnyEntriesResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
+        /// - Returns: The result of `handleResponse`.
+        internal func listAnyEntries<Result>(
+            request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_ListAnyEntriesRequest>,
+            serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Audit_V1_ListAnyEntriesRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Audit_V1_ListAnyEntriesResponse>,
+            options: GRPCCore.CallOptions = .defaults,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Audit_V1_ListAnyEntriesResponse>) async throws -> Result = { response in
+                try response.message
+            }
+        ) async throws -> Result where Result: Sendable {
+            try await self.client.unary(
+                request: request,
+                descriptor: Primandproper_Platform_Audit_V1_AuditAdministrationService.Method.ListAnyEntries.descriptor,
+                serializer: serializer,
+                deserializer: deserializer,
+                options: options,
+                onResponse: handleResponse
+            )
+        }
+    }
+}
+
+// Helpers providing default arguments to 'ClientProtocol' methods.
+@available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
+extension Primandproper_Platform_Audit_V1_AuditAdministrationService.ClientProtocol {
+    /// Call the "GetAnyEntry" method.
+    ///
+    /// > Source IDL Documentation:
+    /// >
+    /// > GetAnyEntry reads one entry by id from whichever tenant's chain holds it.
+    /// > 
+    /// > An id no chain holds is NotFound and is not recorded: the read found
+    /// > nothing to disclose.
+    ///
+    /// - Parameters:
+    ///   - request: A request containing a single `Primandproper_Platform_Audit_V1_GetAnyEntryRequest` message.
+    ///   - options: Options to apply to this RPC.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
+    /// - Returns: The result of `handleResponse`.
+    internal func getAnyEntry<Result>(
+        request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_GetAnyEntryRequest>,
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Audit_V1_GetAnyEntryResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        try await self.getAnyEntry(
+            request: request,
+            serializer: GRPCProtobuf.ProtobufSerializer<Primandproper_Platform_Audit_V1_GetAnyEntryRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Primandproper_Platform_Audit_V1_GetAnyEntryResponse>(),
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "ListAnyEntries" method.
+    ///
+    /// > Source IDL Documentation:
+    /// >
+    /// > ListAnyEntries pages every tenant's entries, or one tenant's where
+    /// > owner_id names it, narrowed by the query.
+    ///
+    /// - Parameters:
+    ///   - request: A request containing a single `Primandproper_Platform_Audit_V1_ListAnyEntriesRequest` message.
+    ///   - options: Options to apply to this RPC.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
+    /// - Returns: The result of `handleResponse`.
+    internal func listAnyEntries<Result>(
+        request: GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_ListAnyEntriesRequest>,
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Audit_V1_ListAnyEntriesResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        try await self.listAnyEntries(
+            request: request,
+            serializer: GRPCProtobuf.ProtobufSerializer<Primandproper_Platform_Audit_V1_ListAnyEntriesRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Primandproper_Platform_Audit_V1_ListAnyEntriesResponse>(),
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+}
+
+// Helpers providing sugared APIs for 'ClientProtocol' methods.
+@available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
+extension Primandproper_Platform_Audit_V1_AuditAdministrationService.ClientProtocol {
+    /// Call the "GetAnyEntry" method.
+    ///
+    /// > Source IDL Documentation:
+    /// >
+    /// > GetAnyEntry reads one entry by id from whichever tenant's chain holds it.
+    /// > 
+    /// > An id no chain holds is NotFound and is not recorded: the read found
+    /// > nothing to disclose.
+    ///
+    /// - Parameters:
+    ///   - message: request message to send.
+    ///   - metadata: Additional metadata to send, defaults to empty.
+    ///   - options: Options to apply to this RPC, defaults to `.defaults`.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
+    /// - Returns: The result of `handleResponse`.
+    internal func getAnyEntry<Result>(
+        _ message: Primandproper_Platform_Audit_V1_GetAnyEntryRequest,
+        metadata: GRPCCore.Metadata = [:],
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Audit_V1_GetAnyEntryResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        let request = GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_GetAnyEntryRequest>(
+            message: message,
+            metadata: metadata
+        )
+        return try await self.getAnyEntry(
+            request: request,
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "ListAnyEntries" method.
+    ///
+    /// > Source IDL Documentation:
+    /// >
+    /// > ListAnyEntries pages every tenant's entries, or one tenant's where
+    /// > owner_id names it, narrowed by the query.
+    ///
+    /// - Parameters:
+    ///   - message: request message to send.
+    ///   - metadata: Additional metadata to send, defaults to empty.
+    ///   - options: Options to apply to this RPC, defaults to `.defaults`.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
+    /// - Returns: The result of `handleResponse`.
+    internal func listAnyEntries<Result>(
+        _ message: Primandproper_Platform_Audit_V1_ListAnyEntriesRequest,
+        metadata: GRPCCore.Metadata = [:],
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Audit_V1_ListAnyEntriesResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        let request = GRPCCore.ClientRequest<Primandproper_Platform_Audit_V1_ListAnyEntriesRequest>(
+            message: message,
+            metadata: metadata
+        )
+        return try await self.listAnyEntries(
             request: request,
             options: options,
             onResponse: handleResponse

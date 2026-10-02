@@ -22,7 +22,7 @@ real schema, once instead of twice.
 
 ## What is here now
 
-**Generated stubs only.** `Sources/PlatformClient/Generated/` holds 24 files — 12 protos as
+**Generated stubs only.** `Sources/PlatformClient/Generated/` holds 30 files — 15 protos as
 `.pb.swift` and `.grpc.swift` — built from a pinned `platform-go` tag. The output is
 **committed**, so a consumer needs neither `protoc` nor the plugins.
 

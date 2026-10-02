@@ -3,11 +3,12 @@
 // operator opens, and the signups against them with a lifecycle of their own.
 //
 // It is one service with two audiences, which is what makes it different from
-// the three domain surfaces that came before it. Three RPCs are the signup page
-// — the open lists, the form, and the unsubscribe — and are reachable by
-// somebody who has not signed in and frequently does not have an account to
-// sign in to. The other fourteen are whoever is running the launch, and every
-// one of them is behind a grant. See the service comment at the bottom.
+// the three domain surfaces that came before it. Five RPCs are the signup page
+// — the open lists, the form, the confirmation link, and the two ways off the
+// list — and are reachable by somebody who has not signed in and frequently
+// does not have an account to sign in to. The rest are whoever is running the
+// launch, and every one of them is behind a grant. See the service comment at
+// the bottom.
 //
 // This file is shipped inside the published Go module, and it is the file
 // itself that is shipped -- not a copy for you to keep in sync. A consumer puts
@@ -33,8 +34,8 @@
 // three are under is that a consumer's catalog stays a string, because a
 // generated enum puts the application's vocabulary on this module's release
 // cadence. This is the opposite case and waitlists.Status says so in its own
-// documentation: the four statuses decide which transitions the store will
-// make and what a withdrawal means, so a fifth is not a word an application
+// documentation: the five statuses decide which transitions the store will
+// make and what a withdrawal means, so a sixth is not a word an application
 // adds -- it is a row nothing can move. settings.Kind is the other one of these.
 //
 // SubjectType is the string on this surface, and it is the one that is genuinely
@@ -214,6 +215,19 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService: Sendable {
                 type: .unary
             )
         }
+        /// Namespace for "Confirm" metadata.
+        internal enum Confirm: Sendable {
+            /// Request type for "Confirm".
+            internal typealias Input = Primandproper_Platform_Waitlists_V1_ConfirmRequest
+            /// Response type for "Confirm".
+            internal typealias Output = Primandproper_Platform_Waitlists_V1_ConfirmResponse
+            /// Descriptor for "Confirm".
+            internal static let descriptor = GRPCCore.MethodDescriptor(
+                service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
+                method: "Confirm",
+                type: .unary
+            )
+        }
         /// Namespace for "GetSignup" metadata.
         internal enum GetSignup: Sendable {
             /// Request type for "GetSignup".
@@ -318,6 +332,19 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService: Sendable {
                 type: .unary
             )
         }
+        /// Namespace for "Unsubscribe" metadata.
+        internal enum Unsubscribe: Sendable {
+            /// Request type for "Unsubscribe".
+            internal typealias Input = Primandproper_Platform_Waitlists_V1_UnsubscribeRequest
+            /// Response type for "Unsubscribe".
+            internal typealias Output = Primandproper_Platform_Waitlists_V1_UnsubscribeResponse
+            /// Descriptor for "Unsubscribe".
+            internal static let descriptor = GRPCCore.MethodDescriptor(
+                service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
+                method: "Unsubscribe",
+                type: .unary
+            )
+        }
         /// Namespace for "WithdrawSignupsForSubject" metadata.
         internal enum WithdrawSignupsForSubject: Sendable {
             /// Request type for "WithdrawSignupsForSubject".
@@ -353,6 +380,7 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService: Sendable {
             UpdateList.descriptor,
             ArchiveList.descriptor,
             Join.descriptor,
+            Confirm.descriptor,
             GetSignup.descriptor,
             GetSignupByContact.descriptor,
             ListSignups.descriptor,
@@ -361,6 +389,7 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService: Sendable {
             Invite.descriptor,
             Convert.descriptor,
             Withdraw.descriptor,
+            Unsubscribe.descriptor,
             WithdrawSignupsForSubject.descriptor,
             ArchiveSignup.descriptor
         ]
@@ -384,20 +413,23 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
     ///
     /// > Source IDL Documentation:
     /// >
-    /// > WaitlistsService is the whole of waitlists on the wire: all seventeen methods
-    /// > of waitlists.Store, split by who calls them.
+    /// > WaitlistsService is the whole of waitlists on the wire: every method of
+    /// > waitlists.Store, split by who calls them, and the second door onto
+    /// > Withdraw that an unsubscribe link lands on.
     /// > 
     /// > There are no absences, which is unusual on this lane and is the reason this
-    /// > was the first of the ten domains to cross. Every other surface in the module
+    /// > was the first domain to cross. Every other surface in the module
     /// > carves something out because its realistic caller is a worker on a timer, a
     /// > processor callback, or the consumer's own code inside its own transaction.
     /// > Nothing here has that shape: a waitlist has no queue protocol, no fan-out and
-    /// > no provider callback, and every one of the seventeen is either a form
-    /// > somebody submitted or a console somebody is looking at.
+    /// > no provider callback, and every one of them is either a form
+    /// > somebody submitted, a link somebody followed, or a console somebody is
+    /// > looking at.
     /// > 
-    /// > # The public three
+    /// > # The public methods
     /// > 
-    /// > ListOpenLists, Join and Withdraw are reachable without a grant, because the
+    /// > ListOpenLists, Join, Confirm, Withdraw and Unsubscribe are reachable without a
+    /// > grant, because the
     /// > caller is a person on a signup page who has not signed in and frequently has
     /// > no account to sign in to. That is the whole of what "public" means here: the
     /// > consumer's authentication interceptor still runs, and a caller who does arrive
@@ -408,12 +440,14 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
     /// > address, and it answers uniformly for every outcome that is about an address
     /// > -- see JoinResponse, which is empty for that reason. Withdraw names a row, so
     /// > the standing to move it is asked of a seam the consumer implements -- see
-    /// > WithdrawRequest. And the read a public caller gets is the catalog of open
-    /// > lists, which is what a signup page publishes anyway.
+    /// > WithdrawRequest. Confirm and Unsubscribe name only a token, which is their
+    /// > standing, and they are unimplemented on a deployment that mints none. And the
+    /// > read a public caller gets is the catalog of open lists, which is what a signup
+    /// > page publishes anyway.
     /// > 
-    /// > # The administrative fourteen
+    /// > # The administrative methods
     /// > 
-    /// > List CRUD, the signup reads, the two lifecycle transitions, the note, the
+    /// > List CRUD, the signup reads, the two operator transitions, the note, the
     /// > archive and the erasure. Each is behind a grant, and waitlists/grpc's
     /// > Permissions is the default map a consumer composes into their policy.
     /// > 
@@ -546,8 +580,8 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///
         /// > Source IDL Documentation:
         /// >
-        /// > The queue. Join and Withdraw are the person's own; the rest are the
-        /// > operator's.
+        /// > The queue. Join, Confirm, Withdraw and Unsubscribe are the person's own;
+        /// > the rest are the operator's.
         ///
         /// - Parameters:
         ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_JoinRequest` message.
@@ -564,6 +598,25 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_JoinResponse>,
             options: GRPCCore.CallOptions,
             onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_JoinResponse>) async throws -> Result
+        ) async throws -> Result where Result: Sendable
+
+        /// Call the "Confirm" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_ConfirmRequest` message.
+        ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_ConfirmRequest` messages.
+        ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_ConfirmResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
+        /// - Returns: The result of `handleResponse`.
+        func confirm<Result>(
+            request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ConfirmRequest>,
+            serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_ConfirmRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_ConfirmResponse>,
+            options: GRPCCore.CallOptions,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_ConfirmResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
         /// Call the "GetSignup" method.
@@ -718,6 +771,25 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
             onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_WithdrawResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
+        /// Call the "Unsubscribe" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_UnsubscribeRequest` message.
+        ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_UnsubscribeRequest` messages.
+        ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_UnsubscribeResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
+        /// - Returns: The result of `handleResponse`.
+        func unsubscribe<Result>(
+            request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_UnsubscribeRequest>,
+            serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_UnsubscribeRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_UnsubscribeResponse>,
+            options: GRPCCore.CallOptions,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_UnsubscribeResponse>) async throws -> Result
+        ) async throws -> Result where Result: Sendable
+
         /// Call the "WithdrawSignupsForSubject" method.
         ///
         /// - Parameters:
@@ -765,20 +837,23 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
     ///
     /// > Source IDL Documentation:
     /// >
-    /// > WaitlistsService is the whole of waitlists on the wire: all seventeen methods
-    /// > of waitlists.Store, split by who calls them.
+    /// > WaitlistsService is the whole of waitlists on the wire: every method of
+    /// > waitlists.Store, split by who calls them, and the second door onto
+    /// > Withdraw that an unsubscribe link lands on.
     /// > 
     /// > There are no absences, which is unusual on this lane and is the reason this
-    /// > was the first of the ten domains to cross. Every other surface in the module
+    /// > was the first domain to cross. Every other surface in the module
     /// > carves something out because its realistic caller is a worker on a timer, a
     /// > processor callback, or the consumer's own code inside its own transaction.
     /// > Nothing here has that shape: a waitlist has no queue protocol, no fan-out and
-    /// > no provider callback, and every one of the seventeen is either a form
-    /// > somebody submitted or a console somebody is looking at.
+    /// > no provider callback, and every one of them is either a form
+    /// > somebody submitted, a link somebody followed, or a console somebody is
+    /// > looking at.
     /// > 
-    /// > # The public three
+    /// > # The public methods
     /// > 
-    /// > ListOpenLists, Join and Withdraw are reachable without a grant, because the
+    /// > ListOpenLists, Join, Confirm, Withdraw and Unsubscribe are reachable without a
+    /// > grant, because the
     /// > caller is a person on a signup page who has not signed in and frequently has
     /// > no account to sign in to. That is the whole of what "public" means here: the
     /// > consumer's authentication interceptor still runs, and a caller who does arrive
@@ -789,12 +864,14 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
     /// > address, and it answers uniformly for every outcome that is about an address
     /// > -- see JoinResponse, which is empty for that reason. Withdraw names a row, so
     /// > the standing to move it is asked of a seam the consumer implements -- see
-    /// > WithdrawRequest. And the read a public caller gets is the catalog of open
-    /// > lists, which is what a signup page publishes anyway.
+    /// > WithdrawRequest. Confirm and Unsubscribe name only a token, which is their
+    /// > standing, and they are unimplemented on a deployment that mints none. And the
+    /// > read a public caller gets is the catalog of open lists, which is what a signup
+    /// > page publishes anyway.
     /// > 
-    /// > # The administrative fourteen
+    /// > # The administrative methods
     /// > 
-    /// > List CRUD, the signup reads, the two lifecycle transitions, the note, the
+    /// > List CRUD, the signup reads, the two operator transitions, the note, the
     /// > archive and the erasure. Each is behind a grant, and waitlists/grpc's
     /// > Permissions is the default map a consumer composes into their policy.
     /// > 
@@ -1003,8 +1080,8 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///
         /// > Source IDL Documentation:
         /// >
-        /// > The queue. Join and Withdraw are the person's own; the rest are the
-        /// > operator's.
+        /// > The queue. Join, Confirm, Withdraw and Unsubscribe are the person's own;
+        /// > the rest are the operator's.
         ///
         /// - Parameters:
         ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_JoinRequest` message.
@@ -1027,6 +1104,36 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
             try await self.client.unary(
                 request: request,
                 descriptor: Primandproper_Platform_Waitlists_V1_WaitlistsService.Method.Join.descriptor,
+                serializer: serializer,
+                deserializer: deserializer,
+                options: options,
+                onResponse: handleResponse
+            )
+        }
+
+        /// Call the "Confirm" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_ConfirmRequest` message.
+        ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_ConfirmRequest` messages.
+        ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_ConfirmResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
+        /// - Returns: The result of `handleResponse`.
+        internal func confirm<Result>(
+            request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ConfirmRequest>,
+            serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_ConfirmRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_ConfirmResponse>,
+            options: GRPCCore.CallOptions = .defaults,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_ConfirmResponse>) async throws -> Result = { response in
+                try response.message
+            }
+        ) async throws -> Result where Result: Sendable {
+            try await self.client.unary(
+                request: request,
+                descriptor: Primandproper_Platform_Waitlists_V1_WaitlistsService.Method.Confirm.descriptor,
                 serializer: serializer,
                 deserializer: deserializer,
                 options: options,
@@ -1274,6 +1381,36 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
             )
         }
 
+        /// Call the "Unsubscribe" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_UnsubscribeRequest` message.
+        ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_UnsubscribeRequest` messages.
+        ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_UnsubscribeResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
+        /// - Returns: The result of `handleResponse`.
+        internal func unsubscribe<Result>(
+            request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_UnsubscribeRequest>,
+            serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_UnsubscribeRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_UnsubscribeResponse>,
+            options: GRPCCore.CallOptions = .defaults,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_UnsubscribeResponse>) async throws -> Result = { response in
+                try response.message
+            }
+        ) async throws -> Result where Result: Sendable {
+            try await self.client.unary(
+                request: request,
+                descriptor: Primandproper_Platform_Waitlists_V1_WaitlistsService.Method.Unsubscribe.descriptor,
+                serializer: serializer,
+                deserializer: deserializer,
+                options: options,
+                onResponse: handleResponse
+            )
+        }
+
         /// Call the "WithdrawSignupsForSubject" method.
         ///
         /// - Parameters:
@@ -1498,8 +1635,8 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///
     /// > Source IDL Documentation:
     /// >
-    /// > The queue. Join and Withdraw are the person's own; the rest are the
-    /// > operator's.
+    /// > The queue. Join, Confirm, Withdraw and Unsubscribe are the person's own;
+    /// > the rest are the operator's.
     ///
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_JoinRequest` message.
@@ -1519,6 +1656,31 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
             request: request,
             serializer: GRPCProtobuf.ProtobufSerializer<Primandproper_Platform_Waitlists_V1_JoinRequest>(),
             deserializer: GRPCProtobuf.ProtobufDeserializer<Primandproper_Platform_Waitlists_V1_JoinResponse>(),
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "Confirm" method.
+    ///
+    /// - Parameters:
+    ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_ConfirmRequest` message.
+    ///   - options: Options to apply to this RPC.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
+    /// - Returns: The result of `handleResponse`.
+    internal func confirm<Result>(
+        request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ConfirmRequest>,
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_ConfirmResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        try await self.confirm(
+            request: request,
+            serializer: GRPCProtobuf.ProtobufSerializer<Primandproper_Platform_Waitlists_V1_ConfirmRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Primandproper_Platform_Waitlists_V1_ConfirmResponse>(),
             options: options,
             onResponse: handleResponse
         )
@@ -1719,6 +1881,31 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
             request: request,
             serializer: GRPCProtobuf.ProtobufSerializer<Primandproper_Platform_Waitlists_V1_WithdrawRequest>(),
             deserializer: GRPCProtobuf.ProtobufDeserializer<Primandproper_Platform_Waitlists_V1_WithdrawResponse>(),
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "Unsubscribe" method.
+    ///
+    /// - Parameters:
+    ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_UnsubscribeRequest` message.
+    ///   - options: Options to apply to this RPC.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
+    /// - Returns: The result of `handleResponse`.
+    internal func unsubscribe<Result>(
+        request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_UnsubscribeRequest>,
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_UnsubscribeResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        try await self.unsubscribe(
+            request: request,
+            serializer: GRPCProtobuf.ProtobufSerializer<Primandproper_Platform_Waitlists_V1_UnsubscribeRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Primandproper_Platform_Waitlists_V1_UnsubscribeResponse>(),
             options: options,
             onResponse: handleResponse
         )
@@ -1961,8 +2148,8 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///
     /// > Source IDL Documentation:
     /// >
-    /// > The queue. Join and Withdraw are the person's own; the rest are the
-    /// > operator's.
+    /// > The queue. Join, Confirm, Withdraw and Unsubscribe are the person's own;
+    /// > the rest are the operator's.
     ///
     /// - Parameters:
     ///   - message: request message to send.
@@ -1985,6 +2172,35 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
             metadata: metadata
         )
         return try await self.join(
+            request: request,
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "Confirm" method.
+    ///
+    /// - Parameters:
+    ///   - message: request message to send.
+    ///   - metadata: Additional metadata to send, defaults to empty.
+    ///   - options: Options to apply to this RPC, defaults to `.defaults`.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
+    /// - Returns: The result of `handleResponse`.
+    internal func confirm<Result>(
+        _ message: Primandproper_Platform_Waitlists_V1_ConfirmRequest,
+        metadata: GRPCCore.Metadata = [:],
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_ConfirmResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        let request = GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ConfirmRequest>(
+            message: message,
+            metadata: metadata
+        )
+        return try await self.confirm(
             request: request,
             options: options,
             onResponse: handleResponse
@@ -2217,6 +2433,35 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
             metadata: metadata
         )
         return try await self.withdraw(
+            request: request,
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
+    /// Call the "Unsubscribe" method.
+    ///
+    /// - Parameters:
+    ///   - message: request message to send.
+    ///   - metadata: Additional metadata to send, defaults to empty.
+    ///   - options: Options to apply to this RPC, defaults to `.defaults`.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
+    /// - Returns: The result of `handleResponse`.
+    internal func unsubscribe<Result>(
+        _ message: Primandproper_Platform_Waitlists_V1_UnsubscribeRequest,
+        metadata: GRPCCore.Metadata = [:],
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_UnsubscribeResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        let request = GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_UnsubscribeRequest>(
+            message: message,
+            metadata: metadata
+        )
+        return try await self.unsubscribe(
             request: request,
             options: options,
             onResponse: handleResponse

@@ -40,18 +40,19 @@
 /// Reserving the name rather than only saying so is audit.proto's pattern:
 /// `reserved "scope";` is a schema protoc refuses to accept a scope field into,
 /// in this repository and in a consumer's fork of the file alike, whereas a
-/// comment is a request to the next author. It is reserved on all twenty-nine
-/// request messages, on the four inputs they are built from, and on the nine
-/// messages a response is built from -- a scope on one of those would be
+/// comment is a request to the next author. It is reserved on every request
+/// message, on the inputs they are built from, and on the messages a response
+/// is built from -- a scope on one of those would be
 /// answering a client with something the client supplied. The response wrappers
 /// hold nothing but those messages and reserve nothing.
 ///
 /// No credentials, in either direction. There is no hashed_password,
 /// two_factor_secret or email_address_verification_token on User, and no token
-/// on Invitation -- an invitation's token appears only as a request field on the
-/// two RPCs that answer one, because that is where it arrives from, on a link.
+/// on Invitation -- an invitation's token appears as a request field on the
+/// RPCs that answer one, because that is where it arrives from, on a link.
 /// A schema with no field for a secret is a stronger guarantee than a converter
-/// that remembers to clear one.
+/// that remembers to clear one. The one response that has such a field is
+/// InviteResponse, and it is empty unless the deployment opted in: see there.
 ///
 /// No credential RPCs either: setting a password, enrolling a second factor and
 /// verifying an email address are the sign-in service's, not the directory's,
@@ -74,13 +75,15 @@
 /// interface that could also impose a forced change on any user is one that
 /// could be made to.
 ///
-/// Registration here therefore mints the passwordless user that package already
-/// treats as first-class. A registration that carries a credential is
-/// SignInService.Register, in signin.proto: that service holds the authenticator,
-/// hashes what arrives, and comes back through this package's own registration on
-/// one transaction. Which of the two a consumer calls is the question of whether
-/// the registrant is choosing a password at that moment -- a directory being
-/// filled from elsewhere is this one, and somebody signing up is that one.
+/// No registration either. Registering somebody is SignInService.Register, in
+/// signin.proto, and it is the module's only registration on the wire: that
+/// service holds the authenticator, hashes what arrives, mints the verification
+/// mail, runs the deployment's registration policy and hooks, and comes back
+/// through this package's own registration on one transaction. A second door
+/// here could do none of that -- it would mint a user with no credential and no
+/// verification mail, and let its caller name their own roles -- which made it
+/// the one way around the deployment's policy. An operator provisioning users
+/// calls SignInService.Register signed in.
 ///
 /// No avatar. The media registry is this module's, but identity has no avatar
 /// column and joining one is a contract between two packages that has not been
@@ -108,19 +111,6 @@ internal enum Primandproper_Platform_Identity_V1_IdentityService: Sendable {
     internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService")
     /// Namespace for method metadata.
     internal enum Method: Sendable {
-        /// Namespace for "Register" metadata.
-        internal enum Register: Sendable {
-            /// Request type for "Register".
-            internal typealias Input = Primandproper_Platform_Identity_V1_RegisterRequest
-            /// Response type for "Register".
-            internal typealias Output = Primandproper_Platform_Identity_V1_RegisterResponse
-            /// Descriptor for "Register".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
-                service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.identity.v1.IdentityService"),
-                method: "Register",
-                type: .unary
-            )
-        }
         /// Namespace for "UpdateProfile" metadata.
         internal enum UpdateProfile: Sendable {
             /// Request type for "UpdateProfile".
@@ -513,7 +503,6 @@ internal enum Primandproper_Platform_Identity_V1_IdentityService: Sendable {
         }
         /// Descriptors for all methods in the "primandproper.platform.identity.v1.IdentityService" service.
         internal static let descriptors: [GRPCCore.MethodDescriptor] = [
-            Register.descriptor,
             UpdateProfile.descriptor,
             UpdateAccount.descriptor,
             RecordAgreement.descriptor,
@@ -578,30 +567,11 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
     /// > into its own policy, and who is calling is resolved from the context by the
     /// > consumer's authentication interceptor.
     internal protocol ClientProtocol: Sendable {
-        /// Call the "Register" method.
+        /// Call the "UpdateProfile" method.
         ///
         /// > Source IDL Documentation:
         /// >
-        /// > The writes.
-        ///
-        /// - Parameters:
-        ///   - request: A request containing a single `Primandproper_Platform_Identity_V1_RegisterRequest` message.
-        ///   - serializer: A serializer for `Primandproper_Platform_Identity_V1_RegisterRequest` messages.
-        ///   - deserializer: A deserializer for `Primandproper_Platform_Identity_V1_RegisterResponse` messages.
-        ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response and returns its result to
-        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
-        ///       already finished.
-        /// - Returns: The result of `handleResponse`.
-        func register<Result>(
-            request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_RegisterRequest>,
-            serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_RegisterRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_RegisterResponse>,
-            options: GRPCCore.CallOptions,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_RegisterResponse>) async throws -> Result
-        ) async throws -> Result where Result: Sendable
-
-        /// Call the "UpdateProfile" method.
+        /// > The writes. There is no Register: see the file documentation.
         ///
         /// - Parameters:
         ///   - request: A request containing a single `Primandproper_Platform_Identity_V1_UpdateProfileRequest` message.
@@ -1207,41 +1177,11 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
             self.client = client
         }
 
-        /// Call the "Register" method.
+        /// Call the "UpdateProfile" method.
         ///
         /// > Source IDL Documentation:
         /// >
-        /// > The writes.
-        ///
-        /// - Parameters:
-        ///   - request: A request containing a single `Primandproper_Platform_Identity_V1_RegisterRequest` message.
-        ///   - serializer: A serializer for `Primandproper_Platform_Identity_V1_RegisterRequest` messages.
-        ///   - deserializer: A deserializer for `Primandproper_Platform_Identity_V1_RegisterResponse` messages.
-        ///   - options: Options to apply to this RPC.
-        ///   - handleResponse: A closure which handles the response and returns its result to
-        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
-        ///       already finished.
-        /// - Returns: The result of `handleResponse`.
-        internal func register<Result>(
-            request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_RegisterRequest>,
-            serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Identity_V1_RegisterRequest>,
-            deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Identity_V1_RegisterResponse>,
-            options: GRPCCore.CallOptions = .defaults,
-            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_RegisterResponse>) async throws -> Result = { response in
-                try response.message
-            }
-        ) async throws -> Result where Result: Sendable {
-            try await self.client.unary(
-                request: request,
-                descriptor: Primandproper_Platform_Identity_V1_IdentityService.Method.Register.descriptor,
-                serializer: serializer,
-                deserializer: deserializer,
-                options: options,
-                onResponse: handleResponse
-            )
-        }
-
-        /// Call the "UpdateProfile" method.
+        /// > The writes. There is no Register: see the file documentation.
         ///
         /// - Parameters:
         ///   - request: A request containing a single `Primandproper_Platform_Identity_V1_UpdateProfileRequest` message.
@@ -2150,36 +2090,11 @@ extension Primandproper_Platform_Identity_V1_IdentityService {
 // Helpers providing default arguments to 'ClientProtocol' methods.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
-    /// Call the "Register" method.
+    /// Call the "UpdateProfile" method.
     ///
     /// > Source IDL Documentation:
     /// >
-    /// > The writes.
-    ///
-    /// - Parameters:
-    ///   - request: A request containing a single `Primandproper_Platform_Identity_V1_RegisterRequest` message.
-    ///   - options: Options to apply to this RPC.
-    ///   - handleResponse: A closure which handles the response and returns its result to
-    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
-    ///       already finished.
-    /// - Returns: The result of `handleResponse`.
-    internal func register<Result>(
-        request: GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_RegisterRequest>,
-        options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_RegisterResponse>) async throws -> Result = { response in
-            try response.message
-        }
-    ) async throws -> Result where Result: Sendable {
-        try await self.register(
-            request: request,
-            serializer: GRPCProtobuf.ProtobufSerializer<Primandproper_Platform_Identity_V1_RegisterRequest>(),
-            deserializer: GRPCProtobuf.ProtobufDeserializer<Primandproper_Platform_Identity_V1_RegisterResponse>(),
-            options: options,
-            onResponse: handleResponse
-        )
-    }
-
-    /// Call the "UpdateProfile" method.
+    /// > The writes. There is no Register: see the file documentation.
     ///
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Identity_V1_UpdateProfileRequest` message.
@@ -2937,40 +2852,11 @@ extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
 // Helpers providing sugared APIs for 'ClientProtocol' methods.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension Primandproper_Platform_Identity_V1_IdentityService.ClientProtocol {
-    /// Call the "Register" method.
+    /// Call the "UpdateProfile" method.
     ///
     /// > Source IDL Documentation:
     /// >
-    /// > The writes.
-    ///
-    /// - Parameters:
-    ///   - message: request message to send.
-    ///   - metadata: Additional metadata to send, defaults to empty.
-    ///   - options: Options to apply to this RPC, defaults to `.defaults`.
-    ///   - handleResponse: A closure which handles the response and returns its result to
-    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
-    ///       already finished.
-    /// - Returns: The result of `handleResponse`.
-    internal func register<Result>(
-        _ message: Primandproper_Platform_Identity_V1_RegisterRequest,
-        metadata: GRPCCore.Metadata = [:],
-        options: GRPCCore.CallOptions = .defaults,
-        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Identity_V1_RegisterResponse>) async throws -> Result = { response in
-            try response.message
-        }
-    ) async throws -> Result where Result: Sendable {
-        let request = GRPCCore.ClientRequest<Primandproper_Platform_Identity_V1_RegisterRequest>(
-            message: message,
-            metadata: metadata
-        )
-        return try await self.register(
-            request: request,
-            options: options,
-            onResponse: handleResponse
-        )
-    }
-
-    /// Call the "UpdateProfile" method.
+    /// > The writes. There is no Register: see the file documentation.
     ///
     /// - Parameters:
     ///   - message: request message to send.

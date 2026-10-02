@@ -68,8 +68,8 @@
 // in this repository and in a consumer's fork of the file alike, whereas a
 // comment is a request to the next author. It is reserved on every request
 // message, on the inputs they are built from -- [Credentials],
-// [RegistrationInvitation] -- and on [IssuedToken], [AuthStatus] and
-// [Registered], which the responses are built from.
+// [RegistrationInvitation] -- and on [IssuedToken], [AuthStatus],
+// [Registered] and [TOTPEnrollment], which the responses are built from.
 //
 // No hashed password and no stored second-factor secret, in either direction.
 // The two secrets that do cross are the ones that have to: a plaintext password
@@ -111,16 +111,31 @@
 // No verification token in any response. The secret a registration mints
 // travels to the person it is about, in mail the consumer sends from inside the
 // transaction that wrote the row -- it is never handed back to whoever called
-// Register, who is a client rather than the subject. It arrives back here only
-// as a request field on the two RPCs that answer a link, which is identity's
+// Register, since calling it proves nothing about who holds the address. It
+// arrives back here only
+// as a request field on the RPCs that answer a link, which is identity's
 // rule for an invitation's token and is the same rule for the same reason.
 //
-// No passkeys, no password reset and no session management. Each is a flow of
-// its own over an engine this module already ships, and each is its own file
-// rather than a branch in this one. Email-link sign-in -- a door that mints a
+// No passkeys and no password reset. Each is a flow of its own over an engine
+// this module already ships, and each is its own file rather than a branch in
+// this one. The logins a person holds are here -- ListSignIns and EndSignIn read
+// and end the refresh token families above -- and a session in the sense of
+// github.com/primandproper/platform-go/v14/sessions still is not. Email-link sign-in -- a door that mints a
 // token from a clicked link rather than from a password -- is not here either:
 // it is a sibling of LoginForToken rather than a branch inside it, and it is
 // the one thing a registrant who named no password still needs.
+//
+// # Two services, and why the second exists
+//
+// SignInService permissions nothing: every RPC on it is a door, a finish of a
+// registration, or about the caller and nobody else. An operator's view of
+// somebody else's logins is a different act, and it is SignInAdministrationService
+// rather than a field on those RPCs naming a user -- a field that would turn every
+// "about the caller" guarantee on SignInService into a question about the
+// caller's grants. The second service is the one that is permissioned, one
+// declared permission per RPC and no default grant for any of them, so which
+// callers are operators stays the deployment's policy. See
+// authentication/signin/grpc's Permissions.
 
 import SwiftProtobuf
 
@@ -436,6 +451,359 @@ public struct Primandproper_Platform_Signin_V1_ExchangeRefreshTokenResponse: Sen
   fileprivate var _token: Primandproper_Platform_Signin_V1_IssuedToken? = nil
 }
 
+/// SwitchAccountRequest spends a refresh token for a fresh pair against another
+/// account the same person belongs to: the same login, moved.
+///
+/// It is anonymous for ExchangeRefreshTokenRequest's reason -- the refresh token
+/// is the whole of the request's authority -- and it is a request of its own
+/// rather than a field on that one because switching is a deliberate act, not a
+/// refresh. Who the new token is for is read off the row the presented token
+/// named; which account it is for is the one thing a client says.
+///
+/// The account must be one that person is currently a member of. Naming any
+/// other is refused exactly as a dead token is, so the answer says nothing about
+/// the account named, and the presented token is left unspent: the login stays
+/// where it was. The successor stays in the same login -- ListSignIns shows it
+/// once, EndSignIn ends it, and presenting the spent token again ends it as a
+/// replay of any exchange does.
+public struct Primandproper_Platform_Signin_V1_SwitchAccountRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// refresh_token is the credential a previous IssuedToken carried.
+  public var refreshToken: String = String()
+
+  /// account_id is the account the new pair is for. Empty is INVALID_ARGUMENT:
+  /// a switch says where it is going.
+  public var accountID: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public struct Primandproper_Platform_Signin_V1_SwitchAccountResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var token: Primandproper_Platform_Signin_V1_IssuedToken {
+    get {return _token ?? Primandproper_Platform_Signin_V1_IssuedToken()}
+    set {_token = newValue}
+  }
+  /// Returns true if `token` has been explicitly set.
+  public var hasToken: Bool {return self._token != nil}
+  /// Clears the value of `token`. Subsequent reads from it will return its default value.
+  public mutating func clearToken() {self._token = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _token: Primandproper_Platform_Signin_V1_IssuedToken? = nil
+}
+
+/// SignOutRequest ends one login: every refresh token this sign-in issued stops
+/// being exchangeable.
+///
+/// It is anonymous and carries the refresh token, which is
+/// ExchangeRefreshTokenRequest's arrangement and is here for the same two
+/// reasons. The credential presented is the whole of the request's authority, so
+/// no field names a user and none could. And it is the one shape that still works
+/// when the access token has already expired, which is when somebody signing out
+/// usually is: they came back to an application that had been closed for a week
+/// and pressed the button.
+///
+/// It grants nothing a caller did not already have. Whoever holds a live refresh
+/// token can already end the family by presenting it twice -- that is what reuse
+/// detection does -- so this is the same act performed on purpose, with the
+/// server told that it was deliberate rather than having to assume theft.
+///
+/// What it does on its own is stop the access token already in somebody's hands
+/// being replaced, so a sign-out takes effect within one access-token lifetime:
+/// an access token is checked by the consumer's interceptor against the issuer's
+/// signature rather than against any table this service holds. A deployment that
+/// needs it to take effect at once has its interceptor ask
+/// signin.Service.CheckSignIn on every request -- the sign-in extractor's
+/// WithSignInCheck -- which refuses the ended login's access token from the next
+/// request on, rather than asking for another RPC.
+public struct Primandproper_Platform_Signin_V1_SignOutRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// refresh_token is the credential a previous IssuedToken carried. A token
+  /// nobody holds, one already spent and one already revoked are one answer --
+  /// there is nothing here for a caller to learn, and the family is ended either
+  /// way or was already.
+  public var refreshToken: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// SignOutResponse is empty, and is a message rather than google.protobuf.Empty
+/// so that it can gain a field without becoming a breaking change -- see
+/// UpdatePasswordResponse.
+///
+/// It deliberately does not report how many tokens were withdrawn. The service
+/// has that number and it is a row count rather than a device count: a login that
+/// has refreshed forty times is forty rows, so a client rendering "signed out of
+/// N devices" would be rendering something else entirely.
+public struct Primandproper_Platform_Signin_V1_SignOutResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// SignOutEverywhereRequest ends every login the calling user holds, on every
+/// device, including the one asking.
+///
+/// It requires a caller and names nobody, which is GetAuthStatusRequest's rule
+/// for GetAuthStatusRequest's reason: the subject is whoever is calling, and a
+/// field naming somebody else would be an administrator's revocation wearing a
+/// sign-out's clothes. An operator ending somebody else's sessions is a different
+/// act with a different permission, and it is
+/// SignInAdministrationService.EndAllSignInsForUser rather than this RPC.
+///
+/// It is the door for a password a person thinks somebody else has seen, so it
+/// takes no credential and re-proves nothing: a user who is told "your password
+/// may be compromised" and then asked for that password before they may act on it
+/// has been given advice they cannot take. What it costs is bounded by what it
+/// does -- ending your own sessions, which anyone holding your access token could
+/// achieve by waiting -- and the remedy for a stolen access token is here rather
+/// than nowhere.
+public struct Primandproper_Platform_Signin_V1_SignOutEverywhereRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// SignOutEverywhereResponse is empty -- see SignOutResponse, whose reasoning
+/// applies here with more force, since this count spans every login.
+public struct Primandproper_Platform_Signin_V1_SignOutEverywhereResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// ActiveSignIn is one live login, as a "where you're signed in" screen shows
+/// it.
+///
+/// The platform lists the logins and records how each one happened; the device
+/// is the consumer's. The server stores no device, no browser and no address,
+/// and that is a decision rather than a gap. Whether any of those is recorded at
+/// all is the consumer's, and a consumer that does record them keys them on
+/// family_id -- signin's AfterIssueToken hook runs inside every mint with the
+/// family on it -- and hands them back through the server's sign-in annotator,
+/// which fills attributes.
+public struct Primandproper_Platform_Signin_V1_ActiveSignIn: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// family_id names the login: the value every IssuedToken it produced carried,
+  /// the access token's "sid" claim, and what EndSignInRequest names.
+  public var familyID: String = String()
+
+  /// signed_in_at is when the login began. Refreshing does not move it.
+  public var signedInAt: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _signedInAt ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_signedInAt = newValue}
+  }
+  /// Returns true if `signedInAt` has been explicitly set.
+  public var hasSignedInAt: Bool {return self._signedInAt != nil}
+  /// Clears the value of `signedInAt`. Subsequent reads from it will return its default value.
+  public mutating func clearSignedInAt() {self._signedInAt = nil}
+
+  /// last_refreshed_at is when the login last exchanged a refresh token, or
+  /// signed_in_at for a login that never has.
+  public var lastRefreshedAt: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _lastRefreshedAt ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_lastRefreshedAt = newValue}
+  }
+  /// Returns true if `lastRefreshedAt` has been explicitly set.
+  public var hasLastRefreshedAt: Bool {return self._lastRefreshedAt != nil}
+  /// Clears the value of `lastRefreshedAt`. Subsequent reads from it will return its default value.
+  public mutating func clearLastRefreshedAt() {self._lastRefreshedAt = nil}
+
+  /// expires_at is when the login ends if nothing refreshes it before then.
+  public var expiresAt: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _expiresAt ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_expiresAt = newValue}
+  }
+  /// Returns true if `expiresAt` has been explicitly set.
+  public var hasExpiresAt: Bool {return self._expiresAt != nil}
+  /// Clears the value of `expiresAt`. Subsequent reads from it will return its default value.
+  public mutating func clearExpiresAt() {self._expiresAt = nil}
+
+  /// active_account_id is the account the login's tokens are for.
+  public var activeAccountID: String = String()
+
+  /// administrative reports whether the login came through the administrative
+  /// door.
+  public var administrative: Bool = false
+
+  /// current reports whether this is the login the request itself was made
+  /// through. It is false on every entry when the server cannot tell -- a
+  /// consumer whose principal does not carry the access token's "sid" -- which
+  /// is the answer that marks nothing rather than guessing.
+  public var current: Bool = false
+
+  /// actor_id is the operator signed in as this person through this login --
+  /// an impersonation an operator surface began -- and empty for a login of the
+  /// person's own. A client shows it, because "somebody else is signed in as
+  /// you" is a thing a person is owed the chance to see and end.
+  public var actorID: String = String()
+
+  /// credential_kind is how the login happened: what proved the sign-in that
+  /// began it -- "password", "recovery_code", "magic_link", "principal",
+  /// "impersonation", or a kind the consumer named when it proved the principal
+  /// itself. A refresh does not change it. It is empty only for a login whose
+  /// store recorded none.
+  public var credentialKind: String = String()
+
+  /// attributes is what the consumer recorded about the login's device -- a
+  /// device name, a user agent, an address -- as the server's sign-in annotator
+  /// answered for this family. The platform stores none of it and names none of
+  /// its keys. It is empty on a server built without an annotator, and for a
+  /// login the annotator had nothing for.
+  public var attributes: Dictionary<String,String> = [:]
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _signedInAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+  fileprivate var _lastRefreshedAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+  fileprivate var _expiresAt: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+}
+
+/// ListSignInsRequest asks for the calling user's live logins, most recently
+/// refreshed first.
+///
+/// It requires a caller and names nobody, which is SignOutEverywhereRequest's
+/// rule for SignOutEverywhereRequest's reason: an operator listing somebody
+/// else's logins is a different act with a different permission, and it is
+/// SignInAdministrationService.ListSignInsForUser rather than this RPC.
+public struct Primandproper_Platform_Signin_V1_ListSignInsRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// limit is how many to answer with. Zero is the service's default and a
+  /// value past its ceiling is the ceiling; see signin.DefaultSignInListLimit and
+  /// signin.MaxSignInListLimit. What a limit leaves out is what has been idle
+  /// longest.
+  public var limit: UInt32 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public struct Primandproper_Platform_Signin_V1_ListSignInsResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var signIns: [Primandproper_Platform_Signin_V1_ActiveSignIn] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// EndSignInRequest ends one of the calling user's logins, named by its family.
+///
+/// It is the door SignOutRequest could not be. That one carries the login's
+/// refresh token, which only the device holding it has; this one carries the
+/// family identifier a ListSignInsResponse handed out, so a person can end the
+/// login on the phone they lost from the laptop in front of them.
+///
+/// A family identifier is not a secret, and that is why this requires a caller
+/// and why the caller is part of the key: a family that is not theirs matches
+/// nothing. The answer does not say whether anything was ended -- a family that
+/// is somebody else's, one that never existed and one already ended all answer
+/// the same, so the RPC cannot be used to learn which identifiers are live.
+///
+/// Ending the login the request was made through is allowed and is a sign-out.
+/// Like SignOut, it stops that login's access tokens being replaced rather than
+/// stopping the one already issued.
+public struct Primandproper_Platform_Signin_V1_EndSignInRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var familyID: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// EndSignInResponse is empty -- see SignOutResponse.
+public struct Primandproper_Platform_Signin_V1_EndSignInResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// EndOtherSignInsRequest ends every login the calling user holds except the one
+/// the request was made through: "sign out my other devices".
+///
+/// It names nobody and no login. The subject is the caller, and the login it
+/// keeps is read off the caller's access token -- its "sid" claim, the family_id
+/// ListSignIns marks current -- rather than taken from a field, so a request
+/// cannot keep a login other than its own. A caller whose token names no login is
+/// refused with FAILED_PRECONDITION and the reason SIGN_IN_NOT_IDENTIFIED rather
+/// than having every login ended: that is SignOutEverywhere, which is a request a
+/// client makes on purpose.
+///
+/// It is one revocation on the server rather than ListSignIns followed by an
+/// EndSignIn for each entry, and that is what it is for. The loop decides which
+/// logins are "other" a round trip before it ends them, so one made in between
+/// survives; here the decision and the revocation are the same statement.
+public struct Primandproper_Platform_Signin_V1_EndOtherSignInsRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// EndOtherSignInsResponse is empty -- see SignOutResponse. A client that wants
+/// to show what is left calls ListSignIns.
+public struct Primandproper_Platform_Signin_V1_EndOtherSignInsResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 /// GetAuthStatusRequest names nobody. The subject is whoever is calling, and a
 /// field naming somebody else would be a directory read wearing a whoami's
 /// clothes.
@@ -544,6 +912,106 @@ public struct Primandproper_Platform_Signin_V1_UpdatePasswordResponse: Sendable 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
+}
+
+/// UpdateEmailAddressRequest moves the calling user's own address. There is no
+/// field naming a user, for UpdatePasswordRequest's reason.
+///
+/// An address is where a password reset is mailed, so moving it is guarded as a
+/// password change is, by one of two proofs. current_password, with totp_code
+/// from a user who holds a proven second factor. Or, with no password sent, the
+/// sign-in this request came through, if it began recently enough -- read off
+/// the caller's token rather than off this message, so there is no field for
+/// it. A user who holds no password has only the second, and a stale sign-in is
+/// refused with REAUTHENTICATION_REQUIRED: sign in again, then ask.
+///
+/// The address's proof goes with the old address, and a deployment that mails
+/// verification links mails the new address one.
+public struct Primandproper_Platform_Signin_V1_UpdateEmailAddressRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// current_password is checked when it is sent. Empty offers the recent
+  /// sign-in instead.
+  public var currentPassword: String = String()
+
+  /// totp_code is required alongside current_password from a user who holds a
+  /// proven second factor.
+  public var totpCode: String = String()
+
+  /// new_email_address is the address that replaces the current one.
+  public var newEmailAddress: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// UpdateEmailAddressResponse carries the user as they stand after the change.
+public struct Primandproper_Platform_Signin_V1_UpdateEmailAddressResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var user: Primandproper_Platform_Identity_V1_User {
+    get {return _user ?? Primandproper_Platform_Identity_V1_User()}
+    set {_user = newValue}
+  }
+  /// Returns true if `user` has been explicitly set.
+  public var hasUser: Bool {return self._user != nil}
+  /// Clears the value of `user`. Subsequent reads from it will return its default value.
+  public mutating func clearUser() {self._user = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _user: Primandproper_Platform_Identity_V1_User? = nil
+}
+
+/// UpdateUsernameRequest renames the calling user, guarded exactly as
+/// UpdateEmailAddressRequest is: a username is what somebody signs in with.
+public struct Primandproper_Platform_Signin_V1_UpdateUsernameRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// current_password is UpdateEmailAddressRequest.current_password.
+  public var currentPassword: String = String()
+
+  /// totp_code is UpdateEmailAddressRequest.totp_code.
+  public var totpCode: String = String()
+
+  /// new_username is the handle that replaces the current one, as the person
+  /// spelled it.
+  public var newUsername: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// UpdateUsernameResponse carries the user as they stand after the change.
+public struct Primandproper_Platform_Signin_V1_UpdateUsernameResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var user: Primandproper_Platform_Identity_V1_User {
+    get {return _user ?? Primandproper_Platform_Identity_V1_User()}
+    set {_user = newValue}
+  }
+  /// Returns true if `user` has been explicitly set.
+  public var hasUser: Bool {return self._user != nil}
+  /// Clears the value of `user`. Subsequent reads from it will return its default value.
+  public mutating func clearUser() {self._user = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _user: Primandproper_Platform_Identity_V1_User? = nil
 }
 
 /// RefreshTOTPSecretRequest asks for a new second-factor secret for the calling
@@ -692,16 +1160,6 @@ public struct Primandproper_Platform_Signin_V1_RegisterRequest: @unchecked Senda
   /// Clears the value of `account`. Subsequent reads from it will return its default value.
   public mutating func clearAccount() {_uniqueStorage()._account = nil}
 
-  /// owner_roles are the roles the registrant holds in the account they own,
-  /// and are the consumer's own role names. A membership with none is a member
-  /// who may do nothing, so a registration that mints an account names at least
-  /// one. They are ignored by a registration that answers an invitation, which
-  /// takes its roles off the invitation.
-  public var ownerRoles: [String] {
-    get {return _storage._ownerRoles}
-    set {_uniqueStorage()._ownerRoles = newValue}
-  }
-
   /// credential is how this person will prove who they are afterwards, and it is
   /// required: a request naming neither arm is refused rather than read as
   /// no_password. See the file documentation.
@@ -744,6 +1202,15 @@ public struct Primandproper_Platform_Signin_V1_RegisterRequest: @unchecked Senda
   /// Clears the value of `invitation`. Subsequent reads from it will return its default value.
   public mutating func clearInvitation() {_uniqueStorage()._invitation = nil}
 
+  /// agreements are the documents the registrant accepted in registering. They
+  /// are stamped on the user the registration writes, on the same transaction,
+  /// and AGREEMENT_UNSPECIFIED refuses the request. Whether any are required is
+  /// the consumer's, through signin.RegistrationPolicy.
+  public var agreements: [Primandproper_Platform_Identity_V1_Agreement] {
+    get {return _storage._agreements}
+    set {_uniqueStorage()._agreements = newValue}
+  }
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   /// credential is how this person will prove who they are afterwards, and it is
@@ -765,6 +1232,26 @@ public struct Primandproper_Platform_Signin_V1_RegisterRequest: @unchecked Senda
   public init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+/// TOTPEnrollment is a second-factor secret minted with a registration: the
+/// same pair RefreshTOTPSecretResponse carries, costing the same to hand around.
+/// It is unproven until VerifyTOTPSecret succeeds.
+public struct Primandproper_Platform_Signin_V1_TOTPEnrollment: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// secret is the base32 shared secret, for somebody typing it in.
+  public var secret: String = String()
+
+  /// provisioning_uri is the otpauth:// URI that same secret encodes to, for a
+  /// client rendering a QR code.
+  public var provisioningUri: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
 }
 
 /// Registered is what a registration produced.
@@ -813,6 +1300,19 @@ public struct Primandproper_Platform_Signin_V1_Registered: Sendable {
   /// Clears the value of `invitation`. Subsequent reads from it will return its default value.
   public mutating func clearInvitation() {self._invitation = nil}
 
+  /// totp_enrollment is the second factor minted with the registration, and is
+  /// absent unless the consumer's registration policy asked for one. It makes
+  /// this response, where it is set, one that must not be logged, cached or
+  /// rendered anywhere it will be read twice -- see RefreshTOTPSecretResponse.
+  public var totpEnrollment: Primandproper_Platform_Signin_V1_TOTPEnrollment {
+    get {return _totpEnrollment ?? Primandproper_Platform_Signin_V1_TOTPEnrollment()}
+    set {_totpEnrollment = newValue}
+  }
+  /// Returns true if `totpEnrollment` has been explicitly set.
+  public var hasTotpEnrollment: Bool {return self._totpEnrollment != nil}
+  /// Clears the value of `totpEnrollment`. Subsequent reads from it will return its default value.
+  public mutating func clearTotpEnrollment() {self._totpEnrollment = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -821,6 +1321,7 @@ public struct Primandproper_Platform_Signin_V1_Registered: Sendable {
   fileprivate var _account: Primandproper_Platform_Identity_V1_Account? = nil
   fileprivate var _membership: Primandproper_Platform_Identity_V1_Membership? = nil
   fileprivate var _invitation: Primandproper_Platform_Identity_V1_Invitation? = nil
+  fileprivate var _totpEnrollment: Primandproper_Platform_Signin_V1_TOTPEnrollment? = nil
 }
 
 public struct Primandproper_Platform_Signin_V1_RegisterResponse: Sendable {
@@ -910,6 +1411,74 @@ public struct Primandproper_Platform_Signin_V1_VerifyEmailAddressRequest: Sendab
 
 /// VerifyEmailAddressResponse is empty -- see UpdatePasswordResponse.
 public struct Primandproper_Platform_Signin_V1_VerifyEmailAddressResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// RequestVerificationEmailRequest asks for a fresh link proving the calling
+/// user's address, mailed to it, and retires the link they were sent before.
+///
+/// It requires a caller and names nobody, for SignOutEverywhereRequest's reason:
+/// the subject is whoever is calling, and a field naming somebody else would be a
+/// way to mail strangers from this deployment's domain. An address that is
+/// already proven is refused as EMAIL_ADDRESS_ALREADY_VERIFIED and keeps its
+/// proof, so asking again can never un-verify anybody.
+///
+/// Rate limiting is the deployment's, in front of it: every request sends mail.
+public struct Primandproper_Platform_Signin_V1_RequestVerificationEmailRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// RequestVerificationEmailResponse is empty. The link goes to the address and
+/// never back to the caller -- a response carrying it would let whoever holds a
+/// session prove an inbox they have never seen.
+public struct Primandproper_Platform_Signin_V1_RequestVerificationEmailResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// RequestVerificationEmailByAddressRequest asks for a fresh verification link
+/// mailed to an address, from somebody who cannot sign in to ask: a registrant
+/// whose first link never arrived, told USER_UNVERIFIED at the password door.
+///
+/// It is anonymous, and so it is answered identically whoever holds the address
+/// -- nobody, a registrant it mailed, somebody already proven, somebody whose
+/// standing admits no mail -- and held to the magic-link door's timing floor, for
+/// RequestMagicLinkRequest's reason. A client renders "if that address is waiting
+/// on a link, we sent another" and nothing that depends on the answer.
+///
+/// Rate limiting is the deployment's, in front of it: anybody can send it.
+public struct Primandproper_Platform_Signin_V1_RequestVerificationEmailByAddressRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var emailAddress: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// RequestVerificationEmailByAddressResponse is empty, and the same for every
+/// address -- see RequestMagicLinkResponse.
+public struct Primandproper_Platform_Signin_V1_RequestVerificationEmailByAddressResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1025,6 +1594,133 @@ public struct Primandproper_Platform_Signin_V1_RedeemMagicLinkResponse: Sendable
   public init() {}
 
   fileprivate var _token: Primandproper_Platform_Signin_V1_IssuedToken? = nil
+}
+
+/// RequestHandleReminderRequest asks for the handle the holder of an address signs
+/// in with to be mailed to them.
+///
+/// There is no scope field, for RequestMagicLinkRequest's reason.
+public struct Primandproper_Platform_Signin_V1_RequestHandleReminderRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// email_address is who to mail. It is folded the way the directory folds a
+  /// handle, so it reads the row the password door would have read.
+  public var emailAddress: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// RequestHandleReminderResponse is empty, for RequestMagicLinkResponse's reason:
+/// no field here could differ between an address somebody holds and one nobody
+/// does, and a consumer's own handler owes the same silence.
+public struct Primandproper_Platform_Signin_V1_RequestHandleReminderResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// ListSignInsForUserRequest asks for the live logins of the user it names, most
+/// recently refreshed first: an operator's view of somebody else's "where you're
+/// signed in" screen.
+public struct Primandproper_Platform_Signin_V1_ListSignInsForUserRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// user_id is whose logins to list. Empty is INVALID_ARGUMENT.
+  public var userID: String = String()
+
+  /// limit is ListSignInsRequest.limit, read the same way.
+  public var limit: UInt32 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// ListSignInsForUserResponse carries ActiveSignIn exactly as ListSignIns does,
+/// except that current is false on every entry: the request was made through the
+/// operator's login, which is never one of these.
+public struct Primandproper_Platform_Signin_V1_ListSignInsForUserResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var signIns: [Primandproper_Platform_Signin_V1_ActiveSignIn] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// EndSignInForUserRequest ends one of the named user's logins, named by its
+/// family.
+///
+/// Both fields are the key, as the caller and the family are for EndSignIn: a
+/// family that is not user_id's ends nothing, so an operator who pasted the
+/// wrong identifier ends nobody's login rather than a stranger's. The answer
+/// does not say whether anything ended; ListSignInsForUser does.
+public struct Primandproper_Platform_Signin_V1_EndSignInForUserRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// user_id is whose login to end. Empty is INVALID_ARGUMENT.
+  public var userID: String = String()
+
+  /// family_id is the login, as ListSignInsForUser answered it. Empty is
+  /// INVALID_ARGUMENT.
+  public var familyID: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// EndSignInForUserResponse is empty -- see SignOutResponse.
+public struct Primandproper_Platform_Signin_V1_EndSignInForUserResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// EndAllSignInsForUserRequest ends every login the named user holds: what an
+/// operator runs for an account they think is compromised, and
+/// SignOutEverywhere done to somebody rather than by them.
+public struct Primandproper_Platform_Signin_V1_EndAllSignInsForUserRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// user_id is whose logins to end. Empty is INVALID_ARGUMENT.
+  public var userID: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// EndAllSignInsForUserResponse is empty -- see SignOutEverywhereResponse.
+public struct Primandproper_Platform_Signin_V1_EndAllSignInsForUserResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -1414,6 +2110,388 @@ extension Primandproper_Platform_Signin_V1_ExchangeRefreshTokenResponse: SwiftPr
   }
 }
 
+extension Primandproper_Platform_Signin_V1_SwitchAccountRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".SwitchAccountRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}refresh_token\0\u{5}account_id\0accountID\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.refreshToken) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.accountID) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.refreshToken.isEmpty {
+      try visitor.visitSingularStringField(value: self.refreshToken, fieldNumber: 1)
+    }
+    if !self.accountID.isEmpty {
+      try visitor.visitSingularStringField(value: self.accountID, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_SwitchAccountRequest, rhs: Primandproper_Platform_Signin_V1_SwitchAccountRequest) -> Bool {
+    if lhs.refreshToken != rhs.refreshToken {return false}
+    if lhs.accountID != rhs.accountID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_SwitchAccountResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".SwitchAccountResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}token\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._token) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._token {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_SwitchAccountResponse, rhs: Primandproper_Platform_Signin_V1_SwitchAccountResponse) -> Bool {
+    if lhs._token != rhs._token {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_SignOutRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".SignOutRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}refresh_token\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.refreshToken) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.refreshToken.isEmpty {
+      try visitor.visitSingularStringField(value: self.refreshToken, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_SignOutRequest, rhs: Primandproper_Platform_Signin_V1_SignOutRequest) -> Bool {
+    if lhs.refreshToken != rhs.refreshToken {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_SignOutResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".SignOutResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_SignOutResponse, rhs: Primandproper_Platform_Signin_V1_SignOutResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_SignOutEverywhereRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".SignOutEverywhereRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_SignOutEverywhereRequest, rhs: Primandproper_Platform_Signin_V1_SignOutEverywhereRequest) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_SignOutEverywhereResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".SignOutEverywhereResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_SignOutEverywhereResponse, rhs: Primandproper_Platform_Signin_V1_SignOutEverywhereResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_ActiveSignIn: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ActiveSignIn"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{5}family_id\0familyID\0\u{3}signed_in_at\0\u{3}last_refreshed_at\0\u{3}expires_at\0\u{5}active_account_id\0activeAccountID\0\u{1}administrative\0\u{1}current\0\u{5}actor_id\0actorID\0\u{3}credential_kind\0\u{1}attributes\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.familyID) }()
+      case 2: try { try decoder.decodeSingularMessageField(value: &self._signedInAt) }()
+      case 3: try { try decoder.decodeSingularMessageField(value: &self._lastRefreshedAt) }()
+      case 4: try { try decoder.decodeSingularMessageField(value: &self._expiresAt) }()
+      case 5: try { try decoder.decodeSingularStringField(value: &self.activeAccountID) }()
+      case 6: try { try decoder.decodeSingularBoolField(value: &self.administrative) }()
+      case 7: try { try decoder.decodeSingularBoolField(value: &self.current) }()
+      case 8: try { try decoder.decodeSingularStringField(value: &self.actorID) }()
+      case 9: try { try decoder.decodeSingularStringField(value: &self.credentialKind) }()
+      case 10: try { try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufString,SwiftProtobuf.ProtobufString>.self, value: &self.attributes) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.familyID.isEmpty {
+      try visitor.visitSingularStringField(value: self.familyID, fieldNumber: 1)
+    }
+    try { if let v = self._signedInAt {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    } }()
+    try { if let v = self._lastRefreshedAt {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    } }()
+    try { if let v = self._expiresAt {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+    } }()
+    if !self.activeAccountID.isEmpty {
+      try visitor.visitSingularStringField(value: self.activeAccountID, fieldNumber: 5)
+    }
+    if self.administrative != false {
+      try visitor.visitSingularBoolField(value: self.administrative, fieldNumber: 6)
+    }
+    if self.current != false {
+      try visitor.visitSingularBoolField(value: self.current, fieldNumber: 7)
+    }
+    if !self.actorID.isEmpty {
+      try visitor.visitSingularStringField(value: self.actorID, fieldNumber: 8)
+    }
+    if !self.credentialKind.isEmpty {
+      try visitor.visitSingularStringField(value: self.credentialKind, fieldNumber: 9)
+    }
+    if !self.attributes.isEmpty {
+      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufString,SwiftProtobuf.ProtobufString>.self, value: self.attributes, fieldNumber: 10)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_ActiveSignIn, rhs: Primandproper_Platform_Signin_V1_ActiveSignIn) -> Bool {
+    if lhs.familyID != rhs.familyID {return false}
+    if lhs._signedInAt != rhs._signedInAt {return false}
+    if lhs._lastRefreshedAt != rhs._lastRefreshedAt {return false}
+    if lhs._expiresAt != rhs._expiresAt {return false}
+    if lhs.activeAccountID != rhs.activeAccountID {return false}
+    if lhs.administrative != rhs.administrative {return false}
+    if lhs.current != rhs.current {return false}
+    if lhs.actorID != rhs.actorID {return false}
+    if lhs.credentialKind != rhs.credentialKind {return false}
+    if lhs.attributes != rhs.attributes {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_ListSignInsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ListSignInsRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}limit\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularUInt32Field(value: &self.limit) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.limit != 0 {
+      try visitor.visitSingularUInt32Field(value: self.limit, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_ListSignInsRequest, rhs: Primandproper_Platform_Signin_V1_ListSignInsRequest) -> Bool {
+    if lhs.limit != rhs.limit {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_ListSignInsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ListSignInsResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}sign_ins\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.signIns) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.signIns.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.signIns, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_ListSignInsResponse, rhs: Primandproper_Platform_Signin_V1_ListSignInsResponse) -> Bool {
+    if lhs.signIns != rhs.signIns {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_EndSignInRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".EndSignInRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{5}family_id\0familyID\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.familyID) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.familyID.isEmpty {
+      try visitor.visitSingularStringField(value: self.familyID, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_EndSignInRequest, rhs: Primandproper_Platform_Signin_V1_EndSignInRequest) -> Bool {
+    if lhs.familyID != rhs.familyID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_EndSignInResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".EndSignInResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_EndSignInResponse, rhs: Primandproper_Platform_Signin_V1_EndSignInResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_EndOtherSignInsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".EndOtherSignInsRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_EndOtherSignInsRequest, rhs: Primandproper_Platform_Signin_V1_EndOtherSignInsRequest) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_EndOtherSignInsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".EndOtherSignInsResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_EndOtherSignInsResponse, rhs: Primandproper_Platform_Signin_V1_EndOtherSignInsResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 extension Primandproper_Platform_Signin_V1_GetAuthStatusRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GetAuthStatusRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{b}scope\0")
@@ -1579,6 +2657,154 @@ extension Primandproper_Platform_Signin_V1_UpdatePasswordResponse: SwiftProtobuf
   }
 
   public static func ==(lhs: Primandproper_Platform_Signin_V1_UpdatePasswordResponse, rhs: Primandproper_Platform_Signin_V1_UpdatePasswordResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_UpdateEmailAddressRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".UpdateEmailAddressRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}current_password\0\u{3}totp_code\0\u{3}new_email_address\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.currentPassword) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.totpCode) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.newEmailAddress) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.currentPassword.isEmpty {
+      try visitor.visitSingularStringField(value: self.currentPassword, fieldNumber: 1)
+    }
+    if !self.totpCode.isEmpty {
+      try visitor.visitSingularStringField(value: self.totpCode, fieldNumber: 2)
+    }
+    if !self.newEmailAddress.isEmpty {
+      try visitor.visitSingularStringField(value: self.newEmailAddress, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_UpdateEmailAddressRequest, rhs: Primandproper_Platform_Signin_V1_UpdateEmailAddressRequest) -> Bool {
+    if lhs.currentPassword != rhs.currentPassword {return false}
+    if lhs.totpCode != rhs.totpCode {return false}
+    if lhs.newEmailAddress != rhs.newEmailAddress {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_UpdateEmailAddressResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".UpdateEmailAddressResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}user\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._user) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._user {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_UpdateEmailAddressResponse, rhs: Primandproper_Platform_Signin_V1_UpdateEmailAddressResponse) -> Bool {
+    if lhs._user != rhs._user {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_UpdateUsernameRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".UpdateUsernameRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}current_password\0\u{3}totp_code\0\u{3}new_username\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.currentPassword) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.totpCode) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.newUsername) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.currentPassword.isEmpty {
+      try visitor.visitSingularStringField(value: self.currentPassword, fieldNumber: 1)
+    }
+    if !self.totpCode.isEmpty {
+      try visitor.visitSingularStringField(value: self.totpCode, fieldNumber: 2)
+    }
+    if !self.newUsername.isEmpty {
+      try visitor.visitSingularStringField(value: self.newUsername, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_UpdateUsernameRequest, rhs: Primandproper_Platform_Signin_V1_UpdateUsernameRequest) -> Bool {
+    if lhs.currentPassword != rhs.currentPassword {return false}
+    if lhs.totpCode != rhs.totpCode {return false}
+    if lhs.newUsername != rhs.newUsername {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_UpdateUsernameResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".UpdateUsernameResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}user\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._user) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._user {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_UpdateUsernameResponse, rhs: Primandproper_Platform_Signin_V1_UpdateUsernameResponse) -> Bool {
+    if lhs._user != rhs._user {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -1764,14 +2990,14 @@ extension Primandproper_Platform_Signin_V1_RegistrationInvitation: SwiftProtobuf
 
 extension Primandproper_Platform_Signin_V1_RegisterRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".RegisterRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}user\0\u{1}account\0\u{3}owner_roles\0\u{1}password\0\u{3}no_password\0\u{1}invitation\0\u{b}scope\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}user\0\u{1}account\0\u{2}\u{2}password\0\u{3}no_password\0\u{1}invitation\0\u{1}agreements\0\u{b}scope\0\u{b}owner_roles\0\u{c}\u{3}\u{1}")
 
   fileprivate class _StorageClass {
     var _user: Primandproper_Platform_Identity_V1_UserRegistrationInput? = nil
     var _account: Primandproper_Platform_Identity_V1_AccountCreationInput? = nil
-    var _ownerRoles: [String] = []
     var _credential: Primandproper_Platform_Signin_V1_RegisterRequest.OneOf_Credential?
     var _invitation: Primandproper_Platform_Signin_V1_RegistrationInvitation? = nil
+    var _agreements: [Primandproper_Platform_Identity_V1_Agreement] = []
 
       // This property is used as the initial default value for new instances of the type.
       // The type itself is protecting the reference to its storage via CoW semantics.
@@ -1784,9 +3010,9 @@ extension Primandproper_Platform_Signin_V1_RegisterRequest: SwiftProtobuf.Messag
     init(copying source: _StorageClass) {
       _user = source._user
       _account = source._account
-      _ownerRoles = source._ownerRoles
       _credential = source._credential
       _invitation = source._invitation
+      _agreements = source._agreements
     }
   }
 
@@ -1807,7 +3033,6 @@ extension Primandproper_Platform_Signin_V1_RegisterRequest: SwiftProtobuf.Messag
         switch fieldNumber {
         case 1: try { try decoder.decodeSingularMessageField(value: &_storage._user) }()
         case 2: try { try decoder.decodeSingularMessageField(value: &_storage._account) }()
-        case 3: try { try decoder.decodeRepeatedStringField(value: &_storage._ownerRoles) }()
         case 4: try {
           var v: String?
           try decoder.decodeSingularStringField(value: &v)
@@ -1830,6 +3055,7 @@ extension Primandproper_Platform_Signin_V1_RegisterRequest: SwiftProtobuf.Messag
           }
         }()
         case 6: try { try decoder.decodeSingularMessageField(value: &_storage._invitation) }()
+        case 7: try { try decoder.decodeRepeatedEnumField(value: &_storage._agreements) }()
         default: break
         }
       }
@@ -1848,9 +3074,6 @@ extension Primandproper_Platform_Signin_V1_RegisterRequest: SwiftProtobuf.Messag
       try { if let v = _storage._account {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
       } }()
-      if !_storage._ownerRoles.isEmpty {
-        try visitor.visitRepeatedStringField(value: _storage._ownerRoles, fieldNumber: 3)
-      }
       switch _storage._credential {
       case .password?: try {
         guard case .password(let v)? = _storage._credential else { preconditionFailure() }
@@ -1865,6 +3088,9 @@ extension Primandproper_Platform_Signin_V1_RegisterRequest: SwiftProtobuf.Messag
       try { if let v = _storage._invitation {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
       } }()
+      if !_storage._agreements.isEmpty {
+        try visitor.visitPackedEnumField(value: _storage._agreements, fieldNumber: 7)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -1876,9 +3102,9 @@ extension Primandproper_Platform_Signin_V1_RegisterRequest: SwiftProtobuf.Messag
         let rhs_storage = _args.1
         if _storage._user != rhs_storage._user {return false}
         if _storage._account != rhs_storage._account {return false}
-        if _storage._ownerRoles != rhs_storage._ownerRoles {return false}
         if _storage._credential != rhs_storage._credential {return false}
         if _storage._invitation != rhs_storage._invitation {return false}
+        if _storage._agreements != rhs_storage._agreements {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -1888,9 +3114,44 @@ extension Primandproper_Platform_Signin_V1_RegisterRequest: SwiftProtobuf.Messag
   }
 }
 
+extension Primandproper_Platform_Signin_V1_TOTPEnrollment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".TOTPEnrollment"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}secret\0\u{3}provisioning_uri\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.secret) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.provisioningUri) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.secret.isEmpty {
+      try visitor.visitSingularStringField(value: self.secret, fieldNumber: 1)
+    }
+    if !self.provisioningUri.isEmpty {
+      try visitor.visitSingularStringField(value: self.provisioningUri, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_TOTPEnrollment, rhs: Primandproper_Platform_Signin_V1_TOTPEnrollment) -> Bool {
+    if lhs.secret != rhs.secret {return false}
+    if lhs.provisioningUri != rhs.provisioningUri {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 extension Primandproper_Platform_Signin_V1_Registered: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Registered"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}user\0\u{1}account\0\u{1}membership\0\u{1}invitation\0\u{b}scope\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}user\0\u{1}account\0\u{1}membership\0\u{1}invitation\0\u{3}totp_enrollment\0\u{b}scope\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -1902,6 +3163,7 @@ extension Primandproper_Platform_Signin_V1_Registered: SwiftProtobuf.Message, Sw
       case 2: try { try decoder.decodeSingularMessageField(value: &self._account) }()
       case 3: try { try decoder.decodeSingularMessageField(value: &self._membership) }()
       case 4: try { try decoder.decodeSingularMessageField(value: &self._invitation) }()
+      case 5: try { try decoder.decodeSingularMessageField(value: &self._totpEnrollment) }()
       default: break
       }
     }
@@ -1924,6 +3186,9 @@ extension Primandproper_Platform_Signin_V1_Registered: SwiftProtobuf.Message, Sw
     try { if let v = self._invitation {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
     } }()
+    try { if let v = self._totpEnrollment {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -1932,6 +3197,7 @@ extension Primandproper_Platform_Signin_V1_Registered: SwiftProtobuf.Message, Sw
     if lhs._account != rhs._account {return false}
     if lhs._membership != rhs._membership {return false}
     if lhs._invitation != rhs._invitation {return false}
+    if lhs._totpEnrollment != rhs._totpEnrollment {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -2074,6 +3340,93 @@ extension Primandproper_Platform_Signin_V1_VerifyEmailAddressResponse: SwiftProt
   }
 }
 
+extension Primandproper_Platform_Signin_V1_RequestVerificationEmailRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RequestVerificationEmailRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_RequestVerificationEmailRequest, rhs: Primandproper_Platform_Signin_V1_RequestVerificationEmailRequest) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_RequestVerificationEmailResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RequestVerificationEmailResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_RequestVerificationEmailResponse, rhs: Primandproper_Platform_Signin_V1_RequestVerificationEmailResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_RequestVerificationEmailByAddressRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RequestVerificationEmailByAddressRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}email_address\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.emailAddress) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.emailAddress.isEmpty {
+      try visitor.visitSingularStringField(value: self.emailAddress, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_RequestVerificationEmailByAddressRequest, rhs: Primandproper_Platform_Signin_V1_RequestVerificationEmailByAddressRequest) -> Bool {
+    if lhs.emailAddress != rhs.emailAddress {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_RequestVerificationEmailByAddressResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RequestVerificationEmailByAddressResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_RequestVerificationEmailByAddressResponse, rhs: Primandproper_Platform_Signin_V1_RequestVerificationEmailByAddressResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 extension Primandproper_Platform_Signin_V1_RequestMagicLinkRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".RequestMagicLinkRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}email_address\0\u{b}scope\0")
@@ -2192,6 +3545,223 @@ extension Primandproper_Platform_Signin_V1_RedeemMagicLinkResponse: SwiftProtobu
 
   public static func ==(lhs: Primandproper_Platform_Signin_V1_RedeemMagicLinkResponse, rhs: Primandproper_Platform_Signin_V1_RedeemMagicLinkResponse) -> Bool {
     if lhs._token != rhs._token {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_RequestHandleReminderRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RequestHandleReminderRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}email_address\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.emailAddress) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.emailAddress.isEmpty {
+      try visitor.visitSingularStringField(value: self.emailAddress, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_RequestHandleReminderRequest, rhs: Primandproper_Platform_Signin_V1_RequestHandleReminderRequest) -> Bool {
+    if lhs.emailAddress != rhs.emailAddress {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_RequestHandleReminderResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RequestHandleReminderResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_RequestHandleReminderResponse, rhs: Primandproper_Platform_Signin_V1_RequestHandleReminderResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_ListSignInsForUserRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ListSignInsForUserRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{5}user_id\0userID\0\u{1}limit\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.userID) }()
+      case 2: try { try decoder.decodeSingularUInt32Field(value: &self.limit) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.userID.isEmpty {
+      try visitor.visitSingularStringField(value: self.userID, fieldNumber: 1)
+    }
+    if self.limit != 0 {
+      try visitor.visitSingularUInt32Field(value: self.limit, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_ListSignInsForUserRequest, rhs: Primandproper_Platform_Signin_V1_ListSignInsForUserRequest) -> Bool {
+    if lhs.userID != rhs.userID {return false}
+    if lhs.limit != rhs.limit {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_ListSignInsForUserResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ListSignInsForUserResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{3}sign_ins\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.signIns) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.signIns.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.signIns, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_ListSignInsForUserResponse, rhs: Primandproper_Platform_Signin_V1_ListSignInsForUserResponse) -> Bool {
+    if lhs.signIns != rhs.signIns {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_EndSignInForUserRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".EndSignInForUserRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{5}user_id\0userID\0\u{5}family_id\0familyID\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.userID) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.familyID) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.userID.isEmpty {
+      try visitor.visitSingularStringField(value: self.userID, fieldNumber: 1)
+    }
+    if !self.familyID.isEmpty {
+      try visitor.visitSingularStringField(value: self.familyID, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_EndSignInForUserRequest, rhs: Primandproper_Platform_Signin_V1_EndSignInForUserRequest) -> Bool {
+    if lhs.userID != rhs.userID {return false}
+    if lhs.familyID != rhs.familyID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_EndSignInForUserResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".EndSignInForUserResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_EndSignInForUserResponse, rhs: Primandproper_Platform_Signin_V1_EndSignInForUserResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_EndAllSignInsForUserRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".EndAllSignInsForUserRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{5}user_id\0userID\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.userID) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.userID.isEmpty {
+      try visitor.visitSingularStringField(value: self.userID, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_EndAllSignInsForUserRequest, rhs: Primandproper_Platform_Signin_V1_EndAllSignInsForUserRequest) -> Bool {
+    if lhs.userID != rhs.userID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Signin_V1_EndAllSignInsForUserResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".EndAllSignInsForUserResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Signin_V1_EndAllSignInsForUserResponse, rhs: Primandproper_Platform_Signin_V1_EndAllSignInsForUserResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

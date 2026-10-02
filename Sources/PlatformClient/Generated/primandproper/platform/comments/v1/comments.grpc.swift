@@ -2,7 +2,7 @@
 // discussion half of a product: what somebody said, about something the
 // application owns, possibly in reply to something else somebody said.
 //
-// Eight of the ten methods on comments.Store are here. The two that are not are
+// Every method on comments.Store is here but two, and those two are
 // bulk erasure — DeleteCommentsForTarget and DeleteCommentsByAuthor — and the
 // service comment at the bottom of this file says why neither has an RPC.
 //
@@ -29,7 +29,7 @@
 // values is the consumer's catalog -- comments.Targets, supplied through
 // WithTargets because "which kinds of thing can be commented on" is an
 // application fact and this library has none -- and a generated enum would put
-// that vocabulary on this module's release cadence. Adding a "meal_plan" target
+// that vocabulary on this module's release cadence. Adding a "newsletter" target
 // would become a platform-go release.
 //
 // It is the same ruling issuereports.Kind and webhooks' event types are under,
@@ -263,8 +263,8 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
     /// > one, page a discussion, page a person's or a target type's, edit a body,
     /// > archive a row.
     /// > 
-    /// > Eight RPCs over comments.Store's ten methods, each behind a grant and each
-    /// > acting only within the tenant the caller's principal names.
+    /// > Every comments.Store method but the bulk erasures, each behind a grant and
+    /// > each acting only within the tenant the caller's principal names.
     /// > 
     /// > The two absences are the bulk erasures, and they are one case rather than
     /// > two. DeleteCommentsForTarget is called from the transaction that removes the
@@ -448,8 +448,8 @@ extension Primandproper_Platform_Comments_V1_CommentsService {
     /// > one, page a discussion, page a person's or a target type's, edit a body,
     /// > archive a row.
     /// > 
-    /// > Eight RPCs over comments.Store's ten methods, each behind a grant and each
-    /// > acting only within the tenant the caller's principal names.
+    /// > Every comments.Store method but the bulk erasures, each behind a grant and
+    /// > each acting only within the tenant the caller's principal names.
     /// > 
     /// > The two absences are the bulk erasures, and they are one case rather than
     /// > two. DeleteCommentsForTarget is called from the transaction that removes the
