@@ -1,0 +1,47 @@
+# A stub iOS app that exists only to host the Keychain tests. A SwiftPM test bundle runs
+# inside Xcode's xctest, which holds no keychain entitlement, so the Keychain refuses it
+# with errSecMissingEntitlement even on a simulator. This app links one in, and its test
+# bundle borrows it. scripts/test-keychain.sh generates the project; it is not committed.
+name: KeychainHost
+options:
+  bundleIdPrefix: dev.primandproper.platform-client-swift
+  deploymentTarget:
+    iOS: "18.0"
+packages:
+  platform-client-swift:
+    path: ../..
+targets:
+  KeychainHost:
+    type: application
+    platform: iOS
+    sources: [App]
+    entitlements:
+      path: KeychainHost.entitlements
+      properties:
+        keychain-access-groups:
+          - $(AppIdentifierPrefix)dev.primandproper.platform-client-swift.KeychainHost
+    settings:
+      GENERATE_INFOPLIST_FILE: YES
+      # Sign to Run Locally: the simulator honors the entitlements without a team.
+      CODE_SIGN_IDENTITY: "-"
+      CODE_SIGN_STYLE: Manual
+  KeychainHostTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: ../PlatformClientTests/KeychainCredentialStoreTests.swift
+    dependencies:
+      - target: KeychainHost
+      - package: platform-client-swift
+        product: PlatformClient
+      - package: platform-client-swift
+        product: PlatformClientTesting
+    settings:
+      GENERATE_INFOPLIST_FILE: YES
+schemes:
+  KeychainHost:
+    build:
+      targets:
+        KeychainHost: all
+    test:
+      targets: [KeychainHostTests]
