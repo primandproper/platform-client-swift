@@ -1,0 +1,62 @@
+# The generated client is committed, so the job here is proving it is what the pinned
+# platform-go tag actually produces — not regenerating it on the fly. A drifted commit and a
+# stale pin look identical to a consumer until something fails at runtime.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: check
+    # macOS for the Swift toolchain, which both the package and the pinned codegen
+    # plugins are built with.
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: swift build
+
+      # protoc is pinned here and the plugins are pinned in scripts/plugins/Package.swift.
+      # `brew install` was what broke this the first time: it installs whatever is current,
+      # and swift-protobuf's output changed after 1.33.3.
+      - name: Install protoc
+        uses: arduino/setup-protoc@v3
+        with:
+          version: "33.1"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Regenerating must reproduce exactly what is committed. This catches a hand-edited
+      # generated file, a pin bumped without regenerating, and a regeneration nobody
+      # committed — three ways for the checked-in client to stop describing the server.
+      - name: Generated client matches the pinned tag
+        id: regen
+        run: |
+          make codegen
+          echo "--- resolved plugin versions ---"
+          cat scripts/plugins/Package.resolved || true
+          git diff --exit-code -- Sources/PlatformClient/Generated || {
+            echo "::error::Generated/ does not match what $(cat PLATFORM_GO_VERSION) generates. Run 'make codegen'."
+            exit 1
+          }
+
+      # When the committed tree and the pinned toolchain disagree, the toolchain is right:
+      # it is the pinned one. Publishing its output makes the fix a download-and-commit
+      # rather than a guess, which matters on a machine that cannot build the plugins.
+      - name: Publish what the pinned toolchain generated
+        if: failure() && steps.regen.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-from-pinned-toolchain
+          path: Sources/PlatformClient/Generated
