@@ -23,3 +23,9 @@ test:
 
 .PHONY: check
 check: build test
+
+# The Keychain tests, on an iOS Simulator under a host app: `swift test` cannot reach the
+# data protection keychain.
+.PHONY: test-keychain
+test-keychain:
+	./scripts/test-keychain.sh

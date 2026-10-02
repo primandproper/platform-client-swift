@@ -45,6 +45,14 @@ jobs:
       - name: Test
         run: make test
 
+      # The Keychain tests need an entitled process, which `swift test` cannot give them; a
+      # stub app on a simulator can.
+      - name: Install xcodegen
+        run: command -v xcodegen || brew install xcodegen
+
+      - name: Keychain tests
+        run: make test-keychain
+
       # protoc is pinned here and the plugins are pinned in scripts/plugins/*/Package.swift.
       # `brew install` was what broke this the first time: it installs whatever is current,
       # and swift-protobuf's output changed after 1.33.3.
