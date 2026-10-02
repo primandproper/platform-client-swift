@@ -6,6 +6,9 @@
 # covers this file as well.
 set -euo pipefail
 
+# sort must order the same on a developer machine and in CI.
+export LC_ALL=C
+
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 GENERATED="$ROOT/Sources/PlatformClient/Generated"
 OUT="$GENERATED/ListConformances.swift"
