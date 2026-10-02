@@ -107,6 +107,14 @@ none of them holds a session. Passkey sign-in is `beginPasskeySignIn` and `passk
 the Session, with `PasskeyAssertionOptions` and `PasskeyAssertion` bridging the WebAuthn JSON to
 and from AuthenticationServices. `Pages` and `Items` walk a list RPC.
 
+A settings form holds text, and a setting's value is a
+`Primandproper_Platform_Settings_V1_TypedValue` (`TypedValue` here). `TypedValue(text:kind:)`
+builds the value a write carries, accepting exactly the text the server reads as that kind
+(Go's `strconv`, so `"True"` and `"NaN"` pass) and throwing `SettingValueError` otherwise; its
+`description` is the form error. `TypedValue.text` reads one back in the form the server stores
+and compares enumeration options in, and is `nil`, not `""`, for an unset resolution. The case
+always follows the setting's kind, so a string setting answered `"42"` is written as a string.
+
 **`KeychainCredentialStore` is opt-in.** It holds the session as one generic-password item in
 the data protection keychain, readable after first unlock (so a background refresh can reach
 it) and never backed up or restored onto another device. It does not read what any earlier
