@@ -104,11 +104,23 @@ extension Session {
     _ door: @escaping @Sendable () async throws -> Response,
     resend: @escaping @Sendable (_ totpCode: String) async throws -> SignInResult
   ) async throws -> SignInResult {
+    guard let token = try await signInUnlessSecondFactor(door) else {
+      return .secondFactorRequired(resend: resend)
+    }
+    return .signedIn(token)
+  }
+
+  /// signInUnlessSecondFactor is `signIn(_ door:)`, answering nil rather than throwing when the
+  /// door refused for a second factor. Every door that can ask for one branches on it the same
+  /// way, by reason and never by code.
+  func signInUnlessSecondFactor<Response: TokenResponse>(
+    _ door: @escaping @Sendable () async throws -> Response
+  ) async throws -> IssuedToken? {
     do {
-      return .signedIn(try await signIn(door))
+      return try await signIn(door)
     } catch let error as PlatformError where error.is(SignInReason.secondFactorRequired) {
       logger.info("a sign-in needs a second factor")
-      return .secondFactorRequired(resend: resend)
+      return nil
     }
   }
 }
