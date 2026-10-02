@@ -163,7 +163,9 @@ through to the next `catch`, and a server-down check written against `RPCError.c
 fires.
 
 Catch `PlatformError` instead. It carries the same `code`, plus the reason where there is one
-(R11, R13), and `serverMessage` (also its `localizedDescription`) is what to show a person:
+(R11, R13), and `serverMessage` (also its `localizedDescription`) is what to show a person.
+The `RPCError` it was read from stays on it as `rpcError`, for the trailing metadata and
+`cause` a log line wants:
 
 ```swift
 do {
@@ -227,6 +229,7 @@ make build          # swift build
 make format lint    # swift-format, then swift-format --strict and shellcheck
 make test           # swift test
 make test-keychain  # the Keychain tests, on an iOS Simulator under a host app
+make test-floors    # swift test with every dependency at exactly its declared floor
 ```
 
 **The generator is pinned too, not just the schema.** `scripts/plugins/` holds one manifest
