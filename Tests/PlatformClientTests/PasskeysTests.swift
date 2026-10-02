@@ -28,13 +28,12 @@ private struct PasskeysFixture {
   }
 
   func run<Result: Sendable>(
-    _ body: @Sendable (_ session: Session, _ passkeys: any PasskeysClient) async throws -> Result
+    _ body: @Sendable (_ session: Session) async throws -> Result
   ) async throws -> Result {
     let store = self.store
     let clock = self.clock
     return try await server.run { client in
-      try await body(
-        Session(client: client, store: store, clock: clock), PasskeysRPC.Client(wrapping: client))
+      try await body(Session(client: client, store: store, clock: clock))
     }
   }
 
@@ -55,8 +54,8 @@ private struct PasskeysFixture {
       return response
     }
 
-    let answered = try await fixture.run { session, passkeys in
-      try await session.beginPasskeySignIn(passkeys)
+    let answered = try await fixture.run { session in
+      try await session.beginPasskeySignIn()
     }
 
     #expect(answered == options)
@@ -73,9 +72,9 @@ private struct PasskeysFixture {
       return response
     }
 
-    let (result, state) = try await fixture.run { session, passkeys in
+    let (result, state) = try await fixture.run { session in
       let result = try await session.passkeySignIn(
-        passkeys, PasskeySignIn(username: "jeff", response: assertion))
+        PasskeySignIn(username: "jeff", response: assertion))
       return (result, await session.state)
     }
 
@@ -95,8 +94,8 @@ private struct PasskeysFixture {
       refusal(
         .unauthenticated, "a second-factor code is required", SignInReason.secondFactorRequired))
 
-    let (result, state) = try await fixture.run { session, passkeys in
-      let result = try await session.passkeySignIn(passkeys, PasskeySignIn(response: assertion))
+    let (result, state) = try await fixture.run { session in
+      let result = try await session.passkeySignIn(PasskeySignIn(response: assertion))
       return (result, await session.state)
     }
 
@@ -110,9 +109,9 @@ private struct PasskeysFixture {
     fixture.refuseFinish(
       refusal(.permissionDenied, "sign count regressed", PasskeyReason.passkeySignCountRegressed))
 
-    let error = try await fixture.run { session, passkeys in
+    let error = try await fixture.run { session in
       await #expect(throws: PlatformError.self) {
-        try await session.passkeySignIn(passkeys, PasskeySignIn(response: assertion))
+        try await session.passkeySignIn(PasskeySignIn(response: assertion))
       }
     }
 
@@ -124,9 +123,9 @@ private struct PasskeysFixture {
   @Test func beginRethrowsARefusalAsAPlatformError() async throws {
     let fixture = PasskeysFixture()
 
-    let error = try await fixture.run { session, passkeys in
+    let error = try await fixture.run { session in
       await #expect(throws: PlatformError.self) {
-        try await session.beginPasskeySignIn(passkeys, username: "jeff")
+        try await session.beginPasskeySignIn(username: "jeff")
       }
     }
 

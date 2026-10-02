@@ -1,26 +1,23 @@
 import Foundation
 import GRPCCore
 
-/// PasskeysClient is the generated passkeys stub a passkey sign-in is made through.
-public typealias PasskeysClient = Primandproper_Platform_Passkeys_V1_PasskeysService.ClientProtocol
-
 /// PasskeySignIn is a finished passkey ceremony, ready to be exchanged for a session.
 public struct PasskeySignIn: Sendable, Hashable {
-  /// username is the one `beginPasskeySignIn` was sent, empty for a discoverable login.
-  public var username: String
+  /// username is the one `beginPasskeySignIn` was sent, nil for a discoverable login.
+  public var username: String?
   /// response is the assertion's JSON, as a browser's `toJSON()` renders it:
   /// `PasskeyAssertion.json()`.
   public var response: Data
   /// totpCode is sent whenever there is one, as for a password sign-in.
-  public var totpCode: String
-  /// activeAccountID is which account the token is for; empty means the user's default.
-  public var activeAccountID: String
+  public var totpCode: String?
+  /// activeAccountID is which account the token is for; nil means the user's default.
+  public var activeAccountID: String?
 
   public init(
-    username: String = "",
+    username: String? = nil,
     response: Data,
-    totpCode: String = "",
-    activeAccountID: String = ""
+    totpCode: String? = nil,
+    activeAccountID: String? = nil
   ) {
     self.username = username
     self.response = response
@@ -40,17 +37,14 @@ public enum PasskeySignInResult: Sendable, Hashable {
 
 extension Session {
   /// beginPasskeySignIn starts a passkey sign-in, answering the options JSON that
-  /// `PasskeyAssertionOptions(json:)` reads. An empty `username` is the discoverable login. It
+  /// `PasskeyAssertionOptions(json:)` reads. A nil `username` is the discoverable login. It
   /// answers the same for a username nobody holds as for one somebody does, so show the same
   /// prompt either way.
-  public nonisolated func beginPasskeySignIn(
-    _ passkeys: some PasskeysClient,
-    username: String = ""
-  ) async throws -> Data {
+  public func beginPasskeySignIn(username: String? = nil) async throws -> Data {
     var request = Primandproper_Platform_Passkeys_V1_BeginLoginRequest()
-    request.username = username
+    request.username = username ?? ""
     do {
-      return try await passkeys.beginLogin(request).options
+      return try await passkeysClient.beginLogin(request).options
     } catch {
       throw toPlatformError(error)
     }
@@ -65,19 +59,20 @@ extension Session {
   /// PlatformError, `passkeyLoginFailed` for any login that proved nobody and
   /// `passkeySignCountRegressed` for a key that looks cloned, which is the end of it rather
   /// than a reason to try again.
-  public nonisolated func passkeySignIn(
-    _ passkeys: some PasskeysClient,
-    _ request: PasskeySignIn
-  ) async throws -> PasskeySignInResult {
+  public func passkeySignIn(_ request: PasskeySignIn) async throws -> PasskeySignInResult {
+    let client = passkeysClient
     var message = Primandproper_Platform_Passkeys_V1_FinishLoginRequest()
-    message.username = request.username
+    message.username = request.username ?? ""
     message.response = request.response
-    message.activeAccountID = request.activeAccountID
-    message.totpCode = request.totpCode
-    do {
-      return .signedIn(try await signIn { [message] in try await passkeys.finishLogin(message) })
-    } catch let error as PlatformError where error.is(SignInReason.secondFactorRequired) {
+    message.activeAccountID = request.activeAccountID ?? ""
+    message.totpCode = request.totpCode ?? ""
+    guard
+      let token = try await signInUnlessSecondFactor({ [message] in
+        try await client.finishLogin(message)
+      })
+    else {
       return .secondFactorRequired
     }
+    return .signedIn(token)
   }
 }

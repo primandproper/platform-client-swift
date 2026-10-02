@@ -90,6 +90,8 @@ public actor Session {
   /// signInClient makes the sign-in service's calls that are not the Session's own: the doors
   /// and the sign-outs.
   let signInClient: any Primandproper_Platform_Signin_V1_SignInService.ClientProtocol
+  /// passkeysClient makes the passkey sign-in's calls.
+  let passkeysClient: any Primandproper_Platform_Passkeys_V1_PasskeysService.ClientProtocol
   let logger = Logger(
     subsystem: "com.github.primandproper.platform-client", category: "session")
 
@@ -131,6 +133,8 @@ public actor Session {
     self.idempotentRefresh = idempotentRefresh
     self.exchangeDeadline = exchangeDeadline
     self.signInClient = SignInService.Client(wrapping: client)
+    self.passkeysClient = Primandproper_Platform_Passkeys_V1_PasskeysService.Client(
+      wrapping: client)
     self.exchangeCall = { refreshToken, metadata, options in
       var request = Primandproper_Platform_Signin_V1_ExchangeRefreshTokenRequest()
       request.refreshToken = refreshToken
