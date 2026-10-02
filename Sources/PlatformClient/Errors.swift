@@ -125,6 +125,9 @@ public struct PlatformError: Error, Sendable {
   public let reason: Reason?
   /// reasonMetadata is the ErrorInfo's metadata, empty when there is no reason.
   public let reasonMetadata: [String: String]
+  /// rpcError is the status this error was read from, with its trailing metadata and cause.
+  /// It is nil for one built from its parts, which no status stands behind.
+  public let rpcError: RPCError?
 
   public init(
     code: RPCError.Code,
@@ -136,6 +139,7 @@ public struct PlatformError: Error, Sendable {
     self.serverMessage = serverMessage
     self.reason = reason
     self.reasonMetadata = reasonMetadata
+    self.rpcError = nil
   }
 
   /// init(_:) reads an RPCError's details. Details that do not decode are dropped, as the
@@ -149,8 +153,11 @@ public struct PlatformError: Error, Sendable {
       reason = Reason(domain: info.domain, reason: info.reason)
       metadata = info.metadata
     }
-    self.init(
-      code: error.code, serverMessage: error.message, reason: reason, reasonMetadata: metadata)
+    self.code = error.code
+    self.serverMessage = error.message
+    self.reason = reason
+    self.reasonMetadata = metadata
+    self.rpcError = error
   }
 
   /// is reports whether this refusal carries `reason`, in that reason's own domain.
