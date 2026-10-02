@@ -25,10 +25,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build
-        run: swift build
+      # The newest toolchain, as a developer has: it is the one that refuses a package
+      # graph an older SwiftPM accepted, which is how the codegen plugins came to be two
+      # packages, and swift-format's findings move with it.
+      - name: Select Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
 
-      # protoc is pinned here and the plugins are pinned in scripts/plugins/Package.swift.
+      - name: Install shellcheck
+        run: command -v shellcheck || brew install shellcheck
+
+      - name: Build
+        run: make build
+
+      - name: Lint
+        run: make lint
+
+      - name: Test
+        run: make test
+
+      # protoc is pinned here and the plugins are pinned in scripts/plugins/*/Package.swift.
       # `brew install` was what broke this the first time: it installs whatever is current,
       # and swift-protobuf's output changed after 1.33.3.
       - name: Install protoc
@@ -45,7 +62,7 @@ jobs:
         run: |
           make codegen
           echo "--- resolved plugin versions ---"
-          cat scripts/plugins/Package.resolved || true
+          cat scripts/plugins/*/Package.resolved
           git diff --exit-code -- Sources/PlatformClient/Generated || {
             echo "::error::Generated/ does not match what $(cat PLATFORM_GO_VERSION) generates. Run 'make codegen'."
             exit 1

@@ -3,7 +3,9 @@ import PackageDescription
 
 let package = Package(
   name: "platform-client-swift",
-  platforms: [.iOS(.v17), .macOS(.v14)],
+  // grpc-swift-2 gates its API on these, so a lower floor only moves the error to the first
+  // line that calls a GRPCClient.
+  platforms: [.iOS(.v18), .macOS(.v15)],
   products: [
     .library(name: "PlatformClient", targets: ["PlatformClient"])
   ],
@@ -23,6 +25,11 @@ let package = Package(
         .product(name: "SwiftProtobuf", package: "swift-protobuf"),
       ],
       swiftSettings: [.swiftLanguageMode(.v6)]
-    )
+    ),
+    .testTarget(
+      name: "PlatformClientTests",
+      dependencies: ["PlatformClient"],
+      swiftSettings: [.swiftLanguageMode(.v6)]
+    ),
   ]
 )

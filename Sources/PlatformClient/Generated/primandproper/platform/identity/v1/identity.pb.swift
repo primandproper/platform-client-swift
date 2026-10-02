@@ -50,18 +50,19 @@
 /// Reserving the name rather than only saying so is audit.proto's pattern:
 /// `reserved "scope";` is a schema protoc refuses to accept a scope field into,
 /// in this repository and in a consumer's fork of the file alike, whereas a
-/// comment is a request to the next author. It is reserved on all twenty-nine
-/// request messages, on the four inputs they are built from, and on the nine
-/// messages a response is built from -- a scope on one of those would be
+/// comment is a request to the next author. It is reserved on every request
+/// message, on the inputs they are built from, and on the messages a response
+/// is built from -- a scope on one of those would be
 /// answering a client with something the client supplied. The response wrappers
 /// hold nothing but those messages and reserve nothing.
 ///
 /// No credentials, in either direction. There is no hashed_password,
 /// two_factor_secret or email_address_verification_token on User, and no token
-/// on Invitation -- an invitation's token appears only as a request field on the
-/// two RPCs that answer one, because that is where it arrives from, on a link.
+/// on Invitation -- an invitation's token appears as a request field on the
+/// RPCs that answer one, because that is where it arrives from, on a link.
 /// A schema with no field for a secret is a stronger guarantee than a converter
-/// that remembers to clear one.
+/// that remembers to clear one. The one response that has such a field is
+/// InviteResponse, and it is empty unless the deployment opted in: see there.
 ///
 /// No credential RPCs either: setting a password, enrolling a second factor and
 /// verifying an email address are the sign-in service's, not the directory's,
@@ -84,13 +85,15 @@
 /// interface that could also impose a forced change on any user is one that
 /// could be made to.
 ///
-/// Registration here therefore mints the passwordless user that package already
-/// treats as first-class. A registration that carries a credential is
-/// SignInService.Register, in signin.proto: that service holds the authenticator,
-/// hashes what arrives, and comes back through this package's own registration on
-/// one transaction. Which of the two a consumer calls is the question of whether
-/// the registrant is choosing a password at that moment -- a directory being
-/// filled from elsewhere is this one, and somebody signing up is that one.
+/// No registration either. Registering somebody is SignInService.Register, in
+/// signin.proto, and it is the module's only registration on the wire: that
+/// service holds the authenticator, hashes what arrives, mints the verification
+/// mail, runs the deployment's registration policy and hooks, and comes back
+/// through this package's own registration on one transaction. A second door
+/// here could do none of that -- it would mint a user with no credential and no
+/// verification mail, and let its caller name their own roles -- which made it
+/// the one way around the deployment's policy. An operator provisioning users
+/// calls SignInService.Register signed in.
 ///
 /// No avatar. The media registry is this module's, but identity has no avatar
 /// column and joining one is a contract between two packages that has not been
@@ -544,7 +547,7 @@ public struct Primandproper_Platform_Identity_V1_Account: @unchecked Sendable {
   /// same account over JSON and over gRPC-JSON would emit two spellings of one
   /// field. Pinning the name makes the two descriptions of this type agree,
   /// which identity/grpc's conformance test then holds them to, and
-  /// internal/protoconvention holds all eleven schemas to.
+  /// internal/protoconvention holds every schema in this module to.
   public var ownerUserID: String {
     get {return _storage._ownerUserID}
     set {_uniqueStorage()._ownerUserID = newValue}
@@ -722,7 +725,8 @@ public struct Primandproper_Platform_Identity_V1_MembershipWithUser: Sendable {
 ///
 /// It carries no token. The token is what a link holds, it is minted server-side
 /// and it is cleared from every invitation this service returns; it appears in
-/// this schema only as a request field on the two RPCs that answer one.
+/// this schema as a request field on the RPCs that answer one, and beside the
+/// invitation on InviteResponse when the deployment opted in to that.
 public struct Primandproper_Platform_Identity_V1_Invitation: @unchecked Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -1004,6 +1008,12 @@ public struct Primandproper_Platform_Identity_V1_ProfileUpdateInput: Sendable {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  /// username and email_address are refused by this module's server with
+  /// INVALID_ARGUMENT unless it was built WithoutReauthenticatedHandles. Both are
+  /// credentials in all but name -- the address is where a password reset is
+  /// mailed -- and a session is not proof enough to move either, so they change
+  /// through SignInService's UpdateUsername and UpdateEmailAddress, which ask
+  /// for the password or a recent sign-in first.
   public var username: String {
     get {return _username ?? String()}
     set {_username = newValue}
@@ -1114,63 +1124,6 @@ public struct Primandproper_Platform_Identity_V1_AccountUpdateInput: Sendable {
   fileprivate var _name: String? = nil
   fileprivate var _timeZone: String? = nil
   fileprivate var _billingAddress: Primandproper_Platform_Identity_V1_BillingAddress? = nil
-}
-
-public struct Primandproper_Platform_Identity_V1_RegisterRequest: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var user: Primandproper_Platform_Identity_V1_UserRegistrationInput {
-    get {return _user ?? Primandproper_Platform_Identity_V1_UserRegistrationInput()}
-    set {_user = newValue}
-  }
-  /// Returns true if `user` has been explicitly set.
-  public var hasUser: Bool {return self._user != nil}
-  /// Clears the value of `user`. Subsequent reads from it will return its default value.
-  public mutating func clearUser() {self._user = nil}
-
-  public var account: Primandproper_Platform_Identity_V1_AccountCreationInput {
-    get {return _account ?? Primandproper_Platform_Identity_V1_AccountCreationInput()}
-    set {_account = newValue}
-  }
-  /// Returns true if `account` has been explicitly set.
-  public var hasAccount: Bool {return self._account != nil}
-  /// Clears the value of `account`. Subsequent reads from it will return its default value.
-  public mutating func clearAccount() {self._account = nil}
-
-  /// owner_roles are the roles the registrant holds in the account they now own.
-  /// They are the consumer's role names and are required: a membership with none
-  /// is a member who may do nothing.
-  public var ownerRoles: [String] = []
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
-
-  fileprivate var _user: Primandproper_Platform_Identity_V1_UserRegistrationInput? = nil
-  fileprivate var _account: Primandproper_Platform_Identity_V1_AccountCreationInput? = nil
-}
-
-public struct Primandproper_Platform_Identity_V1_RegisterResponse: Sendable {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var registration: Primandproper_Platform_Identity_V1_Registration {
-    get {return _registration ?? Primandproper_Platform_Identity_V1_Registration()}
-    set {_registration = newValue}
-  }
-  /// Returns true if `registration` has been explicitly set.
-  public var hasRegistration: Bool {return self._registration != nil}
-  /// Clears the value of `registration`. Subsequent reads from it will return its default value.
-  public mutating func clearRegistration() {self._registration = nil}
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
-
-  fileprivate var _registration: Primandproper_Platform_Identity_V1_Registration? = nil
 }
 
 public struct Primandproper_Platform_Identity_V1_UpdateProfileRequest: Sendable {
@@ -1339,8 +1292,8 @@ public struct Primandproper_Platform_Identity_V1_InviteResponse: Sendable {
   // methods supported on all messages.
 
   /// invitation is redacted, as everything here is. The token it was minted with
-  /// reached the recipient through whatever the consumer's AfterInvite hook
-  /// queued, and is not returned to the sender.
+  /// reaches the recipient through whatever the consumer's AfterInvite hook
+  /// queued.
   public var invitation: Primandproper_Platform_Identity_V1_Invitation {
     get {return _invitation ?? Primandproper_Platform_Identity_V1_Invitation()}
     set {_invitation = newValue}
@@ -1349,6 +1302,16 @@ public struct Primandproper_Platform_Identity_V1_InviteResponse: Sendable {
   public var hasInvitation: Bool {return self._invitation != nil}
   /// Clears the value of `invitation`. Subsequent reads from it will return its default value.
   public mutating func clearInvitation() {self._invitation = nil}
+
+  /// token is the secret in the invitation's link, returned to the sender so
+  /// they can copy the link and hand it over themselves -- and it is empty
+  /// unless the deployment built its server to return it. Off, the token
+  /// reaches only the address it was minted for. On, the sender holds the same
+  /// link the mail carries: acceptance is bound to the invited address, so the
+  /// link admits the addressed person and nobody else, and a sender who could
+  /// forward the mail learns nothing new. It is returned here, once, and never
+  /// on any read, event or hook.
+  public var token: String = String()
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -1899,11 +1862,77 @@ public struct Primandproper_Platform_Identity_V1_GetPrincipalResponse: Sendable 
   /// Clears the value of `principal`. Subsequent reads from it will return its default value.
   public mutating func clearPrincipal() {self._principal = nil}
 
+  /// active_account is the account principal.active_account_id names, read in
+  /// the same call. Reading it through GetAccount instead needs a grant every
+  /// member would have to hold to see their own current account; here the
+  /// membership check that resolved the active account is the authorization.
+  /// Absent for a caller who holds no memberships, whose active_account_id is
+  /// empty.
+  public var activeAccount: Primandproper_Platform_Identity_V1_Account {
+    get {return _activeAccount ?? Primandproper_Platform_Identity_V1_Account()}
+    set {_activeAccount = newValue}
+  }
+  /// Returns true if `activeAccount` has been explicitly set.
+  public var hasActiveAccount: Bool {return self._activeAccount != nil}
+  /// Clears the value of `activeAccount`. Subsequent reads from it will return its default value.
+  public mutating func clearActiveAccount() {self._activeAccount = nil}
+
+  /// permissions is what this session may do in principal.active_account_id:
+  /// the union of what its service roles grant and what the caller's roles in
+  /// that account grant. A caller who holds no memberships gets the service
+  /// half alone.
+  ///
+  /// The service half is the session's and not the directory's. It is resolved
+  /// from the service roles the request's credential carries, so it depends on
+  /// which door the session came through: a user who holds a service role and
+  /// signed in the ordinary way is told they hold none of its permissions,
+  /// because every call they make would be refused them. The account half is
+  /// the directory's, for whichever account was resolved -- including one
+  /// active_account_id named other than the session's own.
+  ///
+  /// Absent when the deployment serves no permissions at all, which a client
+  /// must not read as "holds nothing": a present value with an empty list is a
+  /// caller who may do nothing here, and an absent one is a server that did not
+  /// say.
+  ///
+  /// A permission name is not a method. A client that enables a control
+  /// because a permission is listed assumes the deployment requires that
+  /// permission for the call behind it, which is this module's default
+  /// requirement table. A deployment that has overridden a method's
+  /// requirement -- reserved it to operators, or asked for a different
+  /// permission -- makes that control wrong until the client learns the
+  /// override. The server still refuses the call; the control is only a hint.
+  public var permissions: Primandproper_Platform_Identity_V1_EffectivePermissions {
+    get {return _permissions ?? Primandproper_Platform_Identity_V1_EffectivePermissions()}
+    set {_permissions = newValue}
+  }
+  /// Returns true if `permissions` has been explicitly set.
+  public var hasPermissions: Bool {return self._permissions != nil}
+  /// Clears the value of `permissions`. Subsequent reads from it will return its default value.
+  public mutating func clearPermissions() {self._permissions = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 
   fileprivate var _principal: Primandproper_Platform_Identity_V1_Principal? = nil
+  fileprivate var _activeAccount: Primandproper_Platform_Identity_V1_Account? = nil
+  fileprivate var _permissions: Primandproper_Platform_Identity_V1_EffectivePermissions? = nil
+}
+
+/// EffectivePermissions wraps a permission list so that its absence is
+/// distinguishable from an empty one. See GetPrincipalResponse.permissions.
+public struct Primandproper_Platform_Identity_V1_EffectivePermissions: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// permissions are sorted, and each is named once.
+  public var permissions: [String] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
 }
 
 public struct Primandproper_Platform_Identity_V1_GetUserRequest: Sendable {
@@ -3393,84 +3422,6 @@ extension Primandproper_Platform_Identity_V1_AccountUpdateInput: SwiftProtobuf.M
   }
 }
 
-extension Primandproper_Platform_Identity_V1_RegisterRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".RegisterRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}user\0\u{1}account\0\u{3}owner_roles\0\u{b}scope\0")
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularMessageField(value: &self._user) }()
-      case 2: try { try decoder.decodeSingularMessageField(value: &self._account) }()
-      case 3: try { try decoder.decodeRepeatedStringField(value: &self.ownerRoles) }()
-      default: break
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    // The use of inline closures is to circumvent an issue where the compiler
-    // allocates stack space for every if/case branch local when no optimizations
-    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
-    // https://github.com/apple/swift-protobuf/issues/1182
-    try { if let v = self._user {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
-    } }()
-    try { if let v = self._account {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
-    } }()
-    if !self.ownerRoles.isEmpty {
-      try visitor.visitRepeatedStringField(value: self.ownerRoles, fieldNumber: 3)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: Primandproper_Platform_Identity_V1_RegisterRequest, rhs: Primandproper_Platform_Identity_V1_RegisterRequest) -> Bool {
-    if lhs._user != rhs._user {return false}
-    if lhs._account != rhs._account {return false}
-    if lhs.ownerRoles != rhs.ownerRoles {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension Primandproper_Platform_Identity_V1_RegisterResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".RegisterResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}registration\0")
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularMessageField(value: &self._registration) }()
-      default: break
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    // The use of inline closures is to circumvent an issue where the compiler
-    // allocates stack space for every if/case branch local when no optimizations
-    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
-    // https://github.com/apple/swift-protobuf/issues/1182
-    try { if let v = self._registration {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
-    } }()
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: Primandproper_Platform_Identity_V1_RegisterResponse, rhs: Primandproper_Platform_Identity_V1_RegisterResponse) -> Bool {
-    if lhs._registration != rhs._registration {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
 extension Primandproper_Platform_Identity_V1_UpdateProfileRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".UpdateProfileRequest"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}input\0\u{b}scope\0")
@@ -3737,7 +3688,7 @@ extension Primandproper_Platform_Identity_V1_InviteRequest: SwiftProtobuf.Messag
 
 extension Primandproper_Platform_Identity_V1_InviteResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".InviteResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}invitation\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}invitation\0\u{1}token\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -3746,6 +3697,7 @@ extension Primandproper_Platform_Identity_V1_InviteResponse: SwiftProtobuf.Messa
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularMessageField(value: &self._invitation) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.token) }()
       default: break
       }
     }
@@ -3759,11 +3711,15 @@ extension Primandproper_Platform_Identity_V1_InviteResponse: SwiftProtobuf.Messa
     try { if let v = self._invitation {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     } }()
+    if !self.token.isEmpty {
+      try visitor.visitSingularStringField(value: self.token, fieldNumber: 2)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Primandproper_Platform_Identity_V1_InviteResponse, rhs: Primandproper_Platform_Identity_V1_InviteResponse) -> Bool {
     if lhs._invitation != rhs._invitation {return false}
+    if lhs.token != rhs.token {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -4711,7 +4667,7 @@ extension Primandproper_Platform_Identity_V1_GetPrincipalRequest: SwiftProtobuf.
 
 extension Primandproper_Platform_Identity_V1_GetPrincipalResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".GetPrincipalResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}principal\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}principal\0\u{3}active_account\0\u{1}permissions\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -4720,6 +4676,8 @@ extension Primandproper_Platform_Identity_V1_GetPrincipalResponse: SwiftProtobuf
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularMessageField(value: &self._principal) }()
+      case 2: try { try decoder.decodeSingularMessageField(value: &self._activeAccount) }()
+      case 3: try { try decoder.decodeSingularMessageField(value: &self._permissions) }()
       default: break
       }
     }
@@ -4733,11 +4691,49 @@ extension Primandproper_Platform_Identity_V1_GetPrincipalResponse: SwiftProtobuf
     try { if let v = self._principal {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     } }()
+    try { if let v = self._activeAccount {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    } }()
+    try { if let v = self._permissions {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Primandproper_Platform_Identity_V1_GetPrincipalResponse, rhs: Primandproper_Platform_Identity_V1_GetPrincipalResponse) -> Bool {
     if lhs._principal != rhs._principal {return false}
+    if lhs._activeAccount != rhs._activeAccount {return false}
+    if lhs._permissions != rhs._permissions {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Identity_V1_EffectivePermissions: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".EffectivePermissions"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}permissions\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedStringField(value: &self.permissions) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.permissions.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.permissions, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Identity_V1_EffectivePermissions, rhs: Primandproper_Platform_Identity_V1_EffectivePermissions) -> Bool {
+    if lhs.permissions != rhs.permissions {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

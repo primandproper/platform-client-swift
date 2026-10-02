@@ -12,7 +12,7 @@
 // discussion half of a product: what somebody said, about something the
 // application owns, possibly in reply to something else somebody said.
 //
-// Eight of the ten methods on comments.Store are here. The two that are not are
+// Every method on comments.Store is here but two, and those two are
 // bulk erasure — DeleteCommentsForTarget and DeleteCommentsByAuthor — and the
 // service comment at the bottom of this file says why neither has an RPC.
 //
@@ -39,7 +39,7 @@
 // values is the consumer's catalog -- comments.Targets, supplied through
 // WithTargets because "which kinds of thing can be commented on" is an
 // application fact and this library has none -- and a generated enum would put
-// that vocabulary on this module's release cadence. Adding a "meal_plan" target
+// that vocabulary on this module's release cadence. Adding a "newsletter" target
 // would become a platform-go release.
 //
 // It is the same ruling issuereports.Kind and webhooks' event types are under,
@@ -128,7 +128,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 ///
 /// It is two fields rather than one composite key, which is the same decision
 /// comments.Target makes in Go and for the same reason: "everything anybody has
-/// said about recipes" is a question two columns answer and a "recipe:1234"
+/// said about articles" is a question two columns answer and an "article:1234"
 /// string does not.
 public struct Primandproper_Platform_Comments_V1_CommentTarget: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
@@ -141,7 +141,7 @@ public struct Primandproper_Platform_Comments_V1_CommentTarget: Sendable {
 
   /// id is which one, as the application spells it. The empty id is refused
   /// rather than treated as a wildcard: a comment holding it would be about
-  /// every recipe and no recipe at once.
+  /// every article and no article at once.
   public var id: String = String()
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()

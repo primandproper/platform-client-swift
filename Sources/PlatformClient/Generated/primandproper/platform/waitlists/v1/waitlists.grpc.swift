@@ -3,11 +3,12 @@
 // operator opens, and the signups against them with a lifecycle of their own.
 //
 // It is one service with two audiences, which is what makes it different from
-// the three domain surfaces that came before it. Three RPCs are the signup page
-// — the open lists, the form, and the unsubscribe — and are reachable by
-// somebody who has not signed in and frequently does not have an account to
-// sign in to. The other fourteen are whoever is running the launch, and every
-// one of them is behind a grant. See the service comment at the bottom.
+// the three domain surfaces that came before it. Five RPCs are the signup page
+// — the open lists, the form, the confirmation link, and the two ways off the
+// list — and are reachable by somebody who has not signed in and frequently
+// does not have an account to sign in to. The rest are whoever is running the
+// launch, and every one of them is behind a grant. See the service comment at
+// the bottom.
 //
 // This file is shipped inside the published Go module, and it is the file
 // itself that is shipped -- not a copy for you to keep in sync. A consumer puts
@@ -33,8 +34,8 @@
 // three are under is that a consumer's catalog stays a string, because a
 // generated enum puts the application's vocabulary on this module's release
 // cadence. This is the opposite case and waitlists.Status says so in its own
-// documentation: the four statuses decide which transitions the store will
-// make and what a withdrawal means, so a fifth is not a word an application
+// documentation: the five statuses decide which transitions the store will
+// make and what a withdrawal means, so a sixth is not a word an application
 // adds -- it is a row nothing can move. settings.Kind is the other one of these.
 //
 // SubjectType is the string on this surface, and it is the one that is genuinely
@@ -118,234 +119,260 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "primandproper.platform.waitlists.v1.WaitlistsService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService: Sendable {
+public enum Primandproper_Platform_Waitlists_V1_WaitlistsService: Sendable {
     /// Service descriptor for the "primandproper.platform.waitlists.v1.WaitlistsService" service.
-    internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService")
+    public static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService")
     /// Namespace for method metadata.
-    internal enum Method: Sendable {
+    public enum Method: Sendable {
         /// Namespace for "CreateList" metadata.
-        internal enum CreateList: Sendable {
+        public enum CreateList: Sendable {
             /// Request type for "CreateList".
-            internal typealias Input = Primandproper_Platform_Waitlists_V1_CreateListRequest
+            public typealias Input = Primandproper_Platform_Waitlists_V1_CreateListRequest
             /// Response type for "CreateList".
-            internal typealias Output = Primandproper_Platform_Waitlists_V1_CreateListResponse
+            public typealias Output = Primandproper_Platform_Waitlists_V1_CreateListResponse
             /// Descriptor for "CreateList".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
                 method: "CreateList",
                 type: .unary
             )
         }
         /// Namespace for "GetList" metadata.
-        internal enum GetList: Sendable {
+        public enum GetList: Sendable {
             /// Request type for "GetList".
-            internal typealias Input = Primandproper_Platform_Waitlists_V1_GetListRequest
+            public typealias Input = Primandproper_Platform_Waitlists_V1_GetListRequest
             /// Response type for "GetList".
-            internal typealias Output = Primandproper_Platform_Waitlists_V1_GetListResponse
+            public typealias Output = Primandproper_Platform_Waitlists_V1_GetListResponse
             /// Descriptor for "GetList".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
                 method: "GetList",
                 type: .unary
             )
         }
         /// Namespace for "ListLists" metadata.
-        internal enum ListLists: Sendable {
+        public enum ListLists: Sendable {
             /// Request type for "ListLists".
-            internal typealias Input = Primandproper_Platform_Waitlists_V1_ListListsRequest
+            public typealias Input = Primandproper_Platform_Waitlists_V1_ListListsRequest
             /// Response type for "ListLists".
-            internal typealias Output = Primandproper_Platform_Waitlists_V1_ListListsResponse
+            public typealias Output = Primandproper_Platform_Waitlists_V1_ListListsResponse
             /// Descriptor for "ListLists".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
                 method: "ListLists",
                 type: .unary
             )
         }
         /// Namespace for "ListOpenLists" metadata.
-        internal enum ListOpenLists: Sendable {
+        public enum ListOpenLists: Sendable {
             /// Request type for "ListOpenLists".
-            internal typealias Input = Primandproper_Platform_Waitlists_V1_ListOpenListsRequest
+            public typealias Input = Primandproper_Platform_Waitlists_V1_ListOpenListsRequest
             /// Response type for "ListOpenLists".
-            internal typealias Output = Primandproper_Platform_Waitlists_V1_ListOpenListsResponse
+            public typealias Output = Primandproper_Platform_Waitlists_V1_ListOpenListsResponse
             /// Descriptor for "ListOpenLists".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
                 method: "ListOpenLists",
                 type: .unary
             )
         }
         /// Namespace for "UpdateList" metadata.
-        internal enum UpdateList: Sendable {
+        public enum UpdateList: Sendable {
             /// Request type for "UpdateList".
-            internal typealias Input = Primandproper_Platform_Waitlists_V1_UpdateListRequest
+            public typealias Input = Primandproper_Platform_Waitlists_V1_UpdateListRequest
             /// Response type for "UpdateList".
-            internal typealias Output = Primandproper_Platform_Waitlists_V1_UpdateListResponse
+            public typealias Output = Primandproper_Platform_Waitlists_V1_UpdateListResponse
             /// Descriptor for "UpdateList".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
                 method: "UpdateList",
                 type: .unary
             )
         }
         /// Namespace for "ArchiveList" metadata.
-        internal enum ArchiveList: Sendable {
+        public enum ArchiveList: Sendable {
             /// Request type for "ArchiveList".
-            internal typealias Input = Primandproper_Platform_Waitlists_V1_ArchiveListRequest
+            public typealias Input = Primandproper_Platform_Waitlists_V1_ArchiveListRequest
             /// Response type for "ArchiveList".
-            internal typealias Output = Primandproper_Platform_Waitlists_V1_ArchiveListResponse
+            public typealias Output = Primandproper_Platform_Waitlists_V1_ArchiveListResponse
             /// Descriptor for "ArchiveList".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
                 method: "ArchiveList",
                 type: .unary
             )
         }
         /// Namespace for "Join" metadata.
-        internal enum Join: Sendable {
+        public enum Join: Sendable {
             /// Request type for "Join".
-            internal typealias Input = Primandproper_Platform_Waitlists_V1_JoinRequest
+            public typealias Input = Primandproper_Platform_Waitlists_V1_JoinRequest
             /// Response type for "Join".
-            internal typealias Output = Primandproper_Platform_Waitlists_V1_JoinResponse
+            public typealias Output = Primandproper_Platform_Waitlists_V1_JoinResponse
             /// Descriptor for "Join".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
                 method: "Join",
                 type: .unary
             )
         }
+        /// Namespace for "Confirm" metadata.
+        public enum Confirm: Sendable {
+            /// Request type for "Confirm".
+            public typealias Input = Primandproper_Platform_Waitlists_V1_ConfirmRequest
+            /// Response type for "Confirm".
+            public typealias Output = Primandproper_Platform_Waitlists_V1_ConfirmResponse
+            /// Descriptor for "Confirm".
+            public static let descriptor = GRPCCore.MethodDescriptor(
+                service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
+                method: "Confirm",
+                type: .unary
+            )
+        }
         /// Namespace for "GetSignup" metadata.
-        internal enum GetSignup: Sendable {
+        public enum GetSignup: Sendable {
             /// Request type for "GetSignup".
-            internal typealias Input = Primandproper_Platform_Waitlists_V1_GetSignupRequest
+            public typealias Input = Primandproper_Platform_Waitlists_V1_GetSignupRequest
             /// Response type for "GetSignup".
-            internal typealias Output = Primandproper_Platform_Waitlists_V1_GetSignupResponse
+            public typealias Output = Primandproper_Platform_Waitlists_V1_GetSignupResponse
             /// Descriptor for "GetSignup".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
                 method: "GetSignup",
                 type: .unary
             )
         }
         /// Namespace for "GetSignupByContact" metadata.
-        internal enum GetSignupByContact: Sendable {
+        public enum GetSignupByContact: Sendable {
             /// Request type for "GetSignupByContact".
-            internal typealias Input = Primandproper_Platform_Waitlists_V1_GetSignupByContactRequest
+            public typealias Input = Primandproper_Platform_Waitlists_V1_GetSignupByContactRequest
             /// Response type for "GetSignupByContact".
-            internal typealias Output = Primandproper_Platform_Waitlists_V1_GetSignupByContactResponse
+            public typealias Output = Primandproper_Platform_Waitlists_V1_GetSignupByContactResponse
             /// Descriptor for "GetSignupByContact".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
                 method: "GetSignupByContact",
                 type: .unary
             )
         }
         /// Namespace for "ListSignups" metadata.
-        internal enum ListSignups: Sendable {
+        public enum ListSignups: Sendable {
             /// Request type for "ListSignups".
-            internal typealias Input = Primandproper_Platform_Waitlists_V1_ListSignupsRequest
+            public typealias Input = Primandproper_Platform_Waitlists_V1_ListSignupsRequest
             /// Response type for "ListSignups".
-            internal typealias Output = Primandproper_Platform_Waitlists_V1_ListSignupsResponse
+            public typealias Output = Primandproper_Platform_Waitlists_V1_ListSignupsResponse
             /// Descriptor for "ListSignups".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
                 method: "ListSignups",
                 type: .unary
             )
         }
         /// Namespace for "ListSignupsForSubject" metadata.
-        internal enum ListSignupsForSubject: Sendable {
+        public enum ListSignupsForSubject: Sendable {
             /// Request type for "ListSignupsForSubject".
-            internal typealias Input = Primandproper_Platform_Waitlists_V1_ListSignupsForSubjectRequest
+            public typealias Input = Primandproper_Platform_Waitlists_V1_ListSignupsForSubjectRequest
             /// Response type for "ListSignupsForSubject".
-            internal typealias Output = Primandproper_Platform_Waitlists_V1_ListSignupsForSubjectResponse
+            public typealias Output = Primandproper_Platform_Waitlists_V1_ListSignupsForSubjectResponse
             /// Descriptor for "ListSignupsForSubject".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
                 method: "ListSignupsForSubject",
                 type: .unary
             )
         }
         /// Namespace for "UpdateSignupNotes" metadata.
-        internal enum UpdateSignupNotes: Sendable {
+        public enum UpdateSignupNotes: Sendable {
             /// Request type for "UpdateSignupNotes".
-            internal typealias Input = Primandproper_Platform_Waitlists_V1_UpdateSignupNotesRequest
+            public typealias Input = Primandproper_Platform_Waitlists_V1_UpdateSignupNotesRequest
             /// Response type for "UpdateSignupNotes".
-            internal typealias Output = Primandproper_Platform_Waitlists_V1_UpdateSignupNotesResponse
+            public typealias Output = Primandproper_Platform_Waitlists_V1_UpdateSignupNotesResponse
             /// Descriptor for "UpdateSignupNotes".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
                 method: "UpdateSignupNotes",
                 type: .unary
             )
         }
         /// Namespace for "Invite" metadata.
-        internal enum Invite: Sendable {
+        public enum Invite: Sendable {
             /// Request type for "Invite".
-            internal typealias Input = Primandproper_Platform_Waitlists_V1_InviteRequest
+            public typealias Input = Primandproper_Platform_Waitlists_V1_InviteRequest
             /// Response type for "Invite".
-            internal typealias Output = Primandproper_Platform_Waitlists_V1_InviteResponse
+            public typealias Output = Primandproper_Platform_Waitlists_V1_InviteResponse
             /// Descriptor for "Invite".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
                 method: "Invite",
                 type: .unary
             )
         }
         /// Namespace for "Convert" metadata.
-        internal enum Convert: Sendable {
+        public enum Convert: Sendable {
             /// Request type for "Convert".
-            internal typealias Input = Primandproper_Platform_Waitlists_V1_ConvertRequest
+            public typealias Input = Primandproper_Platform_Waitlists_V1_ConvertRequest
             /// Response type for "Convert".
-            internal typealias Output = Primandproper_Platform_Waitlists_V1_ConvertResponse
+            public typealias Output = Primandproper_Platform_Waitlists_V1_ConvertResponse
             /// Descriptor for "Convert".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
                 method: "Convert",
                 type: .unary
             )
         }
         /// Namespace for "Withdraw" metadata.
-        internal enum Withdraw: Sendable {
+        public enum Withdraw: Sendable {
             /// Request type for "Withdraw".
-            internal typealias Input = Primandproper_Platform_Waitlists_V1_WithdrawRequest
+            public typealias Input = Primandproper_Platform_Waitlists_V1_WithdrawRequest
             /// Response type for "Withdraw".
-            internal typealias Output = Primandproper_Platform_Waitlists_V1_WithdrawResponse
+            public typealias Output = Primandproper_Platform_Waitlists_V1_WithdrawResponse
             /// Descriptor for "Withdraw".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
                 method: "Withdraw",
                 type: .unary
             )
         }
+        /// Namespace for "Unsubscribe" metadata.
+        public enum Unsubscribe: Sendable {
+            /// Request type for "Unsubscribe".
+            public typealias Input = Primandproper_Platform_Waitlists_V1_UnsubscribeRequest
+            /// Response type for "Unsubscribe".
+            public typealias Output = Primandproper_Platform_Waitlists_V1_UnsubscribeResponse
+            /// Descriptor for "Unsubscribe".
+            public static let descriptor = GRPCCore.MethodDescriptor(
+                service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
+                method: "Unsubscribe",
+                type: .unary
+            )
+        }
         /// Namespace for "WithdrawSignupsForSubject" metadata.
-        internal enum WithdrawSignupsForSubject: Sendable {
+        public enum WithdrawSignupsForSubject: Sendable {
             /// Request type for "WithdrawSignupsForSubject".
-            internal typealias Input = Primandproper_Platform_Waitlists_V1_WithdrawSignupsForSubjectRequest
+            public typealias Input = Primandproper_Platform_Waitlists_V1_WithdrawSignupsForSubjectRequest
             /// Response type for "WithdrawSignupsForSubject".
-            internal typealias Output = Primandproper_Platform_Waitlists_V1_WithdrawSignupsForSubjectResponse
+            public typealias Output = Primandproper_Platform_Waitlists_V1_WithdrawSignupsForSubjectResponse
             /// Descriptor for "WithdrawSignupsForSubject".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
                 method: "WithdrawSignupsForSubject",
                 type: .unary
             )
         }
         /// Namespace for "ArchiveSignup" metadata.
-        internal enum ArchiveSignup: Sendable {
+        public enum ArchiveSignup: Sendable {
             /// Request type for "ArchiveSignup".
-            internal typealias Input = Primandproper_Platform_Waitlists_V1_ArchiveSignupRequest
+            public typealias Input = Primandproper_Platform_Waitlists_V1_ArchiveSignupRequest
             /// Response type for "ArchiveSignup".
-            internal typealias Output = Primandproper_Platform_Waitlists_V1_ArchiveSignupResponse
+            public typealias Output = Primandproper_Platform_Waitlists_V1_ArchiveSignupResponse
             /// Descriptor for "ArchiveSignup".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService"),
                 method: "ArchiveSignup",
                 type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.waitlists.v1.WaitlistsService" service.
-        internal static let descriptors: [GRPCCore.MethodDescriptor] = [
+        public static let descriptors: [GRPCCore.MethodDescriptor] = [
             CreateList.descriptor,
             GetList.descriptor,
             ListLists.descriptor,
@@ -353,6 +380,7 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService: Sendable {
             UpdateList.descriptor,
             ArchiveList.descriptor,
             Join.descriptor,
+            Confirm.descriptor,
             GetSignup.descriptor,
             GetSignupByContact.descriptor,
             ListSignups.descriptor,
@@ -361,6 +389,7 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService: Sendable {
             Invite.descriptor,
             Convert.descriptor,
             Withdraw.descriptor,
+            Unsubscribe.descriptor,
             WithdrawSignupsForSubject.descriptor,
             ArchiveSignup.descriptor
         ]
@@ -370,7 +399,7 @@ internal enum Primandproper_Platform_Waitlists_V1_WaitlistsService: Sendable {
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension GRPCCore.ServiceDescriptor {
     /// Service descriptor for the "primandproper.platform.waitlists.v1.WaitlistsService" service.
-    internal static let primandproper_platform_waitlists_v1_WaitlistsService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService")
+    public static let primandproper_platform_waitlists_v1_WaitlistsService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.waitlists.v1.WaitlistsService")
 }
 
 // MARK: primandproper.platform.waitlists.v1.WaitlistsService (client)
@@ -384,20 +413,23 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
     ///
     /// > Source IDL Documentation:
     /// >
-    /// > WaitlistsService is the whole of waitlists on the wire: all seventeen methods
-    /// > of waitlists.Store, split by who calls them.
+    /// > WaitlistsService is the whole of waitlists on the wire: every method of
+    /// > waitlists.Store, split by who calls them, and the second door onto
+    /// > Withdraw that an unsubscribe link lands on.
     /// > 
     /// > There are no absences, which is unusual on this lane and is the reason this
-    /// > was the first of the ten domains to cross. Every other surface in the module
+    /// > was the first domain to cross. Every other surface in the module
     /// > carves something out because its realistic caller is a worker on a timer, a
     /// > processor callback, or the consumer's own code inside its own transaction.
     /// > Nothing here has that shape: a waitlist has no queue protocol, no fan-out and
-    /// > no provider callback, and every one of the seventeen is either a form
-    /// > somebody submitted or a console somebody is looking at.
+    /// > no provider callback, and every one of them is either a form
+    /// > somebody submitted, a link somebody followed, or a console somebody is
+    /// > looking at.
     /// > 
-    /// > # The public three
+    /// > # The public methods
     /// > 
-    /// > ListOpenLists, Join and Withdraw are reachable without a grant, because the
+    /// > ListOpenLists, Join, Confirm, Withdraw and Unsubscribe are reachable without a
+    /// > grant, because the
     /// > caller is a person on a signup page who has not signed in and frequently has
     /// > no account to sign in to. That is the whole of what "public" means here: the
     /// > consumer's authentication interceptor still runs, and a caller who does arrive
@@ -408,12 +440,14 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
     /// > address, and it answers uniformly for every outcome that is about an address
     /// > -- see JoinResponse, which is empty for that reason. Withdraw names a row, so
     /// > the standing to move it is asked of a seam the consumer implements -- see
-    /// > WithdrawRequest. And the read a public caller gets is the catalog of open
-    /// > lists, which is what a signup page publishes anyway.
+    /// > WithdrawRequest. Confirm and Unsubscribe name only a token, which is their
+    /// > standing, and they are unimplemented on a deployment that mints none. And the
+    /// > read a public caller gets is the catalog of open lists, which is what a signup
+    /// > page publishes anyway.
     /// > 
-    /// > # The administrative fourteen
+    /// > # The administrative methods
     /// > 
-    /// > List CRUD, the signup reads, the two lifecycle transitions, the note, the
+    /// > List CRUD, the signup reads, the two operator transitions, the note, the
     /// > archive and the erasure. Each is behind a grant, and waitlists/grpc's
     /// > Permissions is the default map a consumer composes into their policy.
     /// > 
@@ -422,7 +456,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
     /// > over which addresses are on which list. It is also the only place on this wire
     /// > that answers "is this address on this list" at all, now that the public Join
     /// > does not.
-    internal protocol ClientProtocol: Sendable {
+    public protocol ClientProtocol: Sendable {
         /// Call the "CreateList" method.
         ///
         /// > Source IDL Documentation:
@@ -546,8 +580,8 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///
         /// > Source IDL Documentation:
         /// >
-        /// > The queue. Join and Withdraw are the person's own; the rest are the
-        /// > operator's.
+        /// > The queue. Join, Confirm, Withdraw and Unsubscribe are the person's own;
+        /// > the rest are the operator's.
         ///
         /// - Parameters:
         ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_JoinRequest` message.
@@ -564,6 +598,25 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_JoinResponse>,
             options: GRPCCore.CallOptions,
             onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_JoinResponse>) async throws -> Result
+        ) async throws -> Result where Result: Sendable
+
+        /// Call the "Confirm" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_ConfirmRequest` message.
+        ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_ConfirmRequest` messages.
+        ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_ConfirmResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
+        /// - Returns: The result of `handleResponse`.
+        func confirm<Result>(
+            request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ConfirmRequest>,
+            serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_ConfirmRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_ConfirmResponse>,
+            options: GRPCCore.CallOptions,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_ConfirmResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
         /// Call the "GetSignup" method.
@@ -718,6 +771,25 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
             onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_WithdrawResponse>) async throws -> Result
         ) async throws -> Result where Result: Sendable
 
+        /// Call the "Unsubscribe" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_UnsubscribeRequest` message.
+        ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_UnsubscribeRequest` messages.
+        ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_UnsubscribeResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
+        /// - Returns: The result of `handleResponse`.
+        func unsubscribe<Result>(
+            request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_UnsubscribeRequest>,
+            serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_UnsubscribeRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_UnsubscribeResponse>,
+            options: GRPCCore.CallOptions,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_UnsubscribeResponse>) async throws -> Result
+        ) async throws -> Result where Result: Sendable
+
         /// Call the "WithdrawSignupsForSubject" method.
         ///
         /// - Parameters:
@@ -765,20 +837,23 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
     ///
     /// > Source IDL Documentation:
     /// >
-    /// > WaitlistsService is the whole of waitlists on the wire: all seventeen methods
-    /// > of waitlists.Store, split by who calls them.
+    /// > WaitlistsService is the whole of waitlists on the wire: every method of
+    /// > waitlists.Store, split by who calls them, and the second door onto
+    /// > Withdraw that an unsubscribe link lands on.
     /// > 
     /// > There are no absences, which is unusual on this lane and is the reason this
-    /// > was the first of the ten domains to cross. Every other surface in the module
+    /// > was the first domain to cross. Every other surface in the module
     /// > carves something out because its realistic caller is a worker on a timer, a
     /// > processor callback, or the consumer's own code inside its own transaction.
     /// > Nothing here has that shape: a waitlist has no queue protocol, no fan-out and
-    /// > no provider callback, and every one of the seventeen is either a form
-    /// > somebody submitted or a console somebody is looking at.
+    /// > no provider callback, and every one of them is either a form
+    /// > somebody submitted, a link somebody followed, or a console somebody is
+    /// > looking at.
     /// > 
-    /// > # The public three
+    /// > # The public methods
     /// > 
-    /// > ListOpenLists, Join and Withdraw are reachable without a grant, because the
+    /// > ListOpenLists, Join, Confirm, Withdraw and Unsubscribe are reachable without a
+    /// > grant, because the
     /// > caller is a person on a signup page who has not signed in and frequently has
     /// > no account to sign in to. That is the whole of what "public" means here: the
     /// > consumer's authentication interceptor still runs, and a caller who does arrive
@@ -789,12 +864,14 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
     /// > address, and it answers uniformly for every outcome that is about an address
     /// > -- see JoinResponse, which is empty for that reason. Withdraw names a row, so
     /// > the standing to move it is asked of a seam the consumer implements -- see
-    /// > WithdrawRequest. And the read a public caller gets is the catalog of open
-    /// > lists, which is what a signup page publishes anyway.
+    /// > WithdrawRequest. Confirm and Unsubscribe name only a token, which is their
+    /// > standing, and they are unimplemented on a deployment that mints none. And the
+    /// > read a public caller gets is the catalog of open lists, which is what a signup
+    /// > page publishes anyway.
     /// > 
-    /// > # The administrative fourteen
+    /// > # The administrative methods
     /// > 
-    /// > List CRUD, the signup reads, the two lifecycle transitions, the note, the
+    /// > List CRUD, the signup reads, the two operator transitions, the note, the
     /// > archive and the erasure. Each is behind a grant, and waitlists/grpc's
     /// > Permissions is the default map a consumer composes into their policy.
     /// > 
@@ -803,14 +880,14 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
     /// > over which addresses are on which list. It is also the only place on this wire
     /// > that answers "is this address on this list" at all, now that the public Join
     /// > does not.
-    internal struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
+    public struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
         private let client: GRPCCore.GRPCClient<Transport>
 
         /// Creates a new client wrapping the provided `GRPCCore.GRPCClient`.
         ///
         /// - Parameters:
         ///   - client: A `GRPCCore.GRPCClient` providing a communication channel to the service.
-        internal init(wrapping client: GRPCCore.GRPCClient<Transport>) {
+        public init(wrapping client: GRPCCore.GRPCClient<Transport>) {
             self.client = client
         }
 
@@ -830,7 +907,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func createList<Result>(
+        public func createList<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_CreateListRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_CreateListRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_CreateListResponse>,
@@ -860,7 +937,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getList<Result>(
+        public func getList<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_GetListRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_GetListRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_GetListResponse>,
@@ -890,7 +967,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listLists<Result>(
+        public func listLists<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ListListsRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_ListListsRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_ListListsResponse>,
@@ -920,7 +997,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listOpenLists<Result>(
+        public func listOpenLists<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ListOpenListsRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_ListOpenListsRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_ListOpenListsResponse>,
@@ -950,7 +1027,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func updateList<Result>(
+        public func updateList<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_UpdateListRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_UpdateListRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_UpdateListResponse>,
@@ -980,7 +1057,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func archiveList<Result>(
+        public func archiveList<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ArchiveListRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_ArchiveListRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_ArchiveListResponse>,
@@ -1003,8 +1080,8 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///
         /// > Source IDL Documentation:
         /// >
-        /// > The queue. Join and Withdraw are the person's own; the rest are the
-        /// > operator's.
+        /// > The queue. Join, Confirm, Withdraw and Unsubscribe are the person's own;
+        /// > the rest are the operator's.
         ///
         /// - Parameters:
         ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_JoinRequest` message.
@@ -1015,7 +1092,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func join<Result>(
+        public func join<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_JoinRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_JoinRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_JoinResponse>,
@@ -1034,6 +1111,36 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
             )
         }
 
+        /// Call the "Confirm" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_ConfirmRequest` message.
+        ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_ConfirmRequest` messages.
+        ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_ConfirmResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
+        /// - Returns: The result of `handleResponse`.
+        public func confirm<Result>(
+            request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ConfirmRequest>,
+            serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_ConfirmRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_ConfirmResponse>,
+            options: GRPCCore.CallOptions = .defaults,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_ConfirmResponse>) async throws -> Result = { response in
+                try response.message
+            }
+        ) async throws -> Result where Result: Sendable {
+            try await self.client.unary(
+                request: request,
+                descriptor: Primandproper_Platform_Waitlists_V1_WaitlistsService.Method.Confirm.descriptor,
+                serializer: serializer,
+                deserializer: deserializer,
+                options: options,
+                onResponse: handleResponse
+            )
+        }
+
         /// Call the "GetSignup" method.
         ///
         /// - Parameters:
@@ -1045,7 +1152,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getSignup<Result>(
+        public func getSignup<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_GetSignupRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_GetSignupRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_GetSignupResponse>,
@@ -1075,7 +1182,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getSignupByContact<Result>(
+        public func getSignupByContact<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_GetSignupByContactRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_GetSignupByContactRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_GetSignupByContactResponse>,
@@ -1105,7 +1212,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listSignups<Result>(
+        public func listSignups<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ListSignupsRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_ListSignupsRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_ListSignupsResponse>,
@@ -1135,7 +1242,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listSignupsForSubject<Result>(
+        public func listSignupsForSubject<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ListSignupsForSubjectRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_ListSignupsForSubjectRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_ListSignupsForSubjectResponse>,
@@ -1165,7 +1272,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func updateSignupNotes<Result>(
+        public func updateSignupNotes<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_UpdateSignupNotesRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_UpdateSignupNotesRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_UpdateSignupNotesResponse>,
@@ -1195,7 +1302,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func invite<Result>(
+        public func invite<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_InviteRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_InviteRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_InviteResponse>,
@@ -1225,7 +1332,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func convert<Result>(
+        public func convert<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ConvertRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_ConvertRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_ConvertResponse>,
@@ -1255,7 +1362,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func withdraw<Result>(
+        public func withdraw<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_WithdrawRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_WithdrawRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_WithdrawResponse>,
@@ -1274,6 +1381,36 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
             )
         }
 
+        /// Call the "Unsubscribe" method.
+        ///
+        /// - Parameters:
+        ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_UnsubscribeRequest` message.
+        ///   - serializer: A serializer for `Primandproper_Platform_Waitlists_V1_UnsubscribeRequest` messages.
+        ///   - deserializer: A deserializer for `Primandproper_Platform_Waitlists_V1_UnsubscribeResponse` messages.
+        ///   - options: Options to apply to this RPC.
+        ///   - handleResponse: A closure which handles the response and returns its result to
+        ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+        ///       already finished.
+        /// - Returns: The result of `handleResponse`.
+        public func unsubscribe<Result>(
+            request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_UnsubscribeRequest>,
+            serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_UnsubscribeRequest>,
+            deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_UnsubscribeResponse>,
+            options: GRPCCore.CallOptions = .defaults,
+            onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_UnsubscribeResponse>) async throws -> Result = { response in
+                try response.message
+            }
+        ) async throws -> Result where Result: Sendable {
+            try await self.client.unary(
+                request: request,
+                descriptor: Primandproper_Platform_Waitlists_V1_WaitlistsService.Method.Unsubscribe.descriptor,
+                serializer: serializer,
+                deserializer: deserializer,
+                options: options,
+                onResponse: handleResponse
+            )
+        }
+
         /// Call the "WithdrawSignupsForSubject" method.
         ///
         /// - Parameters:
@@ -1285,7 +1422,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func withdrawSignupsForSubject<Result>(
+        public func withdrawSignupsForSubject<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_WithdrawSignupsForSubjectRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_WithdrawSignupsForSubjectRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_WithdrawSignupsForSubjectResponse>,
@@ -1315,7 +1452,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func archiveSignup<Result>(
+        public func archiveSignup<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ArchiveSignupRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Waitlists_V1_ArchiveSignupRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Waitlists_V1_ArchiveSignupResponse>,
@@ -1353,7 +1490,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func createList<Result>(
+    public func createList<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_CreateListRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_CreateListResponse>) async throws -> Result = { response in
@@ -1378,7 +1515,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getList<Result>(
+    public func getList<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_GetListRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_GetListResponse>) async throws -> Result = { response in
@@ -1403,7 +1540,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listLists<Result>(
+    public func listLists<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ListListsRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_ListListsResponse>) async throws -> Result = { response in
@@ -1428,7 +1565,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listOpenLists<Result>(
+    public func listOpenLists<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ListOpenListsRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_ListOpenListsResponse>) async throws -> Result = { response in
@@ -1453,7 +1590,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateList<Result>(
+    public func updateList<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_UpdateListRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_UpdateListResponse>) async throws -> Result = { response in
@@ -1478,7 +1615,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveList<Result>(
+    public func archiveList<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ArchiveListRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_ArchiveListResponse>) async throws -> Result = { response in
@@ -1498,8 +1635,8 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///
     /// > Source IDL Documentation:
     /// >
-    /// > The queue. Join and Withdraw are the person's own; the rest are the
-    /// > operator's.
+    /// > The queue. Join, Confirm, Withdraw and Unsubscribe are the person's own;
+    /// > the rest are the operator's.
     ///
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_JoinRequest` message.
@@ -1508,7 +1645,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func join<Result>(
+    public func join<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_JoinRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_JoinResponse>) async throws -> Result = { response in
@@ -1524,6 +1661,31 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
         )
     }
 
+    /// Call the "Confirm" method.
+    ///
+    /// - Parameters:
+    ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_ConfirmRequest` message.
+    ///   - options: Options to apply to this RPC.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
+    /// - Returns: The result of `handleResponse`.
+    public func confirm<Result>(
+        request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ConfirmRequest>,
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_ConfirmResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        try await self.confirm(
+            request: request,
+            serializer: GRPCProtobuf.ProtobufSerializer<Primandproper_Platform_Waitlists_V1_ConfirmRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Primandproper_Platform_Waitlists_V1_ConfirmResponse>(),
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
     /// Call the "GetSignup" method.
     ///
     /// - Parameters:
@@ -1533,7 +1695,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getSignup<Result>(
+    public func getSignup<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_GetSignupRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_GetSignupResponse>) async throws -> Result = { response in
@@ -1558,7 +1720,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getSignupByContact<Result>(
+    public func getSignupByContact<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_GetSignupByContactRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_GetSignupByContactResponse>) async throws -> Result = { response in
@@ -1583,7 +1745,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listSignups<Result>(
+    public func listSignups<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ListSignupsRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_ListSignupsResponse>) async throws -> Result = { response in
@@ -1608,7 +1770,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listSignupsForSubject<Result>(
+    public func listSignupsForSubject<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ListSignupsForSubjectRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_ListSignupsForSubjectResponse>) async throws -> Result = { response in
@@ -1633,7 +1795,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateSignupNotes<Result>(
+    public func updateSignupNotes<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_UpdateSignupNotesRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_UpdateSignupNotesResponse>) async throws -> Result = { response in
@@ -1658,7 +1820,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func invite<Result>(
+    public func invite<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_InviteRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_InviteResponse>) async throws -> Result = { response in
@@ -1683,7 +1845,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func convert<Result>(
+    public func convert<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ConvertRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_ConvertResponse>) async throws -> Result = { response in
@@ -1708,7 +1870,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func withdraw<Result>(
+    public func withdraw<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_WithdrawRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_WithdrawResponse>) async throws -> Result = { response in
@@ -1724,6 +1886,31 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
         )
     }
 
+    /// Call the "Unsubscribe" method.
+    ///
+    /// - Parameters:
+    ///   - request: A request containing a single `Primandproper_Platform_Waitlists_V1_UnsubscribeRequest` message.
+    ///   - options: Options to apply to this RPC.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
+    /// - Returns: The result of `handleResponse`.
+    public func unsubscribe<Result>(
+        request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_UnsubscribeRequest>,
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_UnsubscribeResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        try await self.unsubscribe(
+            request: request,
+            serializer: GRPCProtobuf.ProtobufSerializer<Primandproper_Platform_Waitlists_V1_UnsubscribeRequest>(),
+            deserializer: GRPCProtobuf.ProtobufDeserializer<Primandproper_Platform_Waitlists_V1_UnsubscribeResponse>(),
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
     /// Call the "WithdrawSignupsForSubject" method.
     ///
     /// - Parameters:
@@ -1733,7 +1920,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func withdrawSignupsForSubject<Result>(
+    public func withdrawSignupsForSubject<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_WithdrawSignupsForSubjectRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_WithdrawSignupsForSubjectResponse>) async throws -> Result = { response in
@@ -1758,7 +1945,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveSignup<Result>(
+    public func archiveSignup<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ArchiveSignupRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_ArchiveSignupResponse>) async throws -> Result = { response in
@@ -1793,7 +1980,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func createList<Result>(
+    public func createList<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_CreateListRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1822,7 +2009,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getList<Result>(
+    public func getList<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_GetListRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1851,7 +2038,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listLists<Result>(
+    public func listLists<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_ListListsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1880,7 +2067,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listOpenLists<Result>(
+    public func listOpenLists<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_ListOpenListsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1909,7 +2096,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateList<Result>(
+    public func updateList<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_UpdateListRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1938,7 +2125,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveList<Result>(
+    public func archiveList<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_ArchiveListRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1961,8 +2148,8 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///
     /// > Source IDL Documentation:
     /// >
-    /// > The queue. Join and Withdraw are the person's own; the rest are the
-    /// > operator's.
+    /// > The queue. Join, Confirm, Withdraw and Unsubscribe are the person's own;
+    /// > the rest are the operator's.
     ///
     /// - Parameters:
     ///   - message: request message to send.
@@ -1972,7 +2159,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func join<Result>(
+    public func join<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_JoinRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1991,6 +2178,35 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
         )
     }
 
+    /// Call the "Confirm" method.
+    ///
+    /// - Parameters:
+    ///   - message: request message to send.
+    ///   - metadata: Additional metadata to send, defaults to empty.
+    ///   - options: Options to apply to this RPC, defaults to `.defaults`.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
+    /// - Returns: The result of `handleResponse`.
+    public func confirm<Result>(
+        _ message: Primandproper_Platform_Waitlists_V1_ConfirmRequest,
+        metadata: GRPCCore.Metadata = [:],
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_ConfirmResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        let request = GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_ConfirmRequest>(
+            message: message,
+            metadata: metadata
+        )
+        return try await self.confirm(
+            request: request,
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
     /// Call the "GetSignup" method.
     ///
     /// - Parameters:
@@ -2001,7 +2217,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getSignup<Result>(
+    public func getSignup<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_GetSignupRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2030,7 +2246,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getSignupByContact<Result>(
+    public func getSignupByContact<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_GetSignupByContactRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2059,7 +2275,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listSignups<Result>(
+    public func listSignups<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_ListSignupsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2088,7 +2304,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listSignupsForSubject<Result>(
+    public func listSignupsForSubject<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_ListSignupsForSubjectRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2117,7 +2333,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateSignupNotes<Result>(
+    public func updateSignupNotes<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_UpdateSignupNotesRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2146,7 +2362,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func invite<Result>(
+    public func invite<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_InviteRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2175,7 +2391,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func convert<Result>(
+    public func convert<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_ConvertRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2204,7 +2420,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func withdraw<Result>(
+    public func withdraw<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_WithdrawRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2223,6 +2439,35 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
         )
     }
 
+    /// Call the "Unsubscribe" method.
+    ///
+    /// - Parameters:
+    ///   - message: request message to send.
+    ///   - metadata: Additional metadata to send, defaults to empty.
+    ///   - options: Options to apply to this RPC, defaults to `.defaults`.
+    ///   - handleResponse: A closure which handles the response and returns its result to
+    ///       the caller. Returning from the closure will cancel the RPC if it hasn't
+    ///       already finished.
+    /// - Returns: The result of `handleResponse`.
+    public func unsubscribe<Result>(
+        _ message: Primandproper_Platform_Waitlists_V1_UnsubscribeRequest,
+        metadata: GRPCCore.Metadata = [:],
+        options: GRPCCore.CallOptions = .defaults,
+        onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Waitlists_V1_UnsubscribeResponse>) async throws -> Result = { response in
+            try response.message
+        }
+    ) async throws -> Result where Result: Sendable {
+        let request = GRPCCore.ClientRequest<Primandproper_Platform_Waitlists_V1_UnsubscribeRequest>(
+            message: message,
+            metadata: metadata
+        )
+        return try await self.unsubscribe(
+            request: request,
+            options: options,
+            onResponse: handleResponse
+        )
+    }
+
     /// Call the "WithdrawSignupsForSubject" method.
     ///
     /// - Parameters:
@@ -2233,7 +2478,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func withdrawSignupsForSubject<Result>(
+    public func withdrawSignupsForSubject<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_WithdrawSignupsForSubjectRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2262,7 +2507,7 @@ extension Primandproper_Platform_Waitlists_V1_WaitlistsService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveSignup<Result>(
+    public func archiveSignup<Result>(
         _ message: Primandproper_Platform_Waitlists_V1_ArchiveSignupRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,

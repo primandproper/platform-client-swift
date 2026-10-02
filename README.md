@@ -22,7 +22,7 @@ real schema, once instead of twice.
 
 ## What is here now
 
-**Generated stubs only.** `Sources/PlatformClient/Generated/` holds 24 files — 12 protos as
+**Generated stubs only.** `Sources/PlatformClient/Generated/` holds 30 files — 15 protos as
 `.pb.swift` and `.grpc.swift` — built from a pinned `platform-go` tag. The output is
 **committed**, so a consumer needs neither `protoc` nor the plugins.
 
@@ -55,9 +55,16 @@ make codegen   # fetch the protos, then generate
 make build     # swift build
 ```
 
-**The generator is pinned too, not just the schema.** `scripts/plugins/Package.swift` pins
-`swift-protobuf` to 1.33.3 and `grpc-swift-protobuf` to 2.1.1, and `generate.sh` builds them
-rather than using whatever is on the machine.
+**The generator is pinned too, not just the schema.** `scripts/plugins/` holds one manifest
+per plugin, pinning `swift-protobuf` to 1.33.3 for `protoc-gen-swift` and `grpc-swift-protobuf`
+to 2.1.1 for `protoc-gen-grpc-swift-2`, and `generate.sh` builds them rather than using
+whatever is on the machine.
+
+They are two packages because they cannot share a `swift-protobuf` on SwiftPM 6.2 or later:
+`grpc-swift-2` 2.4.3, which the grpc plugin's output comes from, disables `swift-protobuf`'s
+default traits, and SwiftPM refuses that against any release before 1.36.0, which declare
+none. So the grpc plugin gets 1.36.1, which it only parses descriptors with, and
+`protoc-gen-swift` keeps 1.33.3. DDB's `scripts/protoc-plugins` is the same split.
 
 That is not defensive tidiness. `brew install swift-protobuf` gives you whatever is current,
 and swift-protobuf's output changed after 1.33.3 — it began emitting `nonisolated extension`
@@ -78,7 +85,9 @@ one include root. **No Go toolchain**: this is a Swift repository and it stays o
 why it fetches a tag rather than resolving the module cache the way DDB's Makefile does.
 
 Flags match DDB's (`grpc-swift-2`, `Client=true,Server=false`, `Visibility=Public`), because
-output that does not match is output that cannot be dropped in.
+output that does not match is output that cannot be dropped in, with one difference: here
+`Visibility=Public` goes to the grpc plugin as well. DDB compiles its stubs into the app's
+own module, where `internal` clients are reachable; from a package they are not.
 
 ### Upgrading
 

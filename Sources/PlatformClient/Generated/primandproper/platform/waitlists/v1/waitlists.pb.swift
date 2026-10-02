@@ -13,11 +13,12 @@
 // operator opens, and the signups against them with a lifecycle of their own.
 //
 // It is one service with two audiences, which is what makes it different from
-// the three domain surfaces that came before it. Three RPCs are the signup page
-// — the open lists, the form, and the unsubscribe — and are reachable by
-// somebody who has not signed in and frequently does not have an account to
-// sign in to. The other fourteen are whoever is running the launch, and every
-// one of them is behind a grant. See the service comment at the bottom.
+// the three domain surfaces that came before it. Five RPCs are the signup page
+// — the open lists, the form, the confirmation link, and the two ways off the
+// list — and are reachable by somebody who has not signed in and frequently
+// does not have an account to sign in to. The rest are whoever is running the
+// launch, and every one of them is behind a grant. See the service comment at
+// the bottom.
 //
 // This file is shipped inside the published Go module, and it is the file
 // itself that is shipped -- not a copy for you to keep in sync. A consumer puts
@@ -43,8 +44,8 @@
 // three are under is that a consumer's catalog stays a string, because a
 // generated enum puts the application's vocabulary on this module's release
 // cadence. This is the opposite case and waitlists.Status says so in its own
-// documentation: the four statuses decide which transitions the store will
-// make and what a withdrawal means, so a fifth is not a word an application
+// documentation: the five statuses decide which transitions the store will
+// make and what a withdrawal means, so a sixth is not a word an application
 // adds -- it is a row nothing can move. settings.Kind is the other one of these.
 //
 // SubjectType is the string on this surface, and it is the one that is genuinely
@@ -134,7 +135,8 @@ public enum Primandproper_Platform_Waitlists_V1_SignupStatus: SwiftProtobuf.Enum
   case unspecified // = 0
 
   /// SIGNUP_STATUS_WAITING is somebody who has joined and not yet been invited.
-  /// It is where every signup starts, and it is the only status Join writes.
+  /// It is where a signup starts on a deployment that does not confirm
+  /// addresses, and where a confirmed one lands.
   case waiting // = 1
 
   /// SIGNUP_STATUS_INVITED is somebody who has been let in and has not yet taken
@@ -152,6 +154,14 @@ public enum Primandproper_Platform_Waitlists_V1_SignupStatus: SwiftProtobuf.Enum
   /// that identifies a person, so a later signup from the same address is
   /// refused rather than quietly re-subscribing whoever asked to be left alone.
   case withdrawn // = 4
+
+  /// SIGNUP_STATUS_PENDING is somebody whose address was given and not yet
+  /// confirmed. It is where Join starts a signup on a deployment that confirms
+  /// addresses, and Confirm is the one move out of it besides a withdrawal:
+  /// Invite requires waiting, so nobody reaches the front of the queue with an
+  /// address that has not said yes. It is numbered last rather than first
+  /// because numbers are never reused, not because it comes last.
+  case pending // = 5
   case UNRECOGNIZED(Int)
 
   public init() {
@@ -165,6 +175,7 @@ public enum Primandproper_Platform_Waitlists_V1_SignupStatus: SwiftProtobuf.Enum
     case 2: self = .invited
     case 3: self = .converted
     case 4: self = .withdrawn
+    case 5: self = .pending
     default: self = .UNRECOGNIZED(rawValue)
     }
   }
@@ -176,6 +187,7 @@ public enum Primandproper_Platform_Waitlists_V1_SignupStatus: SwiftProtobuf.Enum
     case .invited: return 2
     case .converted: return 3
     case .withdrawn: return 4
+    case .pending: return 5
     case .UNRECOGNIZED(let i): return i
     }
   }
@@ -187,6 +199,7 @@ public enum Primandproper_Platform_Waitlists_V1_SignupStatus: SwiftProtobuf.Enum
     .invited,
     .converted,
     .withdrawn,
+    .pending,
   ]
 
 }
@@ -710,10 +723,17 @@ public struct Primandproper_Platform_Waitlists_V1_JoinRequest: Sendable {
 /// GetSignupByContact is where an authenticated caller asks the same question on
 /// the wire.
 ///
-/// A public Join is therefore not a subscription. Nothing here has established
-/// that the person at that address asked for anything, and confirming it is the
-/// consumer's -- see the waitlists package documentation, which states the
-/// obligation and why this module cannot ship the send.
+/// A public Join is therefore not a subscription by itself. Nothing here has
+/// established that the person at that address asked for anything. A deployment
+/// built with waitlists/grpc's WithConfirmation writes the signup pending and
+/// mails a confirmation link, which lands on Confirm; one built without it owes
+/// that loop itself -- see the waitlists package documentation.
+///
+/// The uniform answer covers the mail too. A new address is sent a confirmation,
+/// and so is an address whose signup is still pending, since the person who lost
+/// the first message is the one most likely to fill the form in again; an
+/// address already confirmed and one that withdrew are sent nothing. The caller
+/// is told none of that.
 public struct Primandproper_Platform_Waitlists_V1_JoinResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -1037,8 +1057,8 @@ public struct Primandproper_Platform_Waitlists_V1_ConvertResponse: Sendable {
 
 /// WithdrawRequest is somebody asking to come off a list, at their own request.
 ///
-/// It is the second of the three RPCs a caller reaches without a grant, and it is
-/// the one that names a row. A grant on the method could not have said whose row
+/// It is one of the RPCs a caller reaches without a grant, and the only one
+/// of them that names a row. A grant on the method could not have said whose row
 /// this is, and neither can a signup identifier, which is minted by the store and
 /// is not a credential -- so the standing to withdraw this signup is asked of the
 /// consumer's own [waitlists/grpc.SignupAuthorizer], from inside the handler,
@@ -1062,6 +1082,83 @@ public struct Primandproper_Platform_Waitlists_V1_WithdrawRequest: Sendable {
 /// the row after a withdrawal is a status and a digest, and the caller who just
 /// asked to be forgotten is not the caller to hand it to.
 public struct Primandproper_Platform_Waitlists_V1_WithdrawResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// ConfirmRequest is the confirmation link somebody followed: the reply half of a
+/// double opt-in, reachable without a grant because the person at the address
+/// has frequently never signed in to anything.
+///
+/// It carries the token and nothing else. The link was minted against one signup
+/// on one list, and the token is what names both -- a request that could also
+/// name a signup is a request that could name somebody else's. Which tenant it is
+/// in is the connection's, exactly as it is for Join, and a link minted in
+/// another tenant is refused as though it had never been minted.
+///
+/// It spends the link, so it is what a POST calls and not what a GET does. Mail
+/// security fetches every URL in every message before the person sees it, and a
+/// page that confirmed on load would be confirmed by the scanner; render a page
+/// with a button on the GET and call this from the button.
+public struct Primandproper_Platform_Waitlists_V1_ConfirmRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var token: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// ConfirmResponse is empty. The person holding the link already knows which
+/// list they asked to join, and every refusal -- a link that expired, was spent,
+/// was never minted, or names a signup that has since withdrawn -- is one
+/// answer, so a holder of a guessed token learns nothing.
+public struct Primandproper_Platform_Waitlists_V1_ConfirmResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// UnsubscribeRequest is the unsubscribe link somebody followed: a withdrawal
+/// whose standing is the link rather than a caller.
+///
+/// It is Withdraw's second door, and it exists because Withdraw's request names a
+/// signup, which is a row identifier and not a credential. This one names only
+/// the token, which was minted against exactly one signup, so nothing about it
+/// asks the deployment's SignupAuthorizer: the link is the authorization. A
+/// confirmation mail carries one -- "this was not me" is a withdrawal, and it
+/// suppresses the address whether or not the signup was ever confirmed -- and a
+/// consumer puts one in every later message to the list through
+/// waitlists/grpc's MintUnsubscribeLink.
+///
+/// It spends the link, for Confirm's reason; the GET renders, the POST calls.
+public struct Primandproper_Platform_Waitlists_V1_UnsubscribeRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var token: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// UnsubscribeResponse is empty, for WithdrawResponse's reason, and every refusal
+/// is one answer, for ConfirmResponse's.
+public struct Primandproper_Platform_Waitlists_V1_UnsubscribeResponse: Sendable {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1152,7 +1249,7 @@ public struct Primandproper_Platform_Waitlists_V1_ArchiveSignupResponse: Sendabl
 fileprivate let _protobuf_package = "primandproper.platform.waitlists.v1"
 
 extension Primandproper_Platform_Waitlists_V1_SignupStatus: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SIGNUP_STATUS_UNSPECIFIED\0\u{1}SIGNUP_STATUS_WAITING\0\u{1}SIGNUP_STATUS_INVITED\0\u{1}SIGNUP_STATUS_CONVERTED\0\u{1}SIGNUP_STATUS_WITHDRAWN\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{2}\0SIGNUP_STATUS_UNSPECIFIED\0\u{1}SIGNUP_STATUS_WAITING\0\u{1}SIGNUP_STATUS_INVITED\0\u{1}SIGNUP_STATUS_CONVERTED\0\u{1}SIGNUP_STATUS_WITHDRAWN\0\u{1}SIGNUP_STATUS_PENDING\0")
 }
 
 extension Primandproper_Platform_Waitlists_V1_Waitlist: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
@@ -2386,6 +2483,104 @@ extension Primandproper_Platform_Waitlists_V1_WithdrawResponse: SwiftProtobuf.Me
   }
 
   public static func ==(lhs: Primandproper_Platform_Waitlists_V1_WithdrawResponse, rhs: Primandproper_Platform_Waitlists_V1_WithdrawResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Waitlists_V1_ConfirmRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ConfirmRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}token\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.token) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.token.isEmpty {
+      try visitor.visitSingularStringField(value: self.token, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Waitlists_V1_ConfirmRequest, rhs: Primandproper_Platform_Waitlists_V1_ConfirmRequest) -> Bool {
+    if lhs.token != rhs.token {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Waitlists_V1_ConfirmResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ConfirmResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Waitlists_V1_ConfirmResponse, rhs: Primandproper_Platform_Waitlists_V1_ConfirmResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Waitlists_V1_UnsubscribeRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".UnsubscribeRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}token\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.token) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.token.isEmpty {
+      try visitor.visitSingularStringField(value: self.token, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Waitlists_V1_UnsubscribeRequest, rhs: Primandproper_Platform_Waitlists_V1_UnsubscribeRequest) -> Bool {
+    if lhs.token != rhs.token {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Waitlists_V1_UnsubscribeResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".UnsubscribeResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    // Load everything into unknown fields
+    while try decoder.nextFieldNumber() != nil {}
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Waitlists_V1_UnsubscribeResponse, rhs: Primandproper_Platform_Waitlists_V1_UnsubscribeResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

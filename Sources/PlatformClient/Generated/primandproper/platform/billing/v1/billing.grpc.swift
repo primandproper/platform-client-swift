@@ -61,8 +61,8 @@
 // interceptor put on the context. See identity.proto, which says this at
 // greater length.
 //
-// No write that a payment processor's callback makes. Seven of billing's thirty
-// store methods are absent from this service: CreateSubscription,
+// No write that a payment processor's callback makes. Seven of billing's store
+// methods are absent from this service: CreateSubscription,
 // UpdateSubscription, SetSubscriptionStatus, CreatePurchase, CompletePurchase,
 // RecordTransaction and SetTransactionStatus. Their caller is not a client. It
 // is a Stripe or RevenueCat receiver the consumer owns, or the checkout handler
@@ -103,247 +103,247 @@ import GRPCProtobuf
 
 /// Namespace containing generated types for the "primandproper.platform.billing.v1.BillingService" service.
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
-internal enum Primandproper_Platform_Billing_V1_BillingService: Sendable {
+public enum Primandproper_Platform_Billing_V1_BillingService: Sendable {
     /// Service descriptor for the "primandproper.platform.billing.v1.BillingService" service.
-    internal static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService")
+    public static let descriptor = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService")
     /// Namespace for method metadata.
-    internal enum Method: Sendable {
+    public enum Method: Sendable {
         /// Namespace for "CreateProduct" metadata.
-        internal enum CreateProduct: Sendable {
+        public enum CreateProduct: Sendable {
             /// Request type for "CreateProduct".
-            internal typealias Input = Primandproper_Platform_Billing_V1_CreateProductRequest
+            public typealias Input = Primandproper_Platform_Billing_V1_CreateProductRequest
             /// Response type for "CreateProduct".
-            internal typealias Output = Primandproper_Platform_Billing_V1_CreateProductResponse
+            public typealias Output = Primandproper_Platform_Billing_V1_CreateProductResponse
             /// Descriptor for "CreateProduct".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
                 method: "CreateProduct",
                 type: .unary
             )
         }
         /// Namespace for "GetProduct" metadata.
-        internal enum GetProduct: Sendable {
+        public enum GetProduct: Sendable {
             /// Request type for "GetProduct".
-            internal typealias Input = Primandproper_Platform_Billing_V1_GetProductRequest
+            public typealias Input = Primandproper_Platform_Billing_V1_GetProductRequest
             /// Response type for "GetProduct".
-            internal typealias Output = Primandproper_Platform_Billing_V1_GetProductResponse
+            public typealias Output = Primandproper_Platform_Billing_V1_GetProductResponse
             /// Descriptor for "GetProduct".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
                 method: "GetProduct",
                 type: .unary
             )
         }
         /// Namespace for "ListProducts" metadata.
-        internal enum ListProducts: Sendable {
+        public enum ListProducts: Sendable {
             /// Request type for "ListProducts".
-            internal typealias Input = Primandproper_Platform_Billing_V1_ListProductsRequest
+            public typealias Input = Primandproper_Platform_Billing_V1_ListProductsRequest
             /// Response type for "ListProducts".
-            internal typealias Output = Primandproper_Platform_Billing_V1_ListProductsResponse
+            public typealias Output = Primandproper_Platform_Billing_V1_ListProductsResponse
             /// Descriptor for "ListProducts".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
                 method: "ListProducts",
                 type: .unary
             )
         }
         /// Namespace for "UpdateProduct" metadata.
-        internal enum UpdateProduct: Sendable {
+        public enum UpdateProduct: Sendable {
             /// Request type for "UpdateProduct".
-            internal typealias Input = Primandproper_Platform_Billing_V1_UpdateProductRequest
+            public typealias Input = Primandproper_Platform_Billing_V1_UpdateProductRequest
             /// Response type for "UpdateProduct".
-            internal typealias Output = Primandproper_Platform_Billing_V1_UpdateProductResponse
+            public typealias Output = Primandproper_Platform_Billing_V1_UpdateProductResponse
             /// Descriptor for "UpdateProduct".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
                 method: "UpdateProduct",
                 type: .unary
             )
         }
         /// Namespace for "ArchiveProduct" metadata.
-        internal enum ArchiveProduct: Sendable {
+        public enum ArchiveProduct: Sendable {
             /// Request type for "ArchiveProduct".
-            internal typealias Input = Primandproper_Platform_Billing_V1_ArchiveProductRequest
+            public typealias Input = Primandproper_Platform_Billing_V1_ArchiveProductRequest
             /// Response type for "ArchiveProduct".
-            internal typealias Output = Primandproper_Platform_Billing_V1_ArchiveProductResponse
+            public typealias Output = Primandproper_Platform_Billing_V1_ArchiveProductResponse
             /// Descriptor for "ArchiveProduct".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
                 method: "ArchiveProduct",
                 type: .unary
             )
         }
         /// Namespace for "GetSubscription" metadata.
-        internal enum GetSubscription: Sendable {
+        public enum GetSubscription: Sendable {
             /// Request type for "GetSubscription".
-            internal typealias Input = Primandproper_Platform_Billing_V1_GetSubscriptionRequest
+            public typealias Input = Primandproper_Platform_Billing_V1_GetSubscriptionRequest
             /// Response type for "GetSubscription".
-            internal typealias Output = Primandproper_Platform_Billing_V1_GetSubscriptionResponse
+            public typealias Output = Primandproper_Platform_Billing_V1_GetSubscriptionResponse
             /// Descriptor for "GetSubscription".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
                 method: "GetSubscription",
                 type: .unary
             )
         }
         /// Namespace for "ListSubscriptions" metadata.
-        internal enum ListSubscriptions: Sendable {
+        public enum ListSubscriptions: Sendable {
             /// Request type for "ListSubscriptions".
-            internal typealias Input = Primandproper_Platform_Billing_V1_ListSubscriptionsRequest
+            public typealias Input = Primandproper_Platform_Billing_V1_ListSubscriptionsRequest
             /// Response type for "ListSubscriptions".
-            internal typealias Output = Primandproper_Platform_Billing_V1_ListSubscriptionsResponse
+            public typealias Output = Primandproper_Platform_Billing_V1_ListSubscriptionsResponse
             /// Descriptor for "ListSubscriptions".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
                 method: "ListSubscriptions",
                 type: .unary
             )
         }
         /// Namespace for "ListSubscriptionsForAccount" metadata.
-        internal enum ListSubscriptionsForAccount: Sendable {
+        public enum ListSubscriptionsForAccount: Sendable {
             /// Request type for "ListSubscriptionsForAccount".
-            internal typealias Input = Primandproper_Platform_Billing_V1_ListSubscriptionsForAccountRequest
+            public typealias Input = Primandproper_Platform_Billing_V1_ListSubscriptionsForAccountRequest
             /// Response type for "ListSubscriptionsForAccount".
-            internal typealias Output = Primandproper_Platform_Billing_V1_ListSubscriptionsForAccountResponse
+            public typealias Output = Primandproper_Platform_Billing_V1_ListSubscriptionsForAccountResponse
             /// Descriptor for "ListSubscriptionsForAccount".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
                 method: "ListSubscriptionsForAccount",
                 type: .unary
             )
         }
         /// Namespace for "ListCurrentSubscriptions" metadata.
-        internal enum ListCurrentSubscriptions: Sendable {
+        public enum ListCurrentSubscriptions: Sendable {
             /// Request type for "ListCurrentSubscriptions".
-            internal typealias Input = Primandproper_Platform_Billing_V1_ListCurrentSubscriptionsRequest
+            public typealias Input = Primandproper_Platform_Billing_V1_ListCurrentSubscriptionsRequest
             /// Response type for "ListCurrentSubscriptions".
-            internal typealias Output = Primandproper_Platform_Billing_V1_ListCurrentSubscriptionsResponse
+            public typealias Output = Primandproper_Platform_Billing_V1_ListCurrentSubscriptionsResponse
             /// Descriptor for "ListCurrentSubscriptions".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
                 method: "ListCurrentSubscriptions",
                 type: .unary
             )
         }
         /// Namespace for "ArchiveSubscription" metadata.
-        internal enum ArchiveSubscription: Sendable {
+        public enum ArchiveSubscription: Sendable {
             /// Request type for "ArchiveSubscription".
-            internal typealias Input = Primandproper_Platform_Billing_V1_ArchiveSubscriptionRequest
+            public typealias Input = Primandproper_Platform_Billing_V1_ArchiveSubscriptionRequest
             /// Response type for "ArchiveSubscription".
-            internal typealias Output = Primandproper_Platform_Billing_V1_ArchiveSubscriptionResponse
+            public typealias Output = Primandproper_Platform_Billing_V1_ArchiveSubscriptionResponse
             /// Descriptor for "ArchiveSubscription".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
                 method: "ArchiveSubscription",
                 type: .unary
             )
         }
         /// Namespace for "GetPurchase" metadata.
-        internal enum GetPurchase: Sendable {
+        public enum GetPurchase: Sendable {
             /// Request type for "GetPurchase".
-            internal typealias Input = Primandproper_Platform_Billing_V1_GetPurchaseRequest
+            public typealias Input = Primandproper_Platform_Billing_V1_GetPurchaseRequest
             /// Response type for "GetPurchase".
-            internal typealias Output = Primandproper_Platform_Billing_V1_GetPurchaseResponse
+            public typealias Output = Primandproper_Platform_Billing_V1_GetPurchaseResponse
             /// Descriptor for "GetPurchase".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
                 method: "GetPurchase",
                 type: .unary
             )
         }
         /// Namespace for "ListPurchases" metadata.
-        internal enum ListPurchases: Sendable {
+        public enum ListPurchases: Sendable {
             /// Request type for "ListPurchases".
-            internal typealias Input = Primandproper_Platform_Billing_V1_ListPurchasesRequest
+            public typealias Input = Primandproper_Platform_Billing_V1_ListPurchasesRequest
             /// Response type for "ListPurchases".
-            internal typealias Output = Primandproper_Platform_Billing_V1_ListPurchasesResponse
+            public typealias Output = Primandproper_Platform_Billing_V1_ListPurchasesResponse
             /// Descriptor for "ListPurchases".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
                 method: "ListPurchases",
                 type: .unary
             )
         }
         /// Namespace for "ListPurchasesForAccount" metadata.
-        internal enum ListPurchasesForAccount: Sendable {
+        public enum ListPurchasesForAccount: Sendable {
             /// Request type for "ListPurchasesForAccount".
-            internal typealias Input = Primandproper_Platform_Billing_V1_ListPurchasesForAccountRequest
+            public typealias Input = Primandproper_Platform_Billing_V1_ListPurchasesForAccountRequest
             /// Response type for "ListPurchasesForAccount".
-            internal typealias Output = Primandproper_Platform_Billing_V1_ListPurchasesForAccountResponse
+            public typealias Output = Primandproper_Platform_Billing_V1_ListPurchasesForAccountResponse
             /// Descriptor for "ListPurchasesForAccount".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
                 method: "ListPurchasesForAccount",
                 type: .unary
             )
         }
         /// Namespace for "ArchivePurchase" metadata.
-        internal enum ArchivePurchase: Sendable {
+        public enum ArchivePurchase: Sendable {
             /// Request type for "ArchivePurchase".
-            internal typealias Input = Primandproper_Platform_Billing_V1_ArchivePurchaseRequest
+            public typealias Input = Primandproper_Platform_Billing_V1_ArchivePurchaseRequest
             /// Response type for "ArchivePurchase".
-            internal typealias Output = Primandproper_Platform_Billing_V1_ArchivePurchaseResponse
+            public typealias Output = Primandproper_Platform_Billing_V1_ArchivePurchaseResponse
             /// Descriptor for "ArchivePurchase".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
                 method: "ArchivePurchase",
                 type: .unary
             )
         }
         /// Namespace for "GetTransaction" metadata.
-        internal enum GetTransaction: Sendable {
+        public enum GetTransaction: Sendable {
             /// Request type for "GetTransaction".
-            internal typealias Input = Primandproper_Platform_Billing_V1_GetTransactionRequest
+            public typealias Input = Primandproper_Platform_Billing_V1_GetTransactionRequest
             /// Response type for "GetTransaction".
-            internal typealias Output = Primandproper_Platform_Billing_V1_GetTransactionResponse
+            public typealias Output = Primandproper_Platform_Billing_V1_GetTransactionResponse
             /// Descriptor for "GetTransaction".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
                 method: "GetTransaction",
                 type: .unary
             )
         }
         /// Namespace for "ListTransactions" metadata.
-        internal enum ListTransactions: Sendable {
+        public enum ListTransactions: Sendable {
             /// Request type for "ListTransactions".
-            internal typealias Input = Primandproper_Platform_Billing_V1_ListTransactionsRequest
+            public typealias Input = Primandproper_Platform_Billing_V1_ListTransactionsRequest
             /// Response type for "ListTransactions".
-            internal typealias Output = Primandproper_Platform_Billing_V1_ListTransactionsResponse
+            public typealias Output = Primandproper_Platform_Billing_V1_ListTransactionsResponse
             /// Descriptor for "ListTransactions".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
                 method: "ListTransactions",
                 type: .unary
             )
         }
         /// Namespace for "ListTransactionsForAccount" metadata.
-        internal enum ListTransactionsForAccount: Sendable {
+        public enum ListTransactionsForAccount: Sendable {
             /// Request type for "ListTransactionsForAccount".
-            internal typealias Input = Primandproper_Platform_Billing_V1_ListTransactionsForAccountRequest
+            public typealias Input = Primandproper_Platform_Billing_V1_ListTransactionsForAccountRequest
             /// Response type for "ListTransactionsForAccount".
-            internal typealias Output = Primandproper_Platform_Billing_V1_ListTransactionsForAccountResponse
+            public typealias Output = Primandproper_Platform_Billing_V1_ListTransactionsForAccountResponse
             /// Descriptor for "ListTransactionsForAccount".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
                 method: "ListTransactionsForAccount",
                 type: .unary
             )
         }
         /// Namespace for "ArchiveTransaction" metadata.
-        internal enum ArchiveTransaction: Sendable {
+        public enum ArchiveTransaction: Sendable {
             /// Request type for "ArchiveTransaction".
-            internal typealias Input = Primandproper_Platform_Billing_V1_ArchiveTransactionRequest
+            public typealias Input = Primandproper_Platform_Billing_V1_ArchiveTransactionRequest
             /// Response type for "ArchiveTransaction".
-            internal typealias Output = Primandproper_Platform_Billing_V1_ArchiveTransactionResponse
+            public typealias Output = Primandproper_Platform_Billing_V1_ArchiveTransactionResponse
             /// Descriptor for "ArchiveTransaction".
-            internal static let descriptor = GRPCCore.MethodDescriptor(
+            public static let descriptor = GRPCCore.MethodDescriptor(
                 service: GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService"),
                 method: "ArchiveTransaction",
                 type: .unary
             )
         }
         /// Descriptors for all methods in the "primandproper.platform.billing.v1.BillingService" service.
-        internal static let descriptors: [GRPCCore.MethodDescriptor] = [
+        public static let descriptors: [GRPCCore.MethodDescriptor] = [
             CreateProduct.descriptor,
             GetProduct.descriptor,
             ListProducts.descriptor,
@@ -369,7 +369,7 @@ internal enum Primandproper_Platform_Billing_V1_BillingService: Sendable {
 @available(macOS 15.0, iOS 18.0, watchOS 11.0, tvOS 18.0, visionOS 2.0, *)
 extension GRPCCore.ServiceDescriptor {
     /// Service descriptor for the "primandproper.platform.billing.v1.BillingService" service.
-    internal static let primandproper_platform_billing_v1_BillingService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService")
+    public static let primandproper_platform_billing_v1_BillingService = GRPCCore.ServiceDescriptor(fullyQualifiedService: "primandproper.platform.billing.v1.BillingService")
 }
 
 // MARK: primandproper.platform.billing.v1.BillingService (client)
@@ -386,11 +386,11 @@ extension Primandproper_Platform_Billing_V1_BillingService {
     /// > BillingService serves the record of what a deployment sells and what its
     /// > customers paid.
     /// > 
-    /// > Eighteen RPCs over thirty store methods, and the shape of the subset is the
-    /// > decision worth reading before the list. Twelve of the eighteen are reads,
-    /// > because the writes on this table have a caller who is not a client: seven of
-    /// > them are made by a processor callback or a checkout handler already inside the
-    /// > consumer's own transaction, and they are named in this file's opening comment
+    /// > A subset of the store's methods, and the shape of the subset is the decision
+    /// > worth reading before the list. Most of it is reads, because the writes on this
+    /// > table have a caller who is not a client: the ones left off are made by a
+    /// > processor callback or a checkout handler already inside the consumer's own
+    /// > transaction, and they are named in this file's opening comment
     /// > along with why an RPC would break them. What is left on the write side is
     /// > administrative -- stocking and revising the catalog, and withdrawing a row
     /// > from each of the four tables.
@@ -403,13 +403,13 @@ extension Primandproper_Platform_Billing_V1_BillingService {
     /// > reads are an operator's: they page every row in the scope and carry a
     /// > permission of their own, so that a consumer can hand out "read my invoices"
     /// > without handing out the customer ledger.
-    internal protocol ClientProtocol: Sendable {
+    public protocol ClientProtocol: Sendable {
         /// Call the "CreateProduct" method.
         ///
         /// > Source IDL Documentation:
         /// >
-        /// > The catalog: two reads any member of the scope may make, and three
-        /// > administrative writes.
+        /// > The catalog: reads any member of the scope may make, and administrative
+        /// > writes.
         ///
         /// - Parameters:
         ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_CreateProductRequest` message.
@@ -778,11 +778,11 @@ extension Primandproper_Platform_Billing_V1_BillingService {
     /// > BillingService serves the record of what a deployment sells and what its
     /// > customers paid.
     /// > 
-    /// > Eighteen RPCs over thirty store methods, and the shape of the subset is the
-    /// > decision worth reading before the list. Twelve of the eighteen are reads,
-    /// > because the writes on this table have a caller who is not a client: seven of
-    /// > them are made by a processor callback or a checkout handler already inside the
-    /// > consumer's own transaction, and they are named in this file's opening comment
+    /// > A subset of the store's methods, and the shape of the subset is the decision
+    /// > worth reading before the list. Most of it is reads, because the writes on this
+    /// > table have a caller who is not a client: the ones left off are made by a
+    /// > processor callback or a checkout handler already inside the consumer's own
+    /// > transaction, and they are named in this file's opening comment
     /// > along with why an RPC would break them. What is left on the write side is
     /// > administrative -- stocking and revising the catalog, and withdrawing a row
     /// > from each of the four tables.
@@ -795,14 +795,14 @@ extension Primandproper_Platform_Billing_V1_BillingService {
     /// > reads are an operator's: they page every row in the scope and carry a
     /// > permission of their own, so that a consumer can hand out "read my invoices"
     /// > without handing out the customer ledger.
-    internal struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
+    public struct Client<Transport>: ClientProtocol where Transport: GRPCCore.ClientTransport {
         private let client: GRPCCore.GRPCClient<Transport>
 
         /// Creates a new client wrapping the provided `GRPCCore.GRPCClient`.
         ///
         /// - Parameters:
         ///   - client: A `GRPCCore.GRPCClient` providing a communication channel to the service.
-        internal init(wrapping client: GRPCCore.GRPCClient<Transport>) {
+        public init(wrapping client: GRPCCore.GRPCClient<Transport>) {
             self.client = client
         }
 
@@ -810,8 +810,8 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///
         /// > Source IDL Documentation:
         /// >
-        /// > The catalog: two reads any member of the scope may make, and three
-        /// > administrative writes.
+        /// > The catalog: reads any member of the scope may make, and administrative
+        /// > writes.
         ///
         /// - Parameters:
         ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_CreateProductRequest` message.
@@ -822,7 +822,7 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func createProduct<Result>(
+        public func createProduct<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_CreateProductRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Billing_V1_CreateProductRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Billing_V1_CreateProductResponse>,
@@ -852,7 +852,7 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getProduct<Result>(
+        public func getProduct<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_GetProductRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Billing_V1_GetProductRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Billing_V1_GetProductResponse>,
@@ -882,7 +882,7 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listProducts<Result>(
+        public func listProducts<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListProductsRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Billing_V1_ListProductsRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Billing_V1_ListProductsResponse>,
@@ -912,7 +912,7 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func updateProduct<Result>(
+        public func updateProduct<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_UpdateProductRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Billing_V1_UpdateProductRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Billing_V1_UpdateProductResponse>,
@@ -942,7 +942,7 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func archiveProduct<Result>(
+        public func archiveProduct<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ArchiveProductRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Billing_V1_ArchiveProductRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Billing_V1_ArchiveProductResponse>,
@@ -979,7 +979,7 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getSubscription<Result>(
+        public func getSubscription<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_GetSubscriptionRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Billing_V1_GetSubscriptionRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Billing_V1_GetSubscriptionResponse>,
@@ -1009,7 +1009,7 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listSubscriptions<Result>(
+        public func listSubscriptions<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListSubscriptionsRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Billing_V1_ListSubscriptionsRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Billing_V1_ListSubscriptionsResponse>,
@@ -1039,7 +1039,7 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listSubscriptionsForAccount<Result>(
+        public func listSubscriptionsForAccount<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListSubscriptionsForAccountRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Billing_V1_ListSubscriptionsForAccountRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Billing_V1_ListSubscriptionsForAccountResponse>,
@@ -1069,7 +1069,7 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listCurrentSubscriptions<Result>(
+        public func listCurrentSubscriptions<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListCurrentSubscriptionsRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Billing_V1_ListCurrentSubscriptionsRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Billing_V1_ListCurrentSubscriptionsResponse>,
@@ -1099,7 +1099,7 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func archiveSubscription<Result>(
+        public func archiveSubscription<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ArchiveSubscriptionRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Billing_V1_ArchiveSubscriptionRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Billing_V1_ArchiveSubscriptionResponse>,
@@ -1133,7 +1133,7 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getPurchase<Result>(
+        public func getPurchase<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_GetPurchaseRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Billing_V1_GetPurchaseRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Billing_V1_GetPurchaseResponse>,
@@ -1163,7 +1163,7 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listPurchases<Result>(
+        public func listPurchases<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListPurchasesRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Billing_V1_ListPurchasesRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Billing_V1_ListPurchasesResponse>,
@@ -1193,7 +1193,7 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listPurchasesForAccount<Result>(
+        public func listPurchasesForAccount<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListPurchasesForAccountRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Billing_V1_ListPurchasesForAccountRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Billing_V1_ListPurchasesForAccountResponse>,
@@ -1223,7 +1223,7 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func archivePurchase<Result>(
+        public func archivePurchase<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ArchivePurchaseRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Billing_V1_ArchivePurchaseRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Billing_V1_ArchivePurchaseResponse>,
@@ -1257,7 +1257,7 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func getTransaction<Result>(
+        public func getTransaction<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_GetTransactionRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Billing_V1_GetTransactionRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Billing_V1_GetTransactionResponse>,
@@ -1287,7 +1287,7 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listTransactions<Result>(
+        public func listTransactions<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListTransactionsRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Billing_V1_ListTransactionsRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Billing_V1_ListTransactionsResponse>,
@@ -1317,7 +1317,7 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func listTransactionsForAccount<Result>(
+        public func listTransactionsForAccount<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListTransactionsForAccountRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Billing_V1_ListTransactionsForAccountRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Billing_V1_ListTransactionsForAccountResponse>,
@@ -1347,7 +1347,7 @@ extension Primandproper_Platform_Billing_V1_BillingService {
         ///       the caller. Returning from the closure will cancel the RPC if it hasn't
         ///       already finished.
         /// - Returns: The result of `handleResponse`.
-        internal func archiveTransaction<Result>(
+        public func archiveTransaction<Result>(
             request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ArchiveTransactionRequest>,
             serializer: some GRPCCore.MessageSerializer<Primandproper_Platform_Billing_V1_ArchiveTransactionRequest>,
             deserializer: some GRPCCore.MessageDeserializer<Primandproper_Platform_Billing_V1_ArchiveTransactionResponse>,
@@ -1375,8 +1375,8 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///
     /// > Source IDL Documentation:
     /// >
-    /// > The catalog: two reads any member of the scope may make, and three
-    /// > administrative writes.
+    /// > The catalog: reads any member of the scope may make, and administrative
+    /// > writes.
     ///
     /// - Parameters:
     ///   - request: A request containing a single `Primandproper_Platform_Billing_V1_CreateProductRequest` message.
@@ -1385,7 +1385,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func createProduct<Result>(
+    public func createProduct<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_CreateProductRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Billing_V1_CreateProductResponse>) async throws -> Result = { response in
@@ -1410,7 +1410,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getProduct<Result>(
+    public func getProduct<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_GetProductRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Billing_V1_GetProductResponse>) async throws -> Result = { response in
@@ -1435,7 +1435,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listProducts<Result>(
+    public func listProducts<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListProductsRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Billing_V1_ListProductsResponse>) async throws -> Result = { response in
@@ -1460,7 +1460,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateProduct<Result>(
+    public func updateProduct<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_UpdateProductRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Billing_V1_UpdateProductResponse>) async throws -> Result = { response in
@@ -1485,7 +1485,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveProduct<Result>(
+    public func archiveProduct<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ArchiveProductRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Billing_V1_ArchiveProductResponse>) async throws -> Result = { response in
@@ -1517,7 +1517,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getSubscription<Result>(
+    public func getSubscription<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_GetSubscriptionRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Billing_V1_GetSubscriptionResponse>) async throws -> Result = { response in
@@ -1542,7 +1542,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listSubscriptions<Result>(
+    public func listSubscriptions<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListSubscriptionsRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Billing_V1_ListSubscriptionsResponse>) async throws -> Result = { response in
@@ -1567,7 +1567,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listSubscriptionsForAccount<Result>(
+    public func listSubscriptionsForAccount<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListSubscriptionsForAccountRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Billing_V1_ListSubscriptionsForAccountResponse>) async throws -> Result = { response in
@@ -1592,7 +1592,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listCurrentSubscriptions<Result>(
+    public func listCurrentSubscriptions<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListCurrentSubscriptionsRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Billing_V1_ListCurrentSubscriptionsResponse>) async throws -> Result = { response in
@@ -1617,7 +1617,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveSubscription<Result>(
+    public func archiveSubscription<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ArchiveSubscriptionRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Billing_V1_ArchiveSubscriptionResponse>) async throws -> Result = { response in
@@ -1646,7 +1646,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getPurchase<Result>(
+    public func getPurchase<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_GetPurchaseRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Billing_V1_GetPurchaseResponse>) async throws -> Result = { response in
@@ -1671,7 +1671,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listPurchases<Result>(
+    public func listPurchases<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListPurchasesRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Billing_V1_ListPurchasesResponse>) async throws -> Result = { response in
@@ -1696,7 +1696,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listPurchasesForAccount<Result>(
+    public func listPurchasesForAccount<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListPurchasesForAccountRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Billing_V1_ListPurchasesForAccountResponse>) async throws -> Result = { response in
@@ -1721,7 +1721,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archivePurchase<Result>(
+    public func archivePurchase<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ArchivePurchaseRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Billing_V1_ArchivePurchaseResponse>) async throws -> Result = { response in
@@ -1750,7 +1750,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getTransaction<Result>(
+    public func getTransaction<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_GetTransactionRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Billing_V1_GetTransactionResponse>) async throws -> Result = { response in
@@ -1775,7 +1775,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listTransactions<Result>(
+    public func listTransactions<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListTransactionsRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Billing_V1_ListTransactionsResponse>) async throws -> Result = { response in
@@ -1800,7 +1800,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listTransactionsForAccount<Result>(
+    public func listTransactionsForAccount<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ListTransactionsForAccountRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Billing_V1_ListTransactionsForAccountResponse>) async throws -> Result = { response in
@@ -1825,7 +1825,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveTransaction<Result>(
+    public func archiveTransaction<Result>(
         request: GRPCCore.ClientRequest<Primandproper_Platform_Billing_V1_ArchiveTransactionRequest>,
         options: GRPCCore.CallOptions = .defaults,
         onResponse handleResponse: @Sendable @escaping (GRPCCore.ClientResponse<Primandproper_Platform_Billing_V1_ArchiveTransactionResponse>) async throws -> Result = { response in
@@ -1849,8 +1849,8 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///
     /// > Source IDL Documentation:
     /// >
-    /// > The catalog: two reads any member of the scope may make, and three
-    /// > administrative writes.
+    /// > The catalog: reads any member of the scope may make, and administrative
+    /// > writes.
     ///
     /// - Parameters:
     ///   - message: request message to send.
@@ -1860,7 +1860,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func createProduct<Result>(
+    public func createProduct<Result>(
         _ message: Primandproper_Platform_Billing_V1_CreateProductRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1889,7 +1889,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getProduct<Result>(
+    public func getProduct<Result>(
         _ message: Primandproper_Platform_Billing_V1_GetProductRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1918,7 +1918,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listProducts<Result>(
+    public func listProducts<Result>(
         _ message: Primandproper_Platform_Billing_V1_ListProductsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1947,7 +1947,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func updateProduct<Result>(
+    public func updateProduct<Result>(
         _ message: Primandproper_Platform_Billing_V1_UpdateProductRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -1976,7 +1976,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveProduct<Result>(
+    public func archiveProduct<Result>(
         _ message: Primandproper_Platform_Billing_V1_ArchiveProductRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2012,7 +2012,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getSubscription<Result>(
+    public func getSubscription<Result>(
         _ message: Primandproper_Platform_Billing_V1_GetSubscriptionRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2041,7 +2041,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listSubscriptions<Result>(
+    public func listSubscriptions<Result>(
         _ message: Primandproper_Platform_Billing_V1_ListSubscriptionsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2070,7 +2070,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listSubscriptionsForAccount<Result>(
+    public func listSubscriptionsForAccount<Result>(
         _ message: Primandproper_Platform_Billing_V1_ListSubscriptionsForAccountRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2099,7 +2099,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listCurrentSubscriptions<Result>(
+    public func listCurrentSubscriptions<Result>(
         _ message: Primandproper_Platform_Billing_V1_ListCurrentSubscriptionsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2128,7 +2128,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveSubscription<Result>(
+    public func archiveSubscription<Result>(
         _ message: Primandproper_Platform_Billing_V1_ArchiveSubscriptionRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2161,7 +2161,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getPurchase<Result>(
+    public func getPurchase<Result>(
         _ message: Primandproper_Platform_Billing_V1_GetPurchaseRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2190,7 +2190,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listPurchases<Result>(
+    public func listPurchases<Result>(
         _ message: Primandproper_Platform_Billing_V1_ListPurchasesRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2219,7 +2219,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listPurchasesForAccount<Result>(
+    public func listPurchasesForAccount<Result>(
         _ message: Primandproper_Platform_Billing_V1_ListPurchasesForAccountRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2248,7 +2248,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archivePurchase<Result>(
+    public func archivePurchase<Result>(
         _ message: Primandproper_Platform_Billing_V1_ArchivePurchaseRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2281,7 +2281,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func getTransaction<Result>(
+    public func getTransaction<Result>(
         _ message: Primandproper_Platform_Billing_V1_GetTransactionRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2310,7 +2310,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listTransactions<Result>(
+    public func listTransactions<Result>(
         _ message: Primandproper_Platform_Billing_V1_ListTransactionsRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2339,7 +2339,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func listTransactionsForAccount<Result>(
+    public func listTransactionsForAccount<Result>(
         _ message: Primandproper_Platform_Billing_V1_ListTransactionsForAccountRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,
@@ -2368,7 +2368,7 @@ extension Primandproper_Platform_Billing_V1_BillingService.ClientProtocol {
     ///       the caller. Returning from the closure will cancel the RPC if it hasn't
     ///       already finished.
     /// - Returns: The result of `handleResponse`.
-    internal func archiveTransaction<Result>(
+    public func archiveTransaction<Result>(
         _ message: Primandproper_Platform_Billing_V1_ArchiveTransactionRequest,
         metadata: GRPCCore.Metadata = [:],
         options: GRPCCore.CallOptions = .defaults,

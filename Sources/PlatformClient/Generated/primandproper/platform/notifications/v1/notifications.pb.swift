@@ -12,10 +12,9 @@
 // two halves of notifications: the in-app inbox a bell icon reads, and the
 // registry of handsets a push is addressed to.
 //
-// Nine of the fourteen methods across notifications.Inbox and
-// notifications.Registry are here and five deliberately are not. The service
-// comment at the bottom of this file names all five and says which shape of
-// machinery each one is.
+// Most of the methods across notifications.Inbox and notifications.Registry are
+// here and the rest deliberately are not. The service comment at the bottom of
+// this file names each absence and says which shape of machinery it is.
 //
 // This file is shipped inside the published Go module, and it is the file
 // itself that is shipped -- not a copy for you to keep in sync. A consumer puts
@@ -209,7 +208,7 @@ public struct Primandproper_Platform_Notifications_V1_Notification: Sendable {
   /// Clears the value of `readAt`. Subsequent reads from it will return its default value.
   public mutating func clearReadAt() {self._readAt = nil}
 
-  /// id is the row, and is what the three single-notification RPCs name one by.
+  /// id is the row, and is what the single-notification RPCs name one by.
   public var id: String = String()
 
   /// topic is the application's own category: order.shipped, invite.received. A

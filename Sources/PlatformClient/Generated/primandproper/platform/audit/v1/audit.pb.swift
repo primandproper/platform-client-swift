@@ -53,6 +53,20 @@
 // client something it supplied, and its absence is what makes a converter
 // unable to read one back out of a request.
 //
+// AuditAdministrationService is the one place a request names a tenant, and it
+// is a service of its own for exactly the reason above. There the capability
+// is the method: a caller reaches GetAnyEntry or ListAnyEntries only by holding
+// the permission audit/grpc's Permissions puts on them, which nothing grants
+// by default, and every call is recorded in the caller's own chain before it is
+// answered. A field on AuditService's messages would hand the same reach to
+// everybody who may read their own log; a method of its own hands it to the
+// operators a deployment named, and a policy that leaves them out is refused
+// by the enforcer's fail-closed rule rather than widened. Its messages still
+// reserve "scope" -- the tenant it names is owner_id, which is what a
+// tenancy.Scope stores -- and its entries carry the owner they belong to,
+// because an answer spanning tenants is the one answer that cannot leave it
+// implied.
+//
 // # There is no recording RPC
 //
 // audit.Recorder is absent from this service on purpose, and the reason is on
@@ -159,6 +173,12 @@ public struct Primandproper_Platform_Audit_V1_Actor: Sendable {
   /// a principal and an address is exactly what an investigation needs and is
   /// not recoverable afterwards.
   public var ip: String = String()
+
+  /// impersonator is who was really acting when id was acting through somebody
+  /// else's identity -- an operator signed in as a customer -- and empty when id
+  /// was acting for themselves. id stays the subject the entry is filed under;
+  /// this is what stops that entry saying the subject did it.
+  public var impersonator: String = String()
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -314,6 +334,11 @@ public struct Primandproper_Platform_Audit_V1_EntryQuery: Sendable {
 
   /// event_type restricts to one kind of event.
   public var eventType: String = String()
+
+  /// impersonator_id restricts to the entries one principal recorded while
+  /// acting through somebody else's identity. actor_id does not find those: an
+  /// impersonated entry is filed under the subject.
+  public var impersonatorID: String = String()
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -595,6 +620,137 @@ public struct Primandproper_Platform_Audit_V1_VerifyChainResponse: Sendable {
   fileprivate var _result: Primandproper_Platform_Audit_V1_VerificationResult? = nil
 }
 
+/// OwnedEntry is an entry together with the tenant whose chain it is in, as
+/// AuditAdministrationService answers it.
+///
+/// Entry carries no scope because every entry AuditService returns belongs to
+/// the connection's. An operator's read spans tenants, so the owner is
+/// carried beside the entry rather than added to it: Entry stays the one shape
+/// both services describe an entry with.
+public struct Primandproper_Platform_Audit_V1_OwnedEntry: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var entry: Primandproper_Platform_Audit_V1_Entry {
+    get {return _entry ?? Primandproper_Platform_Audit_V1_Entry()}
+    set {_entry = newValue}
+  }
+  /// Returns true if `entry` has been explicitly set.
+  public var hasEntry: Bool {return self._entry != nil}
+  /// Clears the value of `entry`. Subsequent reads from it will return its default value.
+  public mutating func clearEntry() {self._entry = nil}
+
+  /// owner_id is the tenant whose chain holds the entry: the identifier a
+  /// tenancy.Scope stores. Empty is the global scope, the chain of events that
+  /// belong to no tenant.
+  public var ownerID: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _entry: Primandproper_Platform_Audit_V1_Entry? = nil
+}
+
+public struct Primandproper_Platform_Audit_V1_GetAnyEntryRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var entryID: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public struct Primandproper_Platform_Audit_V1_GetAnyEntryResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var entry: Primandproper_Platform_Audit_V1_OwnedEntry {
+    get {return _entry ?? Primandproper_Platform_Audit_V1_OwnedEntry()}
+    set {_entry = newValue}
+  }
+  /// Returns true if `entry` has been explicitly set.
+  public var hasEntry: Bool {return self._entry != nil}
+  /// Clears the value of `entry`. Subsequent reads from it will return its default value.
+  public mutating func clearEntry() {self._entry = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _entry: Primandproper_Platform_Audit_V1_OwnedEntry? = nil
+}
+
+public struct Primandproper_Platform_Audit_V1_ListAnyEntriesRequest: @unchecked Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var query: Primandproper_Platform_Audit_V1_EntryQuery {
+    get {return _storage._query ?? Primandproper_Platform_Audit_V1_EntryQuery()}
+    set {_uniqueStorage()._query = newValue}
+  }
+  /// Returns true if `query` has been explicitly set.
+  public var hasQuery: Bool {return _storage._query != nil}
+  /// Clears the value of `query`. Subsequent reads from it will return its default value.
+  public mutating func clearQuery() {_uniqueStorage()._query = nil}
+
+  public var filter: Primandproper_Platform_Filtering_V1_QueryFilter {
+    get {return _storage._filter ?? Primandproper_Platform_Filtering_V1_QueryFilter()}
+    set {_uniqueStorage()._filter = newValue}
+  }
+  /// Returns true if `filter` has been explicitly set.
+  public var hasFilter: Bool {return _storage._filter != nil}
+  /// Clears the value of `filter`. Subsequent reads from it will return its default value.
+  public mutating func clearFilter() {_uniqueStorage()._filter = nil}
+
+  /// owner_id narrows the page to one tenant's chain, where it is set. Unset
+  /// pages every tenant's. Set and empty is the global chain, which is a
+  /// tenant's worth of events as well: the ones that belong to no tenant.
+  public var ownerID: String {
+    get {return _storage._ownerID ?? String()}
+    set {_uniqueStorage()._ownerID = newValue}
+  }
+  /// Returns true if `ownerID` has been explicitly set.
+  public var hasOwnerID: Bool {return _storage._ownerID != nil}
+  /// Clears the value of `ownerID`. Subsequent reads from it will return its default value.
+  public mutating func clearOwnerID() {_uniqueStorage()._ownerID = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+public struct Primandproper_Platform_Audit_V1_ListAnyEntriesResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var pagination: Primandproper_Platform_Filtering_V1_Pagination {
+    get {return _pagination ?? Primandproper_Platform_Filtering_V1_Pagination()}
+    set {_pagination = newValue}
+  }
+  /// Returns true if `pagination` has been explicitly set.
+  public var hasPagination: Bool {return self._pagination != nil}
+  /// Clears the value of `pagination`. Subsequent reads from it will return its default value.
+  public mutating func clearPagination() {self._pagination = nil}
+
+  public var results: [Primandproper_Platform_Audit_V1_OwnedEntry] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _pagination: Primandproper_Platform_Filtering_V1_Pagination? = nil
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "primandproper.platform.audit.v1"
@@ -605,7 +761,7 @@ extension Primandproper_Platform_Audit_V1_BreakReason: SwiftProtobuf._ProtoNameP
 
 extension Primandproper_Platform_Audit_V1_Actor: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Actor"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}type\0\u{1}ip\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}id\0\u{1}type\0\u{1}ip\0\u{1}impersonator\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -616,6 +772,7 @@ extension Primandproper_Platform_Audit_V1_Actor: SwiftProtobuf.Message, SwiftPro
       case 1: try { try decoder.decodeSingularStringField(value: &self.id) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self.type) }()
       case 3: try { try decoder.decodeSingularStringField(value: &self.ip) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.impersonator) }()
       default: break
       }
     }
@@ -631,6 +788,9 @@ extension Primandproper_Platform_Audit_V1_Actor: SwiftProtobuf.Message, SwiftPro
     if !self.ip.isEmpty {
       try visitor.visitSingularStringField(value: self.ip, fieldNumber: 3)
     }
+    if !self.impersonator.isEmpty {
+      try visitor.visitSingularStringField(value: self.impersonator, fieldNumber: 4)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -638,6 +798,7 @@ extension Primandproper_Platform_Audit_V1_Actor: SwiftProtobuf.Message, SwiftPro
     if lhs.id != rhs.id {return false}
     if lhs.type != rhs.type {return false}
     if lhs.ip != rhs.ip {return false}
+    if lhs.impersonator != rhs.impersonator {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -768,7 +929,7 @@ extension Primandproper_Platform_Audit_V1_Entry: SwiftProtobuf.Message, SwiftPro
 
 extension Primandproper_Platform_Audit_V1_EntryQuery: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".EntryQuery"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{5}actor_id\0actorID\0\u{3}actor_type\0\u{5}resource_id\0resourceID\0\u{3}resource_type\0\u{3}event_type\0\u{b}scope\0")
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{5}actor_id\0actorID\0\u{3}actor_type\0\u{5}resource_id\0resourceID\0\u{3}resource_type\0\u{3}event_type\0\u{5}impersonator_id\0impersonatorID\0\u{b}scope\0")
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -781,6 +942,7 @@ extension Primandproper_Platform_Audit_V1_EntryQuery: SwiftProtobuf.Message, Swi
       case 3: try { try decoder.decodeSingularStringField(value: &self.resourceID) }()
       case 4: try { try decoder.decodeSingularStringField(value: &self.resourceType) }()
       case 5: try { try decoder.decodeSingularStringField(value: &self.eventType) }()
+      case 6: try { try decoder.decodeSingularStringField(value: &self.impersonatorID) }()
       default: break
       }
     }
@@ -802,6 +964,9 @@ extension Primandproper_Platform_Audit_V1_EntryQuery: SwiftProtobuf.Message, Swi
     if !self.eventType.isEmpty {
       try visitor.visitSingularStringField(value: self.eventType, fieldNumber: 5)
     }
+    if !self.impersonatorID.isEmpty {
+      try visitor.visitSingularStringField(value: self.impersonatorID, fieldNumber: 6)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -811,6 +976,7 @@ extension Primandproper_Platform_Audit_V1_EntryQuery: SwiftProtobuf.Message, Swi
     if lhs.resourceID != rhs.resourceID {return false}
     if lhs.resourceType != rhs.resourceType {return false}
     if lhs.eventType != rhs.eventType {return false}
+    if lhs.impersonatorID != rhs.impersonatorID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -1178,6 +1344,232 @@ extension Primandproper_Platform_Audit_V1_VerifyChainResponse: SwiftProtobuf.Mes
 
   public static func ==(lhs: Primandproper_Platform_Audit_V1_VerifyChainResponse, rhs: Primandproper_Platform_Audit_V1_VerifyChainResponse) -> Bool {
     if lhs._result != rhs._result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Audit_V1_OwnedEntry: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".OwnedEntry"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}entry\0\u{5}owner_id\0ownerID\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._entry) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.ownerID) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._entry {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.ownerID.isEmpty {
+      try visitor.visitSingularStringField(value: self.ownerID, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Audit_V1_OwnedEntry, rhs: Primandproper_Platform_Audit_V1_OwnedEntry) -> Bool {
+    if lhs._entry != rhs._entry {return false}
+    if lhs.ownerID != rhs.ownerID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Audit_V1_GetAnyEntryRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".GetAnyEntryRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{5}entry_id\0entryID\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.entryID) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.entryID.isEmpty {
+      try visitor.visitSingularStringField(value: self.entryID, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Audit_V1_GetAnyEntryRequest, rhs: Primandproper_Platform_Audit_V1_GetAnyEntryRequest) -> Bool {
+    if lhs.entryID != rhs.entryID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Audit_V1_GetAnyEntryResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".GetAnyEntryResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}entry\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._entry) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._entry {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Audit_V1_GetAnyEntryResponse, rhs: Primandproper_Platform_Audit_V1_GetAnyEntryResponse) -> Bool {
+    if lhs._entry != rhs._entry {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Audit_V1_ListAnyEntriesRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ListAnyEntriesRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}query\0\u{1}filter\0\u{5}owner_id\0ownerID\0\u{b}scope\0")
+
+  fileprivate class _StorageClass {
+    var _query: Primandproper_Platform_Audit_V1_EntryQuery? = nil
+    var _filter: Primandproper_Platform_Filtering_V1_QueryFilter? = nil
+    var _ownerID: String? = nil
+
+      // This property is used as the initial default value for new instances of the type.
+      // The type itself is protecting the reference to its storage via CoW semantics.
+      // This will force a copy to be made of this reference when the first mutation occurs;
+      // hence, it is safe to mark this as `nonisolated(unsafe)`.
+      static nonisolated(unsafe) let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _query = source._query
+      _filter = source._filter
+      _ownerID = source._ownerID
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1: try { try decoder.decodeSingularMessageField(value: &_storage._query) }()
+        case 2: try { try decoder.decodeSingularMessageField(value: &_storage._filter) }()
+        case 3: try { try decoder.decodeSingularStringField(value: &_storage._ownerID) }()
+        default: break
+        }
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every if/case branch local when no optimizations
+      // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+      // https://github.com/apple/swift-protobuf/issues/1182
+      try { if let v = _storage._query {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      } }()
+      try { if let v = _storage._filter {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+      } }()
+      try { if let v = _storage._ownerID {
+        try visitor.visitSingularStringField(value: v, fieldNumber: 3)
+      } }()
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Audit_V1_ListAnyEntriesRequest, rhs: Primandproper_Platform_Audit_V1_ListAnyEntriesRequest) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._query != rhs_storage._query {return false}
+        if _storage._filter != rhs_storage._filter {return false}
+        if _storage._ownerID != rhs_storage._ownerID {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Audit_V1_ListAnyEntriesResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ListAnyEntriesResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}pagination\0\u{1}results\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._pagination) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.results) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._pagination {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.results.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.results, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Audit_V1_ListAnyEntriesResponse, rhs: Primandproper_Platform_Audit_V1_ListAnyEntriesResponse) -> Bool {
+    if lhs._pagination != rhs._pagination {return false}
+    if lhs.results != rhs.results {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

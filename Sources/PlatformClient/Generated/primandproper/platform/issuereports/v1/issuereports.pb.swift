@@ -57,7 +57,7 @@
 // [IssueReport.kind] and [IssueReport.subject_type] are strings, and they are
 // the borrowed vocabulary in this file. What a report is *about*, and what
 // categories a product sorts its reports into, are the application's -- bug,
-// billing, abuse; recipe, household, meal plan -- and the Go package says so:
+// billing, abuse; article, workspace, newsletter -- and the Go package says so:
 // what varies is the catalog of categories and what a report can be about, and
 // both of those are opaque to this package. An enum here would put a consumer's
 // vocabulary on this module's release cadence, and a category they added would
@@ -70,6 +70,13 @@
 // scope a client could name is a cross-tenant read hiding behind a request
 // field; it comes off the principal the consumer's interceptor put on the
 // context. See identity.proto, which says this at greater length.
+//
+// One message says whose a report is, and no request does. The operator's two
+// reads -- [ListReportsAcrossScopesRequest] and
+// [ListReportsByStatusAcrossScopesRequest] -- page every tenant's reports, so
+// each row they answer with is a [ScopedIssueReport], which carries the scope as
+// output. Everywhere else a row's scope is the one the connection resolved, and
+// a field repeating it would tell a client something it supplied.
 //
 // No reporter on any write. A report is filed by whoever is calling, and the
 // name is taken off the principal for the same reason the scope is: a reporter a
@@ -624,7 +631,7 @@ public struct Primandproper_Platform_Issuereports_V1_ListReportsBySubjectTypeReq
   // methods supported on all messages.
 
   /// subject_type is the kind of thing to page reports about -- everything
-  /// anybody has said about recipes.
+  /// anybody has said about articles.
   public var subjectType: String = String()
 
   /// filter pages the result. Its include_archived is a request rather than an
@@ -717,6 +724,142 @@ public struct Primandproper_Platform_Issuereports_V1_ListReportsForSubjectRespon
   public mutating func clearPagination() {self._pagination = nil}
 
   public var results: [Primandproper_Platform_Issuereports_V1_IssueReport] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _pagination: Primandproper_Platform_Filtering_V1_Pagination? = nil
+}
+
+/// ScopedIssueReport is a report read across tenants, with the tenant it
+/// belongs to. It is the only message in this file that carries a scope, and
+/// only as output: the operator's reads answer with every tenant's reports, and
+/// a console that could not say whose each one is could not act on any of them.
+public struct Primandproper_Platform_Issuereports_V1_ScopedIssueReport: @unchecked Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// scope is the tenant the report was filed in, as the opaque owner identifier
+  /// the store holds. Empty is the global scope -- a report belonging to no
+  /// tenant -- rather than an unknown one.
+  public var scope: String {
+    get {return _storage._scope}
+    set {_uniqueStorage()._scope = newValue}
+  }
+
+  public var report: Primandproper_Platform_Issuereports_V1_IssueReport {
+    get {return _storage._report ?? Primandproper_Platform_Issuereports_V1_IssueReport()}
+    set {_uniqueStorage()._report = newValue}
+  }
+  /// Returns true if `report` has been explicitly set.
+  public var hasReport: Bool {return _storage._report != nil}
+  /// Clears the value of `report`. Subsequent reads from it will return its default value.
+  public mutating func clearReport() {_uniqueStorage()._report = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
+}
+
+/// ListReportsAcrossScopesRequest pages every tenant's reports. There is no
+/// scope to name, which is the point: this is the operator's queue, and it is
+/// behind issues.reports.read_any, a grant this module gives to nobody.
+public struct Primandproper_Platform_Issuereports_V1_ListReportsAcrossScopesRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// filter pages the result. Its include_archived is a request rather than an
+  /// instruction, exactly as on every other paged read here. See the file
+  /// comment.
+  public var filter: Primandproper_Platform_Filtering_V1_QueryFilter {
+    get {return _filter ?? Primandproper_Platform_Filtering_V1_QueryFilter()}
+    set {_filter = newValue}
+  }
+  /// Returns true if `filter` has been explicitly set.
+  public var hasFilter: Bool {return self._filter != nil}
+  /// Clears the value of `filter`. Subsequent reads from it will return its default value.
+  public mutating func clearFilter() {self._filter = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _filter: Primandproper_Platform_Filtering_V1_QueryFilter? = nil
+}
+
+public struct Primandproper_Platform_Issuereports_V1_ListReportsAcrossScopesResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var pagination: Primandproper_Platform_Filtering_V1_Pagination {
+    get {return _pagination ?? Primandproper_Platform_Filtering_V1_Pagination()}
+    set {_pagination = newValue}
+  }
+  /// Returns true if `pagination` has been explicitly set.
+  public var hasPagination: Bool {return self._pagination != nil}
+  /// Clears the value of `pagination`. Subsequent reads from it will return its default value.
+  public mutating func clearPagination() {self._pagination = nil}
+
+  public var results: [Primandproper_Platform_Issuereports_V1_ScopedIssueReport] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _pagination: Primandproper_Platform_Filtering_V1_Pagination? = nil
+}
+
+/// ListReportsByStatusAcrossScopesRequest pages one status's queue in every
+/// tenant, behind the same grant as ListReportsAcrossScopesRequest.
+public struct Primandproper_Platform_Issuereports_V1_ListReportsByStatusAcrossScopesRequest: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// status is the queue to page. REPORT_STATUS_UNSPECIFIED is refused rather
+  /// than treated as "any", for ListReportsByStatusRequest's reason: a caller
+  /// wanting every status sends ListReportsAcrossScopes.
+  public var status: Primandproper_Platform_Issuereports_V1_ReportStatus = .unspecified
+
+  /// filter pages the result. Its include_archived is a request rather than an
+  /// instruction. See the file comment.
+  public var filter: Primandproper_Platform_Filtering_V1_QueryFilter {
+    get {return _filter ?? Primandproper_Platform_Filtering_V1_QueryFilter()}
+    set {_filter = newValue}
+  }
+  /// Returns true if `filter` has been explicitly set.
+  public var hasFilter: Bool {return self._filter != nil}
+  /// Clears the value of `filter`. Subsequent reads from it will return its default value.
+  public mutating func clearFilter() {self._filter = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _filter: Primandproper_Platform_Filtering_V1_QueryFilter? = nil
+}
+
+public struct Primandproper_Platform_Issuereports_V1_ListReportsByStatusAcrossScopesResponse: Sendable {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var pagination: Primandproper_Platform_Filtering_V1_Pagination {
+    get {return _pagination ?? Primandproper_Platform_Filtering_V1_Pagination()}
+    set {_pagination = newValue}
+  }
+  /// Returns true if `pagination` has been explicitly set.
+  public var hasPagination: Bool {return self._pagination != nil}
+  /// Clears the value of `pagination`. Subsequent reads from it will return its default value.
+  public mutating func clearPagination() {self._pagination = nil}
+
+  public var results: [Primandproper_Platform_Issuereports_V1_ScopedIssueReport] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -1547,6 +1690,234 @@ extension Primandproper_Platform_Issuereports_V1_ListReportsForSubjectResponse: 
   }
 
   public static func ==(lhs: Primandproper_Platform_Issuereports_V1_ListReportsForSubjectResponse, rhs: Primandproper_Platform_Issuereports_V1_ListReportsForSubjectResponse) -> Bool {
+    if lhs._pagination != rhs._pagination {return false}
+    if lhs.results != rhs.results {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Issuereports_V1_ScopedIssueReport: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ScopedIssueReport"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}scope\0\u{1}report\0")
+
+  fileprivate class _StorageClass {
+    var _scope: String = String()
+    var _report: Primandproper_Platform_Issuereports_V1_IssueReport? = nil
+
+      // This property is used as the initial default value for new instances of the type.
+      // The type itself is protecting the reference to its storage via CoW semantics.
+      // This will force a copy to be made of this reference when the first mutation occurs;
+      // hence, it is safe to mark this as `nonisolated(unsafe)`.
+      static nonisolated(unsafe) let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _scope = source._scope
+      _report = source._report
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1: try { try decoder.decodeSingularStringField(value: &_storage._scope) }()
+        case 2: try { try decoder.decodeSingularMessageField(value: &_storage._report) }()
+        default: break
+        }
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every if/case branch local when no optimizations
+      // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+      // https://github.com/apple/swift-protobuf/issues/1182
+      if !_storage._scope.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._scope, fieldNumber: 1)
+      }
+      try { if let v = _storage._report {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+      } }()
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Issuereports_V1_ScopedIssueReport, rhs: Primandproper_Platform_Issuereports_V1_ScopedIssueReport) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._scope != rhs_storage._scope {return false}
+        if _storage._report != rhs_storage._report {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Issuereports_V1_ListReportsAcrossScopesRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ListReportsAcrossScopesRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}filter\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._filter) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._filter {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Issuereports_V1_ListReportsAcrossScopesRequest, rhs: Primandproper_Platform_Issuereports_V1_ListReportsAcrossScopesRequest) -> Bool {
+    if lhs._filter != rhs._filter {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Issuereports_V1_ListReportsAcrossScopesResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ListReportsAcrossScopesResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}pagination\0\u{1}results\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._pagination) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.results) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._pagination {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.results.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.results, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Issuereports_V1_ListReportsAcrossScopesResponse, rhs: Primandproper_Platform_Issuereports_V1_ListReportsAcrossScopesResponse) -> Bool {
+    if lhs._pagination != rhs._pagination {return false}
+    if lhs.results != rhs.results {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Issuereports_V1_ListReportsByStatusAcrossScopesRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ListReportsByStatusAcrossScopesRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}status\0\u{1}filter\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.status) }()
+      case 2: try { try decoder.decodeSingularMessageField(value: &self._filter) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if self.status != .unspecified {
+      try visitor.visitSingularEnumField(value: self.status, fieldNumber: 1)
+    }
+    try { if let v = self._filter {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Issuereports_V1_ListReportsByStatusAcrossScopesRequest, rhs: Primandproper_Platform_Issuereports_V1_ListReportsByStatusAcrossScopesRequest) -> Bool {
+    if lhs.status != rhs.status {return false}
+    if lhs._filter != rhs._filter {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Primandproper_Platform_Issuereports_V1_ListReportsByStatusAcrossScopesResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ListReportsByStatusAcrossScopesResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}pagination\0\u{1}results\0\u{b}scope\0")
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._pagination) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.results) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._pagination {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    } }()
+    if !self.results.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.results, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Primandproper_Platform_Issuereports_V1_ListReportsByStatusAcrossScopesResponse, rhs: Primandproper_Platform_Issuereports_V1_ListReportsByStatusAcrossScopesResponse) -> Bool {
     if lhs._pagination != rhs._pagination {return false}
     if lhs.results != rhs.results {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
