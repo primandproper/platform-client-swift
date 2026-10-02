@@ -99,6 +99,32 @@ extension SessionFixture {
     #expect(state == .authenticated)
   }
 
+  @Test func servesCallsMadeDuringARefusedSwitchTheLoginItKept() async throws {
+    let fixture = SessionFixture()
+    let gate = Gate()
+    fixture.server.handle(switchMethod) { (_: SwitchRequest, _) -> SwitchResponse in
+      await gate.wait()
+      throw refusal(.unauthenticated, "invalid credentials", SignInReason.invalidCredentials)
+    }
+    fixture.handleExchange { _ in fixture.successor(2) }
+
+    let (error, state) = try await fixture.run { session, caller in
+      let switching = Task { try await session.switchAccount("not-mine") }
+      try await eventually { fixture.server.calls(to: switchMethod).count == 1 }
+      async let call: Void = caller.call(session)
+      try await Task.sleep(for: .milliseconds(20))
+      gate.open()
+      // The refusal is the switch's alone: the call still goes out on the kept login.
+      try await call
+      let error = await #expect(throws: PlatformError.self) { try await switching.value }
+      return (error, await session.state)
+    }
+
+    #expect(error?.is(SignInReason.invalidCredentials) == true)
+    #expect(fixture.tokensSent() == ["Bearer access-2"])
+    #expect(state == .authenticated)
+  }
+
   @Test func r7_endsTheLoginWhenTheRefusedTokenDoesNotExchangeEither() async throws {
     let fixture = SessionFixture()
     fixture.server.handle(switchMethod) { (_: SwitchRequest, _) -> SwitchResponse in

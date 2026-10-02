@@ -95,7 +95,7 @@ public actor Session {
   public private(set) var state: SessionState = .anonymous
   private var loading: Task<Void, any Error>?
   private var signingIn: Task<IssuedToken, any Error>?
-  private var refreshing: (id: Int, task: Task<IssuedToken, any Error>)?
+  private var refreshing: (id: Int, task: Task<Flight, any Error>)?
   private var flights = 0
   private var observers: [UUID: AsyncStream<SessionState>.Continuation] = [:]
 
@@ -266,7 +266,9 @@ public actor Session {
     while let flight = refreshing {
       _ = try? await flight.task.value
     }
-    return try await fly { try await $0.switchTo(accountID) }
+    let flight = try await fly { try await $0.switchTo(accountID) }
+    if let refusal = flight.refusal { throw refusal }
+    return flight.token
   }
 
   // MARK: - Tokens
@@ -277,7 +279,7 @@ public actor Session {
       _ = try? await signingIn.value
     }
     if let refreshing {
-      return try await refreshing.task.value
+      return try await refreshing.task.value.token
     }
 
     guard let held = current else { throw NotSignedInError() }
@@ -305,7 +307,7 @@ public actor Session {
 
   private func refreshAfterRefusal(_ refused: IssuedToken) async throws -> IssuedToken {
     if let refreshing {
-      return try await refreshing.task.value
+      return try await refreshing.task.value.token
     }
     if let current, current.token != refused.token {
       // Somebody else refreshed while this call was in flight; retry with what they got.
@@ -320,17 +322,25 @@ public actor Session {
 
   private func refresh() async throws -> IssuedToken {
     if let refreshing {
-      return try await refreshing.task.value
+      return try await refreshing.task.value.token
     }
-    return try await fly { try await $0.exchange() }
+    return try await fly { try await $0.exchange() }.token
+  }
+
+  /// Flight is what a flight lands with: the token every caller that awaited it goes on with,
+  /// and a refusal that was the switch's alone. A refused switch keeps the login, so a call
+  /// that waited on it is served, and only `switchAccount` throws.
+  private struct Flight: Sendable {
+    let token: IssuedToken
+    var refusal: PlatformError?
   }
 
   /// fly runs `work` as the one flight that spends the refresh token, which every caller
   /// finding it in flight awaits (R1). The flight takes itself down when it lands, so a caller
   /// arriving afterwards never sees a finished one.
   private func fly(
-    _ work: @escaping @Sendable (isolated Session) async throws -> IssuedToken
-  ) async throws -> IssuedToken {
+    _ work: @escaping @Sendable (isolated Session) async throws -> Flight
+  ) async throws -> Flight {
     flights += 1
     let id = flights
     let task = Task {
@@ -345,7 +355,7 @@ public actor Session {
     if refreshing?.id == id { refreshing = nil }
   }
 
-  private func exchange() async throws -> IssuedToken {
+  private func exchange() async throws -> Flight {
     guard let held = current, !held.refreshToken.isEmpty else { throw NotSignedInError() }
     setState(.refreshing)
 
@@ -357,10 +367,10 @@ public actor Session {
       throw error
     }
     try await adopt(successor)
-    return successor
+    return Flight(token: successor)
   }
 
-  private func switchTo(_ accountID: String) async throws -> IssuedToken {
+  private func switchTo(_ accountID: String) async throws -> Flight {
     guard let held = current, !held.refreshToken.isEmpty else { throw NotSignedInError() }
     setState(.refreshing)
 
@@ -381,8 +391,7 @@ public actor Session {
     }
 
     try await adopt(successor)
-    if let refused { throw refused }
-    return successor
+    return Flight(token: successor, refusal: refused)
   }
 
   private func switchOnce(_ refreshToken: String, _ accountID: String) async throws
