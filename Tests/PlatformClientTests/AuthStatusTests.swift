@@ -8,8 +8,7 @@ import Testing
   @Test func asksAnonymouslyWhenNoSessionIsHeldAndIsAnsweredNo() async throws {
     let fixture = answering(SessionFixture(held: false))
 
-    let result = try await fixture.run { session, caller in try await caller.getAuthStatus(session)
-    }
+    let result = try await fixture.run { session, _ in try await session.getAuthStatus() }
 
     #expect(result == .anonymous)
     let sent = try #require(fixture.server.calls(to: authStatusMethod).first).metadata
@@ -20,8 +19,7 @@ import Testing
   @Test func carriesTheCredentialWhenASessionIsHeld() async throws {
     let fixture = answering(SessionFixture())
 
-    let result = try await fixture.run { session, caller in try await caller.getAuthStatus(session)
-    }
+    let result = try await fixture.run { session, _ in try await session.getAuthStatus() }
 
     #expect(result == .authenticated(SignedInStatus(status: status())))
     #expect(fixture.tokensSent() == ["Bearer access-1"])
@@ -31,9 +29,9 @@ import Testing
     let fixture = answering(SessionFixture())
     fixture.handleExchange { _ in fixture.successor(2) }
 
-    try await fixture.run { session, caller in
+    try await fixture.run { session, _ in
       fixture.clock.advance(by: hour)
-      _ = try await caller.getAuthStatus(session)
+      _ = try await session.getAuthStatus()
     }
 
     #expect(fixture.server.calls(to: exchangeMethod).count == 1)
@@ -43,9 +41,9 @@ import Testing
   @Test func asksAnonymouslyWhenTheHeldSessionTurnsOutToHaveEnded() async throws {
     let fixture = answering(SessionFixture())
 
-    let (result, state) = try await fixture.run { session, caller in
+    let (result, state) = try await fixture.run { session, _ in
       fixture.clock.advance(by: 24 * hour)
-      return (try await caller.getAuthStatus(session), await session.state)
+      return (try await session.getAuthStatus(), await session.state)
     }
 
     #expect(result == .anonymous)
@@ -72,8 +70,7 @@ import Testing
         $0.emailAddressVerified = emailAddressVerified
       })
 
-    let result = try await fixture.run { session, caller in try await caller.getAuthStatus(session)
-    }
+    let result = try await fixture.run { session, _ in try await session.getAuthStatus() }
 
     #expect(signedIn(result)?.requiredActions == expected)
   }
@@ -81,8 +78,7 @@ import Testing
   @Test func doesNotOfferAPasswordChangeToSomebodyWhoHasNoPassword() async throws {
     let fixture = answering(SessionFixture(), status { $0.hasPassword_p = false })
 
-    let result = try await fixture.run { session, caller in try await caller.getAuthStatus(session)
-    }
+    let result = try await fixture.run { session, _ in try await session.getAuthStatus() }
 
     #expect(signedIn(result)?.canChangePassword == false)
   }
@@ -90,9 +86,9 @@ import Testing
   @Test func asksTheServerEveryTimeRatherThanCachingTheAnswer() async throws {
     let fixture = answering(SessionFixture())
 
-    try await fixture.run { session, caller in
-      _ = try await caller.getAuthStatus(session)
-      _ = try await caller.getAuthStatus(session)
+    try await fixture.run { session, _ in
+      _ = try await session.getAuthStatus()
+      _ = try await session.getAuthStatus()
     }
 
     #expect(fixture.server.calls(to: authStatusMethod).count == 2)

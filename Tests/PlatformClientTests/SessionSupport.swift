@@ -69,9 +69,6 @@ struct SessionFixture {
           },
           login: {
             try await SignInRPC.Client(wrapping: client).loginForToken(.init())
-          },
-          getAuthStatus: { session in
-            try await PlatformClient.getAuthStatus(session, client: client)
           }))
     }
   }
@@ -119,7 +116,6 @@ struct SessionFixture {
 struct Caller: Sendable {
   let authStatus: @Sendable (Metadata) async throws -> Void
   let login: @Sendable () async throws -> LoginResponse
-  let getAuthStatus: @Sendable (Session) async throws -> AuthStatusResult
 
   func call(_ session: Session) async throws {
     try await session.call(authStatus)

@@ -47,26 +47,25 @@ public struct SignedInStatus: Sendable, Hashable {
   }
 }
 
-/// getAuthStatus asks whether `session` is signed in, and if so who it is and what it owes. It
-/// is the one RPC that answers an anonymous caller instead of refusing one, so it is safe to
-/// call before knowing whether the credentials are good, and it carries the credential whenever
-/// one is held.
-///
-/// It is read fresh every time and deliberately not cached: the token carries no user and no
-/// permissions so that a revoked role takes effect now rather than at the token's expiry, and
-/// caching this answer indefinitely would rebuild the frozen permission set that design avoids.
-///
-/// `twoFactorEnrolled` is readable only here, by a signed-in caller, which is why a sign-in
-/// refused for a second factor cannot be resolved from this.
-public func getAuthStatus<Transport: ClientTransport>(
-  _ session: Session,
-  client: GRPCClient<Transport>,
-  options: CallOptions = .defaults
-) async throws -> AuthStatusResult {
-  let signIn = Primandproper_Platform_Signin_V1_SignInService.Client(wrapping: client)
-  let response = try await session.callOptionallyAuthenticated { metadata in
-    try await signIn.getAuthStatus(.init(), metadata: metadata, options: options)
+extension Session {
+  /// getAuthStatus asks whether this session is signed in, and if so who it is and what it
+  /// owes. It is the one RPC that answers an anonymous caller instead of refusing one, so it is
+  /// safe to call before knowing whether the credentials are good, and it carries the
+  /// credential whenever one is held.
+  ///
+  /// It is read fresh every time and deliberately not cached: the token carries no user and no
+  /// permissions so that a revoked role takes effect now rather than at the token's expiry,
+  /// and caching this answer indefinitely would rebuild the frozen permission set that design
+  /// avoids.
+  ///
+  /// `twoFactorEnrolled` is readable only here, by a signed-in caller, which is why a sign-in
+  /// refused for a second factor cannot be resolved from this.
+  public func getAuthStatus(options: CallOptions = .defaults) async throws -> AuthStatusResult {
+    let client = signInClient
+    let response = try await callOptionallyAuthenticated { metadata in
+      try await client.getAuthStatus(.init(), metadata: metadata, options: options)
+    }
+    guard response.authenticated, response.hasStatus else { return .anonymous }
+    return .authenticated(SignedInStatus(status: response.status))
   }
-  guard response.authenticated, response.hasStatus else { return .anonymous }
-  return .authenticated(SignedInStatus(status: response.status))
 }
