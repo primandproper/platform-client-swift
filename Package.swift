@@ -7,7 +7,10 @@ let package = Package(
   // line that calls a GRPCClient.
   platforms: [.iOS(.v18), .macOS(.v15)],
   products: [
-    .library(name: "PlatformClient", targets: ["PlatformClient"])
+    .library(name: "PlatformClient", targets: ["PlatformClient"]),
+    // Fakes for an app's own tests. A product of its own, so nothing in it can be linked into
+    // an app by accident.
+    .library(name: "PlatformClientTesting", targets: ["PlatformClientTesting"]),
   ],
   dependencies: [
     // Versions match what dinnerdonebetter's iOS app already links, because this package
@@ -26,9 +29,24 @@ let package = Package(
       ],
       swiftSettings: [.swiftLanguageMode(.v6)]
     ),
+    .target(
+      name: "PlatformClientTesting",
+      dependencies: [
+        "PlatformClient",
+        .product(name: "GRPCCore", package: "grpc-swift-2"),
+        .product(name: "GRPCInProcessTransport", package: "grpc-swift-2"),
+        .product(name: "GRPCProtobuf", package: "grpc-swift-protobuf"),
+        .product(name: "SwiftProtobuf", package: "swift-protobuf"),
+      ],
+      swiftSettings: [.swiftLanguageMode(.v6)]
+    ),
     .testTarget(
       name: "PlatformClientTests",
-      dependencies: ["PlatformClient"],
+      dependencies: [
+        "PlatformClient",
+        "PlatformClientTesting",
+        .product(name: "GRPCCore", package: "grpc-swift-2"),
+      ],
       swiftSettings: [.swiftLanguageMode(.v6)]
     ),
   ]
