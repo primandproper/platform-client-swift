@@ -66,5 +66,5 @@ fastlane/test_output
 # committed, so a consumer needs neither protoc nor this step.
 .protos/
 
-# Built codegen plugins (see scripts/plugins/Package.swift)
-scripts/plugins/.build/
+# Built codegen plugins (see scripts/plugins/*/Package.swift)
+scripts/plugins/*/.build/

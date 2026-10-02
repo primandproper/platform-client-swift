@@ -55,9 +55,16 @@ make codegen   # fetch the protos, then generate
 make build     # swift build
 ```
 
-**The generator is pinned too, not just the schema.** `scripts/plugins/Package.swift` pins
-`swift-protobuf` to 1.33.3 and `grpc-swift-protobuf` to 2.1.1, and `generate.sh` builds them
-rather than using whatever is on the machine.
+**The generator is pinned too, not just the schema.** `scripts/plugins/` holds one manifest
+per plugin, pinning `swift-protobuf` to 1.33.3 for `protoc-gen-swift` and `grpc-swift-protobuf`
+to 2.1.1 for `protoc-gen-grpc-swift-2`, and `generate.sh` builds them rather than using
+whatever is on the machine.
+
+They are two packages because they cannot share a `swift-protobuf` on SwiftPM 6.2 or later:
+`grpc-swift-2` 2.4.3, which the grpc plugin's output comes from, disables `swift-protobuf`'s
+default traits, and SwiftPM refuses that against any release before 1.36.0, which declare
+none. So the grpc plugin gets 1.36.1, which it only parses descriptors with, and
+`protoc-gen-swift` keeps 1.33.3. DDB's `scripts/protoc-plugins` is the same split.
 
 That is not defensive tidiness. `brew install swift-protobuf` gives you whatever is current,
 and swift-protobuf's output changed after 1.33.3 — it began emitting `nonisolated extension`
