@@ -217,6 +217,29 @@ public func isAmbiguous(_ error: any Error) -> Bool {
   }
 }
 
+private let transientCodes: Set<RPCError.Code> = [
+  .unavailable, .deadlineExceeded, .resourceExhausted,
+]
+
+/// isTransient reports whether a failed call failed because the server could not answer it
+/// right now, so trying again later may succeed: what "try again later" and a breaker consult.
+/// A failure with no status at all is transient, since the transport failed before anything
+/// answered, except a CancellationError, which is `CANCELLED` by another name, and an
+/// ExchangeNotSentError, which failed on this device.
+///
+/// `INTERNAL` and `UNKNOWN` are the server's fault but not transient: they are a bug, and a
+/// breaker that trips on them hides it behind "try later". `CANCELLED` is the caller backing
+/// out, never an outage. Unwrap any wrapper of your own first: this sees only what is in front
+/// of it.
+public func isTransient(_ error: any Error) -> Bool {
+  switch error {
+  case let error as PlatformError: transientCodes.contains(error.code)
+  case let error as RPCError: transientCodes.contains(error.code)
+  case is CancellationError, is ExchangeNotSentError: false
+  default: true
+  }
+}
+
 extension RPCError.Code {
   /// wireName is the code as gRPC names it everywhere else, in a log a reader can grep.
   fileprivate var wireName: String {

@@ -229,6 +229,28 @@ Every file below is under `Sources/PlatformClient/`.
 
 Streams are not covered, because the contract parks them: no platform-go proto declares one.
 
+### Is the server down, or is it me?
+
+`isTransient` (`Errors.swift`) answers it, beside `isAmbiguous`: true when the server could not
+answer right now and trying later may succeed, which is what "try again later" and a breaker
+consult. It reads a `PlatformError` and a bare `RPCError` alike; a wrapper of the app's own is
+the app's to unwrap first.
+
+| failure | transient | why |
+| --- | --- | --- |
+| `UNAVAILABLE` | yes | the server, or the way to it, is down |
+| `DEADLINE_EXCEEDED` | yes | the server did not answer in time |
+| `RESOURCE_EXHAUSTED` | yes | the server is shedding load or rate limiting; later may be under the limit |
+| no status at all | yes | the transport failed before anything answered |
+| `CANCELLED`, `CancellationError` | no | the caller backed out; nothing is wrong with the server |
+| `INTERNAL`, `UNKNOWN` | no | the server's fault, but a bug: a breaker that trips on it hides the bug behind "try later" |
+| `DATA_LOSS` | no | a bug as well, and one trying again does not fix |
+| `UNIMPLEMENTED` | no | this client and the server disagree on the API; that does not pass |
+| `ABORTED` | no | the server answered: a conflict, retried as an operation, not waited out |
+| `UNAUTHENTICATED`, `PERMISSION_DENIED` | no | the caller's credential, not the server's health |
+| `INVALID_ARGUMENT`, `OUT_OF_RANGE`, `NOT_FOUND`, `ALREADY_EXISTS`, `FAILED_PRECONDITION` | no | the request, which fails the same way every time |
+| `ExchangeNotSentError` | no | it failed on this device, before the server was reached |
+
 ## Codegen
 
 ```bash
