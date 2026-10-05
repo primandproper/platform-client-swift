@@ -115,6 +115,24 @@ builds the value a write carries, accepting exactly the text the server reads as
 and compares enumeration options in, and is `nil`, not `""`, for an unset resolution. The case
 always follows the setting's kind, so a string setting answered `"42"` is written as a string.
 
+Push registration is `Devices`, an actor over the `Session` and the same `GRPCClient`. The app
+hands it the APNs token from `didRegisterForRemoteNotificationsWithDeviceToken`; a token that
+arrives before sign-in is held and registered once the session is authenticated (the call
+throws `NotSignedInError` meanwhile, and the app need not hand it over again). The
+registration is kept in a `DeviceRegistrationStore`, `KeychainDeviceRegistrationStore` unless
+told otherwise, with the login it was made under: the same token under the same login makes no
+call, a rotated one registers and then revokes the old registration, and a new login registers
+again. Signing out revokes it first, while the session can still make the call:
+
+```swift
+let devices = Devices(session: session, client: client)
+_ = try? await devices.register(apnsToken: deviceToken, platform: .ios)
+
+// signing out
+try? await devices.revoke()
+await session.signOut()
+```
+
 **`KeychainCredentialStore` is opt-in.** It holds the session as one generic-password item in
 the data protection keychain, readable after first unlock (so a background refresh can reach
 it) and never backed up or restored onto another device. It does not read what any earlier
@@ -129,7 +147,7 @@ token expires and never re-sends the refresh token (R5).
 
 `PlatformClientTesting` is a product of its own, for an app's tests: `FakeServer` (a real gRPC
 server over the in-process transport), `FakeClock`, `MemoryCredentialStore`,
-`fakeIssuedToken` and `refusal`. It is separate so nothing in it can be linked into an app by
+`MemoryDeviceRegistrationStore`, `fakeIssuedToken` and `refusal`. It is separate so nothing in it can be linked into an app by
 accident.
 
 ### A token held somewhere else

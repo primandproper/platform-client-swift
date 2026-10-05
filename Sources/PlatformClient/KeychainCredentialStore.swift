@@ -21,21 +21,7 @@ public struct KeychainCredentialStore: CredentialStore {
   }
 
   public func load() async throws -> IssuedToken? {
-    var query = itemQuery
-    query[kSecReturnData as String] = true
-    query[kSecMatchLimit as String] = kSecMatchLimitOne
-
-    var result: CFTypeRef?
-    let status = SecItemCopyMatching(query as CFDictionary, &result)
-    if status == errSecItemNotFound {
-      return nil
-    }
-    guard status == errSecSuccess else {
-      throw KeychainCredentialStoreError.keychain(operation: .load, status: status)
-    }
-    guard let data = result as? Data else {
-      throw KeychainCredentialStoreError.serialization(operation: .load, underlying: nil)
-    }
+    guard let data = try item.load() else { return nil }
     do {
       return try IssuedToken(serializedBytes: data)
     } catch {
@@ -43,9 +29,8 @@ public struct KeychainCredentialStore: CredentialStore {
     }
   }
 
-  /// save replaces the held session in place. Updating rather than deleting and re-adding
-  /// means a failure part way leaves the previous session, never none. The accessibility is
-  /// written on update too, so an item that predates it is brought in line.
+  /// save replaces the held session in place, so a failure part way leaves the previous
+  /// session, never none.
   public func save(_ token: IssuedToken) async throws {
     let data: Data
     do {
@@ -53,46 +38,20 @@ public struct KeychainCredentialStore: CredentialStore {
     } catch {
       throw KeychainCredentialStoreError.serialization(operation: .save, underlying: error)
     }
-    let attributes: [String: Any] = [
-      kSecValueData as String: data,
-      kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly,
-    ]
-
-    var status = SecItemUpdate(itemQuery as CFDictionary, attributes as CFDictionary)
-    if status == errSecItemNotFound {
-      status = SecItemAdd(itemQuery.merging(attributes) { $1 } as CFDictionary, nil)
-    }
-    guard status == errSecSuccess else {
-      throw KeychainCredentialStoreError.keychain(operation: .save, status: status)
-    }
+    try item.save(data)
   }
 
   public func clear() async throws {
-    let status = SecItemDelete(itemQuery as CFDictionary)
-    guard status == errSecSuccess || status == errSecItemNotFound else {
-      throw KeychainCredentialStoreError.keychain(operation: .clear, status: status)
-    }
+    try item.clear()
   }
 
-  /// itemQuery names the one item this store owns. The data protection keychain is the only
-  /// one on macOS that honors a `ThisDeviceOnly` accessibility; on iOS it is the only keychain
-  /// there is.
-  private var itemQuery: [String: Any] {
-    var query: [String: Any] = [
-      kSecClass as String: kSecClassGenericPassword,
-      kSecAttrService as String: service,
-      kSecAttrAccount as String: account,
-      kSecUseDataProtectionKeychain as String: true,
-    ]
-    if let accessGroup {
-      query[kSecAttrAccessGroup as String] = accessGroup
-    }
-    return query
+  private var item: KeychainItem {
+    KeychainItem(service: service, account: account, accessGroup: accessGroup)
   }
 }
 
-/// KeychainCredentialStoreError names the operation that failed and why. A missing item on
-/// load is not one of these: it is no session.
+/// KeychainCredentialStoreError names the operation that failed and why, for every Keychain
+/// store here. A missing item on load is not one of these: it is nothing held.
 public enum KeychainCredentialStoreError: Error, Sendable, CustomStringConvertible {
   public enum Operation: String, Sendable {
     case load, save, clear
@@ -100,8 +59,8 @@ public enum KeychainCredentialStoreError: Error, Sendable, CustomStringConvertib
 
   /// keychain is a Security framework call that answered something other than success.
   case keychain(operation: Operation, status: OSStatus)
-  /// serialization is a session that would not serialize on save, or an item whose bytes are
-  /// not a session on load.
+  /// serialization is a value that would not serialize on save, or an item whose bytes are not
+  /// what the store holds on load.
   case serialization(operation: Operation, underlying: (any Error)?)
 
   public var operation: Operation {
@@ -117,7 +76,7 @@ public enum KeychainCredentialStoreError: Error, Sendable, CustomStringConvertib
       return "keychain \(operation.rawValue) failed: OSStatus \(status) (\(message))"
     case .serialization(let operation, let underlying?):
       return
-        "keychain \(operation.rawValue) failed: the session did not (de)serialize: \(underlying)"
+        "keychain \(operation.rawValue) failed: the item did not (de)serialize: \(underlying)"
     case .serialization(let operation, nil):
       return "keychain \(operation.rawValue) failed: item held no data"
     }

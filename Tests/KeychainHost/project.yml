@@ -30,6 +30,7 @@ targets:
     platform: iOS
     sources:
       - path: ../PlatformClientTests/KeychainCredentialStoreTests.swift
+      - path: ../PlatformClientTests/KeychainDeviceRegistrationStoreTests.swift
     dependencies:
       - target: KeychainHost
       - package: platform-client-swift
