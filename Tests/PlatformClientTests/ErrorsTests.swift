@@ -173,6 +173,49 @@ private func rpcError(_ status: GoogleRPCStatus) -> RPCError { RPCError(status) 
   }
 }
 
+@Suite struct IsTransientTests {
+  @Test(arguments: [
+    (RPCError.Code.unavailable, true),
+    (.deadlineExceeded, true),
+    (.resourceExhausted, true),
+    (.cancelled, false),
+    (.unknown, false),
+    (.invalidArgument, false),
+    (.notFound, false),
+    (.alreadyExists, false),
+    (.permissionDenied, false),
+    (.failedPrecondition, false),
+    (.aborted, false),
+    (.outOfRange, false),
+    (.unimplemented, false),
+    (.internalError, false),
+    (.dataLoss, false),
+    (.unauthenticated, false),
+  ])
+  func classifiesByCode(code: RPCError.Code, transient: Bool) {
+    #expect(isTransient(RPCError(code: code, message: "x")) == transient)
+    #expect(isTransient(PlatformError(code: code, serverMessage: "x")) == transient)
+    #expect(isTransient(PlatformError(RPCError(code: code, message: "x"))) == transient)
+  }
+
+  @Test func treatsAFailureWithNoStatusAsNotTransient() {
+    struct LocalFailure: Error {}
+
+    #expect(!isTransient(LocalFailure()))
+    #expect(!isTransient(NotSignedInError()))
+  }
+
+  @Test func treatsACancelledTaskAsNotTransient() {
+    #expect(!isTransient(CancellationError()))
+  }
+
+  @Test func treatsAnExchangeThatWasNeverSentAsNotTransient() {
+    struct StoreUnreachable: Error {}
+
+    #expect(!isTransient(ExchangeNotSentError("store unreachable", cause: StoreUnreachable())))
+  }
+}
+
 @Suite struct ReasonTablesTests {
   @Test func readAResetRefusalAsKnownInItsOwnDomain() {
     let error = PlatformError(
