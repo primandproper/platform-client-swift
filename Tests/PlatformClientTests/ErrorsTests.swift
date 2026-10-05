@@ -198,10 +198,11 @@ private func rpcError(_ status: GoogleRPCStatus) -> RPCError { RPCError(status) 
     #expect(isTransient(PlatformError(RPCError(code: code, message: "x"))) == transient)
   }
 
-  @Test func treatsAFailureWithNoStatusAsTransient() {
-    struct SocketHangUp: Error {}
+  @Test func treatsAFailureWithNoStatusAsNotTransient() {
+    struct LocalFailure: Error {}
 
-    #expect(isTransient(SocketHangUp()))
+    #expect(!isTransient(LocalFailure()))
+    #expect(!isTransient(NotSignedInError()))
   }
 
   @Test func treatsACancelledTaskAsNotTransient() {

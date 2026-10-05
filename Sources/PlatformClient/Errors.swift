@@ -223,9 +223,9 @@ private let transientCodes: Set<RPCError.Code> = [
 
 /// isTransient reports whether a failed call failed because the server could not answer it
 /// right now, so trying again later may succeed: what "try again later" and a breaker consult.
-/// A failure with no status at all is transient, since the transport failed before anything
-/// answered, except a CancellationError, which is `CANCELLED` by another name, and an
-/// ExchangeNotSentError, which failed on this device.
+/// A failure with no status at all is not transient: GRPCClient reports a transport that could
+/// not reach the server as `UNAVAILABLE`, so an error without a status failed on this device
+/// (no session, the Keychain, a cancelled task) and never asked the server anything.
 ///
 /// `INTERNAL` and `UNKNOWN` are the server's fault but not transient: they are a bug, and a
 /// breaker that trips on them hides it behind "try later". `CANCELLED` is the caller backing
@@ -235,8 +235,7 @@ public func isTransient(_ error: any Error) -> Bool {
   switch error {
   case let error as PlatformError: transientCodes.contains(error.code)
   case let error as RPCError: transientCodes.contains(error.code)
-  case is CancellationError, is ExchangeNotSentError: false
-  default: true
+  default: false
   }
 }
 
