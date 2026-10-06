@@ -22,11 +22,11 @@ real schema, once instead of twice.
 
 ## What it speaks
 
-**platform-go v14.2.0** (`PLATFORM_GO_VERSION`). The generated stubs under
+**platform-go v15.0.0** (`PLATFORM_GO_VERSION`). The generated stubs under
 `Sources/PlatformClient/Generated/` are exactly that tag's protos (and the `primitives-go` ones
 its `go.mod` names), and the runtime beside them
 implements
-[`platform-go`'s client contract](https://github.com/primandproper/platform-go/blob/v14.2.0/docs/client-contract.md)
+[`platform-go`'s client contract](https://github.com/primandproper/platform-go/blob/v15.0.0/docs/client-contract.md)
 as it describes that tag. Some rules need a server at least that new: R10 (the keyed refresh
 retry, which is opt-in for that reason) and R11 (sign-in reasons, which an older server simply
 does not send) from v14.1.0, and R18 to R20 (passkey sign-in and switching accounts, whose RPCs
